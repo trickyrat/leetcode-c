@@ -1,0 +1,8 @@
+# ninja log v5
+0	98	6632770369972168	CMakeFiles/Leetcodec.dir/solution.c.obj	d3c9c2bb582e987c
+11	106	6632770370062169	CMakeFiles/Leetcodec.dir/main.c.obj	976c57e0d4bf85ea
+109	238	6632770371347453	Leetcodec.exe	fe1918254d3c273d
+2	101	6632770628187305	CMakeFiles/Leetcodec.dir/main.c.obj	976c57e0d4bf85ea
+101	226	6632770629407296	Leetcodec.exe	fe1918254d3c273d
+1	110	6632770704773095	CMakeFiles/Leetcodec.dir/main.c.obj	976c57e0d4bf85ea
+110	214	6632770705793100	Leetcodec.exe	fe1918254d3c273d
