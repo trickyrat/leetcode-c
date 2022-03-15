@@ -5,39 +5,45 @@
 #ifndef LEETCODEC_SOLUTION_H
 #define LEETCODEC_SOLUTION_H
 
-#include <malloc.h>
 #include <assert.h>
+#include <malloc.h>
+
+
 struct ListNode {
   int val;
   struct ListNode *next;
 };
 
-typedef struct {
-  struct ListNode *head;
-} Solution;
+/// <summary>
+/// 1.两数之和
+/// </summary>
+/// <param name="nums"></param>
+/// <param name="numsSize"></param>
+/// <param name="target"></param>
+/// <param name="returnSize"></param>
+/// <returns></returns>
+int *twoSum(int *nums, int numsSize, int target, int *returnSize);
 
-Solution *solutionCreate(struct ListNode *head) {
-  Solution *obj = (Solution *) malloc(sizeof(Solution));
-  assert(obj != NULL);
-  obj->head = head;
-  return obj;
-}
-
-int solutionGetRandom(Solution *obj) {
-  int i = 1, ans = 0;
-  for (struct ListNode *curr = obj->head; curr; curr = curr->next) {
-    if (rand() % i == 0) {
-      ans = curr->val;
-    }
-    ++i;
-  }
-  return ans;
-}
-
-void solutionFree(Solution* obj) {
-  free(obj);
-}
-
+/// <summary>
+/// 
+/// </summary>
+/// <param name="nums"></param>
+/// <param name="numSize"></param>
+/// <param name="target"></param>
+/// <returns></returns>
 int search(int *nums, int numSize, int target);
 
-#endif //LEETCODEC_SOLUTION_H
+/// <summary>
+/// 206.反转链表
+/// </summary>
+struct ListNode *reverseList(struct ListNode *head);
+
+/// <summary>
+/// 1991.寻找数组的中间位置
+/// </summary>
+/// <param name="nums"></param>
+/// <param name="numsSize"></param>
+/// <returns></returns>
+int pivotIndex(int *nums, int numsSize);
+
+#endif // LEETCODEC_SOLUTION_H
