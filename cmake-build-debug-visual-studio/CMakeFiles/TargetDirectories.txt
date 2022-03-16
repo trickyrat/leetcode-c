@@ -1,3 +1,0 @@
-C:/Users/wangj/source/repos/leetcodec/cmake-build-debug-visual-studio/CMakeFiles/leetcodec.dir
-C:/Users/wangj/source/repos/leetcodec/cmake-build-debug-visual-studio/CMakeFiles/ALL_BUILD.dir
-C:/Users/wangj/source/repos/leetcodec/cmake-build-debug-visual-studio/CMakeFiles/ZERO_CHECK.dir
