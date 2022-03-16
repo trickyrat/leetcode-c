@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\wangj\source\repos\leetcodec\cmake-build-debug-visual-studio\CMakeFiles\7a9f7b8a6594287d5d694e0ff998e030\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{EED3E572-C2BC-3ED8-9C3D-C38285360024}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

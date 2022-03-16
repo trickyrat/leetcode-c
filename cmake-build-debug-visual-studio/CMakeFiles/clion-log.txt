@@ -1,0 +1,4 @@
+"C:\Program Files\JetBrains\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" -G "Visual Studio 17 2022" C:\Users\wangj\source\repos\leetcodec
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/wangj/source/repos/leetcodec/cmake-build-debug-visual-studio

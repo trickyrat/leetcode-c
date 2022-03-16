@@ -7,15 +7,13 @@
 
 #include <assert.h>
 #include <malloc.h>
+#include <stdbool.h>
 
+#include "data_structure.h"
 
-struct ListNode {
-  int val;
-  struct ListNode *next;
-};
 
 /// <summary>
-/// 1.两数之和
+/// 1.Two Sum
 /// </summary>
 /// <param name="nums"></param>
 /// <param name="numsSize"></param>
@@ -25,7 +23,7 @@ struct ListNode {
 int *twoSum(int *nums, int numsSize, int target, int *returnSize);
 
 /// <summary>
-/// 
+/// 33. Search in Rotated Sorted Array
 /// </summary>
 /// <param name="nums"></param>
 /// <param name="numSize"></param>
@@ -34,12 +32,20 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize);
 int search(int *nums, int numSize, int target);
 
 /// <summary>
-/// 206.反转链表
+/// 100. Same Tree
 /// </summary>
-struct ListNode *reverseList(struct ListNode *head);
+/// <param name="p"></param>
+/// <param name="q"></param>
+/// <returns></returns>
+bool isSameTree(TreeNode* p, TreeNode* q);
 
 /// <summary>
-/// 1991.寻找数组的中间位置
+/// 206. Reverse Linked List
+/// </summary>
+struct ListNode *reverseList(ListNode *head);
+
+/// <summary>
+/// 1991. Find the Middle Index in Array
 /// </summary>
 /// <param name="nums"></param>
 /// <param name="numsSize"></param>
