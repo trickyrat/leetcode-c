@@ -38,7 +38,7 @@ static int test_pass = 0;
 static void test_two_sum() {
     int nums[4] = {2, 7, 11, 15};
     int actualReturnSize = 0;
-    int *actual = twoSum(&nums, 4, 9, &actualReturnSize);
+    int *actual = twoSum(nums, 4, 9, &actualReturnSize);
     int expect[2] = {0, 1};
     int expectedReturnSize = 2;
     EXPECT_EQ_ARRAY(expect, expectedReturnSize, actual, actualReturnSize);
@@ -71,11 +71,36 @@ static void test_is_same_tree() {
     EXPECT_EQ_FALSE(isSameTree(NULL, &root1));
 }
 
+static void test_find_diagonal_order() {
+    int matrix[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+    int *mat[3];
+    for (int i = 0; i < 3; ++i) {
+        mat[i] = matrix[i];
+    }
+    int returnSize = 0;
+    int colSize = 3;
+    int* actual = findDiagonalOrder(mat, 3, &colSize, &returnSize);
+    int expect[9] = {1,2,4,7,5,3,6,8,9};
+    EXPECT_EQ_ARRAY(expect, 9, actual, returnSize);
+
+    int matrix2[2][2] = {{1,2},{3,4}};
+    int *mat2[2];
+    for (int i = 0; i < 2; ++i) {
+        mat2[i] = matrix2[i];
+    }
+    int returnSize2 = 0;
+    int colSize2 = 2;
+    int* actual2 = findDiagonalOrder(mat2, 2, &colSize2, &returnSize2);
+    int expect2[4] = {1,2,3,4};
+    EXPECT_EQ_ARRAY(expect2, 4, actual2, returnSize2);
+}
+
 int main() {
     test_two_sum();
     test_search();
     test_pivot_index();
     test_is_same_tree();
+    test_find_diagonal_order();
     printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
     return main_ret;
 }

@@ -79,6 +79,36 @@ int pivotIndex(int *nums, int numsSize) {
   return -1;
 }
 
+int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize) {
+    if(matSize == 0) {
+        return NULL;
+    }
+    int row = 0, col = 0;
+    int direction = 1;
+    int r = 0;
+    int* ans = (int*)calloc(matSize*(*matColSize), sizeof(int));
+    while(row < matSize && col < (*matColSize)) {
+        ans[r++] = mat[row][col];
+        int new_row = row + (direction == 1 ? -1 : 1);
+        int new_col = col + (direction == 1 ? 1 : -1);
+        if(new_row < 0 || new_row == matSize || new_col < 0 || new_col == (*matColSize)) {
+            if(direction == 1) {
+                row += (col == (*matColSize) - 1 ? 1 : 0);
+                col += (col < (*matColSize) - 1 ? 1 : 0);
+            } else {
+                col += (row == matSize - 1 ? 1 : 0);
+                row += (row < matSize - 1 ? 1 : 0);
+            }
+            direction = 1 - direction;
+        } else {
+            row = new_row;
+            col = new_col;
+        }
+    }
+    *returnSize = matSize*(*matColSize);
+    return ans;
+}
+
 bool isSameTree(TreeNode *p, TreeNode *q) {
     if (p == NULL && q == NULL) {
         return true;

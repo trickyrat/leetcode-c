@@ -44,6 +44,14 @@ bool isSameTree(TreeNode* p, TreeNode* q);
 /// </summary>
 struct ListNode *reverseList(ListNode *head);
 
+/// 498.Diagonal Traverse
+/// \param mat
+/// \param matSize
+/// \param matColSize
+/// \param returnSize
+/// \return
+int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize);
+
 /// <summary>
 /// 1991. Find the Middle Index in Array
 /// </summary>
