@@ -22,7 +22,7 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
   return NULL;
 }
 
-int search(int *nums, int numSize, int target) {
+int search(const int *nums, int numSize, int target) {
   if (numSize < 1) {
     return -1;
   }
@@ -119,4 +119,28 @@ bool isSameTree(TreeNode *p, TreeNode *q) {
     } else {
         return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
     }
+}
+
+static bool isSelfDividing(int num) {
+    int tmp = num;
+    while(tmp > 0) {
+        int digit = tmp % 10;
+        if(digit == 0 || num % digit != 0) {
+            return false;
+        }
+        tmp /= 10;
+    }
+    return true;
+}
+
+int* selfDividingNumbers(int left, int right, int* returnSize) {
+    int* ans = (int*) malloc(sizeof (int) * (right - left + 1));
+    int pos = 0;
+    for (int i = left; i <= right; ++i) {
+        if(isSelfDividing(i)) {
+            ans[pos++] = i;
+        }
+    }
+    *returnSize = pos;
+    return ans;
 }

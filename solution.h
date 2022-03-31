@@ -29,7 +29,7 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize);
 /// <param name="numSize"></param>
 /// <param name="target"></param>
 /// <returns></returns>
-int search(int *nums, int numSize, int target);
+int search(const int *nums, int numSize, int target);
 
 /// <summary>
 /// 100. Same Tree
@@ -51,6 +51,15 @@ struct ListNode *reverseList(ListNode *head);
 /// \param returnSize
 /// \return
 int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize);
+
+/**
+ * 728.Self Dividing Numbers
+ * @param left
+ * @param right
+ * @param returnSize
+ * @return
+ */
+int* selfDividingNumbers(int left, int right, int* returnSize);
 
 /// <summary>
 /// 1991. Find the Middle Index in Array
