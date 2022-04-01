@@ -30,9 +30,9 @@ static int test_pass = 0;
 
 #define EXPECT_EQ_ARRAY(expect, expectedSize, actual, actualSize) \
   EXPECT_EQ_INT(expectedSize, actualSize);                        \
-  for (int i = 0; i < expectedSize; ++i) {                        \
-    EXPECT_EQ_INT(expect[i], actual[i]);                          \
-  }                                                               \
+  for (int i = 0; i < (expectedSize); ++i) {                      \
+    EXPECT_EQ_INT((expect)[i], (actual)[i]);                      \
+  }
 
 
 static void test_two_sum() {
@@ -72,32 +72,35 @@ static void test_is_same_tree() {
 }
 
 static void test_find_diagonal_order() {
-    int matrix[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+    int matrix[3][3] = {{1, 2, 3},
+                        {4, 5, 6},
+                        {7, 8, 9}};
     int *mat[3];
     for (int i = 0; i < 3; ++i) {
         mat[i] = matrix[i];
     }
     int returnSize = 0;
     int colSize = 3;
-    int* actual = findDiagonalOrder(mat, 3, &colSize, &returnSize);
-    int expect[9] = {1,2,4,7,5,3,6,8,9};
+    int *actual = findDiagonalOrder(mat, 3, &colSize, &returnSize);
+    int expect[9] = {1, 2, 4, 7, 5, 3, 6, 8, 9};
     EXPECT_EQ_ARRAY(expect, 9, actual, returnSize);
 
-    int matrix2[2][2] = {{1,2},{3,4}};
+    int matrix2[2][2] = {{1, 2},
+                         {3, 4}};
     int *mat2[2];
     for (int i = 0; i < 2; ++i) {
         mat2[i] = matrix2[i];
     }
     int returnSize2 = 0;
     int colSize2 = 2;
-    int* actual2 = findDiagonalOrder(mat2, 2, &colSize2, &returnSize2);
-    int expect2[4] = {1,2,3,4};
+    int *actual2 = findDiagonalOrder(mat2, 2, &colSize2, &returnSize2);
+    int expect2[4] = {1, 2, 3, 4};
     EXPECT_EQ_ARRAY(expect2, 4, actual2, returnSize2);
 }
 
 static void test_selft_dividing_numbers() {
     int returnSize1 = 0;
-    int* actual1 = selfDividingNumbers(1, 22, &returnSize1);
+    int *actual1 = selfDividingNumbers(1, 22, &returnSize1);
     int expect1[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};
     EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1);
 }
