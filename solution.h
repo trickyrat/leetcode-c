@@ -12,44 +12,48 @@
 #include "data_structure.h"
 
 
-/// <summary>
-/// 1.Two Sum
-/// </summary>
-/// <param name="nums"></param>
-/// <param name="numsSize"></param>
-/// <param name="target"></param>
-/// <param name="returnSize"></param>
-/// <returns></returns>
+/**
+ *  1.Two Sum
+ * @param nums
+ * @param numsSize
+ * @param target
+ * @param returnSize
+ * @return
+ */
 int *twoSum(int *nums, int numsSize, int target, int *returnSize);
 
-/// <summary>
-/// 33. Search in Rotated Sorted Array
-/// </summary>
-/// <param name="nums"></param>
-/// <param name="numSize"></param>
-/// <param name="target"></param>
-/// <returns></returns>
+/**
+ * 33. Search in Rotated Sorted Array
+ * @param nums
+ * @param numSize
+ * @param target
+ * @return
+ */
 int search(const int *nums, int numSize, int target);
 
-/// <summary>
-/// 100. Same Tree
-/// </summary>
-/// <param name="p"></param>
-/// <param name="q"></param>
-/// <returns></returns>
+/**
+ * 100. Same Tree
+ * @param p
+ * @param q
+ * @return
+ */
 bool isSameTree(TreeNode* p, TreeNode* q);
 
-/// <summary>
-/// 206. Reverse Linked List
-/// </summary>
+/**
+ * 206. Reverse Linked List
+ * @param head
+ * @return
+ */
 struct ListNode *reverseList(ListNode *head);
 
-/// 498.Diagonal Traverse
-/// \param mat
-/// \param matSize
-/// \param matColSize
-/// \param returnSize
-/// \return
+/**
+ * 498.Diagonal Traverse
+ * @param mat
+ * @param matSize
+ * @param matColSize
+ * @param returnSize
+ * @return
+ */
 int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize);
 
 /**
@@ -61,12 +65,21 @@ int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize)
  */
 int* selfDividingNumbers(int left, int right, int* returnSize);
 
-/// <summary>
-/// 1991. Find the Middle Index in Array
-/// </summary>
-/// <param name="nums"></param>
-/// <param name="numsSize"></param>
-/// <returns></returns>
+/**
+ * 744. Find Smallest Letter Greater Than Target
+ * @param letters
+ * @param letterSize
+ * @param target
+ * @return
+ */
+char nextGreatestLetter(char* letters, int letterSize, char target);
+
+/**
+ * 1991. Find the Middle Index in Array
+ * @param nums
+ * @param numsSize
+ * @return
+ */
 int pivotIndex(int *nums, int numsSize);
 
 #endif // LEETCODEC_SOLUTION_H

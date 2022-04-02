@@ -21,6 +21,9 @@ static int test_pass = 0;
 #define EXPECT_EQ_INT(expect, actual)                                          \
   EXPECT_EQ_BASE((expect) == (actual), expect, actual, "%d")
 
+#define EXPECT_EQ_CHAR(expect, actual)                                          \
+  EXPECT_EQ_BASE((expect) == (actual), expect, actual, "%c")
+
 #define EXPECT_EQ_TRUE(actual)                                                 \
   EXPECT_EQ_BASE(1 == (actual), 1, actual, "%d")
 
@@ -98,11 +101,18 @@ static void test_find_diagonal_order() {
     EXPECT_EQ_ARRAY(expect2, 4, actual2, returnSize2);
 }
 
-static void test_selft_dividing_numbers() {
+static void test_self_dividing_numbers() {
     int returnSize1 = 0;
     int *actual1 = selfDividingNumbers(1, 22, &returnSize1);
     int expect1[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};
     EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1);
+}
+
+static void test_next_greatest_letter() {
+    char letters[3] = {'c','f','j'};
+    EXPECT_EQ_CHAR('c', nextGreatestLetter(letters, 3, 'a'));
+    EXPECT_EQ_CHAR('f', nextGreatestLetter(letters, 3, 'c'));
+    EXPECT_EQ_CHAR('f', nextGreatestLetter(letters, 3, 'c'));
 }
 
 int main() {
@@ -111,7 +121,8 @@ int main() {
     test_pivot_index();
     test_is_same_tree();
     test_find_diagonal_order();
-    test_selft_dividing_numbers();
+    test_self_dividing_numbers();
+    test_next_greatest_letter();
     printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
     return main_ret;
 }
