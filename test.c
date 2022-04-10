@@ -52,6 +52,11 @@ static void test_search() {
     EXPECT_EQ_INT(4, search(nums, 7, 0));
 }
 
+static void test_count_numbers_with_unique_digits() {
+    EXPECT_EQ_INT(91, countNumbersWithUniqueDigits(2));
+    EXPECT_EQ_INT(1, countNumbersWithUniqueDigits(0));
+}
+
 static void test_pivot_index() {
     int nums1[5] = {2, 3, -1, 8, 4};
     int nums2[3] = {1, -1, 4};

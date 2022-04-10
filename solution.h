@@ -47,6 +47,13 @@ bool isSameTree(TreeNode* p, TreeNode* q);
 struct ListNode *reverseList(ListNode *head);
 
 /**
+ * 357. 统计各位数字都不同的数字个数
+ * @param n
+ * @return
+ */
+int countNumbersWithUniqueDigits(int n);
+
+/**
  * 498.Diagonal Traverse
  * @param mat
  * @param matSize
