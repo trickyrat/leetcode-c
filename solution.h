@@ -75,6 +75,14 @@ int* selfDividingNumbers(int left, int right, int* returnSize);
 char nextGreatestLetter(char* letters, int letterSize, char target);
 
 /**
+ * 804. Unique Morse Code Words
+ * @param words
+ * @param wordsSize
+ * @return
+ */
+int uniqueMorseRepresentations(char ** words, int wordsSize);
+
+/**
  * 1991. Find the Middle Index in Array
  * @param nums
  * @param numsSize

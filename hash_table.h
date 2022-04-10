@@ -1,10 +1,17 @@
 #include "include/uthash.h"
 
+#define MAX_STR_LEN 64
+
 struct HashTable {
   int key;
   int val;
   UT_hash_handle hh;
 };
+
+typedef struct {
+    char key[MAX_STR_LEN];
+    UT_hash_handle hh;
+} HashItem;
 
 struct HashTable *hashTable;
 

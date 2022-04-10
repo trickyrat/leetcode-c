@@ -2,97 +2,98 @@
 // Created by wangj on 2022-01-08.
 //
 
+#include <stdio.h>
+#include <string.h>
 #include "hash_table.h"
-
 #include "solution.h"
 
 int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
-  hashTable = NULL;
-  for (int i = 0; i < numsSize; i++) {
-    struct HashTable *it = find(target - nums[i]);
-    if (it != NULL) {
-      int *ret = malloc(sizeof(int) * 2);
-      ret[0] = it->val, ret[1] = i;
-      *returnSize = 2;
-      return ret;
+    hashTable = NULL;
+    for (int i = 0; i < numsSize; i++) {
+        struct HashTable *it = find(target - nums[i]);
+        if (it != NULL) {
+            int *ret = malloc(sizeof(int) * 2);
+            ret[0] = it->val, ret[1] = i;
+            *returnSize = 2;
+            return ret;
+        }
+        insert(nums[i], i);
     }
-    insert(nums[i], i);
-  }
-  *returnSize = 0;
-  return NULL;
+    *returnSize = 0;
+    return NULL;
 }
 
 int search(const int *nums, int numSize, int target) {
-  if (numSize < 1) {
+    if (numSize < 1) {
+        return -1;
+    }
+    if (numSize == 1) {
+        return nums[0] == target ? 0 : -1;
+    }
+    int l = 0, r = numSize - 1;
+    while (l <= r) {
+        int mid = l + (r - l) / 2;
+        if (nums[mid] == target) {
+            return mid;
+        }
+        if (nums[0] <= nums[mid]) {
+            if (nums[0] <= target && target < nums[mid]) {
+                r = mid - 1;
+            } else {
+                l = mid + 1;
+            }
+        } else {
+            if (nums[mid] < target && target <= nums[numSize - 1]) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+    }
     return -1;
-  }
-  if (numSize == 1) {
-    return nums[0] == target ? 0 : -1;
-  }
-  int l = 0, r = numSize - 1;
-  while (l <= r) {
-    int mid = l + (r - l) / 2;
-    if (nums[mid] == target) {
-      return mid;
-    }
-    if (nums[0] <= nums[mid]) {
-      if (nums[0] <= target && target < nums[mid]) {
-        r = mid - 1;
-      } else {
-        l = mid + 1;
-      }
-    } else {
-      if (nums[mid] < target && target <= nums[numSize - 1]) {
-        l = mid + 1;
-      } else {
-        r = mid - 1;
-      }
-    }
-  }
-  return -1;
 }
 
 struct ListNode *reverseList(struct ListNode *head) {
-  struct ListNode *prev = NULL;
-  struct ListNode *curr = head;
-  while (curr) {
-    struct ListNode *next = curr->next;
-    curr->next = prev;
-    prev = curr;
-    curr = next;
-  }
-  return prev;
+    struct ListNode *prev = NULL;
+    struct ListNode *curr = head;
+    while (curr) {
+        struct ListNode *next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    return prev;
 }
 
 int pivotIndex(int *nums, int numsSize) {
-  int total = 0;
-  for (int i = 0; i < numsSize; i++) {
-    total += nums[i];
-  }
-  int sum = 0;
-  for (int i = 0; i < numsSize; i++) {
-    if (2 * sum + nums[i] == total) {
-      return i;
+    int total = 0;
+    for (int i = 0; i < numsSize; i++) {
+        total += nums[i];
     }
-    sum += nums[i];
-  }
-  return -1;
+    int sum = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (2 * sum + nums[i] == total) {
+            return i;
+        }
+        sum += nums[i];
+    }
+    return -1;
 }
 
-int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize) {
-    if(matSize == 0) {
+int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize) {
+    if (matSize == 0) {
         return NULL;
     }
     int row = 0, col = 0;
     int direction = 1;
     int r = 0;
-    int* ans = (int*)calloc(matSize*(*matColSize), sizeof(int));
-    while(row < matSize && col < (*matColSize)) {
+    int *ans = (int *) calloc(matSize * (*matColSize), sizeof(int));
+    while (row < matSize && col < (*matColSize)) {
         ans[r++] = mat[row][col];
         int new_row = row + (direction == 1 ? -1 : 1);
         int new_col = col + (direction == 1 ? 1 : -1);
-        if(new_row < 0 || new_row == matSize || new_col < 0 || new_col == (*matColSize)) {
-            if(direction == 1) {
+        if (new_row < 0 || new_row == matSize || new_col < 0 || new_col == (*matColSize)) {
+            if (direction == 1) {
                 row += (col == (*matColSize) - 1 ? 1 : 0);
                 col += (col < (*matColSize) - 1 ? 1 : 0);
             } else {
@@ -105,7 +106,7 @@ int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize)
             col = new_col;
         }
     }
-    *returnSize = matSize*(*matColSize);
+    *returnSize = matSize * (*matColSize);
     return ans;
 }
 
@@ -114,7 +115,7 @@ bool isSameTree(TreeNode *p, TreeNode *q) {
         return true;
     } else if (p == NULL || q == NULL) {
         return false;
-    } else if(p->val != q->val) {
+    } else if (p->val != q->val) {
         return false;
     } else {
         return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
@@ -123,9 +124,9 @@ bool isSameTree(TreeNode *p, TreeNode *q) {
 
 static bool isSelfDividing(int num) {
     int tmp = num;
-    while(tmp > 0) {
+    while (tmp > 0) {
         int digit = tmp % 10;
-        if(digit == 0 || num % digit != 0) {
+        if (digit == 0 || num % digit != 0) {
             return false;
         }
         tmp /= 10;
@@ -133,11 +134,11 @@ static bool isSelfDividing(int num) {
     return true;
 }
 
-int* selfDividingNumbers(int left, int right, int* returnSize) {
-    int* ans = (int*) malloc(sizeof (int) * (right - left + 1));
+int *selfDividingNumbers(int left, int right, int *returnSize) {
+    int *ans = (int *) malloc(sizeof(int) * (right - left + 1));
     int pos = 0;
     for (int i = left; i <= right; ++i) {
-        if(isSelfDividing(i)) {
+        if (isSelfDividing(i)) {
             ans[pos++] = i;
         }
     }
@@ -145,18 +146,48 @@ int* selfDividingNumbers(int left, int right, int* returnSize) {
     return ans;
 }
 
-char nextGreatestLetter(char* letters, int lettersSize, char target) {
-    if(target >= letters[lettersSize-1]) {
+char nextGreatestLetter(char *letters, int lettersSize, char target) {
+    if (target >= letters[lettersSize - 1]) {
         return letters[0];
     }
     int low = 0, high = lettersSize - 1;
-    while(low < high) {
+    while (low < high) {
         int mid = (high - low) / 2 + low;
-        if(letters[mid] > target) {
+        if (letters[mid] > target) {
             high = mid;
         } else {
             low = mid + 1;
         }
     }
     return letters[low];
+}
+
+int uniqueMorseRepresentations(char **words, int wordsSize) {
+    const char *MORSE[26] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", \
+                                 "....", "..", ".---", "-.-", ".-..", "--", "-.", \
+                                 "---", ".--.", "--.-", ".-.", "...", "-", "..-", \
+                                 "...-", ".--", "-..-", "-.--", "--.."};
+    HashItem *seen = NULL;
+    for (int i = 0; i < wordsSize; ++i) {
+        HashItem *pEntry = NULL;
+        int len = strlen(words[i]);
+        int pos = 0;
+        char code[MAX_STR_LEN];
+        for (int j = 0; j < len; ++j) {
+            pos += sprintf(code + pos, "%s", MORSE[words[i][j] - 'a']);
+        }
+        HASH_FIND_STR(seen, code, pEntry);
+        if (NULL == pEntry) {
+            pEntry = (HashItem *) malloc(sizeof(HashItem));
+            strcpy(pEntry->key, code);
+            HASH_ADD_STR(seen, key, pEntry);
+        }
+    }
+    int ans = HASH_COUNT(seen);
+    HashItem *curr = NULL, *tmp = NULL;
+    HASH_ITER(hh, seen, curr, tmp) {
+        HASH_DEL(seen, curr);
+        free(curr);
+    }
+    return ans;
 }

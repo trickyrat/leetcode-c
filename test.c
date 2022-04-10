@@ -115,6 +115,13 @@ static void test_next_greatest_letter() {
     EXPECT_EQ_CHAR('f', nextGreatestLetter(letters, 3, 'c'));
 }
 
+static void test_unique_morse_representations() {
+    char* words1[] = {"gin", "zen", "gig", "msg"};
+    char* words2[] = {"a"};
+    EXPECT_EQ_INT(2, uniqueMorseRepresentations(words1, 4));
+    EXPECT_EQ_INT(1, uniqueMorseRepresentations(words2, 1));
+}
+
 int main() {
     test_two_sum();
     test_search();
@@ -123,6 +130,7 @@ int main() {
     test_find_diagonal_order();
     test_self_dividing_numbers();
     test_next_greatest_letter();
+    test_unique_morse_representations();
     printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
     return main_ret;
 }
