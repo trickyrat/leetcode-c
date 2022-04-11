@@ -53,6 +53,18 @@ int search(const int *nums, int numSize, int target) {
     return -1;
 }
 
+bool isSameTree(TreeNode *p, TreeNode *q) {
+    if (p == NULL && q == NULL) {
+        return true;
+    } else if (p == NULL || q == NULL) {
+        return false;
+    } else if (p->val != q->val) {
+        return false;
+    } else {
+        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+    }
+}
+
 struct ListNode *reverseList(struct ListNode *head) {
     struct ListNode *prev = NULL;
     struct ListNode *curr = head;
@@ -78,21 +90,6 @@ int countNumbersWithUniqueDigits(int n) {
         ans += cur;
     }
     return ans;
-}
-
-int pivotIndex(int *nums, int numsSize) {
-    int total = 0;
-    for (int i = 0; i < numsSize; i++) {
-        total += nums[i];
-    }
-    int sum = 0;
-    for (int i = 0; i < numsSize; i++) {
-        if (2 * sum + nums[i] == total) {
-            return i;
-        }
-        sum += nums[i];
-    }
-    return -1;
 }
 
 int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize) {
@@ -123,18 +120,6 @@ int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize)
     }
     *returnSize = matSize * (*matColSize);
     return ans;
-}
-
-bool isSameTree(TreeNode *p, TreeNode *q) {
-    if (p == NULL && q == NULL) {
-        return true;
-    } else if (p == NULL || q == NULL) {
-        return false;
-    } else if (p->val != q->val) {
-        return false;
-    } else {
-        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
-    }
 }
 
 static bool isSelfDividing(int num) {
@@ -205,4 +190,37 @@ int uniqueMorseRepresentations(char **words, int wordsSize) {
         free(curr);
     }
     return ans;
+}
+
+int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize) {
+    const int MAX_WIDTH = 100;
+    int lines = 1, width = 0, len = strlen(s);
+    for (int i = 0; i < len; ++i) {
+        int need = widths[s[i] - 'a'];
+        width += need;
+        if (width > MAX_WIDTH) {
+            lines++;
+            width = need;
+        }
+    }
+    int *ans = (int *) malloc(sizeof(int) * 2);
+    *returnSize = 2;
+    ans[0] = lines;
+    ans[1] = width;
+    return ans;
+}
+
+int pivotIndex(int *nums, int numsSize) {
+    int total = 0;
+    for (int i = 0; i < numsSize; i++) {
+        total += nums[i];
+    }
+    int sum = 0;
+    for (int i = 0; i < numsSize; i++) {
+        if (2 * sum + nums[i] == total) {
+            return i;
+        }
+        sum += nums[i];
+    }
+    return -1;
 }

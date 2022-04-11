@@ -90,6 +90,16 @@ char nextGreatestLetter(char* letters, int letterSize, char target);
 int uniqueMorseRepresentations(char ** words, int wordsSize);
 
 /**
+ * 806. 写字符串需要的行数
+ * @param widths
+ * @param widthsSize
+ * @param s
+ * @param returnSize
+ * @return
+ */
+int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
+
+/**
  * 1991. Find the Middle Index in Array
  * @param nums
  * @param numsSize

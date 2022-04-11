@@ -52,20 +52,6 @@ static void test_search() {
     EXPECT_EQ_INT(4, search(nums, 7, 0));
 }
 
-static void test_count_numbers_with_unique_digits() {
-    EXPECT_EQ_INT(91, countNumbersWithUniqueDigits(2));
-    EXPECT_EQ_INT(1, countNumbersWithUniqueDigits(0));
-}
-
-static void test_pivot_index() {
-    int nums1[5] = {2, 3, -1, 8, 4};
-    int nums2[3] = {1, -1, 4};
-    int nums3[2] = {2, 5};
-    EXPECT_EQ_INT(3, pivotIndex(nums1, 5));
-    EXPECT_EQ_INT(2, pivotIndex(nums2, 3));
-    EXPECT_EQ_INT(-1, pivotIndex(nums3, 2));
-}
-
 static void test_is_same_tree() {
     TreeNode left1 = {2, NULL, NULL};
     TreeNode right1 = {3, NULL, NULL};
@@ -77,6 +63,11 @@ static void test_is_same_tree() {
     EXPECT_EQ_TRUE(isSameTree(NULL, NULL));
     EXPECT_EQ_FALSE(isSameTree(&root1, NULL));
     EXPECT_EQ_FALSE(isSameTree(NULL, &root1));
+}
+
+static void test_count_numbers_with_unique_digits() {
+    EXPECT_EQ_INT(91, countNumbersWithUniqueDigits(2));
+    EXPECT_EQ_INT(1, countNumbersWithUniqueDigits(0));
 }
 
 static void test_find_diagonal_order() {
@@ -127,15 +118,42 @@ static void test_unique_morse_representations() {
     EXPECT_EQ_INT(1, uniqueMorseRepresentations(words2, 1));
 }
 
+static void test_number_of_lines() {
+    int widths1[26] = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+                       10, 10};
+    int widths2[26] = {4, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
+                       10, 10};
+    char* s1 = "abcdefghijklmnopqrstuvwxyz";
+    char* s2 = "bbbcccdddaaa";
+    int returnSize1 = 0;
+    int returnSize2 = 0;
+    int* ans1 = numberOfLines(widths1, 26, s1, &returnSize1);
+    int* ans2 = numberOfLines(widths2, 26, s2, &returnSize2);
+    int expected1[2] = {3, 60};
+    int expected2[2] = {2, 4};
+    EXPECT_EQ_ARRAY(expected1, 2, ans1, returnSize1);
+    EXPECT_EQ_ARRAY(expected2, 2, ans2, returnSize2);
+}
+
+static void test_pivot_index() {
+    int nums1[5] = {2, 3, -1, 8, 4};
+    int nums2[3] = {1, -1, 4};
+    int nums3[2] = {2, 5};
+    EXPECT_EQ_INT(3, pivotIndex(nums1, 5));
+    EXPECT_EQ_INT(2, pivotIndex(nums2, 3));
+    EXPECT_EQ_INT(-1, pivotIndex(nums3, 2));
+}
+
 int main() {
     test_two_sum();
     test_search();
-    test_pivot_index();
     test_is_same_tree();
     test_find_diagonal_order();
     test_self_dividing_numbers();
     test_next_greatest_letter();
     test_unique_morse_representations();
+    test_number_of_lines();
+    test_pivot_index();
     printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
     return main_ret;
 }
