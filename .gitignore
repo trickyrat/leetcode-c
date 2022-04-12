@@ -3,3 +3,4 @@ out/
 .vs/
 .idea/
 cmake-build-debug-visual-studio/
+CMakeFiles/
