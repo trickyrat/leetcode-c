@@ -1,6 +1,8 @@
-cmake-build-debug/
+#cmake-build-debug/
 out/
-.vs/
-.idea/
-cmake-build-debug-visual-studio/
 CMakeFiles/
+cmake-build*/
+build/
+.idea/
+.vscode/
+.vs/

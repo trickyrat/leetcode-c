@@ -100,6 +100,15 @@ int uniqueMorseRepresentations(char ** words, int wordsSize);
 int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
 
 /**
+ * 1672. Richest Customer Wealth
+ * @param accounts
+ * @param accountsSize
+ * @param accountsColSize
+ * @return
+ */
+int maximumWealth(int** accounts, int accountsSize, int* accountsColSize);
+
+/**
  * 1991. Find the Middle Index in Array
  * @param nums
  * @param numsSize

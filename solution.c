@@ -210,6 +210,20 @@ int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize) {
     return ans;
 }
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
+int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
+  int maxWealth = INT_MIN;
+  for (int i = 0; i < accountsSize; ++i) {
+    int sum = 0;
+    for (int j = 0; j < accountsColSize[0]; ++j) {
+      sum += accounts[i][j];
+    }
+    maxWealth = MAX(maxWealth, sum);
+  }
+  return maxWealth;
+}
+
 int pivotIndex(int *nums, int numsSize) {
     int total = 0;
     for (int i = 0; i < numsSize; i++) {
