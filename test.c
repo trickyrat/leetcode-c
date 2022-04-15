@@ -30,6 +30,10 @@ static int test_pass = 0;
 #define EXPECT_EQ_FALSE(actual) \
   EXPECT_EQ_BASE(0 == (actual), 0, actual, "%d")
 
+#define EXPECT_EQ_STRING(expect, actual, alength)              \
+  EXPECT_EQ_BASE(sizeof(expect) - 1 == alength &&              \
+                         memcmp(expect, actual, alength) == 0, \
+                 expect, actual, "%s")
 
 #define EXPECT_EQ_ARRAY(expect, expectedSize, actual, actualSize) \
   EXPECT_EQ_INT(expectedSize, actualSize);                        \
@@ -40,7 +44,7 @@ static int test_pass = 0;
 #define TEST_MATRIX_BASE(input_data, row_size) \
   int *mat[(row_size)];                        \
   for (int i = 0; i < (row_size); ++i) {       \
-    mat[i] = (input_data[i]);                  \
+    mat[i] = (input_data)[i];                  \
   }
 
 static void test_two_sum() {
@@ -49,7 +53,7 @@ static void test_two_sum() {
   int *actual = twoSum(nums, 4, 9, &actualReturnSize);
   int expect[2] = {0, 1};
   int expectedReturnSize = 2;
-  EXPECT_EQ_ARRAY(expect, expectedReturnSize, actual, actualReturnSize);
+  EXPECT_EQ_ARRAY(expect, expectedReturnSize, actual, actualReturnSize)
 }
 
 static void test_search() {
@@ -101,7 +105,7 @@ static void test_self_dividing_numbers() {
   int returnSize1 = 0;
   int *actual1 = selfDividingNumbers(1, 22, &returnSize1);
   int expect1[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};
-  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1);
+  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1)
 }
 
 static void test_next_greatest_letter() {
