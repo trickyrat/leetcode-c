@@ -2,8 +2,8 @@
 // Created by wangj on 2022/3/16.
 //
 
-#ifndef LEETCODEC_DATA_STRUCTURE_H
-#define LEETCODEC_DATA_STRUCTURE_H
+#ifndef DATA_STRUCTURES_H__
+#define DATA_STRUCTURES_H__
 
 
 typedef struct ListNode {
@@ -17,4 +17,4 @@ typedef struct TreeNode {
     struct TreeNode *right;
 }TreeNode;
 
-#endif //LEETCODEC_DATA_STRUCTURE_H
+#endif //DATA_STRUCTURES_H__

@@ -13,4 +13,17 @@ include_directories(
 	${PROJECT_SOURCE_DIR}/include
 )
 
-add_executable(test test.c solution.h solution.c data_structure.h)
+add_library(leetcode_library
+		src/solution.c
+		include/datastructures.h
+		include/utarray.h
+		include/hashtable.h
+		include/uthash.h
+		#include/ulist.h
+		include/utringbuffer.h
+		include/utstack.h
+		include/utstring.h
+		)
+add_executable(leetcode_binary src/test.c)
+target_link_libraries(leetcode_binary
+		leetcode_library)

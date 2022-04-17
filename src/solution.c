@@ -3,7 +3,7 @@
 //
 
 #include "solution.h"
-#include "hash_table.h"
+#include "hashtable.h"
 #include <stdio.h>
 #include <string.h>
 

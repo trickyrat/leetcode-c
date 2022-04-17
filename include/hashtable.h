@@ -1,4 +1,4 @@
-#include "include/uthash.h"
+#include "uthash.h"
 
 #define MAX_STR_LEN 64
 
