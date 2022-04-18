@@ -62,6 +62,14 @@ struct ListNode *reverseList(ListNode *head);
 int countNumbersWithUniqueDigits(int n);
 
 /**
+ * 386. 字典序排数
+ * @param n
+ * @param returnSize
+ * @return
+ */
+int* lexicalOrder(int n, int* returnSize);
+
+/**
  * 498.Diagonal Traverse
  * @param mat
  * @param matSize

@@ -86,6 +86,18 @@ static void test_count_numbers_with_unique_digits() {
   EXPECT_EQ_INT(1, countNumbersWithUniqueDigits(0));
 }
 
+static void test_lexical_order() {
+  int expect1[13] = {1,10,11,12,13,2,3,4,5,6,7,8,9};
+  int returnSize1 = 0;
+  int* actual1 = lexicalOrder(13, &returnSize1);
+  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1);
+
+  int expect2[2] = {1,2};
+  int returnSize2 = 0;
+  int* actual2 = lexicalOrder(2, &returnSize2);
+  EXPECT_EQ_ARRAY(expect2, 2, actual2, returnSize2);
+}
+
 #define TEST_FIND_DIAGONAL_ORDER(input_data, row_size, col_size, expected, expected_size) \
   do {                                                                                    \
     TEST_MATRIX_BASE(input_data, row_size);                                               \
@@ -182,6 +194,7 @@ int main() {
   test_search();
   test_is_same_tree();
   test_count_numbers_with_unique_digits();
+  test_lexical_order();
   test_find_diagonal_order();
   test_self_dividing_numbers();
   test_next_greatest_letter();

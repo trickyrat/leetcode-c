@@ -25,7 +25,7 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
 
 int removeElement(int *nums, int numsSize, int val) {
   int left = 0;
-  for(int right = 0; right < numsSize; ++right) {
+  for (int right = 0; right < numsSize; ++right) {
     if (nums[right] != val) {
       nums[left] = nums[right];
       left++;
@@ -101,6 +101,24 @@ int countNumbersWithUniqueDigits(int n) {
     ans += cur;
   }
   return ans;
+}
+
+int *lexicalOrder(int n, int *returnSize) {
+  int *ret = (int *) malloc(sizeof(int) * n);
+  int num = 1;
+  for (int i = 0; i < n; ++i) {
+    ret[i] = num;
+    if (num * 10 <= n) {
+      num *= 10;
+    } else {
+      while (num % 10 == 9 || num + 1 > n) {
+        num /= 10;
+      }
+      num++;
+    }
+  }
+  *returnSize = n;
+  return ret;
 }
 
 int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize) {
@@ -249,4 +267,3 @@ int pivotIndex(int *nums, int numsSize) {
   }
   return -1;
 }
-
