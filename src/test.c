@@ -56,6 +56,13 @@ static void test_two_sum() {
   EXPECT_EQ_ARRAY(expect, expectedReturnSize, actual, actualReturnSize)
 }
 
+static void test_remove_element() {
+  int nums1[4] = {3,2,2,3};
+  int nums2[8] = {0,1,2,2,3,0,4,2};
+  EXPECT_EQ_INT(removeElement(nums1, 4, 3), 2);
+  EXPECT_EQ_INT(removeElement(nums2, 8, 2), 5);
+}
+
 static void test_search() {
   int nums[7] = {4, 5, 6, 7, 0, 1, 2};
   EXPECT_EQ_INT(4, search(nums, 7, 0));
@@ -171,6 +178,7 @@ static void test_pivot_index() {
 
 int main() {
   test_two_sum();
+  test_remove_element();
   test_search();
   test_is_same_tree();
   test_count_numbers_with_unique_digits();

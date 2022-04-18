@@ -23,6 +23,14 @@
 int *twoSum(int *nums, int numsSize, int target, int *returnSize);
 
 /**
+ * 27.移除元素
+ * @param nums
+ * @param val
+ * @return
+ */
+int removeElement(int *nums, int numsSize, int val);
+
+/**
  * 33. Search in Rotated Sorted Array
  * @param nums
  * @param numSize
