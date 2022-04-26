@@ -116,6 +116,15 @@ int uniqueMorseRepresentations(char ** words, int wordsSize);
 int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
 
 /**
+ * 883. 三维形体投影面积
+ * @param grid
+ * @param gridSize
+ * @param gridColSize
+ * @return
+ */
+int projetcionArea(int** grid, int gridSize, int* gridColSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize

@@ -163,20 +163,29 @@ static void test_number_of_lines() {
 }
 
 
-#define TEST_MAXIMUM_WEALTH(input_data, row_size, col_size, expected)              \
-  do {                                                                             \
-    TEST_MATRIX_BASE((input_data), (row_size));                                    \
-    int accounts_col_size = (col_size);                                            \
-    EXPECT_EQ_INT((expected), maximumWealth(mat, (row_size), &accounts_col_size)); \
+#define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected)      \
+  do {                                                                     \
+    TEST_MATRIX_BASE((input_data), (row_size));                            \
+    int col_size_ = (col_size);                                            \
+    EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_)); \
   } while (0)
 
 static void test_maximum_wealth() {
   int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
   int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
   int accounts_array3[3][3] = {{2, 8, 7}, {7, 1, 3}, {1, 9, 5}};
-  TEST_MAXIMUM_WEALTH(accounts_array1, 2, 3, 6);
-  TEST_MAXIMUM_WEALTH(accounts_array2, 3, 3, 10);
-  TEST_MAXIMUM_WEALTH(accounts_array3, 3, 3, 17);
+  TEST_MATRIX_INT(maximumWealth, accounts_array1, 2, 3, 6);
+  TEST_MATRIX_INT(maximumWealth, accounts_array2, 3, 3, 10);
+  TEST_MATRIX_INT(maximumWealth, accounts_array3, 3, 3, 17);
+}
+
+static void test_projection_area() {
+  int grid1[2][2] = {{1,2},{3,4}};
+  int grid2[1][1] = {{2}};
+  int grid3[2][2] = {{1,0},{0,2}};
+  TEST_MATRIX_INT(projetcionArea, grid1, 2, 2, 17);
+  TEST_MATRIX_INT(projetcionArea, grid2, 1, 1, 5);
+  TEST_MATRIX_INT(projetcionArea, grid3, 2, 2, 8);
 }
 
 static void test_pivot_index() {
@@ -201,6 +210,7 @@ int main() {
   test_unique_morse_representations();
   test_number_of_lines();
   test_maximum_wealth();
+  test_projection_area();
   test_pivot_index();
   printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
   return main_ret;

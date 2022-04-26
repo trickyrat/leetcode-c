@@ -253,6 +253,21 @@ int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   return maxWealth;
 }
 
+int projetcionArea(int **grid, int gridSize, int *gridColSize) {
+  int xyArea = 0, yzArea = 0, zxArea = 0;
+  for(int i = 0; i < gridSize; ++i) {
+    int yzHeight = 0, zxHeight = 0;
+    for(int j = 0; j < gridSize; ++j) {
+      xyArea += grid[i][j] > 0 ? 1 : 0;
+      yzHeight = MAX(yzHeight, grid[j][i]);
+      zxHeight = MAX(zxHeight, grid[i][j]);
+    }
+    yzArea += yzHeight;
+    zxArea += zxHeight;
+  }
+  return xyArea + yzArea + zxArea;
+}
+
 int pivotIndex(int *nums, int numsSize) {
   int total = 0;
   for (int i = 0; i < numsSize; i++) {
