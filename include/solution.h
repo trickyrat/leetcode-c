@@ -122,7 +122,16 @@ int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
  * @param gridColSize
  * @return
  */
-int projetcionArea(int** grid, int gridSize, int* gridColSize);
+int projectionArea(int** grid, int gridSize, int* gridColSize);
+
+/**
+ * 905. 按奇偶排序数组
+ * @param nums
+ * @param numsSize
+ * @param returnSize
+ * @return
+ */
+int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
 
 /**
  * 1672. Richest Customer Wealth

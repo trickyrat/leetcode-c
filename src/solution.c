@@ -253,7 +253,7 @@ int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   return maxWealth;
 }
 
-int projetcionArea(int **grid, int gridSize, int *gridColSize) {
+int projectionArea(int **grid, int gridSize, int *gridColSize) {
   int xyArea = 0, yzArea = 0, zxArea = 0;
   for(int i = 0; i < gridSize; ++i) {
     int yzHeight = 0, zxHeight = 0;
@@ -266,6 +266,28 @@ int projetcionArea(int **grid, int gridSize, int *gridColSize) {
     zxArea += zxHeight;
   }
   return xyArea + yzArea + zxArea;
+}
+
+int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
+  int* res = (int*) malloc(sizeof(int)*numsSize);
+  int left = 0, right = numsSize - 1;
+  while(left < right) {
+    while(left < right && nums[left] % 2 == 0) {
+      left++;
+    }
+    while(left < right && nums[right] % 2 == 1) {
+      right--;
+    }
+    if(left < right) {
+      int temp = nums[left];
+      nums[left] = nums[right];
+      nums[right] = temp;
+      left++;
+      right--;
+    }
+  }
+  *returnSize = numsSize;
+  return res;
 }
 
 int pivotIndex(int *nums, int numsSize) {

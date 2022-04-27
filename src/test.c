@@ -30,9 +30,9 @@ static int test_pass = 0;
 #define EXPECT_EQ_FALSE(actual) \
   EXPECT_EQ_BASE(0 == (actual), 0, actual, "%d")
 
-#define EXPECT_EQ_STRING(expect, actual, alength)              \
-  EXPECT_EQ_BASE(sizeof(expect) - 1 == alength &&              \
-                         memcmp(expect, actual, alength) == 0, \
+#define EXPECT_EQ_STRING(expect, actual, length)              \
+  EXPECT_EQ_BASE(sizeof(expect) - 1 == (length) &&            \
+                         memcmp(expect, actual, length) == 0, \
                  expect, actual, "%s")
 
 #define EXPECT_EQ_ARRAY(expect, expectedSize, actual, actualSize) \
@@ -57,8 +57,8 @@ static void test_two_sum() {
 }
 
 static void test_remove_element() {
-  int nums1[4] = {3,2,2,3};
-  int nums2[8] = {0,1,2,2,3,0,4,2};
+  int nums1[4] = {3, 2, 2, 3};
+  int nums2[8] = {0, 1, 2, 2, 3, 0, 4, 2};
   EXPECT_EQ_INT(removeElement(nums1, 4, 3), 2);
   EXPECT_EQ_INT(removeElement(nums2, 8, 2), 5);
 }
@@ -87,14 +87,14 @@ static void test_count_numbers_with_unique_digits() {
 }
 
 static void test_lexical_order() {
-  int expect1[13] = {1,10,11,12,13,2,3,4,5,6,7,8,9};
+  int expect1[13] = {1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9};
   int returnSize1 = 0;
-  int* actual1 = lexicalOrder(13, &returnSize1);
+  int *actual1 = lexicalOrder(13, &returnSize1);
   EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1);
 
-  int expect2[2] = {1,2};
+  int expect2[2] = {1, 2};
   int returnSize2 = 0;
-  int* actual2 = lexicalOrder(2, &returnSize2);
+  int *actual2 = lexicalOrder(2, &returnSize2);
   EXPECT_EQ_ARRAY(expect2, 2, actual2, returnSize2);
 }
 
@@ -163,11 +163,11 @@ static void test_number_of_lines() {
 }
 
 
-#define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected)      \
-  do {                                                                     \
-    TEST_MATRIX_BASE((input_data), (row_size));                            \
-    int col_size_ = (col_size);                                            \
-    EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_)); \
+#define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
+  do {                                                                      \
+    TEST_MATRIX_BASE((input_data), (row_size));                             \
+    int col_size_ = (col_size);                                             \
+    EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_));       \
   } while (0)
 
 static void test_maximum_wealth() {
@@ -180,12 +180,23 @@ static void test_maximum_wealth() {
 }
 
 static void test_projection_area() {
-  int grid1[2][2] = {{1,2},{3,4}};
+  int grid1[2][2] = {{1, 2}, {3, 4}};
   int grid2[1][1] = {{2}};
-  int grid3[2][2] = {{1,0},{0,2}};
-  TEST_MATRIX_INT(projetcionArea, grid1, 2, 2, 17);
-  TEST_MATRIX_INT(projetcionArea, grid2, 1, 1, 5);
-  TEST_MATRIX_INT(projetcionArea, grid3, 2, 2, 8);
+  int grid3[2][2] = {{1, 0}, {0, 2}};
+  TEST_MATRIX_INT(projectionArea, grid1, 2, 2, 17);
+  TEST_MATRIX_INT(projectionArea, grid2, 1, 1, 5);
+  TEST_MATRIX_INT(projectionArea, grid3, 2, 2, 8);
+}
+
+static void test_sort_array_by_parity() {
+  int nums1[4] = {3, 1, 2, 4};
+  int nums2[1] = {0};
+  int returnSize1 = 0;
+  int returnSize2 = 0;
+  int *expected1 = sortArrayByParity(nums1, 4, &returnSize1);
+  int *expected2 = sortArrayByParity(nums2, 1, &returnSize2);
+  EXPECT_EQ_ARRAY(expected1, 4, expected1, returnSize1)
+  EXPECT_EQ_ARRAY(expected2, 1, expected2, returnSize2)
 }
 
 static void test_pivot_index() {
@@ -211,6 +222,7 @@ int main() {
   test_number_of_lines();
   test_maximum_wealth();
   test_projection_area();
+  test_sort_array_by_parity();
   test_pivot_index();
   printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
   return main_ret;
