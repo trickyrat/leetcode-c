@@ -143,6 +143,14 @@ int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
 int maximumWealth(int** accounts, int accountsSize, int* accountsColSize);
 
 /**
+ * 1823. Find the Winner of the Circular Game
+ * @param n
+ * @param k
+ * @return
+ */
+int findTheWinner(int n, int k);
+
+/**
  * 1991. Find the Middle Index in Array
  * @param nums
  * @param numsSize

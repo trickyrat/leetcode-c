@@ -199,6 +199,11 @@ static void test_sort_array_by_parity() {
   EXPECT_EQ_ARRAY(expected2, 1, expected2, returnSize2)
 }
 
+static void test_find_the_winner() {
+  EXPECT_EQ_INT(3, findTheWinner(5, 2));
+  EXPECT_EQ_INT(1, findTheWinner(6, 5));
+}
+
 static void test_pivot_index() {
   int nums1[5] = {2, 3, -1, 8, 4};
   int nums2[3] = {1, -1, 4};
@@ -223,6 +228,7 @@ int main() {
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();
+  test_find_the_winner();
   test_pivot_index();
   printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
   return main_ret;
