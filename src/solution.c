@@ -271,7 +271,6 @@ int projectionArea(int **grid, int gridSize, int *gridColSize) {
 }
 
 int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
-  int* res = (int*) malloc(sizeof(int)*numsSize);
   int left = 0, right = numsSize - 1;
   while(left < right) {
     while(left < right && nums[left] % 2 == 0) {
@@ -289,7 +288,18 @@ int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
     }
   }
   *returnSize = numsSize;
-  return res;
+  return nums;
+}
+
+int *diStringMatch(char *s, int *returnSize) {
+  int n = strlen(s), lo = 0, hi = n;
+  int* perm = (int*) malloc(sizeof(int)*(n+1));
+  for (int i = 0; i < n; ++i) {
+    perm[i] = s[i] == 'I' ? lo++ : hi--;
+  }
+  perm[n] = lo;
+  *returnSize = n + 1;
+  return perm;
 }
 
 int findTheWinner(int n, int k) {

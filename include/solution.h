@@ -23,7 +23,7 @@
 int *twoSum(int *nums, int numsSize, int target, int *returnSize);
 
 /**
- * 27.移除元素
+ * 27. Remove Element
  * @param nums
  * @param val
  * @return
@@ -55,14 +55,14 @@ bool isSameTree(TreeNode* p, TreeNode* q);
 struct ListNode *reverseList(ListNode *head);
 
 /**
- * 357. 统计各位数字都不同的数字个数
+ * 357. Count Numbers with Unique Digits
  * @param n
  * @return
  */
 int countNumbersWithUniqueDigits(int n);
 
 /**
- * 386. 字典序排数
+ * 386. Lexicographical Numbers
  * @param n
  * @param returnSize
  * @return
@@ -106,7 +106,7 @@ char nextGreatestLetter(char* letters, int letterSize, char target);
 int uniqueMorseRepresentations(char ** words, int wordsSize);
 
 /**
- * 806. 写字符串需要的行数
+ * 806. Number of Lines To Write String
  * @param widths
  * @param widthsSize
  * @param s
@@ -116,7 +116,7 @@ int uniqueMorseRepresentations(char ** words, int wordsSize);
 int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
 
 /**
- * 883. 三维形体投影面积
+ * 883. Projection Area of 3D Shapes
  * @param grid
  * @param gridSize
  * @param gridColSize
@@ -125,13 +125,22 @@ int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
 int projectionArea(int** grid, int gridSize, int* gridColSize);
 
 /**
- * 905. 按奇偶排序数组
+ * 905. Sort Array By Parity
  * @param nums
  * @param numsSize
  * @param returnSize
  * @return
  */
 int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
+
+/**
+ * 942. DI String Match
+ * @param s
+ * @param sSize
+ * @param returnSize
+ * @return
+ */
+int* diStringMatch(char* s, int* returnSize);
 
 /**
  * 1672. Richest Customer Wealth

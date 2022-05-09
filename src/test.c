@@ -1,3 +1,4 @@
+#include "recentcounter.h"
 #include "solution.h"
 
 #include <assert.h>
@@ -193,10 +194,30 @@ static void test_sort_array_by_parity() {
   int nums2[1] = {0};
   int returnSize1 = 0;
   int returnSize2 = 0;
-  int *expected1 = sortArrayByParity(nums1, 4, &returnSize1);
-  int *expected2 = sortArrayByParity(nums2, 1, &returnSize2);
-  EXPECT_EQ_ARRAY(expected1, 4, expected1, returnSize1)
-  EXPECT_EQ_ARRAY(expected2, 1, expected2, returnSize2)
+  int expected1[4] = {4,2, 1, 3};
+  int expected2[1] = {0};
+  int* actual1 = sortArrayByParity(nums1, 4, &returnSize1);
+  int* actual2 = sortArrayByParity(nums2, 1, &returnSize2);
+  EXPECT_EQ_ARRAY(expected1, 4, actual1, returnSize1)
+  EXPECT_EQ_ARRAY(expected2, 1, actual2, returnSize2)
+}
+
+static void test_di_string_match() {
+  char *s1 = "IDID";
+  char *s2 = "III";
+  char *s3 = "DDI";
+  int expected1[5] = {0, 4, 1, 3, 2};
+  int expected2[4] = {0, 1, 2, 3 };
+  int expected3[4] = {3, 2, 0, 1 };
+  int returnSize1 = 0;
+  int returnSize2 = 0;
+  int returnSize3 = 0;
+  int* actual1 = diStringMatch(s1, &returnSize1);
+  int* actual2 = diStringMatch(s2, &returnSize2);
+  int* actual3 = diStringMatch(s3, &returnSize3);
+  EXPECT_EQ_ARRAY(expected1, 5, actual1, returnSize1);
+  EXPECT_EQ_ARRAY(expected2, 4, actual2, returnSize2);
+  EXPECT_EQ_ARRAY(expected3, 4, actual3, returnSize3);
 }
 
 static void test_find_the_winner() {
@@ -211,6 +232,15 @@ static void test_pivot_index() {
   EXPECT_EQ_INT(3, pivotIndex(nums1, 5));
   EXPECT_EQ_INT(2, pivotIndex(nums2, 3));
   EXPECT_EQ_INT(-1, pivotIndex(nums3, 2));
+}
+
+static void test_recent_counter() {
+  RecentCounter *obj = recentCounterCreate();
+  EXPECT_EQ_INT(1, recentCounterPing(obj, 1));
+  EXPECT_EQ_INT(2, recentCounterPing(obj, 100));
+  EXPECT_EQ_INT(3, recentCounterPing(obj, 3001));
+  EXPECT_EQ_INT(3, recentCounterPing(obj, 3002));
+  recentCounterFree(obj);
 }
 
 int main() {
@@ -228,8 +258,10 @@ int main() {
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();
+  test_di_string_match();
   test_find_the_winner();
   test_pivot_index();
+  test_recent_counter();
   printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
   return main_ret;
 }
