@@ -302,6 +302,21 @@ int *diStringMatch(char *s, int *returnSize) {
   return perm;
 }
 
+int minDeletionSize(char **strs, int strsSize) {
+  int row = strsSize;
+  int col = strlen(strs[0]);
+  int ans = 0;
+  for (int j = 0; j < col; ++j) {
+    for (int i = 1; i < row; ++i) {
+      if(strs[i - 1][j] > strs[i][j]) {
+        ans++;
+        break;
+      }
+    }
+  }
+  return ans;
+}
+
 int findTheWinner(int n, int k) {
   int winner = 1;
   for (int i = 2; i <= n; ++i) {

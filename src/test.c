@@ -220,6 +220,15 @@ static void test_di_string_match() {
   EXPECT_EQ_ARRAY(expected3, 4, actual3, returnSize3);
 }
 
+static void test_min_deletion_size() {
+  char* strs1[] = {"cba","daf","ghi"};
+  char* strs2[] = {"a", "b"};
+  char* strs3[] = {"zyx","wvu","tsr"};
+  EXPECT_EQ_INT(1, minDeletionSize(strs1, 3));
+  EXPECT_EQ_INT(0, minDeletionSize(strs2, 2));
+  EXPECT_EQ_INT(3, minDeletionSize(strs3, 3));
+}
+
 static void test_find_the_winner() {
   EXPECT_EQ_INT(3, findTheWinner(5, 2));
   EXPECT_EQ_INT(1, findTheWinner(6, 5));
@@ -259,6 +268,7 @@ int main() {
   test_projection_area();
   test_sort_array_by_parity();
   test_di_string_match();
+  test_min_deletion_size();
   test_find_the_winner();
   test_pivot_index();
   test_recent_counter();

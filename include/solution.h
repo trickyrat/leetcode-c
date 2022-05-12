@@ -143,6 +143,14 @@ int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
 int* diStringMatch(char* s, int* returnSize);
 
 /**
+ * 944. Delete Columns to Make Sorted
+ * @param strs
+ * @param strsSize
+ * @return
+ */
+int minDeletionSize(char** strs, int strsSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize
