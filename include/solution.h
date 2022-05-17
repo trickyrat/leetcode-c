@@ -11,6 +11,8 @@
 
 #include "datastructures.h"
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) > (b) ? (b) : (a))
 
 /**
  *  1.Two Sum
@@ -155,6 +157,15 @@ int* diStringMatch(char* s, int* returnSize);
  * @return
  */
 int minDeletionSize(char** strs, int strsSize);
+
+/**
+ * 953. Verifying an Alien Dictionary
+ * @param words
+ * @param wordsSize
+ * @param order
+ * @return
+ */
+bool isAlienSorted(char** words, int wordsSize, char* order);
 
 /**
  * 1672. Richest Customer Wealth

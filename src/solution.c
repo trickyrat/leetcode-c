@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 
+
 void swap(int* a, int* b) {
   int tmp = *a;
   *a = *b;
@@ -261,7 +262,35 @@ int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize) {
   return ans;
 }
 
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
+bool isAlienSorted(char **words, int wordsSize, char *order) {
+  int index[26];
+  for (int i = 0; i < strlen(order); ++i) {
+    index[order[i] - 'a'] = i;
+  }
+  for (int i = 1; i < wordsSize; ++i) {
+    bool valid = false;
+    int len1 = strlen(words[i - 1]);
+    int len2 = strlen(words[i]);
+    int n = len1 < len2 ? len1 : len2;
+    for (int j = 0; j < n; ++j) {
+      int prev = index[words[i - 1][j] - 'a'];
+      int curr = index[words[i][j] - 'a'];
+      if (prev < curr) {
+        valid = true;
+        break;
+      } else if (prev > curr) {
+        return false;
+      }
+    }
+    if (!valid) {
+      if (len1 > len2) {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
 
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   int maxWealth = 0;

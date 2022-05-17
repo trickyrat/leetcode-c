@@ -199,6 +199,18 @@ static void test_number_of_lines() {
   TEST_NUMBER_OF_LINES(widths2, widths_size, s2, expected2, 2);
 }
 
+static void test_is_alien_sorted() {
+  char *words1[2] = {"hello", "leetcode"};
+  char *words2[3] = {"word", "world", "row"};
+  char *words3[2] = {"apple", "app"};
+  char *order1 = "hlabcdefgijkmnopqrstuvwxyz";
+  char *order2 = "worldabcefghijkmnpqstuvxyz";
+  char *order3 = "abcdefghijklmnopqrstuvwxyz";
+  EXPECT_EQ_TRUE(isAlienSorted(words1, 2, order1));
+  EXPECT_EQ_FALSE(isAlienSorted(words2, 3, order2));
+  EXPECT_EQ_FALSE(isAlienSorted(words3, 2, order3));
+}
+
 
 #define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
   do {                                                                      \
@@ -301,6 +313,7 @@ int main() {
   test_next_greatest_letter();
   test_unique_morse_representations();
   test_number_of_lines();
+  test_is_alien_sorted();
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();
