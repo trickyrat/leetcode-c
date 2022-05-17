@@ -7,6 +7,12 @@
 #include <stdio.h>
 #include <string.h>
 
+void swap(int* a, int* b) {
+  int tmp = *a;
+  *a = *b;
+  *b = tmp;
+}
+
 int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
   hashTable = NULL;
   for (int i = 0; i < numsSize; i++) {
@@ -65,6 +71,20 @@ int search(const int *nums, int numSize, int target) {
   }
   return -1;
 }
+
+void rotate(int **matrix, int matrixSize, int* matrixColSize) {
+  for (int i = 0; i < matrixSize / 2; ++i) {
+    for (int j = 0; j < matrixSize; ++j) {
+      swap(&matrix[i][j], &matrix[matrixSize-i-1][j]);
+    }
+  }
+  for (int i = 0; i < matrixSize; ++i) {
+    for (int j = 0; j < i; ++j) {
+      swap(&matrix[i][j], &matrix[j][i]);
+    }
+  }
+}
+
 
 bool isSameTree(TreeNode *p, TreeNode *q) {
   if (p == NULL && q == NULL) {

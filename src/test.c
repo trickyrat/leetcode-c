@@ -48,6 +48,12 @@ static int test_pass = 0;
     mat[i] = (input_data)[i];                  \
   }
 
+#define EXPECT_EQ_MATRIX(expected, expectedRowSize, actual, actualRowSize)           \
+  EXPECT_EQ_INT((expectedRowSize), (actualRowSize));                                 \
+  for (int i = 0; i < (actualRowSize); ++i) {                                        \
+    EXPECT_EQ_ARRAY((expected)[i], (expectedRowSize), (actual)[i], (actualRowSize)); \
+  }
+
 static void test_two_sum() {
   int nums[4] = {2, 7, 11, 15};
   int actualReturnSize = 0;
@@ -67,6 +73,36 @@ static void test_remove_element() {
 static void test_search() {
   int nums[7] = {4, 5, 6, 7, 0, 1, 2};
   EXPECT_EQ_INT(4, search(nums, 7, 0));
+}
+
+
+#define TEST_ROTATE(input_data, row_size, col_size, expected, expected_row_size) \
+  do {                                                                           \
+    TEST_MATRIX_BASE(input_data, row_size);                                      \
+    int col = col_size;                                                          \
+    rotate(mat, (row_size), &col);                                               \
+    EXPECT_EQ_MATRIX((expected), (expected_row_size), (mat), (row_size));        \
+  } while (0)
+
+
+static void test_rotate() {
+  int matrix1[3][3] = {{1, 2, 3},
+                       {4, 5, 6},
+                       {7, 8, 9}};
+  int matrix2[4][4] = {{5, 1, 9, 11},
+                       {2, 4, 8, 10},
+                       {13, 3, 6, 7},
+                       {15, 14, 12, 16}};
+  int expected1[3][3] = {{7, 4, 1},
+                         {8, 5, 2},
+                         {9, 6, 3}};
+  int expected2[4][4] = {{15, 13, 2, 5},
+                         {14, 3, 4, 1},
+                         {12, 6, 8, 9},
+                         {16, 7, 10, 11}};
+  int matrixColSize1 = 3;
+  TEST_ROTATE(matrix1, 3, 3, expected1, 3);
+  TEST_ROTATE(matrix2, 4, 4, expected2, 4);
 }
 
 static void test_is_same_tree() {
@@ -194,10 +230,10 @@ static void test_sort_array_by_parity() {
   int nums2[1] = {0};
   int returnSize1 = 0;
   int returnSize2 = 0;
-  int expected1[4] = {4,2, 1, 3};
+  int expected1[4] = {4, 2, 1, 3};
   int expected2[1] = {0};
-  int* actual1 = sortArrayByParity(nums1, 4, &returnSize1);
-  int* actual2 = sortArrayByParity(nums2, 1, &returnSize2);
+  int *actual1 = sortArrayByParity(nums1, 4, &returnSize1);
+  int *actual2 = sortArrayByParity(nums2, 1, &returnSize2);
   EXPECT_EQ_ARRAY(expected1, 4, actual1, returnSize1)
   EXPECT_EQ_ARRAY(expected2, 1, actual2, returnSize2)
 }
@@ -207,23 +243,23 @@ static void test_di_string_match() {
   char *s2 = "III";
   char *s3 = "DDI";
   int expected1[5] = {0, 4, 1, 3, 2};
-  int expected2[4] = {0, 1, 2, 3 };
-  int expected3[4] = {3, 2, 0, 1 };
+  int expected2[4] = {0, 1, 2, 3};
+  int expected3[4] = {3, 2, 0, 1};
   int returnSize1 = 0;
   int returnSize2 = 0;
   int returnSize3 = 0;
-  int* actual1 = diStringMatch(s1, &returnSize1);
-  int* actual2 = diStringMatch(s2, &returnSize2);
-  int* actual3 = diStringMatch(s3, &returnSize3);
+  int *actual1 = diStringMatch(s1, &returnSize1);
+  int *actual2 = diStringMatch(s2, &returnSize2);
+  int *actual3 = diStringMatch(s3, &returnSize3);
   EXPECT_EQ_ARRAY(expected1, 5, actual1, returnSize1);
   EXPECT_EQ_ARRAY(expected2, 4, actual2, returnSize2);
   EXPECT_EQ_ARRAY(expected3, 4, actual3, returnSize3);
 }
 
 static void test_min_deletion_size() {
-  char* strs1[] = {"cba","daf","ghi"};
-  char* strs2[] = {"a", "b"};
-  char* strs3[] = {"zyx","wvu","tsr"};
+  char *strs1[] = {"cba", "daf", "ghi"};
+  char *strs2[] = {"a", "b"};
+  char *strs3[] = {"zyx", "wvu", "tsr"};
   EXPECT_EQ_INT(1, minDeletionSize(strs1, 3));
   EXPECT_EQ_INT(0, minDeletionSize(strs2, 2));
   EXPECT_EQ_INT(3, minDeletionSize(strs3, 3));
@@ -256,6 +292,7 @@ int main() {
   test_two_sum();
   test_remove_element();
   test_search();
+  test_rotate();
   test_is_same_tree();
   test_count_numbers_with_unique_digits();
   test_lexical_order();

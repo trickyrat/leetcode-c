@@ -40,6 +40,12 @@ int removeElement(int *nums, int numsSize, int val);
 int search(const int *nums, int numSize, int target);
 
 /**
+ * 48. Rotate Image
+ * @param nums
+ */
+void rotate(int **matrix, int matrixSize, int* matrixColSize);
+
+/**
  * 100. Same Tree
  * @param p
  * @param q
