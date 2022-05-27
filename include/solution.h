@@ -45,7 +45,7 @@ int search(const int *nums, int numSize, int target);
  * 48. Rotate Image
  * @param nums
  */
-void rotate(int **matrix, int matrixSize, int* matrixColSize);
+void rotate(int **matrix, int matrixSize, int *matrixColSize);
 
 /**
  * 100. Same Tree
@@ -53,7 +53,7 @@ void rotate(int **matrix, int matrixSize, int* matrixColSize);
  * @param q
  * @return
  */
-bool isSameTree(TreeNode* p, TreeNode* q);
+bool isSameTree(TreeNode *p, TreeNode *q);
 
 /**
  * 206. Reverse Linked List
@@ -75,7 +75,14 @@ int countNumbersWithUniqueDigits(int n);
  * @param returnSize
  * @return
  */
-int* lexicalOrder(int n, int* returnSize);
+int *lexicalOrder(int n, int *returnSize);
+
+/**
+ * 467. Unique Substrings in Wraparound String
+ * @param p
+ * @return
+ */
+int findSubstringInWraparoundString(char *p);
 
 /**
  * 498.Diagonal Traverse
@@ -85,7 +92,7 @@ int* lexicalOrder(int n, int* returnSize);
  * @param returnSize
  * @return
  */
-int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize);
+int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize);
 
 /**
  * 728.Self Dividing Numbers
@@ -94,7 +101,7 @@ int* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize)
  * @param returnSize
  * @return
  */
-int* selfDividingNumbers(int left, int right, int* returnSize);
+int *selfDividingNumbers(int left, int right, int *returnSize);
 
 /**
  * 744. Find Smallest Letter Greater Than Target
@@ -103,7 +110,7 @@ int* selfDividingNumbers(int left, int right, int* returnSize);
  * @param target
  * @return
  */
-char nextGreatestLetter(char* letters, int letterSize, char target);
+char nextGreatestLetter(char *letters, int letterSize, char target);
 
 /**
  * 804. Unique Morse Code Words
@@ -111,7 +118,7 @@ char nextGreatestLetter(char* letters, int letterSize, char target);
  * @param wordsSize
  * @return
  */
-int uniqueMorseRepresentations(char ** words, int wordsSize);
+int uniqueMorseRepresentations(char **words, int wordsSize);
 
 /**
  * 806. Number of Lines To Write String
@@ -121,7 +128,7 @@ int uniqueMorseRepresentations(char ** words, int wordsSize);
  * @param returnSize
  * @return
  */
-int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
+int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize);
 
 /**
  * 883. Projection Area of 3D Shapes
@@ -130,7 +137,7 @@ int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
  * @param gridColSize
  * @return
  */
-int projectionArea(int** grid, int gridSize, int* gridColSize);
+int projectionArea(int **grid, int gridSize, int *gridColSize);
 
 /**
  * 905. Sort Array By Parity
@@ -139,7 +146,7 @@ int projectionArea(int** grid, int gridSize, int* gridColSize);
  * @param returnSize
  * @return
  */
-int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
+int *sortArrayByParity(int *nums, int numsSize, int *returnSize);
 
 /**
  * 942. DI String Match
@@ -148,7 +155,7 @@ int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
  * @param returnSize
  * @return
  */
-int* diStringMatch(char* s, int* returnSize);
+int *diStringMatch(char *s, int *returnSize);
 
 /**
  * 944. Delete Columns to Make Sorted
@@ -156,7 +163,7 @@ int* diStringMatch(char* s, int* returnSize);
  * @param strsSize
  * @return
  */
-int minDeletionSize(char** strs, int strsSize);
+int minDeletionSize(char **strs, int strsSize);
 
 /**
  * 953. Verifying an Alien Dictionary
@@ -165,7 +172,14 @@ int minDeletionSize(char** strs, int strsSize);
  * @param order
  * @return
  */
-bool isAlienSorted(char** words, int wordsSize, char* order);
+bool isAlienSorted(char **words, int wordsSize, char *order);
+
+/**
+ * 965. Univalued Binary Tree
+ * @param root
+ * @return
+ */
+bool isUnivalTree(TreeNode *root);
 
 /**
  * 1672. Richest Customer Wealth
@@ -174,7 +188,7 @@ bool isAlienSorted(char** words, int wordsSize, char* order);
  * @param accountsColSize
  * @return
  */
-int maximumWealth(int** accounts, int accountsSize, int* accountsColSize);
+int maximumWealth(int **accounts, int accountsSize, int *accountsColSize);
 
 /**
  * 1823. Find the Winner of the Circular Game
@@ -192,4 +206,4 @@ int findTheWinner(int n, int k);
  */
 int pivotIndex(int *nums, int numsSize);
 
-#endif // LEETCODEC_SOLUTION_H
+#endif// LEETCODEC_SOLUTION_H

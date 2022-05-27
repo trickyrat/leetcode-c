@@ -8,7 +8,7 @@
 #include <string.h>
 
 
-void swap(int* a, int* b) {
+void swap(int *a, int *b) {
   int tmp = *a;
   *a = *b;
   *b = tmp;
@@ -73,10 +73,10 @@ int search(const int *nums, int numSize, int target) {
   return -1;
 }
 
-void rotate(int **matrix, int matrixSize, int* matrixColSize) {
+void rotate(int **matrix, int matrixSize, int *matrixColSize) {
   for (int i = 0; i < matrixSize / 2; ++i) {
     for (int j = 0; j < matrixSize; ++j) {
-      swap(&matrix[i][j], &matrix[matrixSize-i-1][j]);
+      swap(&matrix[i][j], &matrix[matrixSize - i - 1][j]);
     }
   }
   for (int i = 0; i < matrixSize; ++i) {
@@ -142,6 +142,26 @@ int *lexicalOrder(int n, int *returnSize) {
   }
   *returnSize = n;
   return ret;
+}
+
+int findSubstringInWraparoundString(char *p) {
+  int dp[26];
+  int k = 0;
+  int len = strlen(p);
+  memset(dp, 0, sizeof(dp));
+  for (int i = 0; i < len; ++i) {
+    if (i > 0 && (p[i] - p[i - 1] + 26) % 26 == 1) {
+      ++k;
+    } else {
+      k = 1;
+    }
+    dp[p[i] - 'a'] = MAX(dp[p[i] - 'a'], k);
+  }
+  int res = 0;
+  for (int i = 0; i < 26; ++i) {
+    res += dp[i];
+  }
+  return res;
 }
 
 int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize) {
@@ -291,6 +311,23 @@ bool isAlienSorted(char **words, int wordsSize, char *order) {
   return true;
 }
 
+bool isUnivalTree(TreeNode *root) {
+  if (!root) {
+    return true;
+  }
+  if (root->left) {
+    if (root->val != root->left->val || !isUnivalTree(root->left)) {
+      return false;
+    }
+  }
+
+  if (root->right) {
+    if (root->val != root->right->val || !isUnivalTree(root->right)) {
+      return false;
+    }
+  }
+  return true;
+}
 
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   int maxWealth = 0;
@@ -306,9 +343,9 @@ int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
 
 int projectionArea(int **grid, int gridSize, int *gridColSize) {
   int xyArea = 0, yzArea = 0, zxArea = 0;
-  for(int i = 0; i < gridSize; ++i) {
+  for (int i = 0; i < gridSize; ++i) {
     int yzHeight = 0, zxHeight = 0;
-    for(int j = 0; j < gridSize; ++j) {
+    for (int j = 0; j < gridSize; ++j) {
       xyArea += grid[i][j] > 0 ? 1 : 0;
       yzHeight = MAX(yzHeight, grid[j][i]);
       zxHeight = MAX(zxHeight, grid[i][j]);
@@ -321,14 +358,14 @@ int projectionArea(int **grid, int gridSize, int *gridColSize) {
 
 int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
   int left = 0, right = numsSize - 1;
-  while(left < right) {
-    while(left < right && nums[left] % 2 == 0) {
+  while (left < right) {
+    while (left < right && nums[left] % 2 == 0) {
       left++;
     }
-    while(left < right && nums[right] % 2 == 1) {
+    while (left < right && nums[right] % 2 == 1) {
       right--;
     }
-    if(left < right) {
+    if (left < right) {
       int temp = nums[left];
       nums[left] = nums[right];
       nums[right] = temp;
@@ -342,7 +379,7 @@ int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
 
 int *diStringMatch(char *s, int *returnSize) {
   int n = strlen(s), lo = 0, hi = n;
-  int* perm = (int*) malloc(sizeof(int)*(n+1));
+  int *perm = (int *) malloc(sizeof(int) * (n + 1));
   for (int i = 0; i < n; ++i) {
     perm[i] = s[i] == 'I' ? lo++ : hi--;
   }
@@ -357,7 +394,7 @@ int minDeletionSize(char **strs, int strsSize) {
   int ans = 0;
   for (int j = 0; j < col; ++j) {
     for (int i = 1; i < row; ++i) {
-      if(strs[i - 1][j] > strs[i][j]) {
+      if (strs[i - 1][j] > strs[i][j]) {
         ans++;
         break;
       }

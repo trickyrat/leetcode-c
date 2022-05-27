@@ -135,6 +135,12 @@ static void test_lexical_order() {
   EXPECT_EQ_ARRAY(expect2, 2, actual2, returnSize2);
 }
 
+static void test_find_substring_in_wraparoundString() {
+  EXPECT_EQ_INT(1, findSubstringInWraparoundString("a"));
+  EXPECT_EQ_INT(2, findSubstringInWraparoundString("cac"));
+  EXPECT_EQ_INT(6, findSubstringInWraparoundString("zab"));
+}
+
 #define TEST_FIND_DIAGONAL_ORDER(input_data, row_size, col_size, expected, expected_size) \
   do {                                                                                    \
     TEST_MATRIX_BASE(input_data, row_size);                                               \
@@ -308,6 +314,7 @@ int main() {
   test_is_same_tree();
   test_count_numbers_with_unique_digits();
   test_lexical_order();
+  test_find_substring_in_wraparoundString();
   test_find_diagonal_order();
   test_self_dividing_numbers();
   test_next_greatest_letter();
