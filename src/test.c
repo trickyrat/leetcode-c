@@ -105,6 +105,26 @@ static void test_rotate() {
   TEST_ROTATE(matrix2, 4, 4, expected2, 4);
 }
 
+static void test_merge() {
+  int actual1[6] = {1,2,3,0,0,0};
+  int nums2[3] = {2,5,6};
+  merge(actual1, 6, 3, nums2, 3, 3);
+  int expected1[6] = {1,2,2,3,5,6};
+  EXPECT_EQ_ARRAY(expected1, 6, actual1, 6);
+
+  int actual2[1] = {1};
+  int nums3[1];
+  merge(actual2, 1, 1, nums3, 0, 0);
+  int expected2[1] = {1};
+  EXPECT_EQ_ARRAY(expected2, 1, actual2, 1);
+
+  int actual3[1] = {0};
+  int nums4[1] = {1};
+  merge(actual3, 0, 0, nums4, 1, 1);
+  int expected3[1] = {1};
+  EXPECT_EQ_ARRAY(expected3, 1, actual3, 1);
+};
+
 static void test_is_same_tree() {
   TreeNode left1 = {2, NULL, NULL};
   TreeNode right1 = {3, NULL, NULL};
@@ -311,6 +331,7 @@ int main() {
   test_remove_element();
   test_search();
   test_rotate();
+  test_merge();
   test_is_same_tree();
   test_count_numbers_with_unique_digits();
   test_lexical_order();

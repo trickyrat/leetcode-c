@@ -48,6 +48,17 @@ int search(const int *nums, int numSize, int target);
 void rotate(int **matrix, int matrixSize, int *matrixColSize);
 
 /**
+ * 88. Merge Sorted Array
+ * @param nums1
+ * @param nums1Size
+ * @param m
+ * @param nums2
+ * @param nums2Size
+ * @param n
+ */
+void merge(int* nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
+
+/**
  * 100. Same Tree
  * @param p
  * @param q
