@@ -3,6 +3,7 @@
 
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
 
 static int main_ret = 0;
 static int test_count = 0;
@@ -237,6 +238,14 @@ static void test_is_alien_sorted() {
   EXPECT_EQ_FALSE(isAlienSorted(words3, 2, order3));
 }
 
+static void test_defanging_IPadd() {
+  char* actual1 = defangIPaddr("1.1.1.1");
+  char* actual2 = defangIPaddr("255.100.50.0");
+
+  EXPECT_EQ_STRING("1[.]1[.]1[.]1", actual1, 13);
+  EXPECT_EQ_STRING("255[.]100[.]50[.]0", actual2, 18);
+}
+
 
 #define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
   do {                                                                      \
@@ -342,6 +351,7 @@ int main() {
   test_unique_morse_representations();
   test_number_of_lines();
   test_is_alien_sorted();
+  test_defanging_IPadd();
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();

@@ -193,6 +193,13 @@ bool isAlienSorted(char **words, int wordsSize, char *order);
 bool isUnivalTree(TreeNode *root);
 
 /**
+ * 1108. Defanging an IP Address
+ * @param address
+ * @return
+ */
+char* defangIPaddr(char* address);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize

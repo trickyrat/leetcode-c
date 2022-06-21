@@ -345,6 +345,21 @@ bool isUnivalTree(TreeNode *root) {
   return true;
 }
 
+char *defangIPaddr(char *address) {
+  int len = strlen(address);
+  int pos = 0;
+  char* res = (char*)malloc(sizeof(char)*(len + 7)); // [] [] []
+  for (int i = 0; i < len; ++i) {
+    if(address[i] == '.') {
+      pos += sprintf(res + pos, "%s", "[.]");
+    } else {
+      res[pos++] = address[i];
+    }
+  }
+  res[pos] = '\0';
+  return res;
+}
+
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   int maxWealth = 0;
   for (int i = 0; i < accountsSize; ++i) {
