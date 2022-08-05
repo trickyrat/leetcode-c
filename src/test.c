@@ -246,6 +246,24 @@ static void test_defanging_IPadd() {
   EXPECT_EQ_STRING("255[.]100[.]50[.]0", actual2, 18);
 }
 
+static void test_min_subsequence() {
+  int input1[5] = {4,3,10,9,8};
+  int input2[5] = {4,4,7,6,7};
+  int input3[1] = {6};
+  int expected1[2] = {10,9};
+  int expected2[3] = {7,7,6};
+  int expected3[1] = {6};
+  int returnSize1 = 0;
+  int returnSize2 = 0;
+  int returnSize3 = 0;
+  int* actual1 = minSubsequence(input1, 5, &returnSize1);
+  int* actual2 = minSubsequence(input2, 5, &returnSize2);
+  int* actual3 = minSubsequence(input3, 1, &returnSize3);
+  EXPECT_EQ_ARRAY(expected1, 2, actual1, returnSize1);
+  EXPECT_EQ_ARRAY(expected2, 3, actual2, returnSize2);
+  EXPECT_EQ_ARRAY(expected3, 1, actual3, returnSize3);
+}
+
 
 #define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
   do {                                                                      \
@@ -352,6 +370,7 @@ int main() {
   test_number_of_lines();
   test_is_alien_sorted();
   test_defanging_IPadd();
+  test_min_subsequence();
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();

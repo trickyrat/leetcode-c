@@ -360,6 +360,29 @@ char *defangIPaddr(char *address) {
   return res;
 }
 
+static inline int cmp(const void *pa, const void *pb) {
+  return *(int*)pa - *(int*)pb;
+}
+
+int* minSubsequence(int* nums, int numsSize, int* returnSize) {
+  int total = 0;
+  for(int i = 0; i < numsSize; ++i) {
+    total += nums[i];
+  }
+  qsort(nums, numsSize, sizeof(int), cmp);
+  int *ans = (int*) malloc(sizeof (int) * numsSize);
+  int curr = 0, pos = 0;
+  for(int i = numsSize - 1; i >= 0; --i) {
+    curr += nums[i];
+    ans[pos++] = nums[i];
+    if(total - curr < curr) {
+      break;
+    }
+  }
+  *returnSize = pos;
+  return ans;
+}
+
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   int maxWealth = 0;
   for (int i = 0; i < accountsSize; ++i) {

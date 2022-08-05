@@ -200,6 +200,15 @@ bool isUnivalTree(TreeNode *root);
 char* defangIPaddr(char* address);
 
 /**
+ * 1403. Minimum Subsequence in Non-Increasing Order
+ * @param nums
+ * @param numsSize
+ * @param returnSize
+ * @return
+ */
+int* minSubsequence(int* nums, int numsSize, int* returnSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize
