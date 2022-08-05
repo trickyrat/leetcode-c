@@ -209,6 +209,15 @@ char* defangIPaddr(char* address);
 int* minSubsequence(int* nums, int numsSize, int* returnSize);
 
 /**
+ * 1408. String Matching in an Array
+ * @param words
+ * @param wordsSize
+ * @param returnSize
+ * @return
+ */
+char ** stringMatching(char ** words, int wordsSize, int* returnSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize

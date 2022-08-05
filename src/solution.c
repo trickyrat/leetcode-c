@@ -14,6 +14,9 @@ void swap(int *a, int *b) {
   *b = tmp;
 }
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) > (b) ? (b) : (a))
+
 int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
   hashTable = NULL;
   for (int i = 0; i < numsSize; i++) {
@@ -382,6 +385,22 @@ int* minSubsequence(int* nums, int numsSize, int* returnSize) {
   *returnSize = pos;
   return ans;
 }
+
+char **stringMatching(char **words, int wordsSize, int *returnSize) {
+  char** res = (char**) malloc(sizeof(char*)*wordsSize);
+  int pos = 0;
+  for(int i = 0; i < wordsSize; ++i) {
+    for(int j = 0; j < wordsSize; ++j) {
+      if(i != j && strstr(words[j], words[i])) {
+        res[pos++] = words[i];
+        break;
+      }
+    }
+  }
+  *returnSize = pos;
+  return res;
+}
+
 
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   int maxWealth = 0;

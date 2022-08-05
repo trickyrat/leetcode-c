@@ -43,6 +43,13 @@ static int test_pass = 0;
     EXPECT_EQ_INT((expect)[i], (actual)[i]);                      \
   }
 
+#define EXPECT_EQ_STRING_ARRAY(expect, expectedSize, actual, actualSize) \
+  EXPECT_EQ_INT(expectedSize, actualSize);                               \
+  for (int i = 0; i < (expectedSize); ++i) {                             \
+    int len = sizeof(*(actual)[i]) - 1;                                   \
+    EXPECT_EQ_STRING(*(expect)[i], *(actual)[i], len);                     \
+  }
+
 #define TEST_MATRIX_BASE(input_data, row_size) \
   int *mat[(row_size)];                        \
   for (int i = 0; i < (row_size); ++i) {       \
@@ -107,10 +114,10 @@ static void test_rotate() {
 }
 
 static void test_merge() {
-  int actual1[6] = {1,2,3,0,0,0};
-  int nums2[3] = {2,5,6};
+  int actual1[6] = {1, 2, 3, 0, 0, 0};
+  int nums2[3] = {2, 5, 6};
   merge(actual1, 6, 3, nums2, 3, 3);
-  int expected1[6] = {1,2,2,3,5,6};
+  int expected1[6] = {1, 2, 2, 3, 5, 6};
   EXPECT_EQ_ARRAY(expected1, 6, actual1, 6);
 
   int actual2[1] = {1};
@@ -148,7 +155,7 @@ static void test_lexical_order() {
   int expect1[13] = {1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9};
   int returnSize1 = 0;
   int *actual1 = lexicalOrder(13, &returnSize1);
-  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1);
+  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1)
 
   int expect2[2] = {1, 2};
   int returnSize2 = 0;
@@ -239,31 +246,48 @@ static void test_is_alien_sorted() {
 }
 
 static void test_defanging_IPadd() {
-  char* actual1 = defangIPaddr("1.1.1.1");
-  char* actual2 = defangIPaddr("255.100.50.0");
+  char *actual1 = defangIPaddr("1.1.1.1");
+  char *actual2 = defangIPaddr("255.100.50.0");
 
   EXPECT_EQ_STRING("1[.]1[.]1[.]1", actual1, 13);
   EXPECT_EQ_STRING("255[.]100[.]50[.]0", actual2, 18);
 }
 
 static void test_min_subsequence() {
-  int input1[5] = {4,3,10,9,8};
-  int input2[5] = {4,4,7,6,7};
+  int input1[5] = {4, 3, 10, 9, 8};
+  int input2[5] = {4, 4, 7, 6, 7};
   int input3[1] = {6};
-  int expected1[2] = {10,9};
-  int expected2[3] = {7,7,6};
+  int expected1[2] = {10, 9};
+  int expected2[3] = {7, 7, 6};
   int expected3[1] = {6};
   int returnSize1 = 0;
   int returnSize2 = 0;
   int returnSize3 = 0;
-  int* actual1 = minSubsequence(input1, 5, &returnSize1);
-  int* actual2 = minSubsequence(input2, 5, &returnSize2);
-  int* actual3 = minSubsequence(input3, 1, &returnSize3);
+  int *actual1 = minSubsequence(input1, 5, &returnSize1);
+  int *actual2 = minSubsequence(input2, 5, &returnSize2);
+  int *actual3 = minSubsequence(input3, 1, &returnSize3);
   EXPECT_EQ_ARRAY(expected1, 2, actual1, returnSize1);
   EXPECT_EQ_ARRAY(expected2, 3, actual2, returnSize2);
   EXPECT_EQ_ARRAY(expected3, 1, actual3, returnSize3);
 }
 
+static void test_string_matching() {
+  char *words1[4] = {"mass", "as", "hero", "superhero"};
+  char *words2[3] = {"leetcode", "et", "code"};
+  char *words3[3] = {"blue", "green", "bu"};
+  char *expected1[2] = {"as", "hero"};
+  char *expected2[2] = {"et", "code"};
+  char *expected3[] = {"\0"};
+  int returnSize1 = 0;
+  int returnSize2 = 0;
+  int returnSize3 = 0;
+  char **actual1 = stringMatching(words1, 4, &returnSize1);
+  char **actual2 = stringMatching(words2, 3, &returnSize2);
+  char **actual3 = stringMatching(words3, 3, &returnSize3);
+  EXPECT_EQ_STRING_ARRAY(expected1, 2, actual1, returnSize1);
+  EXPECT_EQ_STRING_ARRAY(expected2, 2, actual2, returnSize2);
+  EXPECT_EQ_STRING_ARRAY(expected3, 0, actual3, returnSize3);
+}
 
 #define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
   do {                                                                      \
@@ -371,6 +395,7 @@ int main() {
   test_is_alien_sorted();
   test_defanging_IPadd();
   test_min_subsequence();
+  test_string_matching();
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();
