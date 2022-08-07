@@ -23,7 +23,7 @@ add_library(leetcode_library
 		include/utringbuffer.h
 		include/utstack.h
 		include/utstring.h
+		include/recentcounter.h
 		)
 add_executable(leetcode_binary src/test.c)
-target_link_libraries(leetcode_binary
-		leetcode_library)
+target_link_libraries(leetcode_binary leetcode_library)
