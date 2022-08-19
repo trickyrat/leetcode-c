@@ -22,9 +22,11 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a52991bc-f452-4208-b2fe-e7bed2c86f4b" name="Changes" comment="1408. String Matching in an Array">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+    <list default="true" id="a52991bc-f452-4208-b2fe-e7bed2c86f4b" name="Changes" comment="modify cmake build options">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/solution.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/solution.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/solution.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/solution.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/test.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,18 +100,18 @@
       <recent name="D:\Code\source\repos\Leetcodec\src" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.leetcode_binary">
+  <component name="RunManager" selected="CMake Application.leetcode_library">
     <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leetcode_binary" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" WORKING_DIR="file://$FileDir$/build" PASS_PARENT_ENVS_2="true" PROJECT_NAME="leetcodec" TARGET_NAME="leetcode_binary" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="leetcodec" RUN_TARGET_NAME="leetcode_binary">
+    <configuration name="leetcode_binary" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="leetcodec" TARGET_NAME="leetcode_binary" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="leetcodec" RUN_TARGET_NAME="leetcode_binary">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="leetcode_library" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="leetcodec" TARGET_NAME="leetcode_library" CONFIG_NAME="Debug">
+    <configuration name="leetcode_library" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="leetcodec" TARGET_NAME="leetcode_library" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="leetcodec" RUN_TARGET_NAME="leetcode_binary">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -174,7 +176,7 @@
       <workItem from="1659723390985" duration="4000" />
       <workItem from="1659723502708" duration="3506000" />
       <workItem from="1659793565635" duration="25000" />
-      <workItem from="1660912570129" duration="1028000" />
+      <workItem from="1660912570129" duration="1609000" />
     </task>
     <task id="LOCAL-00001" summary="修复EXPECT_EQ_ARRAY宏命令">
       <created>1648824303496</created>
@@ -218,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659727241148</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="modify cmake build options">
+      <created>1660913714303</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1660913714303</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +251,8 @@
     <MESSAGE value="添加1672. Richest Customer Wealth和重构一些宏命令" />
     <MESSAGE value="重新组织结构" />
     <MESSAGE value="1408. String Matching in an Array" />
-    <option name="LAST_COMMIT_MESSAGE" value="1408. String Matching in an Array" />
+    <MESSAGE value="modify cmake build options" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify cmake build options" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

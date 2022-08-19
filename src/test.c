@@ -46,8 +46,8 @@ static int test_pass = 0;
 #define EXPECT_EQ_STRING_ARRAY(expect, expectedSize, actual, actualSize) \
   EXPECT_EQ_INT(expectedSize, actualSize);                               \
   for (int i = 0; i < (expectedSize); ++i) {                             \
-    int len = sizeof(*(actual)[i]) - 1;                                   \
-    EXPECT_EQ_STRING(*(expect)[i], *(actual)[i], len);                     \
+    int len = sizeof(*(actual)[i]) - 1;                                  \
+    EXPECT_EQ_STRING(*(expect)[i], *(actual)[i], len);                   \
   }
 
 #define TEST_MATRIX_BASE(input_data, row_size) \
@@ -289,6 +289,15 @@ static void test_string_matching() {
   EXPECT_EQ_STRING_ARRAY(expected3, 0, actual3, returnSize3);
 }
 
+static void test_busyStudent() {
+  int startTimes1[3] = {1, 2, 3};
+  int endTimes1[3] = {3, 2, 7};
+  int startTimes2[1] = {4};
+  int endTimes2[1] = {4};
+  EXPECT_EQ_INT(busyStudent(startTimes1, 3, endTimes1, 3, 4), 1);
+  EXPECT_EQ_INT(busyStudent(startTimes2, 1, endTimes2, 1, 4), 1);
+}
+
 #define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
   do {                                                                      \
     TEST_MATRIX_BASE((input_data), (row_size));                             \
@@ -396,6 +405,7 @@ int main() {
   test_defanging_IPadd();
   test_min_subsequence();
   test_string_matching();
+  test_busyStudent();
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();

@@ -218,6 +218,17 @@ int* minSubsequence(int* nums, int numsSize, int* returnSize);
 char ** stringMatching(char ** words, int wordsSize, int* returnSize);
 
 /**
+ * 1450. Number of Students Doing Homework at a Given Time
+ * @param startTime
+ * @param startTimeSize
+ * @param endTime
+ * @param endTimeSize
+ * @param queryTime
+ * @return
+ */
+int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize, int queryTime);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize

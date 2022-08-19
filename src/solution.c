@@ -401,6 +401,16 @@ char **stringMatching(char **words, int wordsSize, int *returnSize) {
   return res;
 }
 
+int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize, int queryTime) {
+  int res = 0;
+  for (int i = 0; i < startTimeSize; ++i) {
+    if (startTime[i] <= queryTime && queryTime <= endTime[i]) {
+      res++;
+    }
+  }
+  return res;
+}
+
 
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   int maxWealth = 0;
