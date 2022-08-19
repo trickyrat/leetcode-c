@@ -4,8 +4,8 @@ project(leetcodec C)
 
 set(CMAKE_BUILD_TYPE Debug)
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/bin)
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build/lib)
 
 set(CMAKE_C_STANDARD 17)
 
@@ -19,7 +19,7 @@ add_library(leetcode_library
 		include/utarray.h
 		include/hashtable.h
 		include/uthash.h
-		#include/ulist.h
+		include/utlist.h
 		include/utringbuffer.h
 		include/utstack.h
 		include/utstring.h

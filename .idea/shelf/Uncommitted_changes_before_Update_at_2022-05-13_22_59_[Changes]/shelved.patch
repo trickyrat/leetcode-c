@@ -1,0 +1,112 @@
+Index: include/solution.h
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//\r\n// Created by wangj on 2022-01-08.\r\n//\r\n\r\n#ifndef LEETCODEC_SOLUTION_H\r\n#define LEETCODEC_SOLUTION_H\r\n\r\n#include <assert.h>\r\n#include <malloc.h>\r\n#include <stdbool.h>\r\n\r\n#include \"datastructures.h\"\r\n\r\n\r\n/**\r\n *  1.Two Sum\r\n * @param nums\r\n * @param numsSize\r\n * @param target\r\n * @param returnSize\r\n * @return\r\n */\r\nint *twoSum(int *nums, int numsSize, int target, int *returnSize);\r\n\r\n/**\r\n * 27.移除元素\r\n * @param nums\r\n * @param val\r\n * @return\r\n */\r\nint removeElement(int *nums, int numsSize, int val);\r\n\r\n/**\r\n * 33. Search in Rotated Sorted Array\r\n * @param nums\r\n * @param numSize\r\n * @param target\r\n * @return\r\n */\r\nint search(const int *nums, int numSize, int target);\r\n\r\n/**\r\n * 100. Same Tree\r\n * @param p\r\n * @param q\r\n * @return\r\n */\r\nbool isSameTree(TreeNode* p, TreeNode* q);\r\n\r\n/**\r\n * 206. Reverse Linked List\r\n * @param head\r\n * @return\r\n */\r\nstruct ListNode *reverseList(ListNode *head);\r\n\r\n/**\r\n * 357. 统计各位数字都不同的数字个数\r\n * @param n\r\n * @return\r\n */\r\nint countNumbersWithUniqueDigits(int n);\r\n\r\n/**\r\n * 386. 字典序排数\r\n * @param n\r\n * @param returnSize\r\n * @return\r\n */\r\nint* lexicalOrder(int n, int* returnSize);\r\n\r\n/**\r\n * 498.Diagonal Traverse\r\n * @param mat\r\n * @param matSize\r\n * @param matColSize\r\n * @param returnSize\r\n * @return\r\n */\r\nint* findDiagonalOrder(int** mat, int matSize, int* matColSize, int* returnSize);\r\n\r\n/**\r\n * 728.Self Dividing Numbers\r\n * @param left\r\n * @param right\r\n * @param returnSize\r\n * @return\r\n */\r\nint* selfDividingNumbers(int left, int right, int* returnSize);\r\n\r\n/**\r\n * 744. Find Smallest Letter Greater Than Target\r\n * @param letters\r\n * @param letterSize\r\n * @param target\r\n * @return\r\n */\r\nchar nextGreatestLetter(char* letters, int letterSize, char target);\r\n\r\n/**\r\n * 804. Unique Morse Code Words\r\n * @param words\r\n * @param wordsSize\r\n * @return\r\n */\r\nint uniqueMorseRepresentations(char ** words, int wordsSize);\r\n\r\n/**\r\n * 806. 写字符串需要的行数\r\n * @param widths\r\n * @param widthsSize\r\n * @param s\r\n * @param returnSize\r\n * @return\r\n */\r\nint* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);\r\n\r\n/**\r\n * 883. 三维形体投影面积\r\n * @param grid\r\n * @param gridSize\r\n * @param gridColSize\r\n * @return\r\n */\r\nint projectionArea(int** grid, int gridSize, int* gridColSize);\r\n\r\n/**\r\n * 905. 按奇偶排序数组\r\n * @param nums\r\n * @param numsSize\r\n * @param returnSize\r\n * @return\r\n */\r\nint* sortArrayByParity(int* nums, int numsSize, int* returnSize);\r\n\r\n/**\r\n * 1672. Richest Customer Wealth\r\n * @param accounts\r\n * @param accountsSize\r\n * @param accountsColSize\r\n * @return\r\n */\r\nint maximumWealth(int** accounts, int accountsSize, int* accountsColSize);\r\n\r\n/**\r\n * 1823. Find the Winner of the Circular Game\r\n * @param n\r\n * @param k\r\n * @return\r\n */\r\nint findTheWinner(int n, int k);\r\n\r\n/**\r\n * 1991. Find the Middle Index in Array\r\n * @param nums\r\n * @param numsSize\r\n * @return\r\n */\r\nint pivotIndex(int *nums, int numsSize);\r\n\r\n#endif // LEETCODEC_SOLUTION_H\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/include/solution.h b/include/solution.h
+--- a/include/solution.h	
++++ b/include/solution.h	
+@@ -23,7 +23,7 @@
+ int *twoSum(int *nums, int numsSize, int target, int *returnSize);
+ 
+ /**
+- * 27.移除元素
++ * 27.Remove Element
+  * @param nums
+  * @param val
+  * @return
+@@ -55,14 +55,14 @@
+ struct ListNode *reverseList(ListNode *head);
+ 
+ /**
+- * 357. 统计各位数字都不同的数字个数
++ * 357.Count Numbers with Unique Digits
+  * @param n
+  * @return
+  */
+ int countNumbersWithUniqueDigits(int n);
+ 
+ /**
+- * 386. 字典序排数
++ * 386.Lexicographical Numbers
+  * @param n
+  * @param returnSize
+  * @return
+@@ -106,7 +106,7 @@
+ int uniqueMorseRepresentations(char ** words, int wordsSize);
+ 
+ /**
+- * 806. 写字符串需要的行数
++ * 806.Number of Lines To Write String
+  * @param widths
+  * @param widthsSize
+  * @param s
+@@ -116,7 +116,7 @@
+ int* numberOfLines(int* widths, int widthsSize, char* s, int* returnSize);
+ 
+ /**
+- * 883. 三维形体投影面积
++ * 883.Projection Area of 3D Shapes
+  * @param grid
+  * @param gridSize
+  * @param gridColSize
+@@ -125,7 +125,7 @@
+ int projectionArea(int** grid, int gridSize, int* gridColSize);
+ 
+ /**
+- * 905. 按奇偶排序数组
++ * 905.Sort Array By Parity
+  * @param nums
+  * @param numsSize
+  * @param returnSize
+@@ -133,6 +133,15 @@
+  */
+ int* sortArrayByParity(int* nums, int numsSize, int* returnSize);
+ 
++/**
++ * 908.Smallest Range I
++ * @param nums
++ * @param numsSize
++ * @param k
++ * @return
++ */
++int smallestRangeI(int* nums, int numsSize, int k);
++
+ /**
+  * 1672. Richest Customer Wealth
+  * @param accounts
+Index: src/test.c
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#include \"solution.h\"\r\n\r\n#include <assert.h>\r\n#include <stdio.h>\r\n\r\nstatic int main_ret = 0;\r\nstatic int test_count = 0;\r\nstatic int test_pass = 0;\r\n\r\n#define EXPECT_EQ_BASE(equality, expect, actual, format)                \\\r\n  do {                                                                  \\\r\n    test_count++;                                                       \\\r\n    if (equality) {                                                     \\\r\n      test_pass++;                                                      \\\r\n    } else {                                                            \\\r\n      fprintf(stderr, \"%s:%d: expect: \" format \" actual: \" format \"\\n\", \\\r\n              __FILE__, __LINE__, expect, actual);                      \\\r\n    }                                                                   \\\r\n  } while (0)\r\n\r\n#define EXPECT_EQ_INT(expect, actual) \\\r\n  EXPECT_EQ_BASE((expect) == (actual), expect, actual, \"%d\")\r\n\r\n#define EXPECT_EQ_CHAR(expect, actual) \\\r\n  EXPECT_EQ_BASE((expect) == (actual), expect, actual, \"%c\")\r\n\r\n#define EXPECT_EQ_TRUE(actual) \\\r\n  EXPECT_EQ_BASE(1 == (actual), 1, actual, \"%d\")\r\n\r\n#define EXPECT_EQ_FALSE(actual) \\\r\n  EXPECT_EQ_BASE(0 == (actual), 0, actual, \"%d\")\r\n\r\n#define EXPECT_EQ_STRING(expect, actual, length)              \\\r\n  EXPECT_EQ_BASE(sizeof(expect) - 1 == (length) &&            \\\r\n                         memcmp(expect, actual, length) == 0, \\\r\n                 expect, actual, \"%s\")\r\n\r\n#define EXPECT_EQ_ARRAY(expect, expectedSize, actual, actualSize) \\\r\n  EXPECT_EQ_INT(expectedSize, actualSize);                        \\\r\n  for (int i = 0; i < (expectedSize); ++i) {                      \\\r\n    EXPECT_EQ_INT((expect)[i], (actual)[i]);                      \\\r\n  }\r\n\r\n#define TEST_MATRIX_BASE(input_data, row_size) \\\r\n  int *mat[(row_size)];                        \\\r\n  for (int i = 0; i < (row_size); ++i) {       \\\r\n    mat[i] = (input_data)[i];                  \\\r\n  }\r\n\r\nstatic void test_two_sum() {\r\n  int nums[4] = {2, 7, 11, 15};\r\n  int actualReturnSize = 0;\r\n  int *actual = twoSum(nums, 4, 9, &actualReturnSize);\r\n  int expect[2] = {0, 1};\r\n  int expectedReturnSize = 2;\r\n  EXPECT_EQ_ARRAY(expect, expectedReturnSize, actual, actualReturnSize)\r\n}\r\n\r\nstatic void test_remove_element() {\r\n  int nums1[4] = {3, 2, 2, 3};\r\n  int nums2[8] = {0, 1, 2, 2, 3, 0, 4, 2};\r\n  EXPECT_EQ_INT(removeElement(nums1, 4, 3), 2);\r\n  EXPECT_EQ_INT(removeElement(nums2, 8, 2), 5);\r\n}\r\n\r\nstatic void test_search() {\r\n  int nums[7] = {4, 5, 6, 7, 0, 1, 2};\r\n  EXPECT_EQ_INT(4, search(nums, 7, 0));\r\n}\r\n\r\nstatic void test_is_same_tree() {\r\n  TreeNode left1 = {2, NULL, NULL};\r\n  TreeNode right1 = {3, NULL, NULL};\r\n  TreeNode root1 = {1, &left1, &right1};\r\n  TreeNode left2 = {2, NULL, NULL};\r\n  TreeNode right2 = {3, NULL, NULL};\r\n  TreeNode root2 = {1, &left2, &right2};\r\n  EXPECT_EQ_TRUE(isSameTree(&root1, &root2));\r\n  EXPECT_EQ_TRUE(isSameTree(NULL, NULL));\r\n  EXPECT_EQ_FALSE(isSameTree(&root1, NULL));\r\n  EXPECT_EQ_FALSE(isSameTree(NULL, &root1));\r\n}\r\n\r\nstatic void test_count_numbers_with_unique_digits() {\r\n  EXPECT_EQ_INT(91, countNumbersWithUniqueDigits(2));\r\n  EXPECT_EQ_INT(1, countNumbersWithUniqueDigits(0));\r\n}\r\n\r\nstatic void test_lexical_order() {\r\n  int expect1[13] = {1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9};\r\n  int returnSize1 = 0;\r\n  int *actual1 = lexicalOrder(13, &returnSize1);\r\n  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1);\r\n\r\n  int expect2[2] = {1, 2};\r\n  int returnSize2 = 0;\r\n  int *actual2 = lexicalOrder(2, &returnSize2);\r\n  EXPECT_EQ_ARRAY(expect2, 2, actual2, returnSize2);\r\n}\r\n\r\n#define TEST_FIND_DIAGONAL_ORDER(input_data, row_size, col_size, expected, expected_size) \\\r\n  do {                                                                                    \\\r\n    TEST_MATRIX_BASE(input_data, row_size);                                               \\\r\n    int return_size = 0;                                                                  \\\r\n    int col = col_size;                                                                   \\\r\n    int *actual = findDiagonalOrder(mat, (row_size), &col, &return_size);                 \\\r\n    EXPECT_EQ_ARRAY(expected, expected_size, actual, return_size);                        \\\r\n  } while (0)\r\n\r\nstatic void test_find_diagonal_order() {\r\n  int matrix1[3][3] = {{1, 2, 3},\r\n                       {4, 5, 6},\r\n                       {7, 8, 9}};\r\n  int matrix2[2][2] = {{1, 2},\r\n                       {3, 4}};\r\n  int expected1[9] = {1, 2, 4, 7, 5, 3, 6, 8, 9};\r\n  int expected2[4] = {1, 2, 3, 4};\r\n\r\n  TEST_FIND_DIAGONAL_ORDER(matrix1, 3, 3, expected1, 9);\r\n  TEST_FIND_DIAGONAL_ORDER(matrix2, 2, 2, expected2, 4);\r\n}\r\n\r\nstatic void test_self_dividing_numbers() {\r\n  int returnSize1 = 0;\r\n  int *actual1 = selfDividingNumbers(1, 22, &returnSize1);\r\n  int expect1[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};\r\n  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1)\r\n}\r\n\r\nstatic void test_next_greatest_letter() {\r\n  char letters[3] = {'c', 'f', 'j'};\r\n  EXPECT_EQ_CHAR('c', nextGreatestLetter(letters, 3, 'a'));\r\n  EXPECT_EQ_CHAR('f', nextGreatestLetter(letters, 3, 'c'));\r\n  EXPECT_EQ_CHAR('f', nextGreatestLetter(letters, 3, 'c'));\r\n}\r\n\r\nstatic void test_unique_morse_representations() {\r\n  char *words1[] = {\"gin\", \"zen\", \"gig\", \"msg\"};\r\n  char *words2[] = {\"a\"};\r\n  EXPECT_EQ_INT(2, uniqueMorseRepresentations(words1, 4));\r\n  EXPECT_EQ_INT(1, uniqueMorseRepresentations(words2, 1));\r\n}\r\n\r\n#define TEST_NUMBER_OF_LINES(widths, widths_size, s, expected, expected_size) \\\r\n  do {                                                                        \\\r\n    int return_size = 0;                                                      \\\r\n    int *ans = numberOfLines((widths), (widths_size), (s), &(return_size));   \\\r\n    EXPECT_EQ_ARRAY(expected, (expected_size), ans, (return_size));           \\\r\n  } while (0)\r\n\r\nstatic void test_number_of_lines() {\r\n  int widths1[26] = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\r\n                     10, 10};\r\n  int widths2[26] = {4, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,\r\n                     10, 10};\r\n  char *s1 = \"abcdefghijklmnopqrstuvwxyz\";\r\n  char *s2 = \"bbbcccdddaaa\";\r\n  int widths_size = 26;\r\n  int expected1[2] = {3, 60};\r\n  int expected2[2] = {2, 4};\r\n  TEST_NUMBER_OF_LINES(widths1, widths_size, s1, expected1, 2);\r\n  TEST_NUMBER_OF_LINES(widths2, widths_size, s2, expected2, 2);\r\n}\r\n\r\n\r\n#define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \\\r\n  do {                                                                      \\\r\n    TEST_MATRIX_BASE((input_data), (row_size));                             \\\r\n    int col_size_ = (col_size);                                             \\\r\n    EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_));       \\\r\n  } while (0)\r\n\r\nstatic void test_maximum_wealth() {\r\n  int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};\r\n  int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};\r\n  int accounts_array3[3][3] = {{2, 8, 7}, {7, 1, 3}, {1, 9, 5}};\r\n  TEST_MATRIX_INT(maximumWealth, accounts_array1, 2, 3, 6);\r\n  TEST_MATRIX_INT(maximumWealth, accounts_array2, 3, 3, 10);\r\n  TEST_MATRIX_INT(maximumWealth, accounts_array3, 3, 3, 17);\r\n}\r\n\r\nstatic void test_projection_area() {\r\n  int grid1[2][2] = {{1, 2}, {3, 4}};\r\n  int grid2[1][1] = {{2}};\r\n  int grid3[2][2] = {{1, 0}, {0, 2}};\r\n  TEST_MATRIX_INT(projectionArea, grid1, 2, 2, 17);\r\n  TEST_MATRIX_INT(projectionArea, grid2, 1, 1, 5);\r\n  TEST_MATRIX_INT(projectionArea, grid3, 2, 2, 8);\r\n}\r\n\r\nstatic void test_sort_array_by_parity() {\r\n  int nums1[4] = {3, 1, 2, 4};\r\n  int nums2[1] = {0};\r\n  int returnSize1 = 0;\r\n  int returnSize2 = 0;\r\n  int *expected1 = sortArrayByParity(nums1, 4, &returnSize1);\r\n  int *expected2 = sortArrayByParity(nums2, 1, &returnSize2);\r\n  EXPECT_EQ_ARRAY(expected1, 4, expected1, returnSize1)\r\n  EXPECT_EQ_ARRAY(expected2, 1, expected2, returnSize2)\r\n}\r\n\r\nstatic void test_find_the_winner() {\r\n  EXPECT_EQ_INT(3, findTheWinner(5, 2));\r\n  EXPECT_EQ_INT(1, findTheWinner(6, 5));\r\n}\r\n\r\nstatic void test_pivot_index() {\r\n  int nums1[5] = {2, 3, -1, 8, 4};\r\n  int nums2[3] = {1, -1, 4};\r\n  int nums3[2] = {2, 5};\r\n  EXPECT_EQ_INT(3, pivotIndex(nums1, 5));\r\n  EXPECT_EQ_INT(2, pivotIndex(nums2, 3));\r\n  EXPECT_EQ_INT(-1, pivotIndex(nums3, 2));\r\n}\r\n\r\nint main() {\r\n  test_two_sum();\r\n  test_remove_element();\r\n  test_search();\r\n  test_is_same_tree();\r\n  test_count_numbers_with_unique_digits();\r\n  test_lexical_order();\r\n  test_find_diagonal_order();\r\n  test_self_dividing_numbers();\r\n  test_next_greatest_letter();\r\n  test_unique_morse_representations();\r\n  test_number_of_lines();\r\n  test_maximum_wealth();\r\n  test_projection_area();\r\n  test_sort_array_by_parity();\r\n  test_find_the_winner();\r\n  test_pivot_index();\r\n  printf(\"%d/%d (%3.2f%%) passed\\n\", test_pass, test_count, test_pass * 100.0 / test_count);\r\n  return main_ret;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test.c b/src/test.c
+--- a/src/test.c	
++++ b/src/test.c	
+@@ -162,6 +162,14 @@
+   TEST_NUMBER_OF_LINES(widths2, widths_size, s2, expected2, 2);
+ }
+ 
++static void test_smallest_rangei() {
++  int nums1[1] = {1};
++  int nums2[2] = {0, 10};
++  int nums3[3] = {1, 3, 6};
++  EXPECT_EQ_INT(0, smallestRangeI(nums1, 1, 0));
++  EXPECT_EQ_INT(6, smallestRangeI(nums2, 2, 2));
++  EXPECT_EQ_INT(0, smallestRangeI(nums3, 3, 3));
++}
+ 
+ #define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
+   do {                                                                      \
+@@ -225,6 +233,7 @@
+   test_next_greatest_letter();
+   test_unique_morse_representations();
+   test_number_of_lines();
++  test_smallest_rangei();
+   test_maximum_wealth();
+   test_projection_area();
+   test_sort_array_by_parity();
