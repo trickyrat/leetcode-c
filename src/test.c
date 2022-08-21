@@ -289,13 +289,25 @@ static void test_string_matching() {
   EXPECT_EQ_STRING_ARRAY(expected3, 0, actual3, returnSize3);
 }
 
-static void test_busyStudent() {
+static void test_busy_student() {
   int startTimes1[3] = {1, 2, 3};
   int endTimes1[3] = {3, 2, 7};
   int startTimes2[1] = {4};
   int endTimes2[1] = {4};
   EXPECT_EQ_INT(busyStudent(startTimes1, 3, endTimes1, 3, 4), 1);
   EXPECT_EQ_INT(busyStudent(startTimes2, 1, endTimes2, 1, 4), 1);
+}
+
+static void test_is_prefix_of_word() {
+  char *sentence1 = "i love eating burger";
+  char *sentence2 = "this problem is an easy problem";
+  char *sentence3 = "i am tired";
+  char *searchWord1 = "burg";
+  char *searchWord2 = "pro";
+  char *searchWord3 = "you";
+  EXPECT_EQ_INT(4, isPrefixOfWord(sentence1, searchWord1));
+  EXPECT_EQ_INT(2, isPrefixOfWord(sentence2, searchWord2));
+  EXPECT_EQ_INT(-1, isPrefixOfWord(sentence3, searchWord3));
 }
 
 #define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
@@ -405,7 +417,8 @@ int main() {
   test_defanging_IPadd();
   test_min_subsequence();
   test_string_matching();
-  test_busyStudent();
+  test_busy_student();
+  test_is_prefix_of_word();
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();

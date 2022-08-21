@@ -56,7 +56,7 @@ void rotate(int **matrix, int matrixSize, int *matrixColSize);
  * @param nums2Size
  * @param n
  */
-void merge(int* nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
+void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
 
 /**
  * 100. Same Tree
@@ -197,7 +197,7 @@ bool isUnivalTree(TreeNode *root);
  * @param address
  * @return
  */
-char* defangIPaddr(char* address);
+char *defangIPaddr(char *address);
 
 /**
  * 1403. Minimum Subsequence in Non-Increasing Order
@@ -206,7 +206,7 @@ char* defangIPaddr(char* address);
  * @param returnSize
  * @return
  */
-int* minSubsequence(int* nums, int numsSize, int* returnSize);
+int *minSubsequence(int *nums, int numsSize, int *returnSize);
 
 /**
  * 1408. String Matching in an Array
@@ -215,7 +215,7 @@ int* minSubsequence(int* nums, int numsSize, int* returnSize);
  * @param returnSize
  * @return
  */
-char ** stringMatching(char ** words, int wordsSize, int* returnSize);
+char **stringMatching(char **words, int wordsSize, int *returnSize);
 
 /**
  * 1450. Number of Students Doing Homework at a Given Time
@@ -226,7 +226,15 @@ char ** stringMatching(char ** words, int wordsSize, int* returnSize);
  * @param queryTime
  * @return
  */
-int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize, int queryTime);
+int busyStudent(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime);
+
+/**
+ * 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
+ * @param sentence
+ * @param searchWord
+ * @return
+ */
+int isPrefixOfWord(char *sentence, char *searchWord);
 
 /**
  * 1672. Richest Customer Wealth

@@ -89,10 +89,10 @@ void rotate(int **matrix, int matrixSize, int *matrixColSize) {
   }
 }
 
-void merge(int* nums1, int nums1Size, int m, int *nums2, int nums2Size, int n) {
+void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n) {
   int p1 = m - 1, p2 = n - 1, tail = m + n - 1;
   int cur = 0;
-  while(p1 >= 0 || p2 >= 0) {
+  while (p1 >= 0 || p2 >= 0) {
     if (p1 == -1) {
       cur = nums2[p2--];
     } else if (p2 == -1) {
@@ -351,9 +351,9 @@ bool isUnivalTree(TreeNode *root) {
 char *defangIPaddr(char *address) {
   int len = strlen(address);
   int pos = 0;
-  char* res = (char*)malloc(sizeof(char)*(len + 7)); // [] [] []
+  char *res = (char *) malloc(sizeof(char) * (len + 7));// [] [] []
   for (int i = 0; i < len; ++i) {
-    if(address[i] == '.') {
+    if (address[i] == '.') {
       pos += sprintf(res + pos, "%s", "[.]");
     } else {
       res[pos++] = address[i];
@@ -364,21 +364,21 @@ char *defangIPaddr(char *address) {
 }
 
 static inline int cmp(const void *pa, const void *pb) {
-  return *(int*)pa - *(int*)pb;
+  return *(int *) pa - *(int *) pb;
 }
 
-int* minSubsequence(int* nums, int numsSize, int* returnSize) {
+int *minSubsequence(int *nums, int numsSize, int *returnSize) {
   int total = 0;
-  for(int i = 0; i < numsSize; ++i) {
+  for (int i = 0; i < numsSize; ++i) {
     total += nums[i];
   }
   qsort(nums, numsSize, sizeof(int), cmp);
-  int *ans = (int*) malloc(sizeof (int) * numsSize);
+  int *ans = (int *) malloc(sizeof(int) * numsSize);
   int curr = 0, pos = 0;
-  for(int i = numsSize - 1; i >= 0; --i) {
+  for (int i = numsSize - 1; i >= 0; --i) {
     curr += nums[i];
     ans[pos++] = nums[i];
-    if(total - curr < curr) {
+    if (total - curr < curr) {
       break;
     }
   }
@@ -387,11 +387,11 @@ int* minSubsequence(int* nums, int numsSize, int* returnSize) {
 }
 
 char **stringMatching(char **words, int wordsSize, int *returnSize) {
-  char** res = (char**) malloc(sizeof(char*)*wordsSize);
+  char **res = (char **) malloc(sizeof(char *) * wordsSize);
   int pos = 0;
-  for(int i = 0; i < wordsSize; ++i) {
-    for(int j = 0; j < wordsSize; ++j) {
-      if(i != j && strstr(words[j], words[i])) {
+  for (int i = 0; i < wordsSize; ++i) {
+    for (int j = 0; j < wordsSize; ++j) {
+      if (i != j && strstr(words[j], words[i])) {
         res[pos++] = words[i];
         break;
       }
@@ -401,7 +401,7 @@ char **stringMatching(char **words, int wordsSize, int *returnSize) {
   return res;
 }
 
-int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize, int queryTime) {
+int busyStudent(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime) {
   int res = 0;
   for (int i = 0; i < startTimeSize; ++i) {
     if (startTime[i] <= queryTime && queryTime <= endTime[i]) {
@@ -411,6 +411,31 @@ int busyStudent(int* startTime, int startTimeSize, int* endTime, int endTimeSize
   return res;
 }
 
+static bool isPrefix(const char *sentence, int start, int end, const char *searchWord) {
+  int len = strlen(searchWord);
+  for (int i = 0; i < len; ++i) {
+    if (start + i >= end || sentence[start + i] != searchWord[i]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+int isPrefixOfWord(char *sentence, char *searchWord) {
+  int n = strlen(sentence), index = 1, start = 0, end = 0;
+  while (start < n) {
+    while (end < n && sentence[end] != ' ') {
+      end++;
+    }
+    if (isPrefix(sentence, start, end, searchWord)) {
+      return index;
+    }
+    index++;
+    end++;
+    start = end;
+  }
+  return -1;
+}
 
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
   int maxWealth = 0;
