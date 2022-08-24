@@ -1,18 +1,14 @@
 //
 // Created by wangj on 2022-01-08.
 //
-
-#include "solution.h"
-#include "hashtable.h"
+#include <assert.h>
+#include <malloc.h>
 #include <stdio.h>
 #include <string.h>
 
-
-void swap(int *a, int *b) {
-  int tmp = *a;
-  *a = *b;
-  *b = tmp;
-}
+#include "solution.h"
+#include "hashtable.h"
+#include "utils.h"
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) > (b) ? (b) : (a))
@@ -363,16 +359,12 @@ char *defangIPaddr(char *address) {
   return res;
 }
 
-static inline int cmp(const void *pa, const void *pb) {
-  return *(int *) pa - *(int *) pb;
-}
-
 int *minSubsequence(int *nums, int numsSize, int *returnSize) {
   int total = 0;
   for (int i = 0; i < numsSize; ++i) {
     total += nums[i];
   }
-  qsort(nums, numsSize, sizeof(int), cmp);
+  qsort_s(nums, numsSize, sizeof(int), cmp_s, NULL);
   int *ans = (int *) malloc(sizeof(int) * numsSize);
   int curr = 0, pos = 0;
   for (int i = numsSize - 1; i >= 0; --i) {
@@ -435,6 +427,13 @@ int isPrefixOfWord(char *sentence, char *searchWord) {
     start = end;
   }
   return -1;
+}
+
+bool can_be_equal(int *target, int targetSize, int *arr, int arrSize) {
+  int descending = 0;
+  qsort_s(target, targetSize, sizeof(int) ,cmp_s, NULL);
+  qsort_s(arr, arrSize, sizeof(int), cmp_s, NULL);
+  return memcmp(target, arr, sizeof(int) * arrSize) == 0;
 }
 
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {

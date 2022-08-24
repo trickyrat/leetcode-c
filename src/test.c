@@ -310,6 +310,18 @@ static void test_is_prefix_of_word() {
   EXPECT_EQ_INT(-1, isPrefixOfWord(sentence3, searchWord3));
 }
 
+static void test_can_be_equal() {
+  int target1[] = {1, 2, 3, 4};
+  int target2[] = {7};
+  int target3[] = {3, 7, 9};
+  int arr1[] = {2, 1, 3, 4};
+  int arr2[] = {7};
+  int arr3[] = {3, 7, 11};
+  EXPECT_EQ_TRUE(can_be_equal(target1, 4, arr1, 4));
+  EXPECT_EQ_TRUE(can_be_equal(target2, 1, arr2, 1));
+  EXPECT_EQ_FALSE(can_be_equal(target3, 3, arr3, 3));
+}
+
 #define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
   do {                                                                      \
     TEST_MATRIX_BASE((input_data), (row_size));                             \
@@ -419,6 +431,7 @@ int main() {
   test_string_matching();
   test_busy_student();
   test_is_prefix_of_word();
+  test_can_be_equal();
   test_maximum_wealth();
   test_projection_area();
   test_sort_array_by_parity();

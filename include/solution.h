@@ -1,12 +1,10 @@
 //
-// Created by wangj on 2022-01-08.
+// Created by trcikyrat on 2022-01-08.
 //
 
 #ifndef LEETCODEC_SOLUTION_H
 #define LEETCODEC_SOLUTION_H
 
-#include <assert.h>
-#include <malloc.h>
 #include <stdbool.h>
 
 #include "datastructures.h"
@@ -235,6 +233,16 @@ int busyStudent(int *startTime, int startTimeSize, int *endTime, int endTimeSize
  * @return
  */
 int isPrefixOfWord(char *sentence, char *searchWord);
+
+/**
+ * 1460. Make Two Arrays Equal by Reversing Sub-arrays
+ * @param target
+ * @param targetSize
+ * @param arr
+ * @param arrSize
+ * @return
+ */
+bool can_be_equal(int* target, int targetSize, int* arr, int arrSize);
 
 /**
  * 1672. Richest Customer Wealth
