@@ -133,8 +133,8 @@ static void test_find_closest_elements() {
     int arr2[] = {1, 2, 3, 4, 5};
     int returnSize1 = 0;
     int returnSize2 = 0;
-    int expect1[] = {1,2,3,4};
-    int expect2[] = {1,2,3,4};
+    int expect1[] = {1, 2, 3, 4};
+    int expect2[] = {1, 2, 3, 4};
     int *actual1 = find_closest_elements(arr1, 5, 4, 3, &returnSize1);
     int *actual2 = find_closest_elements(arr2, 5, 4, -1, &returnSize2);
     EXPECT_EQ_INT_ARRAY(expect1, 4, actual1, returnSize1);
@@ -265,6 +265,15 @@ static void test_can_be_equal() {
     EXPECT_EQ_FALSE(can_be_equal(target3, 3, arr3, 3));
 }
 
+static void test_max_product() {
+    int nums1[] = {3, 4, 5, 2};
+    int nums2[] = {1, 5, 4, 5};
+    int nums3[] = {3, 7};
+    EXPECT_EQ_INT(12, max_product(nums1, 4));
+    EXPECT_EQ_INT(16, max_product(nums2, 4));
+    EXPECT_EQ_INT(12, max_product(nums3, 2));
+}
+
 static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -369,6 +378,7 @@ int main() {
     test_busy_student();
     test_is_prefix_of_word();
     test_can_be_equal();
+    test_max_product();
     test_maximum_wealth();
     test_projection_area();
     test_sort_array_by_parity();

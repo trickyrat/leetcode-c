@@ -455,6 +455,24 @@ bool can_be_equal(int *target, int targetSize, int *arr, int arrSize) {
     return memcmp(target, arr, sizeof(int) * arrSize) == 0;
 }
 
+int max_product(int* nums, int numsSize) {
+    int a = nums[0], b = nums[1];
+    if (a < b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+    for(int i = 2; i < numsSize; i++) {
+        if (nums[i] > a) {
+            b = a;
+            a = nums[i];
+        } else if (nums[i] > b) {
+            b = nums[i];
+        }
+    }
+    return (a - 1) * (b - 1);
+}
+
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {

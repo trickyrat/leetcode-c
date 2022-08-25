@@ -256,6 +256,14 @@ int isPrefixOfWord(char *sentence, char *searchWord);
 bool can_be_equal(int* target, int targetSize, int* arr, int arrSize);
 
 /**
+ * 1464. Maximum Product of Two Elements in an Array
+ * @param nums
+ * @param numsSize
+ * @return
+ */
+int max_product(int* nums, int numsSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize
