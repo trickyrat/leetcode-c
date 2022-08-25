@@ -104,6 +104,17 @@ int findSubstringInWraparoundString(char *p);
 int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize);
 
 /**
+ * 658. Find K Closest Elements
+ * @param arr
+ * @param arrSize
+ * @param k
+ * @param x
+ * @param returnSize
+ * @return
+ */
+int *find_closest_elements(int* arr, int arrSize, int k, int x, int *returnSize);
+
+/**
  * 728.Self Dividing Numbers
  * @param left
  * @param right
