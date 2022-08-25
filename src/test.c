@@ -1,3 +1,4 @@
+#include "assertions.h"
 #include "recentcounter.h"
 #include "solution.h"
 
@@ -9,66 +10,13 @@ static int main_ret = 0;
 static int test_count = 0;
 static int test_pass = 0;
 
-#define EXPECT_EQ_BASE(equality, expect, actual, format)                \
-  do {                                                                  \
-    test_count++;                                                       \
-    if (equality) {                                                     \
-      test_pass++;                                                      \
-    } else {                                                            \
-      fprintf(stderr, "%s:%d: expect: " format " actual: " format "\n", \
-              __FILE__, __LINE__, expect, actual);                      \
-    }                                                                   \
-  } while (0)
-
-#define EXPECT_EQ_INT(expect, actual) \
-  EXPECT_EQ_BASE((expect) == (actual), expect, actual, "%d")
-
-#define EXPECT_EQ_CHAR(expect, actual) \
-  EXPECT_EQ_BASE((expect) == (actual), expect, actual, "%c")
-
-#define EXPECT_EQ_TRUE(actual) \
-  EXPECT_EQ_BASE(1 == (actual), 1, actual, "%d")
-
-#define EXPECT_EQ_FALSE(actual) \
-  EXPECT_EQ_BASE(0 == (actual), 0, actual, "%d")
-
-#define EXPECT_EQ_STRING(expect, actual, length)              \
-  EXPECT_EQ_BASE(sizeof(expect) - 1 == (length) &&            \
-                         memcmp(expect, actual, length) == 0, \
-                 expect, actual, "%s")
-
-#define EXPECT_EQ_ARRAY(expect, expectedSize, actual, actualSize) \
-  EXPECT_EQ_INT(expectedSize, actualSize);                        \
-  for (int i = 0; i < (expectedSize); ++i) {                      \
-    EXPECT_EQ_INT((expect)[i], (actual)[i]);                      \
-  }
-
-#define EXPECT_EQ_STRING_ARRAY(expect, expectedSize, actual, actualSize) \
-  EXPECT_EQ_INT(expectedSize, actualSize);                               \
-  for (int i = 0; i < (expectedSize); ++i) {                             \
-    int len = sizeof(*(actual)[i]) - 1;                                  \
-    EXPECT_EQ_STRING(*(expect)[i], *(actual)[i], len);                   \
-  }
-
-#define TEST_MATRIX_BASE(input_data, row_size) \
-  int *mat[(row_size)];                        \
-  for (int i = 0; i < (row_size); ++i) {       \
-    mat[i] = (input_data)[i];                  \
-  }
-
-#define EXPECT_EQ_MATRIX(expected, expectedRowSize, actual, actualRowSize)           \
-  EXPECT_EQ_INT((expectedRowSize), (actualRowSize));                                 \
-  for (int i = 0; i < (actualRowSize); ++i) {                                        \
-    EXPECT_EQ_ARRAY((expected)[i], (expectedRowSize), (actual)[i], (actualRowSize)); \
-  }
-
 static void test_two_sum() {
   int nums[4] = {2, 7, 11, 15};
   int actualReturnSize = 0;
   int *actual = twoSum(nums, 4, 9, &actualReturnSize);
   int expect[2] = {0, 1};
   int expectedReturnSize = 2;
-  EXPECT_EQ_ARRAY(expect, expectedReturnSize, actual, actualReturnSize)
+  EXPECT_EQ_INT_ARRAY(expect, expectedReturnSize, actual, actualReturnSize);
 }
 
 static void test_remove_element() {
@@ -83,15 +31,13 @@ static void test_search() {
   EXPECT_EQ_INT(4, search(nums, 7, 0));
 }
 
-
 #define TEST_ROTATE(input_data, row_size, col_size, expected, expected_row_size) \
-  do {                                                                           \
-    TEST_MATRIX_BASE(input_data, row_size);                                      \
-    int col = col_size;                                                          \
-    rotate(mat, (row_size), &col);                                               \
+  do {                                                                                   \
+    TEST_MATRIX_BASE(input_data, row_size);                                              \
+    int col = col_size;                                                                  \
+    rotate(mat, (row_size), &col);                                                       \
     EXPECT_EQ_MATRIX((expected), (expected_row_size), (mat), (row_size));        \
   } while (0)
-
 
 static void test_rotate() {
   int matrix1[3][3] = {{1, 2, 3},
@@ -108,7 +54,6 @@ static void test_rotate() {
                          {14, 3, 4, 1},
                          {12, 6, 8, 9},
                          {16, 7, 10, 11}};
-  int matrixColSize1 = 3;
   TEST_ROTATE(matrix1, 3, 3, expected1, 3);
   TEST_ROTATE(matrix2, 4, 4, expected2, 4);
 }
@@ -118,19 +63,19 @@ static void test_merge() {
   int nums2[3] = {2, 5, 6};
   merge(actual1, 6, 3, nums2, 3, 3);
   int expected1[6] = {1, 2, 2, 3, 5, 6};
-  EXPECT_EQ_ARRAY(expected1, 6, actual1, 6);
+  EXPECT_EQ_INT_ARRAY(expected1, 6, actual1, 6);
 
   int actual2[1] = {1};
   int nums3[1];
   merge(actual2, 1, 1, nums3, 0, 0);
   int expected2[1] = {1};
-  EXPECT_EQ_ARRAY(expected2, 1, actual2, 1);
+  EXPECT_EQ_INT_ARRAY(expected2, 1, actual2, 1);
 
   int actual3[1] = {0};
   int nums4[1] = {1};
   merge(actual3, 0, 0, nums4, 1, 1);
   int expected3[1] = {1};
-  EXPECT_EQ_ARRAY(expected3, 1, actual3, 1);
+  EXPECT_EQ_INT_ARRAY(expected3, 1, actual3, 1);
 };
 
 static void test_is_same_tree() {
@@ -155,12 +100,12 @@ static void test_lexical_order() {
   int expect1[13] = {1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9};
   int returnSize1 = 0;
   int *actual1 = lexicalOrder(13, &returnSize1);
-  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1)
+  EXPECT_EQ_INT_ARRAY(expect1, 13, actual1, returnSize1);
 
   int expect2[2] = {1, 2};
   int returnSize2 = 0;
   int *actual2 = lexicalOrder(2, &returnSize2);
-  EXPECT_EQ_ARRAY(expect2, 2, actual2, returnSize2);
+  EXPECT_EQ_INT_ARRAY(expect2, 2, actual2, returnSize2);
 }
 
 static void test_find_substring_in_wraparoundString() {
@@ -169,14 +114,6 @@ static void test_find_substring_in_wraparoundString() {
   EXPECT_EQ_INT(6, findSubstringInWraparoundString("zab"));
 }
 
-#define TEST_FIND_DIAGONAL_ORDER(input_data, row_size, col_size, expected, expected_size) \
-  do {                                                                                    \
-    TEST_MATRIX_BASE(input_data, row_size);                                               \
-    int return_size = 0;                                                                  \
-    int col = col_size;                                                                   \
-    int *actual = findDiagonalOrder(mat, (row_size), &col, &return_size);                 \
-    EXPECT_EQ_ARRAY(expected, expected_size, actual, return_size);                        \
-  } while (0)
 
 static void test_find_diagonal_order() {
   int matrix1[3][3] = {{1, 2, 3},
@@ -195,7 +132,7 @@ static void test_self_dividing_numbers() {
   int returnSize1 = 0;
   int *actual1 = selfDividingNumbers(1, 22, &returnSize1);
   int expect1[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};
-  EXPECT_EQ_ARRAY(expect1, 13, actual1, returnSize1)
+  EXPECT_EQ_INT_ARRAY(expect1, 13, actual1, returnSize1);
 }
 
 static void test_next_greatest_letter() {
@@ -211,13 +148,6 @@ static void test_unique_morse_representations() {
   EXPECT_EQ_INT(2, uniqueMorseRepresentations(words1, 4));
   EXPECT_EQ_INT(1, uniqueMorseRepresentations(words2, 1));
 }
-
-#define TEST_NUMBER_OF_LINES(widths, widths_size, s, expected, expected_size) \
-  do {                                                                        \
-    int return_size = 0;                                                      \
-    int *ans = numberOfLines((widths), (widths_size), (s), &(return_size));   \
-    EXPECT_EQ_ARRAY(expected, (expected_size), ans, (return_size));           \
-  } while (0)
 
 static void test_number_of_lines() {
   int widths1[26] = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10,
@@ -249,8 +179,8 @@ static void test_defanging_IPadd() {
   char *actual1 = defangIPaddr("1.1.1.1");
   char *actual2 = defangIPaddr("255.100.50.0");
 
-  EXPECT_EQ_STRING("1[.]1[.]1[.]1", actual1, 13);
-  EXPECT_EQ_STRING("255[.]100[.]50[.]0", actual2, 18);
+  EXPECT_EQ_STRING("1[.]1[.]1[.]1", actual1, strlen(actual1));
+  EXPECT_EQ_STRING("255[.]100[.]50[.]0", actual2, strlen(actual2));
 }
 
 static void test_min_subsequence() {
@@ -266,9 +196,9 @@ static void test_min_subsequence() {
   int *actual1 = minSubsequence(input1, 5, &returnSize1);
   int *actual2 = minSubsequence(input2, 5, &returnSize2);
   int *actual3 = minSubsequence(input3, 1, &returnSize3);
-  EXPECT_EQ_ARRAY(expected1, 2, actual1, returnSize1);
-  EXPECT_EQ_ARRAY(expected2, 3, actual2, returnSize2);
-  EXPECT_EQ_ARRAY(expected3, 1, actual3, returnSize3);
+  EXPECT_EQ_INT_ARRAY(expected1, 2, actual1, returnSize1);
+  EXPECT_EQ_INT_ARRAY(expected2, 3, actual2, returnSize2);
+  EXPECT_EQ_INT_ARRAY(expected3, 1, actual3, returnSize3);
 }
 
 static void test_string_matching() {
@@ -322,13 +252,6 @@ static void test_can_be_equal() {
   EXPECT_EQ_FALSE(can_be_equal(target3, 3, arr3, 3));
 }
 
-#define TEST_MATRIX_INT(function, input_data, row_size, col_size, expected) \
-  do {                                                                      \
-    TEST_MATRIX_BASE((input_data), (row_size));                             \
-    int col_size_ = (col_size);                                             \
-    EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_));       \
-  } while (0)
-
 static void test_maximum_wealth() {
   int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
   int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -356,8 +279,8 @@ static void test_sort_array_by_parity() {
   int expected2[1] = {0};
   int *actual1 = sortArrayByParity(nums1, 4, &returnSize1);
   int *actual2 = sortArrayByParity(nums2, 1, &returnSize2);
-  EXPECT_EQ_ARRAY(expected1, 4, actual1, returnSize1)
-  EXPECT_EQ_ARRAY(expected2, 1, actual2, returnSize2)
+  EXPECT_EQ_INT_ARRAY(expected1, 4, actual1, returnSize1);
+  EXPECT_EQ_INT_ARRAY(expected2, 1, actual2, returnSize2);
 }
 
 static void test_di_string_match() {
@@ -373,9 +296,9 @@ static void test_di_string_match() {
   int *actual1 = diStringMatch(s1, &returnSize1);
   int *actual2 = diStringMatch(s2, &returnSize2);
   int *actual3 = diStringMatch(s3, &returnSize3);
-  EXPECT_EQ_ARRAY(expected1, 5, actual1, returnSize1);
-  EXPECT_EQ_ARRAY(expected2, 4, actual2, returnSize2);
-  EXPECT_EQ_ARRAY(expected3, 4, actual3, returnSize3);
+  EXPECT_EQ_INT_ARRAY(expected1, 5, actual1, returnSize1);
+  EXPECT_EQ_INT_ARRAY(expected2, 4, actual2, returnSize2);
+  EXPECT_EQ_INT_ARRAY(expected3, 4, actual3, returnSize3);
 }
 
 static void test_min_deletion_size() {
