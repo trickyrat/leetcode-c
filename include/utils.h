@@ -5,6 +5,9 @@
 #ifndef LEETCODEC_UTILS_H
 #define LEETCODEC_UTILS_H
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) > (b) ? (b) : (a))
+
 inline int cmp(const void *pa, const void *pb) {
   return *(int *) pa - *(int *) pb;
 }
@@ -27,7 +30,6 @@ void swap(int *a, int *b) {
   *a = *b;
   *b = tmp;
 }
-
 
 int binary_search(const int* arr, int arrSize, int x) {
     int low = 0, high = arrSize - 1;

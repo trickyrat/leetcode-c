@@ -115,6 +115,13 @@ int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize)
 int *find_closest_elements(int* arr, int arrSize, int k, int x, int *returnSize);
 
 /**
+ * 662. Maximum Width of Binary Tree
+ * @param root
+ * @return
+ */
+int width_of_binary_tree(struct TreeNode* root);
+
+/**
  * 728.Self Dividing Numbers
  * @param left
  * @param right

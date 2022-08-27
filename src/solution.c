@@ -10,9 +10,6 @@
 #include "solution.h"
 #include "utils.h"
 
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
-#define MIN(a, b) ((a) > (b) ? (b) : (a))
-
 int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
     hashTable = NULL;
     for (int i = 0; i < numsSize; i++) {
@@ -225,6 +222,37 @@ int *find_closest_elements(int *arr, int arrSize, int k, int x, int *returnSize)
     int *res = (int *) malloc(sizeof(int) * size);
     memcpy(res, arr + left + 1, sizeof(int) * size);
     *returnSize = size;
+    return res;
+}
+
+int width_of_binary_tree(struct TreeNode *root) {
+    unsigned long long res = 1;
+    Pair *arr = (Pair*) malloc(sizeof (Pair) * MAX_NODE_SIZE);
+    Pair *tmp = (Pair*) malloc(sizeof (Pair) * MAX_NODE_SIZE);
+    int arr_size = 0, tmp_size = 0;
+    arr[arr_size].node = root;
+    arr[arr_size].index = 1LL;
+    arr_size++;
+    while(arr_size > 0) {
+        tmp_size = 0;
+        for(int i = 0; i < arr_size; ++i) {
+            if(arr[i].node->left) {
+                tmp[tmp_size].node = arr[i].node->left;
+                tmp[tmp_size].index = arr[i].index * 2;
+                tmp_size++;
+            }
+            if(arr[i].node->right) {
+                tmp[tmp_size].node = arr[i].node->right;
+                tmp[tmp_size].index = arr[i].index * 2 + 1;
+                tmp_size++;
+            }
+        }
+        res = MAX(res, arr[arr_size - 1].index - arr[0].index + 1);
+        arr_size = tmp_size;
+        Pair *p = arr;
+        arr = tmp;
+        tmp = p;
+    }
     return res;
 }
 

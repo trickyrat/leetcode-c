@@ -141,6 +141,10 @@ static void test_find_closest_elements() {
     EXPECT_EQ_INT_ARRAY(expect2, 4, actual2, returnSize2);
 }
 
+static void test_width_of_binary_tree() {
+
+}
+
 static void test_self_dividing_numbers() {
     int returnSize1 = 0;
     int *actual1 = selfDividingNumbers(1, 22, &returnSize1);
