@@ -159,6 +159,12 @@ static void test_next_greatest_letter() {
     EXPECT_EQ_CHAR('f', nextGreatestLetter(letters, 3, 'c'));
 }
 
+static void test_preimage_size_fzf() {
+    EXPECT_EQ_INT(5, preimage_size_fzf(0));
+    EXPECT_EQ_INT(0, preimage_size_fzf(5));
+    EXPECT_EQ_INT(5, preimage_size_fzf(3));
+}
+
 static void test_unique_morse_representations() {
     char *words1[] = {"gin", "zen", "gig", "msg"};
     char *words2[] = {"a"};
@@ -373,6 +379,7 @@ int main() {
     test_find_closest_elements();
     test_self_dividing_numbers();
     test_next_greatest_letter();
+    test_preimage_size_fzf();
     test_unique_morse_representations();
     test_number_of_lines();
     test_is_alien_sorted();

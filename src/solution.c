@@ -296,6 +296,32 @@ char nextGreatestLetter(char *letters, int lettersSize, char target) {
     return letters[low];
 }
 
+static long long zeta(long x) {
+    long long res = 0;
+    while(x != 0) {
+        res += x / 5;
+        x /= 5;
+    }
+    return res;
+}
+
+static long long nx(int k) {
+    long long left = 0, right = 5LL * k;
+    while (left <= right) {
+        long mid = (left + right) / 2;
+        if (zeta(mid) < k) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+    return right + 1;
+}
+
+int preimage_size_fzf(int k) {
+    return nx(k + 1) - nx(k);
+}
+
 int uniqueMorseRepresentations(char **words, int wordsSize) {
     const char *MORSE[26] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
                              "....", "..", ".---", "-.-", ".-..", "--", "-.",

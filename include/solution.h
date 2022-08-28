@@ -140,6 +140,13 @@ int *selfDividingNumbers(int left, int right, int *returnSize);
 char nextGreatestLetter(char *letters, int letterSize, char target);
 
 /**
+ * 793. Preimage Size of Factorial Zeroes Function
+ * @param k
+ * @return
+ */
+int preimage_size_fzf(int k);
+
+/**
  * 804. Unique Morse Code Words
  * @param words
  * @param wordsSize
