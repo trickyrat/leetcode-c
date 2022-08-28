@@ -1,10 +1,1 @@
-#cmake-build-debug/
-out/
-CMakeFiles/
-cmake-build*/
 build/
-.idea/
-.vscode/
-.vs/
-bin/
-lib/

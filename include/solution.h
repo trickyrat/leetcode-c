@@ -1,12 +1,10 @@
 //
-// Created by wangj on 2022-01-08.
+// Created by trcikyrat on 2022-01-08.
 //
 
 #ifndef LEETCODEC_SOLUTION_H
 #define LEETCODEC_SOLUTION_H
 
-#include <assert.h>
-#include <malloc.h>
 #include <stdbool.h>
 
 #include "datastructures.h"
@@ -56,7 +54,7 @@ void rotate(int **matrix, int matrixSize, int *matrixColSize);
  * @param nums2Size
  * @param n
  */
-void merge(int* nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
+void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
 
 /**
  * 100. Same Tree
@@ -106,6 +104,24 @@ int findSubstringInWraparoundString(char *p);
 int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize);
 
 /**
+ * 658. Find K Closest Elements
+ * @param arr
+ * @param arrSize
+ * @param k
+ * @param x
+ * @param returnSize
+ * @return
+ */
+int *find_closest_elements(int* arr, int arrSize, int k, int x, int *returnSize);
+
+/**
+ * 662. Maximum Width of Binary Tree
+ * @param root
+ * @return
+ */
+int width_of_binary_tree(struct TreeNode* root);
+
+/**
  * 728.Self Dividing Numbers
  * @param left
  * @param right
@@ -122,6 +138,13 @@ int *selfDividingNumbers(int left, int right, int *returnSize);
  * @return
  */
 char nextGreatestLetter(char *letters, int letterSize, char target);
+
+/**
+ * 793. Preimage Size of Factorial Zeroes Function
+ * @param k
+ * @return
+ */
+int preimage_size_fzf(int k);
 
 /**
  * 804. Unique Morse Code Words
@@ -197,7 +220,7 @@ bool isUnivalTree(TreeNode *root);
  * @param address
  * @return
  */
-char* defangIPaddr(char* address);
+char *defangIPaddr(char *address);
 
 /**
  * 1403. Minimum Subsequence in Non-Increasing Order
@@ -206,7 +229,7 @@ char* defangIPaddr(char* address);
  * @param returnSize
  * @return
  */
-int* minSubsequence(int* nums, int numsSize, int* returnSize);
+int *minSubsequence(int *nums, int numsSize, int *returnSize);
 
 /**
  * 1408. String Matching in an Array
@@ -215,7 +238,44 @@ int* minSubsequence(int* nums, int numsSize, int* returnSize);
  * @param returnSize
  * @return
  */
-char ** stringMatching(char ** words, int wordsSize, int* returnSize);
+char **stringMatching(char **words, int wordsSize, int *returnSize);
+
+/**
+ * 1450. Number of Students Doing Homework at a Given Time
+ * @param startTime
+ * @param startTimeSize
+ * @param endTime
+ * @param endTimeSize
+ * @param queryTime
+ * @return
+ */
+int busyStudent(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime);
+
+/**
+ * 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
+ * @param sentence
+ * @param searchWord
+ * @return
+ */
+int isPrefixOfWord(char *sentence, char *searchWord);
+
+/**
+ * 1460. Make Two Arrays Equal by Reversing Sub-arrays
+ * @param target
+ * @param targetSize
+ * @param arr
+ * @param arrSize
+ * @return
+ */
+bool can_be_equal(int* target, int targetSize, int* arr, int arrSize);
+
+/**
+ * 1464. Maximum Product of Two Elements in an Array
+ * @param nums
+ * @param numsSize
+ * @return
+ */
+int max_product(int* nums, int numsSize);
 
 /**
  * 1672. Richest Customer Wealth

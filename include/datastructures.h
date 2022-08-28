@@ -5,6 +5,7 @@
 #ifndef DATA_STRUCTURES_H__
 #define DATA_STRUCTURES_H__
 
+#define MAX_NODE_SIZE 3000
 
 typedef struct ListNode {
     int val;
@@ -16,5 +17,10 @@ typedef struct TreeNode {
     struct TreeNode *left;
     struct TreeNode *right;
 }TreeNode;
+
+typedef struct {
+    struct TreeNode *node;
+    unsigned long long index;
+} Pair;
 
 #endif //DATA_STRUCTURES_H__
