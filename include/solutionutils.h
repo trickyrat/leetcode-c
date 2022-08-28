@@ -1,9 +1,9 @@
 //
-// Created by wangj on 8/24/2022.
+// Created by wangj on 2022/8/29.
 //
 
-#ifndef LEETCODEC_UTILS_H
-#define LEETCODEC_UTILS_H
+#ifndef LEETCODEC_SOLUTIONUTILS_H
+#define LEETCODEC_SOLUTIONUTILS_H
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) > (b) ? (b) : (a))
@@ -44,4 +44,4 @@ int binary_search(const int* arr, int arrSize, int x) {
     return low;
 }
 
-#endif//LEETCODEC_UTILS_H
+#endif//LEETCODEC_SOLUTIONUTILS_H

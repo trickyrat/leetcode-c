@@ -90,4 +90,8 @@
         EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_));   \
     } while (0)
 
+#define TEST_EQ_MATRIX(expected, expectedColSize, actual, actualColSize) \
+
+
+
 #endif//LEETCODEC_ASSERTIONS_H

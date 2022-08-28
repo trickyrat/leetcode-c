@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "hashtable.h"
 #include "solution.h"
-#include "utils.h"
+#include "solutionutils.h"
+#include "hashtable.h"
 
 int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
     hashTable = NULL;

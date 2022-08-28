@@ -9,9 +9,6 @@
 
 #include "datastructures.h"
 
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
-#define MIN(a, b) ((a) > (b) ? (b) : (a))
-
 /**
  *  1.Two Sum
  * @param nums
