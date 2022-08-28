@@ -142,7 +142,6 @@ static void test_find_closest_elements() {
 }
 
 static void test_width_of_binary_tree() {
-
 }
 
 static void test_self_dividing_numbers() {
@@ -293,6 +292,24 @@ static void test_maximum_wealth() {
     TEST_MATRIX_INT(maximumWealth, accounts_array3, 3, 3, 17);
 }
 
+static void test_shuffle() {
+    int nums1[] = {2, 5, 1, 3, 4, 7};
+    int nums2[] = {1, 2, 3, 4, 4, 3, 2, 1};
+    int nums3[] = {1, 1, 2, 2};
+    int expected1[] = {2, 3, 5, 4, 1, 7};
+    int expected2[] = {1, 4, 2, 3, 3, 2, 4, 1};
+    int expected3[] = {1, 2, 1, 2};
+    int returnSize1 = 0;
+    int returnSize2 = 0;
+    int returnSize3 = 0;
+    int *actual1 = shuffle(nums1, 6, 3, &returnSize1);
+    int *actual2 = shuffle(nums2, 8, 4, &returnSize2);
+    int *actual3 = shuffle(nums3, 4, 2, &returnSize3);
+    EXPECT_EQ_INT_ARRAY(expected1, 6, actual1, returnSize1);
+    EXPECT_EQ_INT_ARRAY(expected2, 8, actual2, returnSize2);
+    EXPECT_EQ_INT_ARRAY(expected3, 4, actual3, returnSize3);
+}
+
 static void test_projection_area() {
     int grid1[2][2] = {{1, 2}, {3, 4}};
     int grid2[1][1] = {{2}};
@@ -390,6 +407,7 @@ int main() {
     test_is_prefix_of_word();
     test_can_be_equal();
     test_max_product();
+    test_shuffle();
     test_maximum_wealth();
     test_projection_area();
     test_sort_array_by_parity();

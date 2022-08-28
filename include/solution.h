@@ -287,6 +287,15 @@ int max_product(int* nums, int numsSize);
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize);
 
 /**
+ * 1470. Shuffle the Array
+ * @param nums
+ * @param numsSize
+ * @param n
+ * @return
+ */
+int* shuffle(int* nums, int numsSize, int n, int* returnSize);
+
+/**
  * 1823. Find the Winner of the Circular Game
  * @param n
  * @param k
