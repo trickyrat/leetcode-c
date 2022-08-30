@@ -213,6 +213,14 @@ bool isAlienSorted(char **words, int wordsSize, char *order);
 bool isUnivalTree(TreeNode *root);
 
 /**
+ * 998. Maximum Binary Tree II
+ * @param root
+ * @param val
+ * @return
+ */
+struct TreeNode* insertIntoMaxTree(struct TreeNode* root, int val);
+
+/**
  * 1108. Defanging an IP Address
  * @param address
  * @return

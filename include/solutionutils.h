@@ -44,4 +44,11 @@ int binary_search(const int* arr, int arrSize, int x) {
     return low;
 }
 
+struct TreeNode* createTreeNode(int val, const struct TreeNode *left, const struct TreeNode *right) {
+    struct TreeNode* node = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+    node->val = val;
+    node->left = left;
+    node->right = right;
+    return node;
+}
 #endif//LEETCODEC_SOLUTIONUTILS_H

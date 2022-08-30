@@ -417,6 +417,26 @@ bool isUnivalTree(TreeNode *root) {
     return true;
 }
 
+struct TreeNode* insertIntoMaxTree(struct TreeNode* root, int val) {
+    struct TreeNode *parent = NULL;
+    struct TreeNode *curr = root;
+    struct TreeNode *node = NULL;
+    while (curr) {
+        if (val > curr->val) {
+            if (!parent) {
+                return createTreeNode(val, root, NULL);
+            }
+            parent->right = createTreeNode(val, curr, NULL);
+            return root;
+        } else {
+            parent = curr;
+            curr = curr->right;
+        }
+    }
+    parent->right = createTreeNode(val, NULL, NULL);
+    return root;
+}
+
 char *defangIPaddr(char *address) {
     int len = strlen(address);
     int pos = 0;
