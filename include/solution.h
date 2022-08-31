@@ -272,7 +272,7 @@ int busyStudent(int *startTime, int startTimeSize, int *endTime, int endTimeSize
  * @param searchWord
  * @return
  */
-int isPrefixOfWord(char *sentence, char *searchWord);
+int is_prefix_of_word(char *sentence, char *searchWord);
 
 /**
  * 1460. Make Two Arrays Equal by Reversing Sub-arrays
@@ -293,15 +293,6 @@ bool can_be_equal(int* target, int targetSize, int* arr, int arrSize);
 int max_product(int* nums, int numsSize);
 
 /**
- * 1672. Richest Customer Wealth
- * @param accounts
- * @param accountsSize
- * @param accountsColSize
- * @return
- */
-int maximumWealth(int **accounts, int accountsSize, int *accountsColSize);
-
-/**
  * 1470. Shuffle the Array
  * @param nums
  * @param numsSize
@@ -309,6 +300,24 @@ int maximumWealth(int **accounts, int accountsSize, int *accountsColSize);
  * @return
  */
 int* shuffle(int* nums, int numsSize, int n, int* returnSize);
+
+/**
+ * 1475. Final Prices With a Special Discount in a Shop
+ * @param prices
+ * @param pricesSize
+ * @param returnSize
+ * @return
+ */
+int* final_prices(int* prices, int pricesSize, int* returnSize);
+
+/**
+ * 1672. Richest Customer Wealth
+ * @param accounts
+ * @param accountsSize
+ * @param accountsColSize
+ * @return
+ */
+int maximumWealth(int **accounts, int accountsSize, int *accountsColSize);
 
 /**
  * 1823. Find the Winner of the Circular Game

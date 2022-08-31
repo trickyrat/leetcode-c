@@ -370,6 +370,82 @@ int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize) {
     return ans;
 }
 
+int projectionArea(int **grid, int gridSize, int *gridColSize) {
+    int xyArea = 0, yzArea = 0, zxArea = 0;
+    for (int i = 0; i < gridSize; ++i) {
+        int yzHeight = 0, zxHeight = 0;
+        for (int j = 0; j < gridSize; ++j) {
+            xyArea += grid[i][j] > 0 ? 1 : 0;
+            yzHeight = MAX(yzHeight, grid[j][i]);
+            zxHeight = MAX(zxHeight, grid[i][j]);
+        }
+        yzArea += yzHeight;
+        zxArea += zxHeight;
+    }
+    return xyArea + yzArea + zxArea;
+}
+
+int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
+    int left = 0, right = numsSize - 1;
+    while (left < right) {
+        while (left < right && nums[left] % 2 == 0) {
+            left++;
+        }
+        while (left < right && nums[right] % 2 == 1) {
+            right--;
+        }
+        if (left < right) {
+            int temp = nums[left];
+            nums[left] = nums[right];
+            nums[right] = temp;
+            left++;
+            right--;
+        }
+    }
+    *returnSize = numsSize;
+    return nums;
+}
+
+int *diStringMatch(char *s, int *returnSize) {
+    int n = strlen(s), lo = 0, hi = n;
+    int *perm = (int *) malloc(sizeof(int) * (n + 1));
+    for (int i = 0; i < n; ++i) {
+        perm[i] = s[i] == 'I' ? lo++ : hi--;
+    }
+    perm[n] = lo;
+    *returnSize = n + 1;
+    return perm;
+}
+
+int minDeletionSize(char **strs, int strsSize) {
+    int row = strsSize;
+    int col = strlen(strs[0]);
+    int ans = 0;
+    for (int j = 0; j < col; ++j) {
+        for (int i = 1; i < row; ++i) {
+            if (strs[i - 1][j] > strs[i][j]) {
+                ans++;
+                break;
+            }
+        }
+    }
+    return ans;
+}
+
+bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int poppedSize) {
+    int *stack = (int *) malloc(sizeof(int) * pushedSize);
+    int top = 0;
+    for (int i = 0, j = 0; i < pushedSize; ++i) {
+        stack[top++] = pushed[i];
+        while (top > 0 && stack[top - 1] == popped[j]) {
+            top--;
+            j++;
+        }
+    }
+    free(stack);
+    return top == 0;
+}
+
 bool isAlienSorted(char **words, int wordsSize, char *order) {
     int index[26];
     for (int i = 0; i < strlen(order); ++i) {
@@ -496,7 +572,7 @@ int busyStudent(int *startTime, int startTimeSize, int *endTime, int endTimeSize
     return res;
 }
 
-static bool isPrefix(const char *sentence, int start, int end, const char *searchWord) {
+static bool is_prefix(const char *sentence, int start, int end, const char *searchWord) {
     int len = strlen(searchWord);
     for (int i = 0; i < len; ++i) {
         if (start + i >= end || sentence[start + i] != searchWord[i]) {
@@ -506,13 +582,13 @@ static bool isPrefix(const char *sentence, int start, int end, const char *searc
     return true;
 }
 
-int isPrefixOfWord(char *sentence, char *searchWord) {
+int is_prefix_of_word(char *sentence, char *searchWord) {
     int n = strlen(sentence), index = 1, start = 0, end = 0;
     while (start < n) {
         while (end < n && sentence[end] != ' ') {
             end++;
         }
-        if (isPrefix(sentence, start, end, searchWord)) {
+        if (is_prefix(sentence, start, end, searchWord)) {
             return index;
         }
         index++;
@@ -547,6 +623,32 @@ int max_product(int *nums, int numsSize) {
     return (a - 1) * (b - 1);
 }
 
+int *shuffle(int *nums, int numsSize, int n, int *returnSize) {
+    int *res = (int *) malloc(sizeof(int) * n * 2);
+    for (int i = 0; i < n; ++i) {
+        res[2 * i] = nums[i];
+        res[2 * i + 1] = nums[n + i];
+    }
+    *returnSize = n * 2;
+    return res;
+}
+
+int *final_prices(int *prices, int pricesSize, int *returnSize) {
+    int *res = (int *) malloc(sizeof(int) * pricesSize);
+    int *stack = (int *) malloc(sizeof(int) * pricesSize);
+    int top = 0;
+    for (int i = pricesSize - 1; i >= 0; --i) {
+        while (top > 0 && stack[top - 1] > prices[i]) {
+            top--;
+        }
+        res[i] = top == 0 ? prices[i] : prices[i] - stack[top - 1];
+        stack[top++] = prices[i];
+    }
+    *returnSize = pricesSize;
+    free(stack);
+    return res;
+}
+
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {
@@ -557,92 +659,6 @@ int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
         maxWealth = MAX(maxWealth, sum);
     }
     return maxWealth;
-}
-
-int projectionArea(int **grid, int gridSize, int *gridColSize) {
-    int xyArea = 0, yzArea = 0, zxArea = 0;
-    for (int i = 0; i < gridSize; ++i) {
-        int yzHeight = 0, zxHeight = 0;
-        for (int j = 0; j < gridSize; ++j) {
-            xyArea += grid[i][j] > 0 ? 1 : 0;
-            yzHeight = MAX(yzHeight, grid[j][i]);
-            zxHeight = MAX(zxHeight, grid[i][j]);
-        }
-        yzArea += yzHeight;
-        zxArea += zxHeight;
-    }
-    return xyArea + yzArea + zxArea;
-}
-
-int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
-    int left = 0, right = numsSize - 1;
-    while (left < right) {
-        while (left < right && nums[left] % 2 == 0) {
-            left++;
-        }
-        while (left < right && nums[right] % 2 == 1) {
-            right--;
-        }
-        if (left < right) {
-            int temp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = temp;
-            left++;
-            right--;
-        }
-    }
-    *returnSize = numsSize;
-    return nums;
-}
-
-int *diStringMatch(char *s, int *returnSize) {
-    int n = strlen(s), lo = 0, hi = n;
-    int *perm = (int *) malloc(sizeof(int) * (n + 1));
-    for (int i = 0; i < n; ++i) {
-        perm[i] = s[i] == 'I' ? lo++ : hi--;
-    }
-    perm[n] = lo;
-    *returnSize = n + 1;
-    return perm;
-}
-
-int minDeletionSize(char **strs, int strsSize) {
-    int row = strsSize;
-    int col = strlen(strs[0]);
-    int ans = 0;
-    for (int j = 0; j < col; ++j) {
-        for (int i = 1; i < row; ++i) {
-            if (strs[i - 1][j] > strs[i][j]) {
-                ans++;
-                break;
-            }
-        }
-    }
-    return ans;
-}
-
-bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int poppedSize) {
-    int *stack = (int *) malloc(sizeof(int) * pushedSize);
-    int top = 0;
-    for (int i = 0, j = 0; i < pushedSize; ++i) {
-        stack[top++] = pushed[i];
-        while (top > 0 && stack[top - 1] == popped[j]) {
-            top--;
-            j++;
-        }
-    }
-    free(stack);
-    return top == 0;
-}
-
-int *shuffle(int *nums, int numsSize, int n, int *returnSize) {
-    int *res = (int *) malloc(sizeof(int) * n * 2);
-    for (int i = 0; i < n; ++i) {
-        res[2 * i] = nums[i];
-        res[2 * i + 1] = nums[n + i];
-    }
-    *returnSize = n * 2;
-    return res;
 }
 
 int findTheWinner(int n, int k) {

@@ -252,9 +252,9 @@ static void test_is_prefix_of_word() {
     char *searchWord1 = "burg";
     char *searchWord2 = "pro";
     char *searchWord3 = "you";
-    EXPECT_EQ_INT(4, isPrefixOfWord(sentence1, searchWord1));
-    EXPECT_EQ_INT(2, isPrefixOfWord(sentence2, searchWord2));
-    EXPECT_EQ_INT(-1, isPrefixOfWord(sentence3, searchWord3));
+    EXPECT_EQ_INT(4, is_prefix_of_word(sentence1, searchWord1));
+    EXPECT_EQ_INT(2, is_prefix_of_word(sentence2, searchWord2));
+    EXPECT_EQ_INT(-1, is_prefix_of_word(sentence3, searchWord3));
 }
 
 static void test_can_be_equal() {
@@ -294,9 +294,21 @@ static void test_shuffle() {
     int *actual1 = shuffle(ARRAY(int, 2, 5, 1, 3, 4, 7), 6, 3, &returnSize1);
     int *actual2 = shuffle(ARRAY(int, 1, 2, 3, 4, 4, 3, 2, 1), 8, 4, &returnSize2);
     int *actual3 = shuffle(ARRAY(int, 1, 1, 2, 2), 4, 2, &returnSize3);
-    EXPECT_EQ_INT_ARRAY(ARRAY(int, 2, 3, 5, 4, 1, 7), 6, actual1, returnSize1);
-    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 4, 2, 3, 3, 2, 4, 1), 8, actual2, returnSize2);
-    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 2, 1, 2), 4, actual3, returnSize3);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 2, 3, 5, 4, 1, 7), 6, actual1, returnSize1)
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 4, 2, 3, 3, 2, 4, 1), 8, actual2, returnSize2)
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 2, 1, 2), 4, actual3, returnSize3)
+}
+
+static void test_final_prices() {
+    int returnSize1 = 0;
+    int returnSize2 = 0;
+    int returnSize3 = 0;
+    int *actual1 = final_prices(ARRAY(int, 8, 4, 6, 2, 3), 5, &returnSize1);
+    int *actual2 = final_prices(ARRAY(int, 1, 2, 3, 4, 5), 5, &returnSize2);
+    int *actual3 = final_prices(ARRAY(int, 10, 1, 1, 6), 4, &returnSize3);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 4, 2, 4, 2, 3), 5, actual1, returnSize1)
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 2, 3, 4, 5), 5, actual2, returnSize2)
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 9, 0, 1, 6), 4, actual3, returnSize3)
 }
 
 static void test_projection_area() {
@@ -380,6 +392,11 @@ int main() {
     test_preimage_size_fzf();
     test_unique_morse_representations();
     test_number_of_lines();
+     test_projection_area();
+    test_sort_array_by_parity();
+    test_di_string_match();
+    test_min_deletion_size();
+    test_validate_stack_sequences();
     test_is_alien_sorted();
     test_defanging_IPadd();
     test_min_subsequence();
@@ -389,12 +406,8 @@ int main() {
     test_can_be_equal();
     test_max_product();
     test_shuffle();
+    test_final_prices();
     test_maximum_wealth();
-    test_projection_area();
-    test_sort_array_by_parity();
-    test_di_string_match();
-    test_min_deletion_size();
-    test_validate_stack_sequences();
     test_find_the_winner();
     test_pivot_index();
     test_recent_counter();
