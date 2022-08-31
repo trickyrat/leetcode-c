@@ -14,7 +14,7 @@ static int test_pass = 0;
 static void test_two_sum() {
     int actualReturnSize = 0;
     int *actual = twoSum(ARRAY(int, 2, 7, 11, 15), 4, 9, &actualReturnSize);
-    EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 1), 2, actual, actualReturnSize);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 1), 2, actual, actualReturnSize)
 }
 
 static void test_remove_element() {
@@ -335,6 +335,11 @@ static void test_min_deletion_size() {
     EXPECT_EQ_INT(3, minDeletionSize(ARRAY(char *, "zyx", "wvu", "tsr"), 3));
 }
 
+static void test_validate_stack_sequences() {
+    EXPECT_EQ_TRUE(validate_stack_sequences(ARRAY(int, 1, 2, 3, 4, 5), 5, ARRAY(int, 4, 5, 3, 2, 1), 5));
+    EXPECT_EQ_FALSE(validate_stack_sequences(ARRAY(int, 1, 2, 3, 4, 5), 5, ARRAY(int, 4, 3, 5, 1, 2), 5));
+}
+
 static void test_find_the_winner() {
     EXPECT_EQ_INT(3, findTheWinner(5, 2));
     EXPECT_EQ_INT(1, findTheWinner(6, 5));
@@ -389,6 +394,7 @@ int main() {
     test_sort_array_by_parity();
     test_di_string_match();
     test_min_deletion_size();
+    test_validate_stack_sequences();
     test_find_the_winner();
     test_pivot_index();
     test_recent_counter();

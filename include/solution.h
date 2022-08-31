@@ -197,6 +197,16 @@ int *diStringMatch(char *s, int *returnSize);
 int minDeletionSize(char **strs, int strsSize);
 
 /**
+ * 946. Validate Stack Sequences
+ * @param pushed
+ * @param pushedSize
+ * @param popped
+ * @param poppedSize
+ * @return
+ */
+bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int poppedSize);
+
+/**
  * 953. Verifying an Alien Dictionary
  * @param words
  * @param wordsSize

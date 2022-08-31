@@ -6,9 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "hashtable.h"
 #include "solution.h"
 #include "solutionutils.h"
-#include "hashtable.h"
 
 int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
     hashTable = NULL;
@@ -417,7 +417,7 @@ bool isUnivalTree(TreeNode *root) {
     return true;
 }
 
-struct TreeNode* insertIntoMaxTree(struct TreeNode* root, int val) {
+struct TreeNode *insertIntoMaxTree(struct TreeNode *root, int val) {
     struct TreeNode *parent = NULL;
     struct TreeNode *curr = root;
     struct TreeNode *node = NULL;
@@ -619,6 +619,20 @@ int minDeletionSize(char **strs, int strsSize) {
         }
     }
     return ans;
+}
+
+bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int poppedSize) {
+    int *stack = (int *) malloc(sizeof(int) * pushedSize);
+    int top = 0;
+    for (int i = 0, j = 0; i < pushedSize; ++i) {
+        stack[top++] = pushed[i];
+        while (top > 0 && stack[top - 1] == popped[j]) {
+            top--;
+            j++;
+        }
+    }
+    free(stack);
+    return top == 0;
 }
 
 int *shuffle(int *nums, int numsSize, int n, int *returnSize) {
