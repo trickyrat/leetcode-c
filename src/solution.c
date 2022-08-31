@@ -500,16 +500,16 @@ struct TreeNode *insert_into_max_tree(struct TreeNode *root, int val) {
     while (curr) {
         if (val > curr->val) {
             if (!parent) {
-                return createTreeNode(val, root, NULL);
+                return create_treenode(val, root, NULL);
             }
-            parent->right = createTreeNode(val, curr, NULL);
+            parent->right = create_treenode(val, curr, NULL);
             return root;
         } else {
             parent = curr;
             curr = curr->right;
         }
     }
-    parent->right = createTreeNode(val, NULL, NULL);
+    parent->right = create_treenode(val, NULL, NULL);
     return root;
 }
 

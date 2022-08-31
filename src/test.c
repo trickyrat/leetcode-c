@@ -86,6 +86,14 @@ static void test_is_same_tree() {
     EXPECT_EQ_FALSE(is_same_tree(NULL, &root1));
 }
 
+static void test_reverse_list() {
+    ListNode *head1 = create_listnode(ARRAY(int, 1,2,3,4,5), 5);
+    ListNode *res = reverse_list(head1);
+    int returnSize = 0;
+    int* actual = convert_listnode_to_array(res, &returnSize);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 5,4,3,2,1), 5, actual, returnSize)
+}
+
 static void test_count_numbers_with_unique_digits() {
     EXPECT_EQ_INT(91, count_numbers_with_unique_digits(2));
     EXPECT_EQ_INT(1, count_numbers_with_unique_digits(0));
@@ -382,6 +390,7 @@ int main() {
     test_rotate();
     test_merge();
     test_is_same_tree();
+    test_reverse_list();
     test_count_numbers_with_unique_digits();
     test_lexical_order();
     test_find_substring_in_wraparoundString();

@@ -9,29 +9,29 @@
 #define MIN(a, b) ((a) > (b) ? (b) : (a))
 
 inline int cmp(const void *pa, const void *pb) {
-  return *(int *) pa - *(int *) pb;
+    return *(int *) pa - *(int *) pb;
 }
 
-inline int cmp_s(const void* context, const void *pa, const void *pb) {
-  return *(int *) pa - *(int *) pb;
+inline int cmp_s(const void *context, const void *pa, const void *pb) {
+    return *(int *) pa - *(int *) pb;
 }
 
-inline int cmp_with_order(const void* context, const void *pa, const void *pb) {
-  int order = *(int*)context;
-  int result = *(int *) pa - *(int *) pb;
-  if(order) {
-    result *= -1;
-  }
-  return result;
+inline int cmp_with_order(const void *context, const void *pa, const void *pb) {
+    int order = *(int *) context;
+    int result = *(int *) pa - *(int *) pb;
+    if (order) {
+        result *= -1;
+    }
+    return result;
 }
 
 void swap(int *a, int *b) {
-  int tmp = *a;
-  *a = *b;
-  *b = tmp;
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
 
-int binary_search(const int* arr, int arrSize, int x) {
+int binary_search(const int *arr, int arrSize, int x) {
     int low = 0, high = arrSize - 1;
     while (low < high) {
         int mid = low + (high - low) / 2;
@@ -44,11 +44,12 @@ int binary_search(const int* arr, int arrSize, int x) {
     return low;
 }
 
-struct TreeNode* createTreeNode(int val, const struct TreeNode *left, const struct TreeNode *right) {
-    struct TreeNode* node = (struct TreeNode *)malloc(sizeof(struct TreeNode));
+TreeNode *create_treenode(int val, const TreeNode *left, const TreeNode *right) {
+    TreeNode *node = (TreeNode *) malloc(sizeof(TreeNode));
     node->val = val;
     node->left = left;
     node->right = right;
     return node;
 }
+
 #endif//LEETCODEC_SOLUTIONUTILS_H
