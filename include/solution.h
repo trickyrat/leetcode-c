@@ -17,7 +17,7 @@
  * @param returnSize
  * @return
  */
-int *twoSum(int *nums, int numsSize, int target, int *returnSize);
+int *two_sum(int *nums, int numsSize, int target, int *returnSize);
 
 /**
  * 27. Remove Element
@@ -25,7 +25,7 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize);
  * @param val
  * @return
  */
-int removeElement(int *nums, int numsSize, int val);
+int remove_element(int *nums, int numsSize, int val);
 
 /**
  * 33. Search in Rotated Sorted Array
@@ -59,21 +59,21 @@ void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
  * @param q
  * @return
  */
-bool isSameTree(TreeNode *p, TreeNode *q);
+bool is_same_tree(TreeNode *p, TreeNode *q);
 
 /**
  * 206. Reverse Linked List
  * @param head
  * @return
  */
-struct ListNode *reverseList(ListNode *head);
+struct ListNode *reverse_list(ListNode *head);
 
 /**
  * 357. Count Numbers with Unique Digits
  * @param n
  * @return
  */
-int countNumbersWithUniqueDigits(int n);
+int count_numbers_with_unique_digits(int n);
 
 /**
  * 386. Lexicographical Numbers
@@ -81,14 +81,14 @@ int countNumbersWithUniqueDigits(int n);
  * @param returnSize
  * @return
  */
-int *lexicalOrder(int n, int *returnSize);
+int *lexical_order(int n, int *returnSize);
 
 /**
  * 467. Unique Substrings in Wraparound String
  * @param p
  * @return
  */
-int findSubstringInWraparoundString(char *p);
+int find_substring_in_wraparound_string(char *p);
 
 /**
  * 498.Diagonal Traverse
@@ -98,7 +98,7 @@ int findSubstringInWraparoundString(char *p);
  * @param returnSize
  * @return
  */
-int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize);
+int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *returnSize);
 
 /**
  * 658. Find K Closest Elements
@@ -125,7 +125,7 @@ int width_of_binary_tree(struct TreeNode* root);
  * @param returnSize
  * @return
  */
-int *selfDividingNumbers(int left, int right, int *returnSize);
+int *self_dividing_numbers(int left, int right, int *returnSize);
 
 /**
  * 744. Find Smallest Letter Greater Than Target
@@ -134,7 +134,7 @@ int *selfDividingNumbers(int left, int right, int *returnSize);
  * @param target
  * @return
  */
-char nextGreatestLetter(char *letters, int letterSize, char target);
+char next_greatest_letter(char *letters, int letterSize, char target);
 
 /**
  * 793. Preimage Size of Factorial Zeroes Function
@@ -149,7 +149,7 @@ int preimage_size_fzf(int k);
  * @param wordsSize
  * @return
  */
-int uniqueMorseRepresentations(char **words, int wordsSize);
+int unique_morse_representations(char **words, int wordsSize);
 
 /**
  * 806. Number of Lines To Write String
@@ -159,7 +159,7 @@ int uniqueMorseRepresentations(char **words, int wordsSize);
  * @param returnSize
  * @return
  */
-int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize);
+int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize);
 
 /**
  * 883. Projection Area of 3D Shapes
@@ -168,7 +168,7 @@ int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize);
  * @param gridColSize
  * @return
  */
-int projectionArea(int **grid, int gridSize, int *gridColSize);
+int projection_area(int **grid, int gridSize, int *gridColSize);
 
 /**
  * 905. Sort Array By Parity
@@ -177,7 +177,7 @@ int projectionArea(int **grid, int gridSize, int *gridColSize);
  * @param returnSize
  * @return
  */
-int *sortArrayByParity(int *nums, int numsSize, int *returnSize);
+int *sort_array_by_parity(int *nums, int numsSize, int *returnSize);
 
 /**
  * 942. DI String Match
@@ -186,7 +186,7 @@ int *sortArrayByParity(int *nums, int numsSize, int *returnSize);
  * @param returnSize
  * @return
  */
-int *diStringMatch(char *s, int *returnSize);
+int *di_string_match(char *s, int *returnSize);
 
 /**
  * 944. Delete Columns to Make Sorted
@@ -194,7 +194,7 @@ int *diStringMatch(char *s, int *returnSize);
  * @param strsSize
  * @return
  */
-int minDeletionSize(char **strs, int strsSize);
+int min_deletion_size(char **strs, int strsSize);
 
 /**
  * 946. Validate Stack Sequences
@@ -213,14 +213,14 @@ bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int popp
  * @param order
  * @return
  */
-bool isAlienSorted(char **words, int wordsSize, char *order);
+bool is_alien_sorted(char **words, int wordsSize, char *order);
 
 /**
  * 965. Univalued Binary Tree
  * @param root
  * @return
  */
-bool isUnivalTree(TreeNode *root);
+bool is_unival_tree(TreeNode *root);
 
 /**
  * 998. Maximum Binary Tree II
@@ -228,14 +228,14 @@ bool isUnivalTree(TreeNode *root);
  * @param val
  * @return
  */
-struct TreeNode* insertIntoMaxTree(struct TreeNode* root, int val);
+struct TreeNode* insert_into_max_tree(struct TreeNode* root, int val);
 
 /**
  * 1108. Defanging an IP Address
  * @param address
  * @return
  */
-char *defangIPaddr(char *address);
+char *defang_ip_addr(char *address);
 
 /**
  * 1403. Minimum Subsequence in Non-Increasing Order
@@ -244,7 +244,7 @@ char *defangIPaddr(char *address);
  * @param returnSize
  * @return
  */
-int *minSubsequence(int *nums, int numsSize, int *returnSize);
+int *min_subsequence(int *nums, int numsSize, int *returnSize);
 
 /**
  * 1408. String Matching in an Array
@@ -253,7 +253,7 @@ int *minSubsequence(int *nums, int numsSize, int *returnSize);
  * @param returnSize
  * @return
  */
-char **stringMatching(char **words, int wordsSize, int *returnSize);
+char **string_matching(char **words, int wordsSize, int *returnSize);
 
 /**
  * 1450. Number of Students Doing Homework at a Given Time
@@ -264,7 +264,7 @@ char **stringMatching(char **words, int wordsSize, int *returnSize);
  * @param queryTime
  * @return
  */
-int busyStudent(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime);
+int busy_student(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime);
 
 /**
  * 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
@@ -317,7 +317,7 @@ int* final_prices(int* prices, int pricesSize, int* returnSize);
  * @param accountsColSize
  * @return
  */
-int maximumWealth(int **accounts, int accountsSize, int *accountsColSize);
+int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize);
 
 /**
  * 1823. Find the Winner of the Circular Game
@@ -325,7 +325,7 @@ int maximumWealth(int **accounts, int accountsSize, int *accountsColSize);
  * @param k
  * @return
  */
-int findTheWinner(int n, int k);
+int find_the_winner(int n, int k);
 
 /**
  * 1991. Find the Middle Index in Array
@@ -333,6 +333,6 @@ int findTheWinner(int n, int k);
  * @param numsSize
  * @return
  */
-int pivotIndex(int *nums, int numsSize);
+int pivot_index(int *nums, int numsSize);
 
 #endif// LEETCODEC_SOLUTION_H

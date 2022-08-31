@@ -10,7 +10,7 @@
 #include "solution.h"
 #include "solutionutils.h"
 
-int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
+int *two_sum(int *nums, int numsSize, int target, int *returnSize) {
     hashTable = NULL;
     for (int i = 0; i < numsSize; i++) {
         struct HashTable *it = find(target - nums[i]);
@@ -28,7 +28,7 @@ int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
     return NULL;
 }
 
-int removeElement(int *nums, int numsSize, int val) {
+int remove_element(int *nums, int numsSize, int val) {
     int left = 0;
     for (int right = 0; right < numsSize; ++right) {
         if (nums[right] != val) {
@@ -99,7 +99,7 @@ void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n) {
     }
 }
 
-bool isSameTree(TreeNode *p, TreeNode *q) {
+bool is_same_tree(TreeNode *p, TreeNode *q) {
     if (p == NULL && q == NULL) {
         return true;
     } else if (p == NULL || q == NULL) {
@@ -107,11 +107,11 @@ bool isSameTree(TreeNode *p, TreeNode *q) {
     } else if (p->val != q->val) {
         return false;
     } else {
-        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+        return is_same_tree(p->left, q->left) && is_same_tree(p->right, q->right);
     }
 }
 
-struct ListNode *reverseList(struct ListNode *head) {
+struct ListNode *reverse_list(struct ListNode *head) {
     struct ListNode *prev = NULL;
     struct ListNode *curr = head;
     while (curr) {
@@ -123,7 +123,7 @@ struct ListNode *reverseList(struct ListNode *head) {
     return prev;
 }
 
-int countNumbersWithUniqueDigits(int n) {
+int count_numbers_with_unique_digits(int n) {
     if (n == 0) {
         return 1;
     }
@@ -138,7 +138,7 @@ int countNumbersWithUniqueDigits(int n) {
     return ans;
 }
 
-int *lexicalOrder(int n, int *returnSize) {
+int *lexical_order(int n, int *returnSize) {
     int *ret = (int *) malloc(sizeof(int) * n);
     int num = 1;
     for (int i = 0; i < n; ++i) {
@@ -156,7 +156,7 @@ int *lexicalOrder(int n, int *returnSize) {
     return ret;
 }
 
-int findSubstringInWraparoundString(char *p) {
+int find_substring_in_wraparound_string(char *p) {
     int dp[26];
     int k = 0;
     int len = strlen(p);
@@ -176,7 +176,7 @@ int findSubstringInWraparoundString(char *p) {
     return res;
 }
 
-int *findDiagonalOrder(int **mat, int matSize, int *matColSize, int *returnSize) {
+int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *returnSize) {
     if (matSize == 0) {
         return NULL;
     }
@@ -268,7 +268,7 @@ static bool isSelfDividing(int num) {
     return true;
 }
 
-int *selfDividingNumbers(int left, int right, int *returnSize) {
+int *self_dividing_numbers(int left, int right, int *returnSize) {
     int *ans = (int *) malloc(sizeof(int) * (right - left + 1));
     int pos = 0;
     for (int i = left; i <= right; ++i) {
@@ -280,7 +280,7 @@ int *selfDividingNumbers(int left, int right, int *returnSize) {
     return ans;
 }
 
-char nextGreatestLetter(char *letters, int lettersSize, char target) {
+char next_greatest_letter(char *letters, int lettersSize, char target) {
     if (target >= letters[lettersSize - 1]) {
         return letters[0];
     }
@@ -322,7 +322,7 @@ int preimage_size_fzf(int k) {
     return nx(k + 1) - nx(k);
 }
 
-int uniqueMorseRepresentations(char **words, int wordsSize) {
+int unique_morse_representations(char **words, int wordsSize) {
     const char *MORSE[26] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
                              "....", "..", ".---", "-.-", ".-..", "--", "-.",
                              "---", ".--.", "--.-", ".-.", "...", "-", "..-",
@@ -352,7 +352,7 @@ int uniqueMorseRepresentations(char **words, int wordsSize) {
     return ans;
 }
 
-int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize) {
+int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize) {
     const int MAX_WIDTH = 100;
     int lines = 1, width = 0, len = strlen(s);
     for (int i = 0; i < len; ++i) {
@@ -370,7 +370,7 @@ int *numberOfLines(int *widths, int widthsSize, char *s, int *returnSize) {
     return ans;
 }
 
-int projectionArea(int **grid, int gridSize, int *gridColSize) {
+int projection_area(int **grid, int gridSize, int *gridColSize) {
     int xyArea = 0, yzArea = 0, zxArea = 0;
     for (int i = 0; i < gridSize; ++i) {
         int yzHeight = 0, zxHeight = 0;
@@ -385,7 +385,7 @@ int projectionArea(int **grid, int gridSize, int *gridColSize) {
     return xyArea + yzArea + zxArea;
 }
 
-int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
+int *sort_array_by_parity(int *nums, int numsSize, int *returnSize) {
     int left = 0, right = numsSize - 1;
     while (left < right) {
         while (left < right && nums[left] % 2 == 0) {
@@ -406,7 +406,7 @@ int *sortArrayByParity(int *nums, int numsSize, int *returnSize) {
     return nums;
 }
 
-int *diStringMatch(char *s, int *returnSize) {
+int *di_string_match(char *s, int *returnSize) {
     int n = strlen(s), lo = 0, hi = n;
     int *perm = (int *) malloc(sizeof(int) * (n + 1));
     for (int i = 0; i < n; ++i) {
@@ -417,7 +417,7 @@ int *diStringMatch(char *s, int *returnSize) {
     return perm;
 }
 
-int minDeletionSize(char **strs, int strsSize) {
+int min_deletion_size(char **strs, int strsSize) {
     int row = strsSize;
     int col = strlen(strs[0]);
     int ans = 0;
@@ -446,7 +446,7 @@ bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int popp
     return top == 0;
 }
 
-bool isAlienSorted(char **words, int wordsSize, char *order) {
+bool is_alien_sorted(char **words, int wordsSize, char *order) {
     int index[26];
     for (int i = 0; i < strlen(order); ++i) {
         index[order[i] - 'a'] = i;
@@ -475,25 +475,25 @@ bool isAlienSorted(char **words, int wordsSize, char *order) {
     return true;
 }
 
-bool isUnivalTree(TreeNode *root) {
+bool is_unival_tree(TreeNode *root) {
     if (!root) {
         return true;
     }
     if (root->left) {
-        if (root->val != root->left->val || !isUnivalTree(root->left)) {
+        if (root->val != root->left->val || !is_unival_tree(root->left)) {
             return false;
         }
     }
 
     if (root->right) {
-        if (root->val != root->right->val || !isUnivalTree(root->right)) {
+        if (root->val != root->right->val || !is_unival_tree(root->right)) {
             return false;
         }
     }
     return true;
 }
 
-struct TreeNode *insertIntoMaxTree(struct TreeNode *root, int val) {
+struct TreeNode *insert_into_max_tree(struct TreeNode *root, int val) {
     struct TreeNode *parent = NULL;
     struct TreeNode *curr = root;
     struct TreeNode *node = NULL;
@@ -513,7 +513,7 @@ struct TreeNode *insertIntoMaxTree(struct TreeNode *root, int val) {
     return root;
 }
 
-char *defangIPaddr(char *address) {
+char *defang_ip_addr(char *address) {
     int len = strlen(address);
     int pos = 0;
     char *res = (char *) malloc(sizeof(char) * (len + 7));// [] [] []
@@ -528,7 +528,7 @@ char *defangIPaddr(char *address) {
     return res;
 }
 
-int *minSubsequence(int *nums, int numsSize, int *returnSize) {
+int *min_subsequence(int *nums, int numsSize, int *returnSize) {
     int total = 0;
     for (int i = 0; i < numsSize; ++i) {
         total += nums[i];
@@ -547,7 +547,7 @@ int *minSubsequence(int *nums, int numsSize, int *returnSize) {
     return ans;
 }
 
-char **stringMatching(char **words, int wordsSize, int *returnSize) {
+char **string_matching(char **words, int wordsSize, int *returnSize) {
     char **res = (char **) malloc(sizeof(char *) * wordsSize);
     int pos = 0;
     for (int i = 0; i < wordsSize; ++i) {
@@ -562,7 +562,7 @@ char **stringMatching(char **words, int wordsSize, int *returnSize) {
     return res;
 }
 
-int busyStudent(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime) {
+int busy_student(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime) {
     int res = 0;
     for (int i = 0; i < startTimeSize; ++i) {
         if (startTime[i] <= queryTime && queryTime <= endTime[i]) {
@@ -649,7 +649,7 @@ int *final_prices(int *prices, int pricesSize, int *returnSize) {
     return res;
 }
 
-int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
+int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {
         int sum = 0;
@@ -661,7 +661,7 @@ int maximumWealth(int **accounts, int accountsSize, int *accountsColSize) {
     return maxWealth;
 }
 
-int findTheWinner(int n, int k) {
+int find_the_winner(int n, int k) {
     int winner = 1;
     for (int i = 2; i <= n; ++i) {
         winner = (k + winner - 1) % i + 1;
@@ -669,7 +669,7 @@ int findTheWinner(int n, int k) {
     return winner;
 }
 
-int pivotIndex(int *nums, int numsSize) {
+int pivot_index(int *nums, int numsSize) {
     int total = 0;
     for (int i = 0; i < numsSize; i++) {
         total += nums[i];

@@ -70,7 +70,7 @@
         TEST_MATRIX_BASE(input_data, row_size);                                           \
         int return_size = 0;                                                              \
         int col = col_size;                                                               \
-        int *actual = findDiagonalOrder(mat, (row_size), &col, &return_size);             \
+        int *actual = find_diagonal_order(mat, (row_size), &col, &return_size);             \
         EXPECT_EQ_INT_ARRAY(expected, expected_size, actual, return_size);                \
     } while (0)
 
@@ -78,7 +78,7 @@
 #define TEST_NUMBER_OF_LINES(widths, widths_size, s, expected, expected_size)   \
     do {                                                                        \
         int return_size = 0;                                                    \
-        int *ans = numberOfLines((widths), (widths_size), (s), &(return_size)); \
+        int *ans = number_of_lines((widths), (widths_size), (s), &(return_size)); \
         EXPECT_EQ_INT_ARRAY(expected, (expected_size), ans, (return_size));     \
     } while (0)
 

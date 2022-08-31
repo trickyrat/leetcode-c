@@ -13,13 +13,13 @@ static int test_pass = 0;
 
 static void test_two_sum() {
     int actualReturnSize = 0;
-    int *actual = twoSum(ARRAY(int, 2, 7, 11, 15), 4, 9, &actualReturnSize);
+    int *actual = two_sum(ARRAY(int, 2, 7, 11, 15), 4, 9, &actualReturnSize);
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 1), 2, actual, actualReturnSize)
 }
 
 static void test_remove_element() {
-    EXPECT_EQ_INT(removeElement(ARRAY(int, 3, 2, 2, 3), 4, 3), 2);
-    EXPECT_EQ_INT(removeElement(ARRAY(int, 0, 1, 2, 2, 3, 0, 4, 2), 8, 2), 5);
+    EXPECT_EQ_INT(remove_element(ARRAY(int, 3, 2, 2, 3), 4, 3), 2);
+    EXPECT_EQ_INT(remove_element(ARRAY(int, 0, 1, 2, 2, 3, 0, 4, 2), 8, 2), 5);
 }
 
 static void test_search() {
@@ -80,33 +80,33 @@ static void test_is_same_tree() {
     TreeNode left2 = {2, NULL, NULL};
     TreeNode right2 = {3, NULL, NULL};
     TreeNode root2 = {1, &left2, &right2};
-    EXPECT_EQ_TRUE(isSameTree(&root1, &root2));
-    EXPECT_EQ_TRUE(isSameTree(NULL, NULL));
-    EXPECT_EQ_FALSE(isSameTree(&root1, NULL));
-    EXPECT_EQ_FALSE(isSameTree(NULL, &root1));
+    EXPECT_EQ_TRUE(is_same_tree(&root1, &root2));
+    EXPECT_EQ_TRUE(is_same_tree(NULL, NULL));
+    EXPECT_EQ_FALSE(is_same_tree(&root1, NULL));
+    EXPECT_EQ_FALSE(is_same_tree(NULL, &root1));
 }
 
 static void test_count_numbers_with_unique_digits() {
-    EXPECT_EQ_INT(91, countNumbersWithUniqueDigits(2));
-    EXPECT_EQ_INT(1, countNumbersWithUniqueDigits(0));
+    EXPECT_EQ_INT(91, count_numbers_with_unique_digits(2));
+    EXPECT_EQ_INT(1, count_numbers_with_unique_digits(0));
 }
 
 static void test_lexical_order() {
     int expect1[13] = {1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9};
     int returnSize1 = 0;
-    int *actual1 = lexicalOrder(13, &returnSize1);
+    int *actual1 = lexical_order(13, &returnSize1);
     EXPECT_EQ_INT_ARRAY(expect1, 13, actual1, returnSize1);
 
     int expect2[2] = {1, 2};
     int returnSize2 = 0;
-    int *actual2 = lexicalOrder(2, &returnSize2);
+    int *actual2 = lexical_order(2, &returnSize2);
     EXPECT_EQ_INT_ARRAY(expect2, 2, actual2, returnSize2);
 }
 
 static void test_find_substring_in_wraparoundString() {
-    EXPECT_EQ_INT(1, findSubstringInWraparoundString("a"));
-    EXPECT_EQ_INT(2, findSubstringInWraparoundString("cac"));
-    EXPECT_EQ_INT(6, findSubstringInWraparoundString("zab"));
+    EXPECT_EQ_INT(1, find_substring_in_wraparound_string("a"));
+    EXPECT_EQ_INT(2, find_substring_in_wraparound_string("cac"));
+    EXPECT_EQ_INT(6, find_substring_in_wraparound_string("zab"));
 }
 
 
@@ -141,16 +141,16 @@ static void test_width_of_binary_tree() {
 
 static void test_self_dividing_numbers() {
     int returnSize1 = 0;
-    int *actual1 = selfDividingNumbers(1, 22, &returnSize1);
+    int *actual1 = self_dividing_numbers(1, 22, &returnSize1);
     int expect1[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};
     EXPECT_EQ_INT_ARRAY(expect1, 13, actual1, returnSize1);
 }
 
 static void test_next_greatest_letter() {
     char letters[3] = {'c', 'f', 'j'};
-    EXPECT_EQ_CHAR('c', nextGreatestLetter(letters, 3, 'a'));
-    EXPECT_EQ_CHAR('f', nextGreatestLetter(letters, 3, 'c'));
-    EXPECT_EQ_CHAR('f', nextGreatestLetter(letters, 3, 'c'));
+    EXPECT_EQ_CHAR('c', next_greatest_letter(letters, 3, 'a'));
+    EXPECT_EQ_CHAR('f', next_greatest_letter(letters, 3, 'c'));
+    EXPECT_EQ_CHAR('f', next_greatest_letter(letters, 3, 'c'));
 }
 
 static void test_preimage_size_fzf() {
@@ -162,8 +162,8 @@ static void test_preimage_size_fzf() {
 static void test_unique_morse_representations() {
     char *words1[] = {"gin", "zen", "gig", "msg"};
     char *words2[] = {"a"};
-    EXPECT_EQ_INT(2, uniqueMorseRepresentations(words1, 4));
-    EXPECT_EQ_INT(1, uniqueMorseRepresentations(words2, 1));
+    EXPECT_EQ_INT(2, unique_morse_representations(words1, 4));
+    EXPECT_EQ_INT(1, unique_morse_representations(words2, 1));
 }
 
 static void test_number_of_lines() {
@@ -187,14 +187,14 @@ static void test_is_alien_sorted() {
     char *order1 = "hlabcdefgijkmnopqrstuvwxyz";
     char *order2 = "worldabcefghijkmnpqstuvxyz";
     char *order3 = "abcdefghijklmnopqrstuvwxyz";
-    EXPECT_EQ_TRUE(isAlienSorted(words1, 2, order1));
-    EXPECT_EQ_FALSE(isAlienSorted(words2, 3, order2));
-    EXPECT_EQ_FALSE(isAlienSorted(words3, 2, order3));
+    EXPECT_EQ_TRUE(is_alien_sorted(words1, 2, order1));
+    EXPECT_EQ_FALSE(is_alien_sorted(words2, 3, order2));
+    EXPECT_EQ_FALSE(is_alien_sorted(words3, 2, order3));
 }
 
 static void test_defanging_IPadd() {
-    char *actual1 = defangIPaddr("1.1.1.1");
-    char *actual2 = defangIPaddr("255.100.50.0");
+    char *actual1 = defang_ip_addr("1.1.1.1");
+    char *actual2 = defang_ip_addr("255.100.50.0");
 
     EXPECT_EQ_STRING("1[.]1[.]1[.]1", actual1, strlen(actual1));
     EXPECT_EQ_STRING("255[.]100[.]50[.]0", actual2, strlen(actual2));
@@ -210,9 +210,9 @@ static void test_min_subsequence() {
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    int *actual1 = minSubsequence(input1, 5, &returnSize1);
-    int *actual2 = minSubsequence(input2, 5, &returnSize2);
-    int *actual3 = minSubsequence(input3, 1, &returnSize3);
+    int *actual1 = min_subsequence(input1, 5, &returnSize1);
+    int *actual2 = min_subsequence(input2, 5, &returnSize2);
+    int *actual3 = min_subsequence(input3, 1, &returnSize3);
     EXPECT_EQ_INT_ARRAY(expected1, 2, actual1, returnSize1);
     EXPECT_EQ_INT_ARRAY(expected2, 3, actual2, returnSize2);
     EXPECT_EQ_INT_ARRAY(expected3, 1, actual3, returnSize3);
@@ -228,9 +228,9 @@ static void test_string_matching() {
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    char **actual1 = stringMatching(words1, 4, &returnSize1);
-    char **actual2 = stringMatching(words2, 3, &returnSize2);
-    char **actual3 = stringMatching(words3, 3, &returnSize3);
+    char **actual1 = string_matching(words1, 4, &returnSize1);
+    char **actual2 = string_matching(words2, 3, &returnSize2);
+    char **actual3 = string_matching(words3, 3, &returnSize3);
     EXPECT_EQ_STRING_ARRAY(expected1, 2, actual1, returnSize1);
     EXPECT_EQ_STRING_ARRAY(expected2, 2, actual2, returnSize2);
     EXPECT_EQ_STRING_ARRAY(expected3, 0, actual3, returnSize3);
@@ -241,8 +241,8 @@ static void test_busy_student() {
     int endTimes1[3] = {3, 2, 7};
     int startTimes2[1] = {4};
     int endTimes2[1] = {4};
-    EXPECT_EQ_INT(busyStudent(startTimes1, 3, endTimes1, 3, 4), 1);
-    EXPECT_EQ_INT(busyStudent(startTimes2, 1, endTimes2, 1, 4), 1);
+    EXPECT_EQ_INT(busy_student(startTimes1, 3, endTimes1, 3, 4), 1);
+    EXPECT_EQ_INT(busy_student(startTimes2, 1, endTimes2, 1, 4), 1);
 }
 
 static void test_is_prefix_of_word() {
@@ -282,9 +282,9 @@ static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
     int accounts_array3[3][3] = {{2, 8, 7}, {7, 1, 3}, {1, 9, 5}};
-    TEST_MATRIX_INT(maximumWealth, accounts_array1, 2, 3, 6);
-    TEST_MATRIX_INT(maximumWealth, accounts_array2, 3, 3, 10);
-    TEST_MATRIX_INT(maximumWealth, accounts_array3, 3, 3, 17);
+    TEST_MATRIX_INT(maximum_wealth, accounts_array1, 2, 3, 6);
+    TEST_MATRIX_INT(maximum_wealth, accounts_array2, 3, 3, 10);
+    TEST_MATRIX_INT(maximum_wealth, accounts_array3, 3, 3, 17);
 }
 
 static void test_shuffle() {
@@ -315,16 +315,16 @@ static void test_projection_area() {
     int grid1[2][2] = {{1, 2}, {3, 4}};
     int grid2[1][1] = {{2}};
     int grid3[2][2] = {{1, 0}, {0, 2}};
-    TEST_MATRIX_INT(projectionArea, grid1, 2, 2, 17);
-    TEST_MATRIX_INT(projectionArea, grid2, 1, 1, 5);
-    TEST_MATRIX_INT(projectionArea, grid3, 2, 2, 8);
+    TEST_MATRIX_INT(projection_area, grid1, 2, 2, 17);
+    TEST_MATRIX_INT(projection_area, grid2, 1, 1, 5);
+    TEST_MATRIX_INT(projection_area, grid3, 2, 2, 8);
 }
 
 static void test_sort_array_by_parity() {
     int returnSize1 = 0;
     int returnSize2 = 0;
-    int *actual1 = sortArrayByParity(ARRAY(int, 3, 1, 2, 4), 4, &returnSize1);
-    int *actual2 = sortArrayByParity(ARRAY(int, 0), 1, &returnSize2);
+    int *actual1 = sort_array_by_parity(ARRAY(int, 3, 1, 2, 4), 4, &returnSize1);
+    int *actual2 = sort_array_by_parity(ARRAY(int, 0), 1, &returnSize2);
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 4, 2, 1, 3), 4, actual1, returnSize1);
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 0), 1, actual2, returnSize2);
 }
@@ -333,18 +333,18 @@ static void test_di_string_match() {
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    int *actual1 = diStringMatch("IDID", &returnSize1);
-    int *actual2 = diStringMatch("III", &returnSize2);
-    int *actual3 = diStringMatch("DDI", &returnSize3);
+    int *actual1 = di_string_match("IDID", &returnSize1);
+    int *actual2 = di_string_match("III", &returnSize2);
+    int *actual3 = di_string_match("DDI", &returnSize3);
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 4, 1, 3, 2), 5, actual1, returnSize1);
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 1, 2, 3), 4, actual2, returnSize2);
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 3, 2, 0, 1), 4, actual3, returnSize3);
 }
 
 static void test_min_deletion_size() {
-    EXPECT_EQ_INT(1, minDeletionSize(ARRAY(char *, "cba", "daf", "ghi"), 3));
-    EXPECT_EQ_INT(0, minDeletionSize(ARRAY(char *, "a", "b"), 2));
-    EXPECT_EQ_INT(3, minDeletionSize(ARRAY(char *, "zyx", "wvu", "tsr"), 3));
+    EXPECT_EQ_INT(1, min_deletion_size(ARRAY(char *, "cba", "daf", "ghi"), 3));
+    EXPECT_EQ_INT(0, min_deletion_size(ARRAY(char *, "a", "b"), 2));
+    EXPECT_EQ_INT(3, min_deletion_size(ARRAY(char *, "zyx", "wvu", "tsr"), 3));
 }
 
 static void test_validate_stack_sequences() {
@@ -353,17 +353,17 @@ static void test_validate_stack_sequences() {
 }
 
 static void test_find_the_winner() {
-    EXPECT_EQ_INT(3, findTheWinner(5, 2));
-    EXPECT_EQ_INT(1, findTheWinner(6, 5));
+    EXPECT_EQ_INT(3, find_the_winner(5, 2));
+    EXPECT_EQ_INT(1, find_the_winner(6, 5));
 }
 
 static void test_pivot_index() {
     int nums1[5] = {2, 3, -1, 8, 4};
     int nums2[3] = {1, -1, 4};
     int nums3[2] = {2, 5};
-    EXPECT_EQ_INT(3, pivotIndex(nums1, 5));
-    EXPECT_EQ_INT(2, pivotIndex(nums2, 3));
-    EXPECT_EQ_INT(-1, pivotIndex(nums3, 2));
+    EXPECT_EQ_INT(3, pivot_index(nums1, 5));
+    EXPECT_EQ_INT(2, pivot_index(nums2, 3));
+    EXPECT_EQ_INT(-1, pivot_index(nums3, 2));
 }
 
 static void test_recent_counter() {
