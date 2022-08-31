@@ -9,9 +9,6 @@
 
 #include "datastructures.h"
 
-#define MAX(a, b) ((a) > (b) ? (a) : (b))
-#define MIN(a, b) ((a) > (b) ? (b) : (a))
-
 /**
  *  1.Two Sum
  * @param nums
@@ -200,6 +197,16 @@ int *diStringMatch(char *s, int *returnSize);
 int minDeletionSize(char **strs, int strsSize);
 
 /**
+ * 946. Validate Stack Sequences
+ * @param pushed
+ * @param pushedSize
+ * @param popped
+ * @param poppedSize
+ * @return
+ */
+bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int poppedSize);
+
+/**
  * 953. Verifying an Alien Dictionary
  * @param words
  * @param wordsSize
@@ -214,6 +221,14 @@ bool isAlienSorted(char **words, int wordsSize, char *order);
  * @return
  */
 bool isUnivalTree(TreeNode *root);
+
+/**
+ * 998. Maximum Binary Tree II
+ * @param root
+ * @param val
+ * @return
+ */
+struct TreeNode* insertIntoMaxTree(struct TreeNode* root, int val);
 
 /**
  * 1108. Defanging an IP Address
@@ -285,6 +300,15 @@ int max_product(int* nums, int numsSize);
  * @return
  */
 int maximumWealth(int **accounts, int accountsSize, int *accountsColSize);
+
+/**
+ * 1470. Shuffle the Array
+ * @param nums
+ * @param numsSize
+ * @param n
+ * @return
+ */
+int* shuffle(int* nums, int numsSize, int n, int* returnSize);
 
 /**
  * 1823. Find the Winner of the Circular Game

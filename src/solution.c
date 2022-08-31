@@ -8,7 +8,7 @@
 
 #include "hashtable.h"
 #include "solution.h"
-#include "utils.h"
+#include "solutionutils.h"
 
 int *twoSum(int *nums, int numsSize, int target, int *returnSize) {
     hashTable = NULL;
@@ -227,21 +227,21 @@ int *find_closest_elements(int *arr, int arrSize, int k, int x, int *returnSize)
 
 int width_of_binary_tree(struct TreeNode *root) {
     unsigned long long res = 1;
-    Pair *arr = (Pair*) malloc(sizeof (Pair) * MAX_NODE_SIZE);
-    Pair *tmp = (Pair*) malloc(sizeof (Pair) * MAX_NODE_SIZE);
+    Pair *arr = (Pair *) malloc(sizeof(Pair) * MAX_NODE_SIZE);
+    Pair *tmp = (Pair *) malloc(sizeof(Pair) * MAX_NODE_SIZE);
     int arr_size = 0, tmp_size = 0;
     arr[arr_size].node = root;
     arr[arr_size].index = 1LL;
     arr_size++;
-    while(arr_size > 0) {
+    while (arr_size > 0) {
         tmp_size = 0;
-        for(int i = 0; i < arr_size; ++i) {
-            if(arr[i].node->left) {
+        for (int i = 0; i < arr_size; ++i) {
+            if (arr[i].node->left) {
                 tmp[tmp_size].node = arr[i].node->left;
                 tmp[tmp_size].index = arr[i].index * 2;
                 tmp_size++;
             }
-            if(arr[i].node->right) {
+            if (arr[i].node->right) {
                 tmp[tmp_size].node = arr[i].node->right;
                 tmp[tmp_size].index = arr[i].index * 2 + 1;
                 tmp_size++;
@@ -298,7 +298,7 @@ char nextGreatestLetter(char *letters, int lettersSize, char target) {
 
 static long long zeta(long x) {
     long long res = 0;
-    while(x != 0) {
+    while (x != 0) {
         res += x / 5;
         x /= 5;
     }
@@ -417,6 +417,26 @@ bool isUnivalTree(TreeNode *root) {
     return true;
 }
 
+struct TreeNode *insertIntoMaxTree(struct TreeNode *root, int val) {
+    struct TreeNode *parent = NULL;
+    struct TreeNode *curr = root;
+    struct TreeNode *node = NULL;
+    while (curr) {
+        if (val > curr->val) {
+            if (!parent) {
+                return createTreeNode(val, root, NULL);
+            }
+            parent->right = createTreeNode(val, curr, NULL);
+            return root;
+        } else {
+            parent = curr;
+            curr = curr->right;
+        }
+    }
+    parent->right = createTreeNode(val, NULL, NULL);
+    return root;
+}
+
 char *defangIPaddr(char *address) {
     int len = strlen(address);
     int pos = 0;
@@ -509,14 +529,14 @@ bool can_be_equal(int *target, int targetSize, int *arr, int arrSize) {
     return memcmp(target, arr, sizeof(int) * arrSize) == 0;
 }
 
-int max_product(int* nums, int numsSize) {
+int max_product(int *nums, int numsSize) {
     int a = nums[0], b = nums[1];
     if (a < b) {
         int temp = a;
         a = b;
         b = temp;
     }
-    for(int i = 2; i < numsSize; i++) {
+    for (int i = 2; i < numsSize; i++) {
         if (nums[i] > a) {
             b = a;
             a = nums[i];
@@ -599,6 +619,30 @@ int minDeletionSize(char **strs, int strsSize) {
         }
     }
     return ans;
+}
+
+bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int poppedSize) {
+    int *stack = (int *) malloc(sizeof(int) * pushedSize);
+    int top = 0;
+    for (int i = 0, j = 0; i < pushedSize; ++i) {
+        stack[top++] = pushed[i];
+        while (top > 0 && stack[top - 1] == popped[j]) {
+            top--;
+            j++;
+        }
+    }
+    free(stack);
+    return top == 0;
+}
+
+int *shuffle(int *nums, int numsSize, int n, int *returnSize) {
+    int *res = (int *) malloc(sizeof(int) * n * 2);
+    for (int i = 0; i < n; ++i) {
+        res[2 * i] = nums[i];
+        res[2 * i + 1] = nums[n + i];
+    }
+    *returnSize = n * 2;
+    return res;
 }
 
 int findTheWinner(int n, int k) {

@@ -1,6 +1,7 @@
 #include "assertions.h"
 #include "recentcounter.h"
 #include "solution.h"
+#include "testutils.h"
 
 #include <assert.h>
 #include <stdio.h>
@@ -11,24 +12,18 @@ static int test_count = 0;
 static int test_pass = 0;
 
 static void test_two_sum() {
-    int nums[4] = {2, 7, 11, 15};
     int actualReturnSize = 0;
-    int *actual = twoSum(nums, 4, 9, &actualReturnSize);
-    int expect[2] = {0, 1};
-    int expectedReturnSize = 2;
-    EXPECT_EQ_INT_ARRAY(expect, expectedReturnSize, actual, actualReturnSize);
+    int *actual = twoSum(ARRAY(int, 2, 7, 11, 15), 4, 9, &actualReturnSize);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 1), 2, actual, actualReturnSize)
 }
 
 static void test_remove_element() {
-    int nums1[4] = {3, 2, 2, 3};
-    int nums2[8] = {0, 1, 2, 2, 3, 0, 4, 2};
-    EXPECT_EQ_INT(removeElement(nums1, 4, 3), 2);
-    EXPECT_EQ_INT(removeElement(nums2, 8, 2), 5);
+    EXPECT_EQ_INT(removeElement(ARRAY(int, 3, 2, 2, 3), 4, 3), 2);
+    EXPECT_EQ_INT(removeElement(ARRAY(int, 0, 1, 2, 2, 3, 0, 4, 2), 8, 2), 5);
 }
 
 static void test_search() {
-    int nums[7] = {4, 5, 6, 7, 0, 1, 2};
-    EXPECT_EQ_INT(4, search(nums, 7, 0));
+    EXPECT_EQ_INT(4, search(ARRAY(int, 4, 5, 6, 7, 0, 1, 2), 7, 0));
 }
 
 #define TEST_ROTATE(input_data, row_size, col_size, expected, expected_row_size) \
@@ -142,7 +137,6 @@ static void test_find_closest_elements() {
 }
 
 static void test_width_of_binary_tree() {
-
 }
 
 static void test_self_dividing_numbers() {
@@ -293,6 +287,18 @@ static void test_maximum_wealth() {
     TEST_MATRIX_INT(maximumWealth, accounts_array3, 3, 3, 17);
 }
 
+static void test_shuffle() {
+    int returnSize1 = 0;
+    int returnSize2 = 0;
+    int returnSize3 = 0;
+    int *actual1 = shuffle(ARRAY(int, 2, 5, 1, 3, 4, 7), 6, 3, &returnSize1);
+    int *actual2 = shuffle(ARRAY(int, 1, 2, 3, 4, 4, 3, 2, 1), 8, 4, &returnSize2);
+    int *actual3 = shuffle(ARRAY(int, 1, 1, 2, 2), 4, 2, &returnSize3);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 2, 3, 5, 4, 1, 7), 6, actual1, returnSize1);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 4, 2, 3, 3, 2, 4, 1), 8, actual2, returnSize2);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 2, 1, 2), 4, actual3, returnSize3);
+}
+
 static void test_projection_area() {
     int grid1[2][2] = {{1, 2}, {3, 4}};
     int grid2[1][1] = {{2}};
@@ -303,43 +309,35 @@ static void test_projection_area() {
 }
 
 static void test_sort_array_by_parity() {
-    int nums1[4] = {3, 1, 2, 4};
-    int nums2[1] = {0};
     int returnSize1 = 0;
     int returnSize2 = 0;
-    int expected1[4] = {4, 2, 1, 3};
-    int expected2[1] = {0};
-    int *actual1 = sortArrayByParity(nums1, 4, &returnSize1);
-    int *actual2 = sortArrayByParity(nums2, 1, &returnSize2);
-    EXPECT_EQ_INT_ARRAY(expected1, 4, actual1, returnSize1);
-    EXPECT_EQ_INT_ARRAY(expected2, 1, actual2, returnSize2);
+    int *actual1 = sortArrayByParity(ARRAY(int, 3, 1, 2, 4), 4, &returnSize1);
+    int *actual2 = sortArrayByParity(ARRAY(int, 0), 1, &returnSize2);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 4, 2, 1, 3), 4, actual1, returnSize1);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 0), 1, actual2, returnSize2);
 }
 
 static void test_di_string_match() {
-    char *s1 = "IDID";
-    char *s2 = "III";
-    char *s3 = "DDI";
-    int expected1[5] = {0, 4, 1, 3, 2};
-    int expected2[4] = {0, 1, 2, 3};
-    int expected3[4] = {3, 2, 0, 1};
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    int *actual1 = diStringMatch(s1, &returnSize1);
-    int *actual2 = diStringMatch(s2, &returnSize2);
-    int *actual3 = diStringMatch(s3, &returnSize3);
-    EXPECT_EQ_INT_ARRAY(expected1, 5, actual1, returnSize1);
-    EXPECT_EQ_INT_ARRAY(expected2, 4, actual2, returnSize2);
-    EXPECT_EQ_INT_ARRAY(expected3, 4, actual3, returnSize3);
+    int *actual1 = diStringMatch("IDID", &returnSize1);
+    int *actual2 = diStringMatch("III", &returnSize2);
+    int *actual3 = diStringMatch("DDI", &returnSize3);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 4, 1, 3, 2), 5, actual1, returnSize1);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 1, 2, 3), 4, actual2, returnSize2);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 3, 2, 0, 1), 4, actual3, returnSize3);
 }
 
 static void test_min_deletion_size() {
-    char *strs1[] = {"cba", "daf", "ghi"};
-    char *strs2[] = {"a", "b"};
-    char *strs3[] = {"zyx", "wvu", "tsr"};
-    EXPECT_EQ_INT(1, minDeletionSize(strs1, 3));
-    EXPECT_EQ_INT(0, minDeletionSize(strs2, 2));
-    EXPECT_EQ_INT(3, minDeletionSize(strs3, 3));
+    EXPECT_EQ_INT(1, minDeletionSize(ARRAY(char *, "cba", "daf", "ghi"), 3));
+    EXPECT_EQ_INT(0, minDeletionSize(ARRAY(char *, "a", "b"), 2));
+    EXPECT_EQ_INT(3, minDeletionSize(ARRAY(char *, "zyx", "wvu", "tsr"), 3));
+}
+
+static void test_validate_stack_sequences() {
+    EXPECT_EQ_TRUE(validate_stack_sequences(ARRAY(int, 1, 2, 3, 4, 5), 5, ARRAY(int, 4, 5, 3, 2, 1), 5));
+    EXPECT_EQ_FALSE(validate_stack_sequences(ARRAY(int, 1, 2, 3, 4, 5), 5, ARRAY(int, 4, 3, 5, 1, 2), 5));
 }
 
 static void test_find_the_winner() {
@@ -390,11 +388,13 @@ int main() {
     test_is_prefix_of_word();
     test_can_be_equal();
     test_max_product();
+    test_shuffle();
     test_maximum_wealth();
     test_projection_area();
     test_sort_array_by_parity();
     test_di_string_match();
     test_min_deletion_size();
+    test_validate_stack_sequences();
     test_find_the_winner();
     test_pivot_index();
     test_recent_counter();
