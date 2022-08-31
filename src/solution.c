@@ -28,6 +28,39 @@ int *two_sum(int *nums, int numsSize, int target, int *returnSize) {
     return NULL;
 }
 
+ListNode *add_two_numbers(ListNode *l1, ListNode *l2) {
+    ListNode *head = NULL, *tail = NULL;
+    int carry = 0;
+    while (l1 || l2) {
+        int n1 = l1 ? l1->val : 0;
+        int n2 = l2 ? l2->val : 0;
+        int sum = n1 + n2 + carry;
+        if (!head) {
+            head = tail = malloc(sizeof(ListNode));
+            tail->val = sum % 10;
+            tail->next = NULL;
+        } else {
+            tail->next = malloc(sizeof(ListNode));
+            tail->next->val = sum % 10;
+            tail = tail->next;
+            tail->next = NULL;
+        }
+        carry = sum / 10;
+        if (l1) {
+            l1 = l1->next;
+        }
+        if (l2) {
+            l2 = l2->next;
+        }
+    }
+    if (carry > 0) {
+        tail->next = malloc(sizeof(ListNode));
+        tail->next->val = carry;
+        tail->next->next = NULL;
+    }
+    return head;
+}
+
 int remove_element(int *nums, int numsSize, int val) {
     int left = 0;
     for (int right = 0; right < numsSize; ++right) {

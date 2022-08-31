@@ -20,6 +20,14 @@
 int *two_sum(int *nums, int numsSize, int target, int *returnSize);
 
 /**
+ * 2. Add Two Numbers
+ * @param l1
+ * @param l2
+ * @return
+ */
+ListNode *add_two_numbers(ListNode *l1, ListNode *l2);
+
+/**
  * 27. Remove Element
  * @param nums
  * @param val

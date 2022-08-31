@@ -17,6 +17,18 @@ static void test_two_sum() {
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 1), 2, actual, actualReturnSize)
 }
 
+static void test_add_two_numbers() {
+    ListNode *actual1 = add_two_numbers(create_listnode(ARRAY(int, 2, 4, 3), 3), create_listnode(ARRAY(int, 5, 6, 4), 3));
+    ListNode *actual2 = add_two_numbers(create_listnode(ARRAY(int, 0), 1), create_listnode(ARRAY(int, 0), 1));
+    ListNode *actual3 = add_two_numbers(create_listnode(ARRAY(int, 9, 9, 9, 9, 9, 9, 9), 7), create_listnode(ARRAY(int, 9, 9, 9, 9), 4));
+    ListNode *expected1 = create_listnode(ARRAY(int, 7, 0, 8), 3);
+    ListNode *expected2 = create_listnode(ARRAY(int, 0), 1);
+    ListNode *expected3 = create_listnode(ARRAY(int, 8, 9, 9, 9, 0, 0, 0, 1), 8);
+    EXPECT_EQ_TRUE(is_same_listnode(actual1, expected1));
+    EXPECT_EQ_TRUE(is_same_listnode(actual2, expected2));
+    EXPECT_EQ_TRUE(is_same_listnode(actual3, expected3));
+}
+
 static void test_remove_element() {
     EXPECT_EQ_INT(remove_element(ARRAY(int, 3, 2, 2, 3), 4, 3), 2);
     EXPECT_EQ_INT(remove_element(ARRAY(int, 0, 1, 2, 2, 3, 0, 4, 2), 8, 2), 5);
@@ -87,11 +99,10 @@ static void test_is_same_tree() {
 }
 
 static void test_reverse_list() {
-    ListNode *head1 = create_listnode(ARRAY(int, 1,2,3,4,5), 5);
-    ListNode *res = reverse_list(head1);
-    int returnSize = 0;
-    int* actual = convert_listnode_to_array(res, &returnSize);
-    EXPECT_EQ_INT_ARRAY(ARRAY(int, 5,4,3,2,1), 5, actual, returnSize)
+    ListNode *head1 = create_listnode(ARRAY(int, 1, 2, 3, 4, 5), 5);
+    ListNode *actual1 = reverse_list(head1);
+    ListNode *expected1 = create_listnode(ARRAY(int, 5, 4, 3, 2, 1), 5);
+    EXPECT_EQ_TRUE(is_same_listnode(actual1, expected1));
 }
 
 static void test_count_numbers_with_unique_digits() {
@@ -385,6 +396,7 @@ static void test_recent_counter() {
 
 int main() {
     test_two_sum();
+    test_add_two_numbers();
     test_remove_element();
     test_search();
     test_rotate();
@@ -401,7 +413,7 @@ int main() {
     test_preimage_size_fzf();
     test_unique_morse_representations();
     test_number_of_lines();
-     test_projection_area();
+    test_projection_area();
     test_sort_array_by_parity();
     test_di_string_match();
     test_min_deletion_size();

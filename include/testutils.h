@@ -51,4 +51,27 @@ int *convert_listnode_to_array(const ListNode *head, int *returnSize) {
     return res;
 }
 
+bool is_same_listnode(const ListNode *lhs, const ListNode *rhs) {
+    if ((lhs == NULL && rhs != NULL) || (lhs != NULL && rhs == NULL)) {
+        return false;
+    }
+    ListNode *dummy1 = (ListNode *) malloc(sizeof(ListNode));
+    ListNode *dummy2 = (ListNode *) malloc(sizeof(ListNode));
+    memcpy(dummy1, lhs, sizeof(ListNode));
+    memcpy(dummy2, rhs, sizeof(ListNode));
+
+    while (dummy1 && dummy2) {
+        if (dummy1->val != dummy2->val) {
+            return false;
+        }
+        dummy2 = dummy2->next;
+        dummy1 = dummy1->next;
+        if ((dummy1 == NULL && dummy2 != NULL) || (dummy1 != NULL && dummy2 == NULL)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 #endif//LEETCODEC_TESTUTILS_H
