@@ -142,6 +142,15 @@ static void test_find_diagonal_order() {
     TEST_FIND_DIAGONAL_ORDER(matrix2, 2, 2, expected2, 4);
 }
 
+static void test_find_longest_chain() {
+    int** pairs1 = initialize_matrix(ARRAY(int, 1,2,2,3,3,4), 3, 2);
+    int** pairs2 = initialize_matrix(ARRAY(int, 1,2,7,8,4,5), 3, 2);
+    int pairsColSize1 = 2;
+    int pairsColSize2 = 2;
+    EXPECT_EQ_INT(2, find_longest_chain(pairs1, 3, &pairsColSize1));
+    EXPECT_EQ_INT(3, find_longest_chain(pairs2, 3, &pairsColSize2));
+}
+
 static void test_find_closest_elements() {
     int arr1[] = {1, 2, 3, 4, 5};
     int arr2[] = {1, 2, 3, 4, 5};
@@ -410,6 +419,7 @@ int main() {
     test_lexical_order();
     test_find_substring_in_wraparoundString();
     test_find_diagonal_order();
+    test_find_longest_chain();
     test_find_closest_elements();
     test_self_dividing_numbers();
     test_next_greatest_letter();

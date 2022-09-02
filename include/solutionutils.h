@@ -16,6 +16,10 @@ inline int cmp_s(const void *context, const void *pa, const void *pb) {
     return *(int *) pa - *(int *) pb;
 }
 
+inline int cmp_array_of_array(const void *pa, const void *pb) {
+    return (*(int**)pa)[1] - (*(int**)pb)[1];
+}
+
 inline int cmp_with_order(const void *context, const void *pa, const void *pb) {
     int order = *(int *) context;
     int result = *(int *) pa - *(int *) pb;

@@ -109,6 +109,15 @@ int find_substring_in_wraparound_string(char *p);
 int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *returnSize);
 
 /**
+ * 646. Maximum Length of Pair Chain
+ * @param pairs
+ * @param pairsSize
+ * @param pairsColSize
+ * @return
+ */
+int find_longest_chain(int** pairs, int pairsSize, int *pairsColSize);
+
+/**
  * 658. Find K Closest Elements
  * @param arr
  * @param arrSize

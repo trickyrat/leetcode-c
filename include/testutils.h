@@ -74,8 +74,17 @@ bool is_same_listnode(const ListNode *lhs, const ListNode *rhs) {
     return true;
 }
 
-TreeNode *create_treenode(int *nums, int numsSize) {
-
+int **initialize_matrix(int *nums, int row, int column) {
+    int **matrix = (int **) malloc(row * sizeof(int *));
+    for (int i = 0; i < row; i++) {
+        matrix[i] = (int *) malloc(column * sizeof(int));
+    }
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < column; ++j) {
+            matrix[i][j] = *nums++;
+        }
+    }
+    return matrix;
 }
 
 #endif//LEETCODEC_TESTUTILS_H

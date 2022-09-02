@@ -239,6 +239,18 @@ int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *returnSiz
     return ans;
 }
 
+int find_longest_chain(int **pairs, int pairsSize, int *pairsColSize) {
+    int curr = INT_MIN, res = 0;
+    qsort(pairs, pairsSize, sizeof(int *), cmp_array_of_array);
+    for (int i = 0; i < pairsSize; ++i) {
+        if (curr < pairs[i][0]) {
+            curr = pairs[i][1];
+            res += 1;
+        }
+    }
+    return res;
+}
+
 int *find_closest_elements(int *arr, int arrSize, int k, int x, int *returnSize) {
     int right = binary_search(arr, arrSize, x);
     int left = right - 1;
