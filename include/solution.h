@@ -127,6 +127,13 @@ int *find_closest_elements(int* arr, int arrSize, int k, int x, int *returnSize)
 int width_of_binary_tree(struct TreeNode* root);
 
 /**
+ * 687. Longest Univalue Path
+ * @param root
+ * @return
+ */
+int longest_univalue_path(TreeNode *root);
+
+/**
  * 728.Self Dividing Numbers
  * @param left
  * @param right

@@ -289,6 +289,28 @@ int width_of_binary_tree(struct TreeNode *root) {
     return res;
 }
 
+static int longest_univalue_path_dfs(TreeNode *root, int *res) {
+    if (root == NULL) {
+        return 0;
+    }
+    int left = longest_univalue_path_dfs(root->left, res), right = longest_univalue_path_dfs(root->right, res);
+    int left1 = 0, right1 = 0;
+    if (root->left && root->left->val == root->val) {
+        left1 = left + 1;
+    }
+    if (root->right && root->right->val == root->val) {
+        right1 = right + 1;
+    }
+    *res = MAX(*res, left1 + right1);
+    return MAX(left1, right1);
+}
+
+int longest_univalue_path(TreeNode *root) {
+    int res = 0;
+    longest_univalue_path_dfs(root, &res);
+    return res;
+}
+
 static bool isSelfDividing(int num) {
     int tmp = num;
     while (tmp > 0) {

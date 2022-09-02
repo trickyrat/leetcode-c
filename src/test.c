@@ -158,6 +158,9 @@ static void test_find_closest_elements() {
 static void test_width_of_binary_tree() {
 }
 
+static void test_longest_univalue_path() {
+}
+
 static void test_self_dividing_numbers() {
     int returnSize1 = 0;
     int *actual1 = self_dividing_numbers(1, 22, &returnSize1);

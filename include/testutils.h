@@ -74,4 +74,8 @@ bool is_same_listnode(const ListNode *lhs, const ListNode *rhs) {
     return true;
 }
 
+TreeNode *create_treenode(int *nums, int numsSize) {
+
+}
+
 #endif//LEETCODEC_TESTUTILS_H
