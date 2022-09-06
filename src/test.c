@@ -128,7 +128,6 @@ static void test_find_substring_in_wraparoundString() {
     EXPECT_EQ_INT(6, find_substring_in_wraparound_string("zab"));
 }
 
-
 static void test_find_diagonal_order() {
     int matrix1[3][3] = {{1, 2, 3},
                          {4, 5, 6},
@@ -165,9 +164,11 @@ static void test_find_closest_elements() {
 }
 
 static void test_width_of_binary_tree() {
+    // TODO
 }
 
 static void test_longest_univalue_path() {
+    // TODO
 }
 
 static void test_self_dividing_numbers() {
@@ -309,6 +310,15 @@ static void test_max_product() {
     EXPECT_EQ_INT(12, max_product(nums3, 2));
 }
 
+static void test_num_special() {
+    int** mat1 = initialize_matrix(ARRAY(int, 1,0,0,0,0,1,1,0,0), 3, 3);
+    int** mat2 = initialize_matrix(ARRAY(int, 1,0,0,0,1,0,0,0,1), 3, 3);
+    int matColSize1 = 3;
+    int matColSize2 = 3;
+    EXPECT_EQ_INT(1, num_special(mat1, 3, &matColSize1));
+    EXPECT_EQ_INT(3, num_special(mat2, 3, &matColSize2));
+}
+
 static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -441,6 +451,7 @@ int main() {
     test_max_product();
     test_shuffle();
     test_final_prices();
+    test_num_special();
     test_maximum_wealth();
     test_find_the_winner();
     test_pivot_index();

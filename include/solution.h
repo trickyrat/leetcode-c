@@ -335,6 +335,15 @@ int* shuffle(int* nums, int numsSize, int n, int* returnSize);
 int* final_prices(int* prices, int pricesSize, int* returnSize);
 
 /**
+ * 1582. Special Positions in a Binary Matrix
+ * @param mat
+ * @param matSize
+ * @param matColSize
+ * @return
+ */
+int num_special(int** mat, int matSize, int* matColSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize

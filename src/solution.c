@@ -716,6 +716,35 @@ int *final_prices(int *prices, int pricesSize, int *returnSize) {
     return res;
 }
 
+int num_special(int **mat, int matSize, int *matColSize) {
+    int m = matSize, n = matColSize[0];
+    for (int i = 0; i < m; ++i) {
+        int count = 0;
+        for (int j = 0; j < n; ++j) {
+            if (mat[i][j] == 1) {
+                count++;
+            }
+        }
+        if (i == 0) {
+            count--;
+        }
+        if (count > 0) {
+            for (int j = 0; j < n; ++j) {
+                if (mat[i][j] == 1) {
+                    mat[0][j] += count;
+                }
+            }
+        }
+    }
+    int sum = 0;
+    for (int i = 0; i < n; ++i) {
+        if (mat[0][i] == 1) {
+            sum++;
+        }
+    }
+    return sum;
+}
+
 int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {
