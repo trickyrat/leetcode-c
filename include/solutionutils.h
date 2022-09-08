@@ -56,4 +56,26 @@ TreeNode *create_treenode(int val, const TreeNode *left, const TreeNode *right) 
     return node;
 }
 
+char **split(const char *str, char separator, int *returnSize) {
+    int n = strlen(str);
+    char **words = (char**) malloc(sizeof (char*)*n);
+    int wordsSize = 0, pos = 0;
+    while(pos < n) {
+        while(pos < n && str[pos] == separator) {
+            pos++;
+        }
+        if(pos < n) {
+            int curr = pos;
+            while (pos < n && str[pos] != separator) {
+                pos++;
+            }
+            words[wordsSize] = (char*) malloc(sizeof (char)*(pos-curr+1));
+            strncpy(words[wordsSize], str + curr, pos - curr);
+            words[wordsSize++][pos-curr] = '\0';
+        }
+    }
+    *returnSize = wordsSize;
+    return words;
+}
+
 #endif//LEETCODEC_SOLUTIONUTILS_H

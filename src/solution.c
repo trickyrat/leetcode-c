@@ -794,6 +794,56 @@ int num_special(int **mat, int matSize, int *matColSize) {
     return sum;
 }
 
+char *reorder_spaces(char *text) {
+    int length = strlen(text);
+    int wordsSize = 0;
+    char **words = split(text, ' ', &wordsSize);
+    int spaceCount = length;
+    int wordCount = 0;
+    for (int i = 0; i < wordsSize; ++i) {
+        int len = strlen(words[i]);
+        if (len > 0) {
+            spaceCount -= len;
+            wordCount++;
+        }
+    }
+    char *res = (char *) malloc(sizeof(char) * (length + 1));
+    int pos = 0;
+    if (wordsSize == 1) {
+        pos += sprintf(res + pos, "%s", words[0]);
+        for (int i = 0; i < spaceCount; ++i) {
+            res[pos++] = ' ';
+        }
+        res[pos] = '\0';
+        free(words[0]);
+        free(words);
+        return res;
+    }
+
+    int perSpace = spaceCount / (wordCount - 1);
+    int restSpace = spaceCount % (wordCount - 1);
+    for (int i = 0; i < wordsSize; i++) {
+        if (strlen(words[i]) == 0) {
+            continue;
+        }
+        if (pos > 0) {
+            for (int j = 0; j < perSpace; j++) {
+                res[pos++] = ' ';
+            }
+        }
+        pos += sprintf(res + pos, "%s", words[i]);
+    }
+    for (int i = 0; i < restSpace; i++) {
+        res[pos++] = ' ';
+    }
+    res[pos] = '\0';
+    for (int i = 0; i < wordsSize; i++) {
+        free(words[i]);
+    }
+    free(words);
+    return res;
+}
+
 int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {

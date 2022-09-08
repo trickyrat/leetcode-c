@@ -328,6 +328,13 @@ static void test_num_special() {
     EXPECT_EQ_INT(3, num_special(mat2, 3, &matColSize2));
 }
 
+static void test_reorder_spaces() {
+    char *actual1 = reorder_spaces("  this   is  a sentence ");
+    char *actual2 = reorder_spaces(" practice   makes   perfect");
+    EXPECT_EQ_STRING("this   is   a   sentence", actual1, strlen(actual1));
+    EXPECT_EQ_STRING("practice   makes   perfect ", actual2, strlen(actual2));
+}
+
 static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -462,6 +469,7 @@ int main() {
     test_shuffle();
     test_final_prices();
     test_num_special();
+    test_reorder_spaces();
     test_maximum_wealth();
     test_find_the_winner();
     test_pivot_index();

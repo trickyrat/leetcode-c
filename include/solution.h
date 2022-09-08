@@ -351,6 +351,13 @@ int* final_prices(int* prices, int pricesSize, int* returnSize);
 int num_special(int** mat, int matSize, int* matColSize);
 
 /**
+ * 1592. Rearrange Spaces Between Words
+ * @param text
+ * @return
+ */
+char *reorder_spaces(char *text);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize
