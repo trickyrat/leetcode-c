@@ -437,6 +437,55 @@ int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize) {
     return ans;
 }
 
+int unique_letter_string(char *s) {
+    ListNode **index = (ListNode **) malloc(sizeof(ListNode *) * 26);
+    for (int i = 0; i < 26; ++i) {
+        index[i] = NULL;
+    }
+    int len = strlen(s);
+    for (int i = 0; i < len; ++i) {
+        ListNode *node = (ListNode *) malloc(sizeof(ListNode));
+        node->val = i;
+        node->next = index[s[i] - 'A'];
+        index[s[i] - 'A'] = node;
+    }
+    int res = 0;
+    for (int i = 0; i < 26; ++i) {
+        if (index[i]) {
+            ListNode *curr = index[i];
+            ListNode *prev = NULL;
+            ListNode *next = curr->next;
+            while (curr) {
+                if (prev == NULL && next == NULL) {
+                    res += (curr->val + 1) * (len - curr->val);
+                } else if (prev == NULL) {
+                    res += (curr->val - next->val) * (len - curr->val);
+                } else if (next == NULL) {
+                    res += (curr->val + 1) * (prev->val - curr->val);
+                } else {
+                    res += (curr->val - next->val) * (prev->val - curr->val);
+                }
+                prev = curr;
+                curr = curr->next;
+                if (next) {
+                    next = next->next;
+                }
+            }
+        }
+    }
+    for (int i = 0; i < 26; ++i) {
+        if (index[i]) {
+            ListNode *curr = NULL, *temp = NULL;
+            for (curr = index[i]; curr;) {
+                temp = curr;
+                curr = curr->next;
+                free(temp);
+            }
+        }
+    }
+    return res;
+}
+
 int projection_area(int **grid, int gridSize, int *gridColSize) {
     int xyArea = 0, yzArea = 0, zxArea = 0;
     for (int i = 0; i < gridSize; ++i) {

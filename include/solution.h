@@ -186,6 +186,13 @@ int unique_morse_representations(char **words, int wordsSize);
 int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize);
 
 /**
+ * 828. Count Unique Characters of All Substrings of a Given String
+ * @param s
+ * @return
+ */
+int unique_letter_string(char *s);
+
+/**
  * 883. Projection Area of 3D Shapes
  * @param grid
  * @param gridSize

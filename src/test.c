@@ -142,8 +142,8 @@ static void test_find_diagonal_order() {
 }
 
 static void test_find_longest_chain() {
-    int** pairs1 = initialize_matrix(ARRAY(int, 1,2,2,3,3,4), 3, 2);
-    int** pairs2 = initialize_matrix(ARRAY(int, 1,2,7,8,4,5), 3, 2);
+    int **pairs1 = initialize_matrix(ARRAY(int, 1, 2, 2, 3, 3, 4), 3, 2);
+    int **pairs2 = initialize_matrix(ARRAY(int, 1, 2, 7, 8, 4, 5), 3, 2);
     int pairsColSize1 = 2;
     int pairsColSize2 = 2;
     EXPECT_EQ_INT(2, find_longest_chain(pairs1, 3, &pairsColSize1));
@@ -210,6 +210,15 @@ static void test_number_of_lines() {
     int expected2[2] = {2, 4};
     TEST_NUMBER_OF_LINES(widths1, widths_size, s1, expected1, 2);
     TEST_NUMBER_OF_LINES(widths2, widths_size, s2, expected2, 2);
+}
+
+static void test_unique_letter_string() {
+    char *s1 = "ABC";
+    char *s2 = "ABA";
+    char *s3 = "LEETCODE";
+    EXPECT_EQ_INT(10, unique_letter_string(s1));
+    EXPECT_EQ_INT(8, unique_letter_string(s2));
+    EXPECT_EQ_INT(92, unique_letter_string(s3));
 }
 
 static void test_is_alien_sorted() {
@@ -311,8 +320,8 @@ static void test_max_product() {
 }
 
 static void test_num_special() {
-    int** mat1 = initialize_matrix(ARRAY(int, 1,0,0,0,0,1,1,0,0), 3, 3);
-    int** mat2 = initialize_matrix(ARRAY(int, 1,0,0,0,1,0,0,0,1), 3, 3);
+    int **mat1 = initialize_matrix(ARRAY(int, 1, 0, 0, 0, 0, 1, 1, 0, 0), 3, 3);
+    int **mat2 = initialize_matrix(ARRAY(int, 1, 0, 0, 0, 1, 0, 0, 0, 1), 3, 3);
     int matColSize1 = 3;
     int matColSize2 = 3;
     EXPECT_EQ_INT(1, num_special(mat1, 3, &matColSize1));
@@ -436,6 +445,7 @@ int main() {
     test_preimage_size_fzf();
     test_unique_morse_representations();
     test_number_of_lines();
+    test_unique_letter_string();
     test_projection_area();
     test_sort_array_by_parity();
     test_di_string_match();
