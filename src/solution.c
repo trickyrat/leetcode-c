@@ -301,6 +301,22 @@ int width_of_binary_tree(struct TreeNode *root) {
     return res;
 }
 
+int *construct_array(int n, int k, int *returnSize) {
+    int *res = (int *) malloc(sizeof(int) * n);
+    int index = 0;
+    for (int i = 1; i < n - k; ++i) {
+        res[index++] = i;
+    }
+    for (int i = n - k, j = n; i <= j; ++i, --j) {
+        res[index++] = i;
+        if (i != j) {
+            res[index++] = j;
+        }
+    }
+    *returnSize = n;
+    return res;
+}
+
 static int longest_univalue_path_dfs(TreeNode *root, int *res) {
     if (root == NULL) {
         return 0;

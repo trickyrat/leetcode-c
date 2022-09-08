@@ -167,6 +167,15 @@ static void test_width_of_binary_tree() {
     // TODO
 }
 
+static void test_construct_array() {
+    int returnSize1 = 0;
+    int returnSize2 = 0;
+    int *actual1 = construct_array(3, 1, &returnSize1);
+    int *actual2 = construct_array(3, 2, &returnSize2);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 2, 3), 3, actual1, returnSize1);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 3, 2), 3, actual2, returnSize2);
+}
+
 static void test_longest_univalue_path() {
     // TODO
 }
@@ -447,6 +456,7 @@ int main() {
     test_find_diagonal_order();
     test_find_longest_chain();
     test_find_closest_elements();
+    test_construct_array();
     test_self_dividing_numbers();
     test_next_greatest_letter();
     test_preimage_size_fzf();

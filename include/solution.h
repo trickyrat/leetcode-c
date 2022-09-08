@@ -136,6 +136,14 @@ int *find_closest_elements(int* arr, int arrSize, int k, int x, int *returnSize)
 int width_of_binary_tree(struct TreeNode* root);
 
 /**
+ * 667. Beautiful Arrangement II
+ * @param n
+ * @param k
+ * @return
+ */
+int *construct_array(int n, int k, int *returnSize);
+
+/**
  * 687. Longest Univalue Path
  * @param root
  * @return
