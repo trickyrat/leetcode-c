@@ -860,6 +860,22 @@ char *reorder_spaces(char *text) {
     return res;
 }
 
+int min_operations(char **logs, int logsSize) {
+    int depth = 0;
+    for (int i = 0; i < logsSize; ++i) {
+        if (!strcmp(logs[i], "./")) {
+            continue;
+        } else if (!strcmp(logs[i], "../")) {
+            if (depth > 0) {
+                depth--;
+            }
+        } else {
+            depth++;
+        }
+    }
+    return depth;
+}
+
 int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {

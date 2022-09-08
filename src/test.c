@@ -344,6 +344,15 @@ static void test_reorder_spaces() {
     EXPECT_EQ_STRING("practice   makes   perfect ", actual2, strlen(actual2));
 }
 
+static void test_min_operations() {
+    char *logs1[5] = {"d1/", "d2/", "../", "d21/", "./"};
+    char *logs2[6] = {"d1/", "d2/", "./", "d3/", "../", "d31/"};
+    char *logs3[4] = {"d1/", "../", "../", "../"};
+    EXPECT_EQ_INT(2, min_operations(logs1, 5));
+    EXPECT_EQ_INT(3, min_operations(logs2, 6));
+    EXPECT_EQ_INT(0, min_operations(logs3, 4));
+}
+
 static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -480,6 +489,7 @@ int main() {
     test_final_prices();
     test_num_special();
     test_reorder_spaces();
+    test_min_operations();
     test_maximum_wealth();
     test_find_the_winner();
     test_pivot_index();

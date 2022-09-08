@@ -366,6 +366,14 @@ int num_special(int** mat, int matSize, int* matColSize);
 char *reorder_spaces(char *text);
 
 /**
+ * 1598. Crawler Log Folder
+ * @param logs
+ * @param logsSize
+ * @return
+ */
+int min_operations(char **logs, int logsSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize
