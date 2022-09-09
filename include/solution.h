@@ -144,6 +144,15 @@ int width_of_binary_tree(struct TreeNode* root);
 int *construct_array(int n, int k, int *returnSize);
 
 /**
+ * 669. Trim a Binary Search Tree
+ * @param root
+ * @param low
+ * @param high
+ * @return
+ */
+TreeNode *trim_bst(TreeNode *root, int low, int high);
+
+/**
  * 687. Longest Univalue Path
  * @param root
  * @return

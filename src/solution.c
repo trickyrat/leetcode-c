@@ -317,6 +317,34 @@ int *construct_array(int n, int k, int *returnSize) {
     return res;
 }
 
+TreeNode *trim_bst(TreeNode *root, int low, int high) {
+    while (root && (root->val < low || root->val > high)) {
+        if (root->val < low) {
+            root = root->right;
+        } else {
+            root = root->left;
+        }
+    }
+    if (root == NULL) {
+        return NULL;
+    }
+    for (struct TreeNode* node = root; node->left; ) {
+        if (node->left->val < low) {
+            node->left = node->left->right;
+        } else {
+            node = node->left;
+        }
+    }
+    for (struct TreeNode* node = root; node->right; ) {
+        if (node->right->val > high) {
+            node->right = node->right->left;
+        } else {
+            node = node->right;
+        }
+    }
+    return root;
+}
+
 static int longest_univalue_path_dfs(TreeNode *root, int *res) {
     if (root == NULL) {
         return 0;

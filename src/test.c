@@ -176,6 +176,10 @@ static void test_construct_array() {
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 1, 3, 2), 3, actual2, returnSize2);
 }
 
+static void test_trim_bst() {
+
+}
+
 static void test_longest_univalue_path() {
     // TODO
 }
