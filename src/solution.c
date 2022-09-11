@@ -693,7 +693,7 @@ int *min_subsequence(int *nums, int numsSize, int *returnSize) {
     for (int i = 0; i < numsSize; ++i) {
         total += nums[i];
     }
-    qsort_s(nums, numsSize, sizeof(int), cmp_s, NULL);
+    qsort_s(nums, numsSize, sizeof(int), cmp_asc_s, NULL);
     int *ans = (int *) malloc(sizeof(int) * numsSize);
     int curr = 0, pos = 0;
     for (int i = numsSize - 1; i >= 0; --i) {
@@ -760,8 +760,8 @@ int is_prefix_of_word(char *sentence, char *searchWord) {
 
 bool can_be_equal(int *target, int targetSize, int *arr, int arrSize) {
     int descending = 0;
-    qsort_s(target, targetSize, sizeof(int), cmp_s, NULL);
-    qsort_s(arr, arrSize, sizeof(int), cmp_s, NULL);
+    qsort_s(target, targetSize, sizeof(int), cmp_asc_s, NULL);
+    qsort_s(arr, arrSize, sizeof(int), cmp_asc_s, NULL);
     return memcmp(target, arr, sizeof(int) * arrSize) == 0;
 }
 
@@ -904,6 +904,16 @@ int min_operations(char **logs, int logsSize) {
     return depth;
 }
 
+int special_array(int *nums, int numsSize) {
+    qsort_s(nums, numsSize, sizeof(int), cmp_desc_s, NULL);
+    for (int i = 1; i <= numsSize; ++i) {
+        if (nums[i - 1] >= i && (i == numsSize || nums[i]  < i)) {
+            return i;
+        }
+    }
+    return -1;
+}
+
 int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {
@@ -924,7 +934,7 @@ int find_the_winner(int n, int k) {
     return winner;
 }
 
-int pivot_index(int *nums, int numsSize) {
+int find_middle_index(int *nums, int numsSize) {
     int total = 0;
     for (int i = 0; i < numsSize; i++) {
         total += nums[i];

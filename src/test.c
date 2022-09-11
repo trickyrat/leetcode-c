@@ -177,7 +177,6 @@ static void test_construct_array() {
 }
 
 static void test_trim_bst() {
-
 }
 
 static void test_longest_univalue_path() {
@@ -357,6 +356,12 @@ static void test_min_operations() {
     EXPECT_EQ_INT(0, min_operations(logs3, 4));
 }
 
+static void test_special_array() {
+    EXPECT_EQ_INT(2, special_array(ARRAY(int, 3, 5), 2));
+    EXPECT_EQ_INT(-1, special_array(ARRAY(int, 0, 0), 2));
+    EXPECT_EQ_INT(3, special_array(ARRAY(int, 0, 4, 3, 0, 4), 5));
+}
+
 static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -436,13 +441,13 @@ static void test_find_the_winner() {
     EXPECT_EQ_INT(1, find_the_winner(6, 5));
 }
 
-static void test_pivot_index() {
+static void test_find_middle_index() {
     int nums1[5] = {2, 3, -1, 8, 4};
     int nums2[3] = {1, -1, 4};
     int nums3[2] = {2, 5};
-    EXPECT_EQ_INT(3, pivot_index(nums1, 5));
-    EXPECT_EQ_INT(2, pivot_index(nums2, 3));
-    EXPECT_EQ_INT(-1, pivot_index(nums3, 2));
+    EXPECT_EQ_INT(3, find_middle_index(nums1, 5));
+    EXPECT_EQ_INT(2, find_middle_index(nums2, 3));
+    EXPECT_EQ_INT(-1, find_middle_index(nums3, 2));
 }
 
 static void test_recent_counter() {
@@ -494,9 +499,10 @@ int main() {
     test_num_special();
     test_reorder_spaces();
     test_min_operations();
+    test_special_array();
     test_maximum_wealth();
     test_find_the_winner();
-    test_pivot_index();
+    test_find_middle_index();
     test_recent_counter();
     printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
     return main_ret;

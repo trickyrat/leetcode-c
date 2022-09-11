@@ -383,6 +383,14 @@ char *reorder_spaces(char *text);
 int min_operations(char **logs, int logsSize);
 
 /**
+ * 1608. Special Array With X Elements Greater Than or Equal X
+ * @param nums
+ * @param numsSize
+ * @return
+ */
+int special_array(int *nums, int numsSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize
@@ -405,6 +413,6 @@ int find_the_winner(int n, int k);
  * @param numsSize
  * @return
  */
-int pivot_index(int *nums, int numsSize);
+int find_middle_index(int *nums, int numsSize);
 
 #endif// LEETCODEC_SOLUTION_H

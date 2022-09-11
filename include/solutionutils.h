@@ -8,16 +8,24 @@
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) > (b) ? (b) : (a))
 
-inline int cmp(const void *pa, const void *pb) {
+inline int cmp_asc(const void *pa, const void *pb) {
     return *(int *) pa - *(int *) pb;
 }
 
-inline int cmp_s(const void *context, const void *pa, const void *pb) {
+inline int cmp_desc(const void *pa, const void *pb) {
+    return *(int *) pb - *(int *) pa;
+}
+
+inline int cmp_asc_s(const void *context, const void *pa, const void *pb) {
     return *(int *) pa - *(int *) pb;
+}
+
+inline int cmp_desc_s(const void *context, const void *pa, const void *pb) {
+    return *(int *) pb - *(int *) pa;
 }
 
 inline int cmp_array_of_array(const void *pa, const void *pb) {
-    return (*(int**)pa)[1] - (*(int**)pb)[1];
+    return (*(int **) pa)[1] - (*(int **) pb)[1];
 }
 
 inline int cmp_with_order(const void *context, const void *pa, const void *pb) {
@@ -58,20 +66,20 @@ TreeNode *create_treenode(int val, const TreeNode *left, const TreeNode *right) 
 
 char **split(const char *str, char separator, int *returnSize) {
     int n = strlen(str);
-    char **words = (char**) malloc(sizeof (char*)*n);
+    char **words = (char **) malloc(sizeof(char *) * n);
     int wordsSize = 0, pos = 0;
-    while(pos < n) {
-        while(pos < n && str[pos] == separator) {
+    while (pos < n) {
+        while (pos < n && str[pos] == separator) {
             pos++;
         }
-        if(pos < n) {
+        if (pos < n) {
             int curr = pos;
             while (pos < n && str[pos] != separator) {
                 pos++;
             }
-            words[wordsSize] = (char*) malloc(sizeof (char)*(pos-curr+1));
+            words[wordsSize] = (char *) malloc(sizeof(char) * (pos - curr + 1));
             strncpy(words[wordsSize], str + curr, pos - curr);
-            words[wordsSize++][pos-curr] = '\0';
+            words[wordsSize++][pos - curr] = '\0';
         }
     }
     *returnSize = wordsSize;
