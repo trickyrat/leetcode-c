@@ -37,8 +37,14 @@ inline int cmp_with_order(const void *context, const void *pa, const void *pb) {
     return result;
 }
 
-void swap(int *a, int *b) {
+inline void swap_int(int *a, int *b) {
     int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+inline void swap_char(char *a, char *b) {
+    char tmp = *a;
     *a = *b;
     *b = tmp;
 }

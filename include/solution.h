@@ -153,6 +153,13 @@ int *construct_array(int n, int k, int *returnSize);
 TreeNode *trim_bst(TreeNode *root, int low, int high);
 
 /**
+ * 670. Maximum Swap
+ * @param num
+ * @return
+ */
+int maximum_swap(int num);
+
+/**
  * 687. Longest Univalue Path
  * @param root
  * @return

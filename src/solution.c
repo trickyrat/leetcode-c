@@ -105,12 +105,12 @@ int search(const int *nums, int numSize, int target) {
 void rotate(int **matrix, int matrixSize, int *matrixColSize) {
     for (int i = 0; i < matrixSize / 2; ++i) {
         for (int j = 0; j < matrixSize; ++j) {
-            swap(&matrix[i][j], &matrix[matrixSize - i - 1][j]);
+            swap_int(&matrix[i][j], &matrix[matrixSize - i - 1][j]);
         }
     }
     for (int i = 0; i < matrixSize; ++i) {
         for (int j = 0; j < i; ++j) {
-            swap(&matrix[i][j], &matrix[j][i]);
+            swap_int(&matrix[i][j], &matrix[j][i]);
         }
     }
 }
@@ -343,6 +343,27 @@ TreeNode *trim_bst(TreeNode *root, int low, int high) {
         }
     }
     return root;
+}
+
+int maximum_swap(int num) {
+    char chars[32];
+    sprintf(chars, "%d", num);
+    int n = strlen(chars);
+    char max_index = n - 1;
+    int index1 = -1, index2 = -1;
+    for (int i = n - 1; i >= 0; --i) {
+        if(chars[i] > chars[max_index]) {
+            max_index = i;
+        } else if(chars[i] < chars[max_index]) {
+            index1 = i;
+            index2 = max_index;
+        }
+    }
+    if(index1 >= 0) {
+        swap_char(&chars[index1], &chars[index2]);
+        return atoi(chars);
+    }
+    return num;
 }
 
 static int longest_univalue_path_dfs(TreeNode *root, int *res) {

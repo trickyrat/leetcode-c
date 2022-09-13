@@ -179,6 +179,11 @@ static void test_construct_array() {
 static void test_trim_bst() {
 }
 
+static void test_maximum_swap() {
+    EXPECT_EQ_INT(7236, maximum_swap(2736));
+    EXPECT_EQ_INT(9973, maximum_swap(9973));
+}
+
 static void test_longest_univalue_path() {
     // TODO
 }
@@ -475,6 +480,7 @@ int main() {
     test_find_longest_chain();
     test_find_closest_elements();
     test_construct_array();
+    test_maximum_swap();
     test_self_dividing_numbers();
     test_next_greatest_letter();
     test_preimage_size_fzf();
