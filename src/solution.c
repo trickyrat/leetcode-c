@@ -935,6 +935,15 @@ int special_array(int *nums, int numsSize) {
     return -1;
 }
 
+double trim_mean(int *arr, int arrSize) {
+    qsort(arr, arrSize, sizeof(int), cmp_asc);
+    int sum = 0;
+    for (int i = arrSize / 20; i < (19 * arrSize / 20); i++) {
+        sum += arr[i];
+    }
+    return sum / (arrSize * 0.9);
+}
+
 int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {

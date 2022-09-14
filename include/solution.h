@@ -398,6 +398,14 @@ int min_operations(char **logs, int logsSize);
 int special_array(int *nums, int numsSize);
 
 /**
+ * 1619. Mean of Array After Removing Some Elements
+ * @param arr
+ * @param arrSize
+ * @return
+ */
+double trim_mean(int *arr, int arrSize);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize

@@ -367,6 +367,12 @@ static void test_special_array() {
     EXPECT_EQ_INT(3, special_array(ARRAY(int, 0, 4, 3, 0, 4), 5));
 }
 
+static void test_trim_mean() {
+    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3), 20) - 2.00000) <= 0.00001);
+    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 6,2,7,5,1,2,0,3,10,2,5,0,5,5,0,8,7,6,8,0), 20) - 4.00000) <= 0.00001);
+    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 6,0,7,0,7,5,7,8,3,4,0,7,8,1,6,8,1,1,2,4,8,1,9,5,4,3,8,5,10,8,6,6,1,0,6,10,8,2,3,4), 40) - 4.77778) <= 0.00001);
+}
+
 static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -506,6 +512,7 @@ int main() {
     test_reorder_spaces();
     test_min_operations();
     test_special_array();
+    test_trim_mean();
     test_maximum_wealth();
     test_find_the_winner();
     test_find_middle_index();
