@@ -373,6 +373,12 @@ static void test_trim_mean() {
     EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 6,0,7,0,7,5,7,8,3,4,0,7,8,1,6,8,1,1,2,4,8,1,9,5,4,3,8,5,10,8,6,6,1,0,6,10,8,2,3,4), 40) - 4.77778) <= 0.00001);
 }
 
+static void test_max_length_between_equal_characters() {
+    EXPECT_EQ_INT(0, max_length_between_equal_characters("aa"));
+    EXPECT_EQ_INT(2, max_length_between_equal_characters("abca"));
+    EXPECT_EQ_INT(-1, max_length_between_equal_characters("cbyzx"));
+}
+
 static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -513,6 +519,7 @@ int main() {
     test_min_operations();
     test_special_array();
     test_trim_mean();
+    test_max_length_between_equal_characters();
     test_maximum_wealth();
     test_find_the_winner();
     test_find_middle_index();

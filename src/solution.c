@@ -944,6 +944,21 @@ double trim_mean(int *arr, int arrSize) {
     return sum / (arrSize * 0.9);
 }
 
+int max_length_between_equal_characters(char *s) {
+    int res = -1;
+    int map[26];
+    int n = strlen(s);
+    memset(map, -1, sizeof (map));
+    for (int i = 0; i < n; ++i) {
+        if(map[s[i] - 'a'] < 0) {
+            map[s[i] - 'a'] = i;
+        } else {
+            res = MAX(res, i - map[s[i] - 'a'] - 1);
+        }
+    }
+    return res;
+}
+
 int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
     int maxWealth = 0;
     for (int i = 0; i < accountsSize; ++i) {

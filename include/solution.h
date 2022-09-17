@@ -406,6 +406,13 @@ int special_array(int *nums, int numsSize);
 double trim_mean(int *arr, int arrSize);
 
 /**
+ * 1624. Largest Substring Between Two Equal Characters
+ * @param s
+ * @return
+ */
+int max_length_between_equal_characters(char *s);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize
