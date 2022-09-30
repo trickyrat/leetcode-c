@@ -1,4 +1,5 @@
 #include "assertions.h"
+#include "interviewsolution.h"
 #include "recentcounter.h"
 #include "solution.h"
 #include "testutils.h"
@@ -368,9 +369,9 @@ static void test_special_array() {
 }
 
 static void test_trim_mean() {
-    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3), 20) - 2.00000) <= 0.00001);
-    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 6,2,7,5,1,2,0,3,10,2,5,0,5,5,0,8,7,6,8,0), 20) - 4.00000) <= 0.00001);
-    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 6,0,7,0,7,5,7,8,3,4,0,7,8,1,6,8,1,1,2,4,8,1,9,5,4,3,8,5,10,8,6,6,1,0,6,10,8,2,3,4), 40) - 4.77778) <= 0.00001);
+    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3), 20) - 2.00000) <= 0.00001);
+    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 6, 2, 7, 5, 1, 2, 0, 3, 10, 2, 5, 0, 5, 5, 0, 8, 7, 6, 8, 0), 20) - 4.00000) <= 0.00001);
+    EXPECT_EQ_TRUE((trim_mean(ARRAY(int, 6, 0, 7, 0, 7, 5, 7, 8, 3, 4, 0, 7, 8, 1, 6, 8, 1, 1, 2, 4, 8, 1, 9, 5, 4, 3, 8, 5, 10, 8, 6, 6, 1, 0, 6, 10, 8, 2, 3, 4), 40) - 4.77778) <= 0.00001);
 }
 
 static void test_max_length_between_equal_characters() {
@@ -476,7 +477,7 @@ static void test_recent_counter() {
     recentCounterFree(obj);
 }
 
-int main() {
+static void test_solution() {
     test_two_sum();
     test_add_two_numbers();
     test_remove_element();
@@ -524,6 +525,20 @@ int main() {
     test_find_the_winner();
     test_find_middle_index();
     test_recent_counter();
+}
+
+static void test_is_flipped_string() {
+    EXPECT_EQ_TRUE(is_flipped_string("waterbottle", "erbottlewat"));
+    EXPECT_EQ_FALSE(is_flipped_string("aa", "aba"));
+}
+
+static void test_interview_solution() {
+    test_is_flipped_string();
+}
+
+int main() {
+    test_solution();
+    test_interview_solution();
     printf("%d/%d (%3.2f%%) passed\n", test_pass, test_count, test_pass * 100.0 / test_count);
     return main_ret;
 }
