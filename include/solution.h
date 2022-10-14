@@ -422,6 +422,13 @@ int max_length_between_equal_characters(char *s);
 int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize);
 
 /**
+ * 1694. Reformat Phone Number
+ * @param number
+ * @return
+ */
+char *reformat_number(char* number);
+
+/**
  * 1823. Find the Winner of the Circular Game
  * @param n
  * @param k

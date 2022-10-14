@@ -385,6 +385,15 @@ static void test_maximum_wealth() {
     TEST_MATRIX_INT(maximum_wealth, accounts_array3, 3, 3, 17);
 }
 
+static void test_reformat_number() {
+    char *actual1 = reformat_number("1-23-45 6");
+    char *actual2 = reformat_number("123 4-567");
+    char *actual3 = reformat_number("123 4-5678");
+    EXPECT_EQ_STRING("123-456", actual1, strlen(actual1));
+    EXPECT_EQ_STRING("123-45-67", actual2, strlen(actual2));
+    EXPECT_EQ_STRING("123-456-78", actual3, strlen(actual3));
+}
+
 static void test_shuffle() {
     int returnSize1 = 0;
     int returnSize2 = 0;
@@ -518,6 +527,7 @@ static void test_solution() {
     test_trim_mean();
     test_max_length_between_equal_characters();
     test_maximum_wealth();
+    test_reformat_number();
     test_find_the_winner();
     test_find_middle_index();
     test_recent_counter();

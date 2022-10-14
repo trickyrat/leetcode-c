@@ -2,6 +2,7 @@
 // Created by wangj on 2022-01-08.
 //
 #include <assert.h>
+#include <ctype.h>
 #include <malloc.h>
 #include <stdio.h>
 #include <string.h>
@@ -328,14 +329,14 @@ TreeNode *trim_bst(TreeNode *root, int low, int high) {
     if (root == NULL) {
         return NULL;
     }
-    for (struct TreeNode* node = root; node->left; ) {
+    for (struct TreeNode *node = root; node->left;) {
         if (node->left->val < low) {
             node->left = node->left->right;
         } else {
             node = node->left;
         }
     }
-    for (struct TreeNode* node = root; node->right; ) {
+    for (struct TreeNode *node = root; node->right;) {
         if (node->right->val > high) {
             node->right = node->right->left;
         } else {
@@ -352,14 +353,14 @@ int maximum_swap(int num) {
     char max_index = n - 1;
     int index1 = -1, index2 = -1;
     for (int i = n - 1; i >= 0; --i) {
-        if(chars[i] > chars[max_index]) {
+        if (chars[i] > chars[max_index]) {
             max_index = i;
-        } else if(chars[i] < chars[max_index]) {
+        } else if (chars[i] < chars[max_index]) {
             index1 = i;
             index2 = max_index;
         }
     }
-    if(index1 >= 0) {
+    if (index1 >= 0) {
         swap_char(&chars[index1], &chars[index2]);
         return atoi(chars);
     }
@@ -928,7 +929,7 @@ int min_operations(char **logs, int logsSize) {
 int special_array(int *nums, int numsSize) {
     qsort_s(nums, numsSize, sizeof(int), cmp_desc_s, NULL);
     for (int i = 1; i <= numsSize; ++i) {
-        if (nums[i - 1] >= i && (i == numsSize || nums[i]  < i)) {
+        if (nums[i - 1] >= i && (i == numsSize || nums[i] < i)) {
             return i;
         }
     }
@@ -948,9 +949,9 @@ int max_length_between_equal_characters(char *s) {
     int res = -1;
     int map[26];
     int n = strlen(s);
-    memset(map, -1, sizeof (map));
+    memset(map, -1, sizeof(map));
     for (int i = 0; i < n; ++i) {
-        if(map[s[i] - 'a'] < 0) {
+        if (map[s[i] - 'a'] < 0) {
             map[s[i] - 'a'] = i;
         } else {
             res = MAX(res, i - map[s[i] - 'a'] - 1);
@@ -969,6 +970,46 @@ int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
         maxWealth = MAX(maxWealth, sum);
     }
     return maxWealth;
+}
+
+char *reformat_number(char *number) {
+    int len = strlen(number);
+    char* digits =(char*) malloc(sizeof (char)*(len + 1));
+    int pos = 0;
+    for (int i = 0; i < len; ++i) {
+        char ch = number[i];
+        if (isdigit(ch)) {
+            digits[pos++] = ch;
+        }
+    }
+
+    int n = pos;
+    int pt = 0;
+    char *res = (char *) malloc(sizeof(char) * n * 2);
+    pos = 0;
+    while (n) {
+        if (n > 4) {
+            strncpy(res + pos, digits + pt, 3);
+            pos += 3;
+            res[pos++] = '-';
+            pt += 3;
+            n -= 3;
+        } else {
+            if (n == 4) {
+                strncpy(res + pos, digits + pt, 2);
+                pos += 2;
+                res[pos++] = '-';
+                strncpy(res + pos, digits + pt + 2, 2);
+                pos += 2;
+            } else {
+                strncpy(res + pos, digits + pt, n);
+                pos += n;
+            }
+            break;
+        }
+    }
+    res[pos] = '\0';
+    return res;
 }
 
 int find_the_winner(int n, int k) {
