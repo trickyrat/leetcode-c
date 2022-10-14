@@ -15,6 +15,7 @@ include_directories(
 
 add_library(leetcode_library
 		src/solution.c
+        src/interviewsolution.c
 		include/assertions.h
 		include/utarray.h
 		include/uthash.h
@@ -27,6 +28,6 @@ add_library(leetcode_library
 		include/recentcounter.h
 		include/testutils.h
 		include/solutionutils.h
-        include/interviewsolution.h src/interviewsolution.c)
-add_executable(leetcode_binary src/test.c )
+        )
+add_executable(leetcode_binary src/test.c)
 target_link_libraries(leetcode_binary leetcode_library)

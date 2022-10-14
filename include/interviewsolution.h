@@ -15,4 +15,10 @@
  */
 bool is_flipped_string(char* s1, char* s2);
 
+/**
+ * 17.09. Get Kth Magic Number LCCI
+ * @param k
+ * @return
+ */
+int get_kth_magic_number(int k);
 #endif//LEETCODEC_INTERVIEWSOLUTION_H

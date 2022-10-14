@@ -5,7 +5,7 @@
 #ifndef LEETCODEC_TESTUTILS_H
 #define LEETCODEC_TESTUTILS_H
 
-#include "string.h"
+#include <string.h>
 
 #define ARRAY(T, ...) \
     (T[]) { __VA_ARGS__ }

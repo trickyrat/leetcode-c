@@ -5,6 +5,8 @@
 #ifndef LEETCODEC_ASSERTIONS_H
 #define LEETCODEC_ASSERTIONS_H
 
+#include <stdio.h>
+
 #define EXPECT_EQ_BASE(equality, expect, actual, format)                      \
     do {                                                                      \
         test_count++;                                                         \
@@ -89,9 +91,6 @@
         int col_size_ = (col_size);                                         \
         EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_));   \
     } while (0)
-
-#define TEST_EQ_MATRIX(expected, expectedColSize, actual, actualColSize) \
-
 
 
 #endif//LEETCODEC_ASSERTIONS_H

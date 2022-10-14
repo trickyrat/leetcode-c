@@ -4,10 +4,6 @@
 #include "solution.h"
 #include "testutils.h"
 
-#include <assert.h>
-#include <stdio.h>
-#include <string.h>
-
 static int main_ret = 0;
 static int test_count = 0;
 static int test_pass = 0;
@@ -532,8 +528,13 @@ static void test_is_flipped_string() {
     EXPECT_EQ_FALSE(is_flipped_string("aa", "aba"));
 }
 
+static void test_get_kth_magic_number() {
+    EXPECT_EQ_INT(get_kth_magic_number(5), 9);
+}
+
 static void test_interview_solution() {
     test_is_flipped_string();
+    test_get_kth_magic_number();
 }
 
 int main() {
