@@ -437,6 +437,13 @@ int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize);
 char *reformat_number(char* number);
 
 /**
+ * 1784. Check if Binary String Has at Most One Segment of Ones
+ * @param s
+ * @return
+ */
+bool check_ones_segment(char* s);
+
+/**
  * 1823. Find the Winner of the Circular Game
  * @param n
  * @param k

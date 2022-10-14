@@ -401,6 +401,11 @@ static void test_reformat_number() {
     EXPECT_EQ_STRING("123-456-78", actual3, strlen(actual3));
 }
 
+static void test_check_ones_segment() {
+    EXPECT_EQ_FALSE(check_ones_segment("1001"));
+    EXPECT_EQ_TRUE(check_ones_segment("110"));
+}
+
 static void test_shuffle() {
     int returnSize1 = 0;
     int returnSize2 = 0;
@@ -536,6 +541,7 @@ static void test_solution() {
     test_max_length_between_equal_characters();
     test_maximum_wealth();
     test_reformat_number();
+    test_check_ones_segment();
     test_find_the_winner();
     test_find_middle_index();
     test_recent_counter();

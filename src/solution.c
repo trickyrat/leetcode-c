@@ -1049,6 +1049,10 @@ char *reformat_number(char *number) {
     return res;
 }
 
+bool check_ones_segment(char* s) {
+    return strstr(s, "01") == NULL;
+}
+
 int find_the_winner(int n, int k) {
     int winner = 1;
     for (int i = 2; i <= n; ++i) {
