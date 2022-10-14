@@ -185,6 +185,14 @@ int *self_dividing_numbers(int left, int right, int *returnSize);
 char next_greatest_letter(char *letters, int letterSize, char target);
 
 /**
+ * 777. Swap Adjacent in LR String
+ * @param start
+ * @param end
+ * @return
+ */
+bool can_transform(char* start, char* end);
+
+/**
  * 793. Preimage Size of Factorial Zeroes Function
  * @param k
  * @return

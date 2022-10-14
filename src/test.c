@@ -199,6 +199,13 @@ static void test_next_greatest_letter() {
     EXPECT_EQ_CHAR('f', next_greatest_letter(letters, 3, 'c'));
 }
 
+static void test_can_transform() {
+    bool actual1 = can_transform("RXXLRXRXL", "XRLXXRRLX");
+    bool actual2 = can_transform("X", "L");
+    EXPECT_EQ_TRUE(actual1);
+    EXPECT_EQ_FALSE(actual2);
+}
+
 static void test_preimage_size_fzf() {
     EXPECT_EQ_INT(5, preimage_size_fzf(0));
     EXPECT_EQ_INT(0, preimage_size_fzf(5));
@@ -501,6 +508,7 @@ static void test_solution() {
     test_maximum_swap();
     test_self_dividing_numbers();
     test_next_greatest_letter();
+    test_can_transform();
     test_preimage_size_fzf();
     test_unique_morse_representations();
     test_number_of_lines();
