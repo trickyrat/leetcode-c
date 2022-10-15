@@ -449,8 +449,20 @@ static void test_sort_array_by_parity() {
 }
 
 static void test_min_add_to_make_valid() {
-    EXPECT_EQ_INT(1 ,min_add_to_make_valid("())"));
-    EXPECT_EQ_INT(3 ,min_add_to_make_valid("((("));
+    EXPECT_EQ_INT(1, min_add_to_make_valid("())"));
+    EXPECT_EQ_INT(3, min_add_to_make_valid("((("));
+}
+
+static void test_three_equal_parts() {
+    int returnSize1 = 0;
+    int returnSize2 = 0;
+    int returnSize3 = 0;
+    int *actual1 = three_equal_parts(ARRAY(int, 1, 0, 1, 0, 1), 5, &returnSize1);
+    int *actual2 = three_equal_parts(ARRAY(int, 1, 1, 0, 1, 1), 5, &returnSize2);
+    int *actual3 = three_equal_parts(ARRAY(int, 1, 1, 0, 0, 1), 5, &returnSize3);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 3), 2, actual1, returnSize1);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, -1, -1), 2, actual2, returnSize2);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 2), 2, actual3, returnSize3);
 }
 
 static void test_di_string_match() {
@@ -526,6 +538,7 @@ static void test_solution() {
     test_projection_area();
     test_sort_array_by_parity();
     test_min_add_to_make_valid();
+    test_three_equal_parts();
     test_di_string_match();
     test_min_deletion_size();
     test_validate_stack_sequences();

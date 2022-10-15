@@ -429,36 +429,36 @@ char next_greatest_letter(char *letters, int lettersSize, char target) {
     return letters[low];
 }
 
-bool can_transform(char* start, char* end) {
+bool can_transform(char *start, char *end) {
     int n = strlen(start);
     int i = 0, j = 0;
-    while(i < n && j < n) {
-        while(i < n && start[i] == 'X') {
+    while (i < n && j < n) {
+        while (i < n && start[i] == 'X') {
             i++;
         }
-        while(j < n && end[j] == 'X') {
+        while (j < n && end[j] == 'X') {
             j++;
         }
-        if(i < n && j < n) {
-            if(start[i] != end[j]) {
+        if (i < n && j < n) {
+            if (start[i] != end[j]) {
                 return false;
             }
             char c = start[i];
-            if((c == 'L' && i < j) || (c == 'R' && i > j)) {
+            if ((c == 'L' && i < j) || (c == 'R' && i > j)) {
                 return false;
             }
             i++;
             j++;
         }
     }
-    while(i < n) {
-        if(start[i] != 'X') {
+    while (i < n) {
+        if (start[i] != 'X') {
             return false;
         }
         i++;
     }
-    while(j < n) {
-        if(end[j] != 'X') {
+    while (j < n) {
+        if (end[j] != 'X') {
             return false;
         }
         j++;
@@ -642,6 +642,54 @@ int min_add_to_make_valid(char *s) {
         }
     }
     res += left_count;
+    return res;
+}
+
+int *three_equal_parts(int *arr, int arrSize, int *returnSize) {
+    int sum = 0;
+    int *res = (int *) malloc(sizeof(int) * 2);
+    *returnSize = 2;
+    for (int i = 0; i < arrSize; ++i) {
+        sum += arr[i];
+    }
+    if (sum % 3 != 0) {
+        res[0] = -1, res[1] = -1;
+        return res;
+    }
+
+    if (sum == 0) {
+        res[0] = 0, res[1] = 2;
+        return res;
+    }
+
+    int partial = sum / 3;
+    int first = 0, second = 0, third = 0, curr = 0;
+    for (int i = 0; i < arrSize; ++i) {
+        if (arr[i] == 1) {
+            if (curr == 0) {
+                first = i;
+            } else if (curr == partial) {
+                second = i;
+            } else if (curr == 2 * partial) {
+                third = i;
+            }
+            curr++;
+        }
+    }
+    int len = arrSize - third;
+    if (first + len <= second && second + len <= third) {
+        int i = 0;
+        while (third + i < arrSize) {
+            if (arr[first + i] != arr[second + i] || arr[first + i] != arr[third + i]) {
+                res[0] = -1, res[1] = -1;
+                return res;
+            }
+            i++;
+        }
+        res[0] = first + len - 1, res[1] = second + len;
+        return res;
+    }
+    res[0] = -1, res[1] = -1;
     return res;
 }
 
@@ -1031,7 +1079,7 @@ int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
 
 char *reformat_number(char *number) {
     int len = strlen(number);
-    char* digits =(char*) malloc(sizeof (char)*(len + 1));
+    char *digits = (char *) malloc(sizeof(char) * (len + 1));
     int pos = 0;
     for (int i = 0; i < len; ++i) {
         char ch = number[i];
@@ -1069,7 +1117,7 @@ char *reformat_number(char *number) {
     return res;
 }
 
-bool check_ones_segment(char* s) {
+bool check_ones_segment(char *s) {
     return strstr(s, "01") == NULL;
 }
 

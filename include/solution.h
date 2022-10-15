@@ -250,6 +250,15 @@ int *sort_array_by_parity(int *nums, int numsSize, int *returnSize);
 int min_add_to_make_valid(char *s);
 
 /**
+ * 927. Three Equal Parts
+ * @param arr
+ * @param arrSize
+ * @param returnSize
+ * @return
+ */
+int* three_equal_parts(int *arr, int arrSize, int *returnSize);
+
+/**
  * 942. DI String Match
  * @param s
  * @param sSize
