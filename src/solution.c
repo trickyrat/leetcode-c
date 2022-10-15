@@ -589,6 +589,36 @@ int unique_letter_string(char *s) {
     return res;
 }
 
+int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *returnSize) {
+    int n = nums1Size;
+    int **index1 = (int **) malloc(sizeof(int*) * n);
+    int **index2 = (int **) malloc(sizeof(int*) * n);
+    for (int i = 0; i < n; ++i) {
+        index1[i] = (int*) malloc(sizeof(int)*2);
+        index2[i] = (int*) malloc(sizeof(int)*2);
+    }
+    for (int i = 0; i < n; ++i) {
+        index1[i][0] = i, index1[i][1] = nums1[i];
+        index2[i][0] = i, index2[i][1] = nums2[i];
+    }
+    qsort(index1, n, sizeof(index1[0]), cmp_array);
+    qsort(index2, n, sizeof(index2[0]), cmp_array);
+
+    int *res = (int *) malloc(sizeof(int) * n);
+    int left = 0, right = n - 1;
+    for (int i = 0; i < n; ++i) {
+        if (nums1[index1[i][0]] > nums2[index2[left][0]]) {
+            res[index2[left][0]] = nums1[index1[i][0]];
+            left++;
+        } else {
+            res[index2[right][0]] = nums1[index1[i][0]];
+            right--;
+        }
+    }
+    *returnSize = n;
+    return res;
+}
+
 int projection_area(int **grid, int gridSize, int *gridColSize) {
     int xyArea = 0, yzArea = 0, zxArea = 0;
     for (int i = 0; i < gridSize; ++i) {
@@ -1126,7 +1156,7 @@ int max_ascending_sum(int *nums, int numsSize) {
     int i = 0;
     while (i < numsSize) {
         int currSum = nums[i++];
-        while(i < numsSize && nums[i] > nums[i-1]) {
+        while (i < numsSize && nums[i] > nums[i - 1]) {
             currSum += nums[i++];
         }
         res = MAX(res, currSum);

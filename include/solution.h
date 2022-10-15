@@ -225,6 +225,17 @@ int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize);
 int unique_letter_string(char *s);
 
 /**
+ * 870. Advantage Shuffle
+ * @param nums1
+ * @param nums1Size
+ * @param nums2
+ * @param nums2Size
+ * @param returnSize
+ * @return
+ */
+int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *returnSize);
+
+/**
  * 883. Projection Area of 3D Shapes
  * @param grid
  * @param gridSize

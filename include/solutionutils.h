@@ -16,6 +16,12 @@ inline int cmp_desc(const void *pa, const void *pb) {
     return *(int *) pb - *(int *) pa;
 }
 
+inline int cmp_array(const void *pa, const void *pb) {
+    int *a = *(int**)pa;
+    int *b = *(int**)pb;
+    return a[1] - b[1];
+}
+
 inline int cmp_asc_s(const void *context, const void *pa, const void *pb) {
     return *(int *) pa - *(int *) pb;
 }

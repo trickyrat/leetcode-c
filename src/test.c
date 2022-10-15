@@ -242,6 +242,15 @@ static void test_unique_letter_string() {
     EXPECT_EQ_INT(92, unique_letter_string(s3));
 }
 
+static void test_advantage_count() {
+    int returnSize1 = 0;
+    int returnSize2 = 0;
+    int *actual1 = advantage_count(ARRAY(int, 2, 7, 11, 15), 4, ARRAY(int, 1, 10, 4, 11), 4, &returnSize1);
+    int *actual2 = advantage_count(ARRAY(int, 12, 24, 8, 32), 4, ARRAY(int, 13, 25, 32, 11), 4, &returnSize2);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 2, 11, 7, 15), 4, actual1, returnSize1);
+    EXPECT_EQ_INT_ARRAY(ARRAY(int, 24, 32, 8, 12), 4, actual2, returnSize2);
+}
+
 static void test_is_alien_sorted() {
     char *words1[2] = {"hello", "leetcode"};
     char *words2[3] = {"word", "world", "row"};
@@ -541,6 +550,7 @@ static void test_solution() {
     test_unique_morse_representations();
     test_number_of_lines();
     test_unique_letter_string();
+    test_advantage_count();
     test_projection_area();
     test_sort_array_by_parity();
     test_min_add_to_make_valid();
