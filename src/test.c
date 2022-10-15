@@ -212,6 +212,11 @@ static void test_preimage_size_fzf() {
     EXPECT_EQ_INT(5, preimage_size_fzf(3));
 }
 
+static void test_min_swap() {
+    EXPECT_EQ_INT(1, min_swap(ARRAY(int, 1, 3, 5, 4), 4, ARRAY(int, 1, 2, 3, 7), 4));
+    EXPECT_EQ_INT(1, min_swap(ARRAY(int, 0, 3, 5, 8, 9), 5, ARRAY(int, 2, 1, 4, 6, 9), 5));
+}
+
 static void test_unique_morse_representations() {
     char *words1[] = {"gin", "zen", "gig", "msg"};
     char *words2[] = {"a"};
@@ -553,6 +558,7 @@ static void test_solution() {
     test_next_greatest_letter();
     test_can_transform();
     test_preimage_size_fzf();
+    test_min_swap();
     test_unique_morse_representations();
     test_number_of_lines();
     test_unique_letter_string();

@@ -492,6 +492,24 @@ int preimage_size_fzf(int k) {
     return nx(k + 1) - nx(k);
 }
 
+int min_swap(int *nums1, int nums1Size, int *nums2, int nums2Size) {
+    int n = nums1Size;
+    int a = 0, b = 1;
+    for (int i = 1; i < n; ++i) {
+        int at = a, bt = b;
+        a = n, b = n;
+        if (nums1[i] > nums1[i - 1] && nums2[i] > nums2[i - 1]) {
+            a = MIN(a, at);
+            b = MIN(b, bt + 1);
+        }
+        if (nums1[i] > nums2[i - 1] && nums2[i] > nums1[i - 1]) {
+            a = MIN(a, bt);
+            b = MIN(b, at + 1);
+        }
+    }
+    return MIN(a, b);
+}
+
 int unique_morse_representations(char **words, int wordsSize) {
     const char *MORSE[26] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
                              "....", "..", ".---", "-.-", ".-..", "--", "-.",

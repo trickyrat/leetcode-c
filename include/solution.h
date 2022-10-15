@@ -200,6 +200,16 @@ bool can_transform(char* start, char* end);
 int preimage_size_fzf(int k);
 
 /**
+ * 801. Minimum Swaps To Make Sequences Increasing
+ * @param nums1
+ * @param nums1Size
+ * @param nums2
+ * @param nums2Size
+ * @return
+ */
+int min_swap(int* nums1, int nums1Size, int* nums2, int nums2Size);
+
+/**
  * 804. Unique Morse Code Words
  * @param words
  * @param wordsSize
