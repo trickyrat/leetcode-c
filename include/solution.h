@@ -460,6 +460,14 @@ char *reformat_number(char* number);
 bool check_ones_segment(char* s);
 
 /**
+ * 1800. Maximum Ascending Subarray Sum
+ * @param nums
+ * @param numsSize
+ * @return
+ */
+int max_ascending_sum(int *nums, int numsSize);
+
+/**
  * 1823. Find the Winner of the Circular Game
  * @param n
  * @param k

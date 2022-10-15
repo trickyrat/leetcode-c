@@ -1121,6 +1121,19 @@ bool check_ones_segment(char *s) {
     return strstr(s, "01") == NULL;
 }
 
+int max_ascending_sum(int *nums, int numsSize) {
+    int res = 0;
+    int i = 0;
+    while (i < numsSize) {
+        int currSum = nums[i++];
+        while(i < numsSize && nums[i] > nums[i-1]) {
+            currSum += nums[i++];
+        }
+        res = MAX(res, currSum);
+    }
+    return res;
+}
+
 int find_the_winner(int n, int k) {
     int winner = 1;
     for (int i = 2; i <= n; ++i) {
