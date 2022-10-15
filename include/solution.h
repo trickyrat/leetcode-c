@@ -243,6 +243,13 @@ int projection_area(int **grid, int gridSize, int *gridColSize);
 int *sort_array_by_parity(int *nums, int numsSize, int *returnSize);
 
 /**
+ * 921. Minimum Add to Make Parentheses Valid
+ * @param s
+ * @return
+ */
+int min_add_to_make_valid(char *s);
+
+/**
  * 942. DI String Match
  * @param s
  * @param sSize

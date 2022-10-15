@@ -625,6 +625,26 @@ int *sort_array_by_parity(int *nums, int numsSize, int *returnSize) {
     return nums;
 }
 
+int min_add_to_make_valid(char *s) {
+    int res = 0;
+    int left_count = 0;
+    int n = strlen(s);
+    for (int i = 0; i < n; ++i) {
+        char c = s[i];
+        if (c == '(') {
+            left_count++;
+        } else {
+            if (left_count > 0) {
+                left_count--;
+            } else {
+                res++;
+            }
+        }
+    }
+    res += left_count;
+    return res;
+}
+
 int *di_string_match(char *s, int *returnSize) {
     int n = strlen(s), lo = 0, hi = n;
     int *perm = (int *) malloc(sizeof(int) * (n + 1));

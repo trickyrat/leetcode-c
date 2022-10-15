@@ -448,6 +448,11 @@ static void test_sort_array_by_parity() {
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 0), 1, actual2, returnSize2);
 }
 
+static void test_min_add_to_make_valid() {
+    EXPECT_EQ_INT(1 ,min_add_to_make_valid("())"));
+    EXPECT_EQ_INT(3 ,min_add_to_make_valid("((("));
+}
+
 static void test_di_string_match() {
     int returnSize1 = 0;
     int returnSize2 = 0;
@@ -520,6 +525,7 @@ static void test_solution() {
     test_unique_letter_string();
     test_projection_area();
     test_sort_array_by_parity();
+    test_min_add_to_make_valid();
     test_di_string_match();
     test_min_deletion_size();
     test_validate_stack_sequences();
