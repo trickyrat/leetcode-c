@@ -242,6 +242,12 @@ static void test_unique_letter_string() {
     EXPECT_EQ_INT(92, unique_letter_string(s3));
 }
 
+static void test_score_of_parentheses() {
+    EXPECT_EQ_INT(1, score_of_parentheses("()"));
+    EXPECT_EQ_INT(2, score_of_parentheses("(())"));
+    EXPECT_EQ_INT(2, score_of_parentheses("()()"));
+}
+
 static void test_advantage_count() {
     int returnSize1 = 0;
     int returnSize2 = 0;
@@ -550,6 +556,7 @@ static void test_solution() {
     test_unique_morse_representations();
     test_number_of_lines();
     test_unique_letter_string();
+    test_score_of_parentheses();
     test_advantage_count();
     test_projection_area();
     test_sort_array_by_parity();

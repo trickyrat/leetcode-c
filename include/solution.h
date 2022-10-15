@@ -225,6 +225,13 @@ int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize);
 int unique_letter_string(char *s);
 
 /**
+ * 856. Score of Parentheses
+ * @param s
+ * @return
+ */
+int score_of_parentheses(char *s);
+
+/**
  * 870. Advantage Shuffle
  * @param nums1
  * @param nums1Size

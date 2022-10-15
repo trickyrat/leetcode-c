@@ -589,13 +589,24 @@ int unique_letter_string(char *s) {
     return res;
 }
 
+int score_of_parentheses(char *s) {
+    int bal = 0, n = strlen(s), res = 0;
+    for (int i = 0; i < n; ++i) {
+        bal += (s[i] == '(' ? 1 : -1);
+        if (s[i] == ')' && s[i - 1] == '(') {
+            res += 1 << bal;
+        }
+    }
+    return res;
+}
+
 int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *returnSize) {
     int n = nums1Size;
-    int **index1 = (int **) malloc(sizeof(int*) * n);
-    int **index2 = (int **) malloc(sizeof(int*) * n);
+    int **index1 = (int **) malloc(sizeof(int *) * n);
+    int **index2 = (int **) malloc(sizeof(int *) * n);
     for (int i = 0; i < n; ++i) {
-        index1[i] = (int*) malloc(sizeof(int)*2);
-        index2[i] = (int*) malloc(sizeof(int)*2);
+        index1[i] = (int *) malloc(sizeof(int) * 2);
+        index2[i] = (int *) malloc(sizeof(int) * 2);
     }
     for (int i = 0; i < n; ++i) {
         index1[i][0] = i, index1[i][1] = nums1[i];
