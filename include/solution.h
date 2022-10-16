@@ -378,6 +378,16 @@ int *min_subsequence(int *nums, int numsSize, int *returnSize);
 char **string_matching(char **words, int wordsSize, int *returnSize);
 
 /**
+ * 1441. Build an Array With Stack Operations
+ * @param target
+ * @param targetSize
+ * @param n
+ * @param returnSize
+ * @return
+ */
+char **build_array(int *target, int targetSize, int n, int *returnSize);
+
+/**
  * 1450. Number of Students Doing Homework at a Given Time
  * @param startTime
  * @param startTimeSize

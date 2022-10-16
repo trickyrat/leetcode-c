@@ -430,7 +430,7 @@ char next_greatest_letter(char *letters, int lettersSize, char target) {
 }
 
 int max_chunks_to_sorted(int *arr, int arrSize) {
-    int  m = 0, res = 0;
+    int m = 0, res = 0;
     for (int i = 0; i < arrSize; ++i) {
         m = MAX(m, arr[i]);
         if (m == i) {
@@ -766,7 +766,7 @@ int *three_equal_parts(int *arr, int arrSize, int *returnSize) {
 int distinct_subseq_ii(char *s) {
     const int mod = 1e9 + 7;
     int group[26];
-    memset(group, 0, sizeof (group));
+    memset(group, 0, sizeof(group));
     int n = strlen(s), res = 0;
     for (int i = 0; i < n; ++i) {
         int index = s[i] - 'a';
@@ -928,6 +928,24 @@ char **string_matching(char **words, int wordsSize, int *returnSize) {
                 break;
             }
         }
+    }
+    *returnSize = pos;
+    return res;
+}
+
+char **build_array(int *target, int targetSize, int n, int *returnSize) {
+    char **res = (char **) malloc(sizeof(char *) * n * 2);
+    int prev = 0, pos = 0;
+    for (int j = 0; j < targetSize; ++j) {
+        for (int i = 0; i < target[j] - prev - 1; ++i) {
+            res[pos] = (char *) malloc(sizeof(char) * 8);
+            strcpy(res[pos++], "Push");
+            res[pos] = (char *) malloc(sizeof(char) * 8);
+            strcpy(res[pos++], "Pop");
+        }
+        res[pos] = (char *) malloc(sizeof(char) * 8);
+        strcpy(res[pos++], "Push");
+        prev = target[j];
     }
     *returnSize = pos;
     return res;
