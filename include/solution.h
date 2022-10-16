@@ -488,6 +488,14 @@ char *reformat_number(char* number);
 bool check_ones_segment(char* s);
 
 /**
+ * 1790. Check if One String Swap Can Make Strings Equal
+ * @param s1
+ * @param s2
+ * @return
+ */
+bool are_almost_equal(char *s1, char *s2);
+
+/**
  * 1800. Maximum Ascending Subarray Sum
  * @param nums
  * @param numsSize

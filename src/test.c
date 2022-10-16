@@ -426,6 +426,12 @@ static void test_check_ones_segment() {
     EXPECT_EQ_TRUE(check_ones_segment("110"));
 }
 
+static void test_ara_almost_equal() {
+    EXPECT_EQ_TRUE(are_almost_equal("bank", "kanb"));
+    EXPECT_EQ_FALSE(are_almost_equal("attack", "defend"));
+    EXPECT_EQ_TRUE(are_almost_equal("kelb", "kelb"));
+}
+
 static void test_max_ascending_sum() {
     EXPECT_EQ_INT(65, max_ascending_sum(ARRAY(int, 10, 20, 30, 5, 10, 50), 6));
     EXPECT_EQ_INT(150, max_ascending_sum(ARRAY(int, 10, 20, 30, 40, 50), 5));
@@ -590,6 +596,7 @@ static void test_solution() {
     test_maximum_wealth();
     test_reformat_number();
     test_check_ones_segment();
+    test_ara_almost_equal();
     test_max_ascending_sum();
     test_find_the_winner();
     test_find_middle_index();
