@@ -429,6 +429,17 @@ char next_greatest_letter(char *letters, int lettersSize, char target) {
     return letters[low];
 }
 
+int max_chunks_to_sorted(int *arr, int arrSize) {
+    int  m = 0, res = 0;
+    for (int i = 0; i < arrSize; ++i) {
+        m = MAX(m, arr[i]);
+        if (m == i) {
+            res++;
+        }
+    }
+    return res;
+}
+
 bool can_transform(char *start, char *end) {
     int n = strlen(start);
     int i = 0, j = 0;

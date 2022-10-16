@@ -185,6 +185,14 @@ int *self_dividing_numbers(int left, int right, int *returnSize);
 char next_greatest_letter(char *letters, int letterSize, char target);
 
 /**
+ * 769. Max Chunks To Make Sorted
+ * @param arr
+ * @param arrSize
+ * @return
+ */
+int max_chunks_to_sorted(int *arr, int arrSize);
+
+/**
  * 777. Swap Adjacent in LR String
  * @param start
  * @param end
