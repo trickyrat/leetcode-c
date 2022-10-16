@@ -763,6 +763,20 @@ int *three_equal_parts(int *arr, int arrSize, int *returnSize) {
     return res;
 }
 
+int distinct_subseq_ii(char *s) {
+    const int mod = 1e9 + 7;
+    int group[26];
+    memset(group, 0, sizeof (group));
+    int n = strlen(s), res = 0;
+    for (int i = 0; i < n; ++i) {
+        int index = s[i] - 'a';
+        int prev = group[index];
+        group[index] = (res + 1) % mod;
+        res = ((res + group[index] - prev) % mod + mod) % mod;
+    }
+    return res;
+}
+
 int *di_string_match(char *s, int *returnSize) {
     int n = strlen(s), lo = 0, hi = n;
     int *perm = (int *) malloc(sizeof(int) * (n + 1));

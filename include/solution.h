@@ -295,6 +295,13 @@ int min_add_to_make_valid(char *s);
 int* three_equal_parts(int *arr, int arrSize, int *returnSize);
 
 /**
+ * 940. Distinct Subsequences II
+ * @param s
+ * @return
+ */
+int distinct_subseq_ii(char *s);
+
+/**
  * 942. DI String Match
  * @param s
  * @param sSize

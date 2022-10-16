@@ -502,6 +502,12 @@ static void test_three_equal_parts() {
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 0, 2), 2, actual3, returnSize3);
 }
 
+static void test_distinct_subseq_ii() {
+    EXPECT_EQ_INT(7, distinct_subseq_ii("abc"));
+    EXPECT_EQ_INT(6, distinct_subseq_ii("aba"));
+    EXPECT_EQ_INT(3, distinct_subseq_ii("aaa"));
+}
+
 static void test_di_string_match() {
     int returnSize1 = 0;
     int returnSize2 = 0;
@@ -580,6 +586,7 @@ static void test_solution() {
     test_sort_array_by_parity();
     test_min_add_to_make_valid();
     test_three_equal_parts();
+    test_distinct_subseq_ii();
     test_di_string_match();
     test_min_deletion_size();
     test_validate_stack_sequences();
