@@ -1219,6 +1219,23 @@ char *reformat_number(char *number) {
     return res;
 }
 
+char *merge_alternately(char *word1, char *word2) {
+    int m = strlen(word1);
+    int n = strlen(word2);
+    char *res = (char*) malloc(sizeof(char)*(m+n+1));
+    res[m+n] = '\0';
+    int i = 0, j = 0, curr = 0;
+    while (i < m || j < n) {
+        if (i < m) {
+            res[curr++] = word1[i++];
+        }
+        if (j < n) {
+            res[curr++] = word2[j++];
+        }
+    }
+    return res;
+}
+
 bool check_ones_segment(char *s) {
     return strstr(s, "01") == NULL;
 }

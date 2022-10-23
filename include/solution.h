@@ -506,6 +506,14 @@ int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize);
 char *reformat_number(char* number);
 
 /**
+ * 1768. Merge Strings Alternately
+ * @param word1
+ * @param word2
+ * @return
+ */
+char *merge_alternately(char *word1, char *word2);
+
+/**
  * 1784. Check if Binary String Has at Most One Segment of Ones
  * @param s
  * @return
