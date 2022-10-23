@@ -280,11 +280,8 @@ static void test_is_alien_sorted() {
 }
 
 static void test_defanging_IPadd() {
-    char *actual1 = defang_ip_addr("1.1.1.1");
-    char *actual2 = defang_ip_addr("255.100.50.0");
-
-    EXPECT_EQ_STRING("1[.]1[.]1[.]1", actual1, strlen(actual1));
-    EXPECT_EQ_STRING("255[.]100[.]50[.]0", actual2, strlen(actual2));
+    EXPECT_EQ_STRING("1[.]1[.]1[.]1", defang_ip_addr("1.1.1.1"));
+    EXPECT_EQ_STRING("255[.]100[.]50[.]0", defang_ip_addr("255.100.50.0"));
 }
 
 static void test_min_subsequence() {
@@ -375,10 +372,8 @@ static void test_num_special() {
 }
 
 static void test_reorder_spaces() {
-    char *actual1 = reorder_spaces("  this   is  a sentence ");
-    char *actual2 = reorder_spaces(" practice   makes   perfect");
-    EXPECT_EQ_STRING("this   is   a   sentence", actual1, strlen(actual1));
-    EXPECT_EQ_STRING("practice   makes   perfect ", actual2, strlen(actual2));
+    EXPECT_EQ_STRING("this   is   a   sentence", reorder_spaces("  this   is  a sentence "));
+    EXPECT_EQ_STRING("practice   makes   perfect ", reorder_spaces(" practice   makes   perfect"));
 }
 
 static void test_min_operations() {
@@ -418,12 +413,15 @@ static void test_maximum_wealth() {
 }
 
 static void test_reformat_number() {
-    char *actual1 = reformat_number("1-23-45 6");
-    char *actual2 = reformat_number("123 4-567");
-    char *actual3 = reformat_number("123 4-5678");
-    EXPECT_EQ_STRING("123-456", actual1, strlen(actual1));
-    EXPECT_EQ_STRING("123-45-67", actual2, strlen(actual2));
-    EXPECT_EQ_STRING("123-456-78", actual3, strlen(actual3));
+    EXPECT_EQ_STRING("123-456", reformat_number("1-23-45 6"));
+    EXPECT_EQ_STRING("123-45-67", reformat_number("123 4-567"));
+    EXPECT_EQ_STRING("123-456-78", reformat_number("123 4-5678"));
+}
+
+static void test_merge_alternately() {
+    EXPECT_EQ_STRING("apbqcr", merge_alternately("abc", "pqr"));
+    EXPECT_EQ_STRING("apbqrs", merge_alternately("ab", "pqrs"));
+    EXPECT_EQ_STRING("apbqcd",  merge_alternately("abcd", "pq"));
 }
 
 static void test_check_ones_segment() {
@@ -608,6 +606,7 @@ static void test_solution() {
     test_max_length_between_equal_characters();
     test_maximum_wealth();
     test_reformat_number();
+    test_merge_alternately();
     test_check_ones_segment();
     test_ara_almost_equal();
     test_max_ascending_sum();
