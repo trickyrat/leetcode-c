@@ -279,6 +279,14 @@ int projection_area(int **grid, int gridSize, int *gridColSize);
 int *sort_array_by_parity(int *nums, int numsSize, int *returnSize);
 
 /**
+ * 915. Partition Array into Disjoint Intervals
+ * @param nums
+ * @param numsSize
+ * @return
+ */
+int partition_disjoint(int *nums, int numsSize);
+
+/**
  * 921. Minimum Add to Make Parentheses Valid
  * @param s
  * @return

@@ -695,6 +695,19 @@ int *sort_array_by_parity(int *nums, int numsSize, int *returnSize) {
     return nums;
 }
 
+int partition_disjoint(int *nums, int numsSize) {
+    int curr_max = nums[0], left_max = nums[0];
+    int index = 0;
+    for (int i = 0; i < numsSize - 1; i++) {
+        curr_max = MAX(curr_max, nums[i]);
+        if (nums[i] < left_max) {
+            left_max = curr_max;
+            index = i;
+        }
+    }
+    return index + 1;
+}
+
 int min_add_to_make_valid(char *s) {
     int res = 0;
     int left_count = 0;

@@ -483,6 +483,11 @@ static void test_sort_array_by_parity() {
     EXPECT_EQ_INT_ARRAY(ARRAY(int, 0), 1, actual2, returnSize2);
 }
 
+static void test_partition_disjoint() {
+    EXPECT_EQ_INT(3, partition_disjoint(ARRAY(int, 5, 0, 3, 8, 6), 5));
+    EXPECT_EQ_INT(4, partition_disjoint(ARRAY(int, 1, 1, 1, 0, 6, 12), 6));
+}
+
 static void test_min_add_to_make_valid() {
     EXPECT_EQ_INT(1, min_add_to_make_valid("())"));
     EXPECT_EQ_INT(3, min_add_to_make_valid("((("));
@@ -582,6 +587,7 @@ static void test_solution() {
     test_advantage_count();
     test_projection_area();
     test_sort_array_by_parity();
+    test_partition_disjoint();
     test_min_add_to_make_valid();
     test_three_equal_parts();
     test_distinct_subseq_ii();

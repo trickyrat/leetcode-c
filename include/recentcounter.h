@@ -15,10 +15,13 @@ typedef struct {
 
 RecentCounter *recentCounterCreate() {
   RecentCounter *obj = (RecentCounter*)malloc(sizeof(RecentCounter));
-  obj->capability = 10001;
-  obj->queue = (int*) malloc(sizeof (int) * obj->capability);
-  obj->head = 0;
-  obj->tail = 0;
+  if (obj) {
+      obj->capability = 10001;
+      obj->queue = (int *) malloc(sizeof(int) * obj->capability);
+      obj->head = 0;
+      obj->tail = 0;
+    }
+ 
   return obj;
 }
 
