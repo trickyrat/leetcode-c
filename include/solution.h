@@ -303,6 +303,15 @@ int min_add_to_make_valid(char *s);
 int* three_equal_parts(int *arr, int arrSize, int *returnSize);
 
 /**
+ * 934. Shortest Bridge
+ * @param grid
+ * @param gridSize
+ * @param gridColSize
+ * @return
+ */
+int shortest_bridge(int** grid, int gridSize, int* gridColSize);
+
+/**
  * 940. Distinct Subsequences II
  * @param s
  * @return
