@@ -424,6 +424,10 @@ static void test_merge_alternately() {
     EXPECT_EQ_STRING("apbqcd",  merge_alternately("abcd", "pq"));
 }
 
+static void test_nearest_valid_point() {
+
+}
+
 static void test_check_ones_segment() {
     EXPECT_EQ_FALSE(check_ones_segment("1001"));
     EXPECT_EQ_TRUE(check_ones_segment("110"));
@@ -613,6 +617,7 @@ static void test_solution() {
     test_maximum_wealth();
     test_reformat_number();
     test_merge_alternately();
+    test_nearest_valid_point();
     test_check_ones_segment();
     test_ara_almost_equal();
     test_max_ascending_sum();

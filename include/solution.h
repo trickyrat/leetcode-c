@@ -531,6 +531,17 @@ char *reformat_number(char* number);
 char *merge_alternately(char *word1, char *word2);
 
 /**
+ * 1779. Find Nearest Point That Has the Same X or Y Coordinate
+ * @param x
+ * @param y
+ * @param points
+ * @param pointsSize
+ * @param pointsColSize
+ * @return
+ */
+int nearest_valid_point(int x, int y, int** points, int pointsSize, int* pointsColSize);
+
+/**
  * 1784. Check if Binary String Has at Most One Segment of Ones
  * @param s
  * @return

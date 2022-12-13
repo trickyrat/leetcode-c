@@ -1299,6 +1299,28 @@ char *merge_alternately(char *word1, char *word2) {
     return res;
 }
 
+int nearest_valid_point(int x, int y, int** points, int pointsSize, int* pointsColSize) {
+    int min = INT_MAX, res = -1;
+    for (int i = 0; i < pointsSize; ++i) {
+        int px = points[i][0], py = points[i][1];
+        if (x == px) {
+            int dist = abs(y - py);
+            if (dist < min) {
+                min = dist;
+                res = i;
+            }
+        }
+        else if (y == py) {
+            int dist = abs(x - px);
+            if (dist < min) {
+                min = dist;
+                res = i;
+            }
+        }
+    }
+    return res;
+}
+
 bool check_ones_segment(char *s) {
     return strstr(s, "01") == NULL;
 }
