@@ -580,4 +580,12 @@ int find_the_winner(int n, int k);
  */
 int find_middle_index(int *nums, int numsSize);
 
+/**
+ * 2011. Final Value of Variable After Performing Operations
+ * @param operations
+ * @param operationsSize
+ * @return
+ */
+int final_value_after_operations(char **operations, int operationsSize);
+
 #endif// LEETCODEC_SOLUTION_H

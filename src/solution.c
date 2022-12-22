@@ -1380,3 +1380,16 @@ int find_middle_index(int *nums, int numsSize) {
     }
     return -1;
 }
+
+int final_value_after_operations(char **operations, int operationsSize) {
+    int res = 0;
+    for (int i = 0; i < operationsSize; ++i) {
+        char *op = operations[i];
+        if (op[1] == '+') {
+            res++;
+        } else {
+            res--;
+        }
+    }
+    return res;
+}
