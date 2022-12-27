@@ -561,6 +561,12 @@ static void test_recent_counter() {
     recentCounterFree(obj);
 }
 
+static void test_minimum_moves() {
+    EXPECT_EQ_INT(1, minimum_moves("XXX"));
+    EXPECT_EQ_INT(2, minimum_moves("XXOX"));
+    EXPECT_EQ_INT(0, minimum_moves("OOOO"));
+}
+
 static void test_solution() {
     test_two_sum();
     test_add_two_numbers();
@@ -624,6 +630,7 @@ static void test_solution() {
     test_find_the_winner();
     test_find_middle_index();
     test_recent_counter();
+    test_minimum_moves();
 }
 
 static void test_is_flipped_string() {

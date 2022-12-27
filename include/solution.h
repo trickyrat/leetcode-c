@@ -588,4 +588,11 @@ int find_middle_index(int *nums, int numsSize);
  */
 int final_value_after_operations(char **operations, int operationsSize);
 
+/**
+ * 2027. Minimum Moves to Convert String
+ * @param s
+ * @return
+ */
+int minimum_moves(char *s);
+
 #endif// LEETCODEC_SOLUTION_H

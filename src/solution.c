@@ -1393,3 +1393,14 @@ int final_value_after_operations(char **operations, int operationsSize) {
     }
     return res;
 }
+
+int minimum_moves(char *s) {
+    int count = -1, res = 0;
+    for (int i = 0; s[i] != '\0'; ++i) {
+        if (s[i] == 'X' && i > count) {
+            count = i + 2;
+            res++;
+        }
+    }
+    return res;
+}
