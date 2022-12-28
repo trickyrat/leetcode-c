@@ -418,6 +418,12 @@ static void test_reformat_number() {
     EXPECT_EQ_STRING("123-456-78", reformat_number("123 4-5678"));
 }
 
+static void test_minimum_length() {
+    EXPECT_EQ_INT(2, minimum_length("ca"));
+    EXPECT_EQ_INT(0, minimum_length("cabaabac"));
+    EXPECT_EQ_INT(3, minimum_length("aabccabba"));
+}
+
 static void test_merge_alternately() {
     EXPECT_EQ_STRING("apbqcr", merge_alternately("abc", "pqr"));
     EXPECT_EQ_STRING("apbqrs", merge_alternately("ab", "pqrs"));
@@ -622,6 +628,7 @@ static void test_solution() {
     test_max_length_between_equal_characters();
     test_maximum_wealth();
     test_reformat_number();
+    test_minimum_length();
     test_merge_alternately();
     test_nearest_valid_point();
     test_check_ones_segment();

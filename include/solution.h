@@ -523,6 +523,13 @@ int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize);
 char *reformat_number(char* number);
 
 /**
+ * 1750. Minimum Length of String After Deleting Similar Ends
+ * @param s
+ * @return
+ */
+int minimum_length(char *s);
+
+/**
  * 1768. Merge Strings Alternately
  * @param word1
  * @param word2

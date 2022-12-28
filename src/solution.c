@@ -1282,6 +1282,21 @@ char *reformat_number(char *number) {
     return res;
 }
 
+int minimum_length(char *s) {
+    int n = strlen(s);
+    int left = 0, right = n - 1;
+    while (left < right && s[left] == s[right]) {
+        char c = s[left];
+        while (left <= right && s[left] == c) {
+            left++;
+        }
+        while (left <= right && s[right] == c) {
+            right--;
+        }
+    }
+    return right - left + 1;
+}
+
 char *merge_alternately(char *word1, char *word2) {
     int m = strlen(word1);
     int n = strlen(word2);
