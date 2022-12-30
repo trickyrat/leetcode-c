@@ -602,4 +602,16 @@ int final_value_after_operations(char **operations, int operationsSize);
  */
 int minimum_moves(char *s);
 
+/**
+ * 2032. Two Out of Three
+ * @param nums1
+ * @param nums1Size
+ * @param nums2
+ * @param nums2Size
+ * @param nums3
+ * @param nums3Size
+ * @return
+ */
+int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int *nums3, int nums3Size, int *returnSize);
+
 #endif// LEETCODEC_SOLUTION_H

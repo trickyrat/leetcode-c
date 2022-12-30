@@ -1419,3 +1419,27 @@ int minimum_moves(char *s) {
     }
     return res;
 }
+
+int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int *nums3, int nums3Size, int *returnSize) {
+    const int MAX_NUM = 100;
+    int map[MAX_NUM + 1];
+    memset(map, 0, sizeof(map));
+    for (int i = 0; i < nums1Size; i++) {
+        map[nums1[i]] = 1;
+    }
+    for (int i = 0; i < nums2Size; i++) {
+        map[nums2[i]] |= 2;
+    }
+    for (int i = 0; i < nums3Size; i++) {
+        map[nums3[i]] |= 4;
+    }
+    int *res = (int*) malloc(sizeof(int) * MAX_NUM);
+    int pos = 0;
+    for (int i = 0; i <= MAX_NUM; i++) {
+        if (map[i] & (map[i] -1)) {
+           res[pos++] = i;
+        }
+    }
+    *returnSize = pos;
+    return res;
+}
