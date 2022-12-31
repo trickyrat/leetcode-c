@@ -1420,8 +1420,9 @@ int minimum_moves(char *s) {
     return res;
 }
 
+#define MAX_NUM 100
+
 int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int *nums3, int nums3Size, int *returnSize) {
-    const int MAX_NUM = 100;
     int map[MAX_NUM + 1];
     memset(map, 0, sizeof(map));
     for (int i = 0; i < nums1Size; i++) {
@@ -1441,5 +1442,15 @@ int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int 
         }
     }
     *returnSize = pos;
+    return res;
+}
+
+int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize) {
+    qsort(seats, seatsSize, sizeof(int), cmp_asc);
+    qsort(students, studentsSize, sizeof(int), cmp_asc);
+    int res = 0;
+    for (int i = 0; i < seatsSize; i ++) {
+        res += abs(seats[i] - students[i]);
+    }
     return res;
 }

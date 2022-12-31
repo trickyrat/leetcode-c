@@ -427,11 +427,10 @@ static void test_minimum_length() {
 static void test_merge_alternately() {
     EXPECT_EQ_STRING("apbqcr", merge_alternately("abc", "pqr"));
     EXPECT_EQ_STRING("apbqrs", merge_alternately("ab", "pqrs"));
-    EXPECT_EQ_STRING("apbqcd",  merge_alternately("abcd", "pq"));
+    EXPECT_EQ_STRING("apbqcd", merge_alternately("abcd", "pq"));
 }
 
 static void test_nearest_valid_point() {
-
 }
 
 static void test_check_ones_segment() {
@@ -573,6 +572,12 @@ static void test_minimum_moves() {
     EXPECT_EQ_INT(0, minimum_moves("OOOO"));
 }
 
+static void test_min_moves_to_seat() {
+    EXPECT_EQ_INT(4, min_moves_to_seat(ARRAY(int, 3, 1, 5), 3, ARRAY(int, 2, 7, 4), 3));
+    EXPECT_EQ_INT(7, min_moves_to_seat(ARRAY(int, 4, 1, 5, 9), 4, ARRAY(int, 1, 3, 2, 6), 4));
+    EXPECT_EQ_INT(4, min_moves_to_seat(ARRAY(int, 2, 2, 6, 6), 4, ARRAY(int, 1, 3, 2, 6), 4));
+}
+
 static void test_solution() {
     test_two_sum();
     test_add_two_numbers();
@@ -638,6 +643,7 @@ static void test_solution() {
     test_find_middle_index();
     test_recent_counter();
     test_minimum_moves();
+    test_min_moves_to_seat();
 }
 
 static void test_is_flipped_string() {

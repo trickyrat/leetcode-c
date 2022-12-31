@@ -614,4 +614,14 @@ int minimum_moves(char *s);
  */
 int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int *nums3, int nums3Size, int *returnSize);
 
+/**
+ * 2037. Minimum Number of Moves to Seat Everyone
+ * @param seats
+ * @param seatsSize
+ * @param students
+ * @param studentsSize
+ * @return
+ */
+int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize);
+
 #endif// LEETCODEC_SOLUTION_H
