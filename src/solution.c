@@ -1454,3 +1454,15 @@ int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize
     }
     return res;
 }
+
+char repeated_character(char *s) {
+    int seen = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        int index = s[i] - 'a';
+        if (seen & (1 << index)) {
+           return s[i];
+        }
+        seen |= (1 << index);
+    }
+    return ' ';
+}

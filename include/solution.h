@@ -624,4 +624,11 @@ int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int 
  */
 int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize);
 
+/**
+ * 2351. First Letter to Appear Twice
+ * @param s
+ * @return
+ */
+char repeated_character(char *s);
+
 #endif// LEETCODEC_SOLUTION_H

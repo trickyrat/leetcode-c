@@ -578,6 +578,13 @@ static void test_min_moves_to_seat() {
     EXPECT_EQ_INT(4, min_moves_to_seat(ARRAY(int, 2, 2, 6, 6), 4, ARRAY(int, 1, 3, 2, 6), 4));
 }
 
+static void test_repeated_character() {
+    EXPECT_EQ_CHAR('c', repeated_character("abccbaacz"));
+    EXPECT_EQ_CHAR('d', repeated_character("abcdd"));
+    EXPECT_EQ_CHAR('a', repeated_character("aa"));
+    EXPECT_EQ_CHAR('z', repeated_character("zz"));
+}
+
 static void test_solution() {
     test_two_sum();
     test_add_two_numbers();
@@ -644,6 +651,7 @@ static void test_solution() {
     test_recent_counter();
     test_minimum_moves();
     test_min_moves_to_seat();
+    test_repeated_character();
 }
 
 static void test_is_flipped_string() {
