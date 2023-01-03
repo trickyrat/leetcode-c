@@ -578,6 +578,12 @@ static void test_min_moves_to_seat() {
     EXPECT_EQ_INT(4, min_moves_to_seat(ARRAY(int, 2, 2, 6, 6), 4, ARRAY(int, 1, 3, 2, 6), 4));
 }
 
+static void test_are_number_ascending() {
+    EXPECT_EQ_TRUE(are_number_ascending("1 box has 3 blue 4 red 6 green and 12 yellow marbles"));
+    EXPECT_EQ_FALSE(are_number_ascending("hello world 5 x 5"));
+    EXPECT_EQ_FALSE(are_number_ascending("sunset is at 7 51 pm overnight lows will be in the low 50 and 60 s"));
+}
+
 static void test_repeated_character() {
     EXPECT_EQ_CHAR('c', repeated_character("abccbaacz"));
     EXPECT_EQ_CHAR('d', repeated_character("abcdd"));
@@ -651,6 +657,7 @@ static void test_solution() {
     test_recent_counter();
     test_minimum_moves();
     test_min_moves_to_seat();
+    test_are_number_ascending();
     test_repeated_character();
 }
 

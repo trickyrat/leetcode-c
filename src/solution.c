@@ -1455,6 +1455,26 @@ int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize
     return res;
 }
 
+bool are_number_ascending(char *s) {
+    int prev = 0, pos = 0;
+    while (s[pos] != '\0') {
+        if (isdigit(s[pos])) {
+           int curr = 0;
+           while (s[pos] != '\0' && isdigit(s[pos])) {
+                curr = curr * 10 + s[pos] - '0';
+                pos++;
+           }
+           if (curr <= prev) {
+                return false;
+           }
+           prev = curr;
+        } else {
+           pos++;
+        }
+    }
+    return true;
+}
+
 char repeated_character(char *s) {
     int seen = 0;
     for (int i = 0; s[i] != '\0'; i++) {

@@ -625,6 +625,13 @@ int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int 
 int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize);
 
 /**
+ * 2042. Check if Numbers Are Ascending in a Sentence
+ * @param s
+ * @return
+ */
+bool are_number_ascending(char *s);
+
+/**
  * 2351. First Letter to Appear Twice
  * @param s
  * @return
