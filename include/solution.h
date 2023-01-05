@@ -632,6 +632,13 @@ int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize
 bool are_number_ascending(char *s);
 
 /**
+ * 2180. Count Integers With Even Digit Sum
+ * @param n
+ * @return
+ */
+int count_even(int num);
+
+/**
  * 2351. First Letter to Appear Twice
  * @param s
  * @return

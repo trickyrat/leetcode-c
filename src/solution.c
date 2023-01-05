@@ -1475,6 +1475,22 @@ bool are_number_ascending(char *s) {
     return true;
 }
 
+int count_even(int num) {
+    int y = num / 10, x = num % 10;
+    int res = y * 5, y_sum = 0;
+    while (y) {
+        y_sum += y % 10;
+        y /= 10;
+    }
+    if (y_sum % 2 == 0) {
+        res += x / 2 + 1;
+    } else {
+        res += (x + 1) / 2;
+    }
+    return res - 1;
+}
+
+
 char repeated_character(char *s) {
     int seen = 0;
     for (int i = 0; s[i] != '\0'; i++) {

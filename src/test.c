@@ -584,6 +584,11 @@ static void test_are_number_ascending() {
     EXPECT_EQ_FALSE(are_number_ascending("sunset is at 7 51 pm overnight lows will be in the low 50 and 60 s"));
 }
 
+static void test_count_even() {
+    EXPECT_EQ_INT(2, count_even(4));
+    EXPECT_EQ_INT(14, count_even(30));
+}
+
 static void test_repeated_character() {
     EXPECT_EQ_CHAR('c', repeated_character("abccbaacz"));
     EXPECT_EQ_CHAR('d', repeated_character("abcdd"));
@@ -658,6 +663,7 @@ static void test_solution() {
     test_minimum_moves();
     test_min_moves_to_seat();
     test_are_number_ascending();
+    test_count_even();
     test_repeated_character();
 }
 

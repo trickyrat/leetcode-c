@@ -68,7 +68,7 @@ int binary_search(const int *arr, int arrSize, int x) {
     return low;
 }
 
-TreeNode *create_treenode(int val, const TreeNode *left, const TreeNode *right) {
+TreeNode *create_treenode(int val, TreeNode *left, TreeNode *right) {
     TreeNode *node = (TreeNode *) malloc(sizeof(TreeNode));
     node->val = val;
     node->left = left;
