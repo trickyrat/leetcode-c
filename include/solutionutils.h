@@ -22,12 +22,12 @@ inline int cmp_array(const void *pa, const void *pb) {
     return a[1] - b[1];
 }
 
-inline int cmp_asc_s(const void *context, const void *pa, const void *pb) {
+inline int cmp_asc_s(void *context, const void *pa, const void *pb) {
     return *(int *) pa - *(int *) pb;
 }
 
-inline int cmp_desc_s(const void *context, const void *pa, const void *pb) {
-    return *(int *) pb - *(int *) pa;
+inline int cmp_desc_s(void *context, const void *pa, const void *pb) {
+    return  *(int *) pb - *(int *) pa;
 }
 
 inline int cmp_array_of_array(const void *pa, const void *pb) {
@@ -68,7 +68,7 @@ int binary_search(const int *arr, int arrSize, int x) {
     return low;
 }
 
-TreeNode *create_treenode(int val, TreeNode *left, TreeNode *right) {
+TreeNode *create_tree_node(int val, TreeNode *left, TreeNode *right) {
     TreeNode *node = (TreeNode *) malloc(sizeof(TreeNode));
     node->val = val;
     node->left = left;
@@ -89,8 +89,9 @@ char **split(const char *str, char separator, int *returnSize) {
             while (pos < n && str[pos] != separator) {
                 pos++;
             }
-            words[wordsSize] = (char *) malloc(sizeof(char) * (pos - curr + 1));
-            strncpy(words[wordsSize], str + curr, pos - curr);
+            int alloc_size = sizeof(char) * (pos - curr + 1);
+            words[wordsSize] = (char *) malloc(alloc_size);
+            strncpy_s(words[wordsSize], alloc_size, str + curr, pos - curr);
             words[wordsSize++][pos - curr] = '\0';
         }
     }

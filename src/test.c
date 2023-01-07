@@ -403,6 +403,12 @@ static void test_max_length_between_equal_characters() {
     EXPECT_EQ_INT(-1, max_length_between_equal_characters("cbyzx"));
 }
 
+static void test_min_operations_2() {
+    EXPECT_EQ_INT(2, min_operations_2(ARRAY(int, 1, 1, 4, 2, 3), 5, 5));
+    EXPECT_EQ_INT(-1, min_operations_2(ARRAY(int, 5, 6, 7, 8, 9), 5, 4));
+    EXPECT_EQ_INT(5, min_operations_2(ARRAY(int, 3, 2, 20, 1, 1, 3), 6, 10));
+}
+
 static void test_maximum_wealth() {
     int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
     int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
@@ -649,6 +655,7 @@ static void test_solution() {
     test_special_array();
     test_trim_mean();
     test_max_length_between_equal_characters();
+    test_min_operations_2();
     test_maximum_wealth();
     test_reformat_number();
     test_minimum_length();

@@ -934,16 +934,16 @@ struct TreeNode *insert_into_max_tree(struct TreeNode *root, int val) {
     while (curr) {
         if (val > curr->val) {
             if (!parent) {
-                return create_treenode(val, root, NULL);
+                return create_tree_node(val, root, NULL);
             }
-            parent->right = create_treenode(val, curr, NULL);
+            parent->right = create_tree_node(val, curr, NULL);
             return root;
         } else {
             parent = curr;
             curr = curr->right;
         }
     }
-    parent->right = create_treenode(val, NULL, NULL);
+    parent->right = create_tree_node(val, NULL, NULL);
     return root;
 }
 
@@ -1228,6 +1228,33 @@ int max_length_between_equal_characters(char *s) {
         }
     }
     return res;
+}
+
+int min_operations_2(int *nums, int numsSize, int x) {
+    int sum = 0;
+    for (int i = 0; i < numsSize; i++) {
+        sum += nums[i];
+    }
+    if (sum < x) {
+        return -1;
+    }
+    int right = 0;
+    int left_sum =0, right_sum = sum;
+    int res = numsSize + 1;
+
+    for (int left = -1; left < numsSize; left++) {
+        if (left != -1) {
+            left_sum += nums[left];
+        }
+        while (right < numsSize && left_sum + right_sum > x) {
+            right_sum -= nums[right];
+            right++;
+        }
+        if (left_sum + right_sum == x) {
+            res = MIN(res, (left + 1) + (numsSize - right));
+        }
+    }
+    return res > numsSize ? - 1 : res;
 }
 
 int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {

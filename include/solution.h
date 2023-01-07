@@ -507,6 +507,15 @@ double trim_mean(int *arr, int arrSize);
 int max_length_between_equal_characters(char *s);
 
 /**
+ * 1658. Minimum Operations to Reduce X to Zero
+ * @param num
+ * @param numsSize
+ * @param x
+ * @return
+ */
+int min_operations_2(int *nums, int numsSize, int x);
+
+/**
  * 1672. Richest Customer Wealth
  * @param accounts
  * @param accountsSize
