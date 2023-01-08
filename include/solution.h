@@ -648,6 +648,15 @@ bool are_number_ascending(char *s);
 int count_even(int num);
 
 /**
+ * 2185. Counting Words With a Given Prefix
+ * @param words
+ * @param wordsSize
+ * @param pref
+ * @return
+ */
+int prefix_count(char **words, int wordsSize, char *pref);
+
+/**
  * 2351. First Letter to Appear Twice
  * @param s
  * @return

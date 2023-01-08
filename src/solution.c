@@ -1517,6 +1517,16 @@ int count_even(int num) {
     return res - 1;
 }
 
+int prefix_count(char **words, int wordsSize, char *pref) {
+    int res = 0;
+    int len = strlen(pref);
+    for (int i = 0; i < wordsSize; ++i) {
+        if (strncmp(words[i], pref, len) == 0) {
+           res++;
+        }
+    }
+    return res;
+}
 
 char repeated_character(char *s) {
     int seen = 0;
