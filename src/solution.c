@@ -62,6 +62,25 @@ ListNode *add_two_numbers(ListNode *l1, ListNode *l2) {
     return head;
 }
 
+ListNode *remove_nth_from_end(ListNode *head, int n) {
+    ListNode *dummy = malloc(sizeof(ListNode));
+    dummy->val = -1, dummy->next = head;
+    ListNode *fast = head;
+    ListNode *slow = dummy;
+    for (int i = 0; i < n; ++i) {
+        fast = fast->next;
+    }
+    while (fast) {
+        fast = fast->next;
+        slow = slow->next;
+    }
+
+    fast = fast->next;
+    ListNode *res = dummy->next;
+    free(dummy);
+    return res;
+}
+
 int remove_element(int *nums, int numsSize, int val) {
     int left = 0;
     for (int right = 0; right < numsSize; ++right) {

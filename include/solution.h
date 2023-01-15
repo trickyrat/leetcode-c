@@ -28,6 +28,14 @@ int *two_sum(int *nums, int numsSize, int target, int *returnSize);
 ListNode *add_two_numbers(ListNode *l1, ListNode *l2);
 
 /**
+ * 19. Remove Nth Node From End of List
+ * @param head
+ * @param n
+ * @return
+ */
+ListNode *remove_nth_from_end(ListNode *head, int n);
+
+/**
  * 27. Remove Element
  * @param nums
  * @param val
