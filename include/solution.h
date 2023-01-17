@@ -78,6 +78,13 @@ void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
 bool is_same_tree(TreeNode *p, TreeNode *q);
 
 /**
+ * 141. Linked List Cycle
+ * @param head
+ * @return
+ */
+bool has_cycle(ListNode *head);
+
+/**
  * 206. Reverse Linked List
  * @param head
  * @return
