@@ -31,6 +31,11 @@ static void test_remove_element() {
     EXPECT_EQ_INT(remove_element(ARRAY(int, 0, 1, 2, 2, 3, 0, 4, 2), 8, 2), 5);
 }
 
+static void test_remove_duplicates() {
+    EXPECT_EQ_INT(remove_duplicates(ARRAY(int, 1, 1, 2), 3), 2);
+    EXPECT_EQ_INT(remove_duplicates(ARRAY(int, 0, 0, 1, 1, 1, 2, 2, 3, 3, 4), 10), 5);
+}
+
 static void test_search() {
     EXPECT_EQ_INT(4, search(ARRAY(int, 4, 5, 6, 7, 0, 1, 2), 7, 0));
 }
@@ -606,6 +611,7 @@ static void test_solution() {
     test_two_sum();
     test_add_two_numbers();
     test_remove_element();
+    test_remove_duplicates();
     test_search();
     test_rotate();
     test_merge();

@@ -11,12 +11,12 @@
 /**
  *  1.Two Sum
  * @param nums
- * @param numsSize
+ * @param nums_size
  * @param target
- * @param returnSize
+ * @param return_size
  * @return
  */
-int *two_sum(int *nums, int numsSize, int target, int *returnSize);
+int *two_sum(int *nums, int nums_size, int target, int *return_size);
 
 /**
  * 2. Add Two Numbers
@@ -34,13 +34,21 @@ ListNode *add_two_numbers(ListNode *l1, ListNode *l2);
  */
 ListNode *remove_nth_from_end(ListNode *head, int n);
 
+/// <summary>
+/// 26. Remove Duplicates from Sorted Array
+/// </summary>
+/// <param name="nums"></param>
+/// <param name="nums_size"></param>
+/// <returns></returns>
+int remove_duplicates(int *nums, int nums_size);
+
 /**
  * 27. Remove Element
  * @param nums
  * @param val
  * @return
  */
-int remove_element(int *nums, int numsSize, int val);
+int remove_element(int *nums, int nums_size, int val);
 
 /**
  * 33. Search in Rotated Sorted Array
@@ -100,10 +108,10 @@ int count_numbers_with_unique_digits(int n);
 /**
  * 386. Lexicographical Numbers
  * @param n
- * @param returnSize
+ * @param return_size
  * @return
  */
-int *lexical_order(int n, int *returnSize);
+int *lexical_order(int n, int *return_size);
 
 /**
  * 467. Unique Substrings in Wraparound String
@@ -117,10 +125,10 @@ int find_substring_in_wraparound_string(char *p);
  * @param mat
  * @param matSize
  * @param matColSize
- * @param returnSize
+ * @param return_size
  * @return
  */
-int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *returnSize);
+int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *return_size);
 
 /**
  * 646. Maximum Length of Pair Chain
@@ -137,10 +145,10 @@ int find_longest_chain(int** pairs, int pairsSize, int *pairsColSize);
  * @param arrSize
  * @param k
  * @param x
- * @param returnSize
+ * @param return_size
  * @return
  */
-int *find_closest_elements(int* arr, int arrSize, int k, int x, int *returnSize);
+int *find_closest_elements(int* arr, int arrSize, int k, int x, int *return_size);
 
 /**
  * 662. Maximum Width of Binary Tree
@@ -155,7 +163,7 @@ int width_of_binary_tree(struct TreeNode* root);
  * @param k
  * @return
  */
-int *construct_array(int n, int k, int *returnSize);
+int *construct_array(int n, int k, int *return_size);
 
 /**
  * 669. Trim a Binary Search Tree
@@ -184,10 +192,10 @@ int longest_univalue_path(TreeNode *root);
  * 728.Self Dividing Numbers
  * @param left
  * @param right
- * @param returnSize
+ * @param return_size
  * @return
  */
-int *self_dividing_numbers(int left, int right, int *returnSize);
+int *self_dividing_numbers(int left, int right, int *return_size);
 
 /**
  * 744. Find Smallest Letter Greater Than Target
@@ -244,10 +252,10 @@ int unique_morse_representations(char **words, int wordsSize);
  * @param widths
  * @param widthsSize
  * @param s
- * @param returnSize
+ * @param return_size
  * @return
  */
-int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize);
+int *number_of_lines(int *widths, int widthsSize, char *s, int *return_size);
 
 /**
  * 828. Count Unique Characters of All Substrings of a Given String
@@ -269,10 +277,10 @@ int score_of_parentheses(char *s);
  * @param nums1Size
  * @param nums2
  * @param nums2Size
- * @param returnSize
+ * @param return_size
  * @return
  */
-int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *returnSize);
+int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *return_size);
 
 /**
  * 883. Projection Area of 3D Shapes
@@ -286,19 +294,19 @@ int projection_area(int **grid, int gridSize, int *gridColSize);
 /**
  * 905. Sort Array By Parity
  * @param nums
- * @param numsSize
- * @param returnSize
+ * @param nums_size
+ * @param return_size
  * @return
  */
-int *sort_array_by_parity(int *nums, int numsSize, int *returnSize);
+int *sort_array_by_parity(int *nums, int nums_size, int *return_size);
 
 /**
  * 915. Partition Array into Disjoint Intervals
  * @param nums
- * @param numsSize
+ * @param nums_size
  * @return
  */
-int partition_disjoint(int *nums, int numsSize);
+int partition_disjoint(int *nums, int nums_size);
 
 /**
  * 921. Minimum Add to Make Parentheses Valid
@@ -311,10 +319,10 @@ int min_add_to_make_valid(char *s);
  * 927. Three Equal Parts
  * @param arr
  * @param arrSize
- * @param returnSize
+ * @param return_size
  * @return
  */
-int* three_equal_parts(int *arr, int arrSize, int *returnSize);
+int* three_equal_parts(int *arr, int arrSize, int *return_size);
 
 /**
  * 934. Shortest Bridge
@@ -336,10 +344,10 @@ int distinct_subseq_ii(char *s);
  * 942. DI String Match
  * @param s
  * @param sSize
- * @param returnSize
+ * @param return_size
  * @return
  */
-int *di_string_match(char *s, int *returnSize);
+int *di_string_match(char *s, int *return_size);
 
 /**
  * 944. Delete Columns to Make Sorted
@@ -393,30 +401,30 @@ char *defang_ip_addr(char *address);
 /**
  * 1403. Minimum Subsequence in Non-Increasing Order
  * @param nums
- * @param numsSize
- * @param returnSize
+ * @param nums_size
+ * @param return_size
  * @return
  */
-int *min_subsequence(int *nums, int numsSize, int *returnSize);
+int *min_subsequence(int *nums, int nums_size, int *return_size);
 
 /**
  * 1408. String Matching in an Array
  * @param words
  * @param wordsSize
- * @param returnSize
+ * @param return_size
  * @return
  */
-char **string_matching(char **words, int wordsSize, int *returnSize);
+char **string_matching(char **words, int wordsSize, int *return_size);
 
 /**
  * 1441. Build an Array With Stack Operations
  * @param target
  * @param targetSize
  * @param n
- * @param returnSize
+ * @param return_size
  * @return
  */
-char **build_array(int *target, int targetSize, int n, int *returnSize);
+char **build_array(int *target, int targetSize, int n, int *return_size);
 
 /**
  * 1450. Number of Students Doing Homework at a Given Time
@@ -450,28 +458,28 @@ bool can_be_equal(int* target, int targetSize, int* arr, int arrSize);
 /**
  * 1464. Maximum Product of Two Elements in an Array
  * @param nums
- * @param numsSize
+ * @param nums_size
  * @return
  */
-int max_product(int* nums, int numsSize);
+int max_product(int* nums, int nums_size);
 
 /**
  * 1470. Shuffle the Array
  * @param nums
- * @param numsSize
+ * @param nums_size
  * @param n
  * @return
  */
-int* shuffle(int* nums, int numsSize, int n, int* returnSize);
+int* shuffle(int* nums, int nums_size, int n, int* return_size);
 
 /**
  * 1475. Final Prices With a Special Discount in a Shop
  * @param prices
  * @param pricesSize
- * @param returnSize
+ * @param return_size
  * @return
  */
-int* final_prices(int* prices, int pricesSize, int* returnSize);
+int* final_prices(int* prices, int pricesSize, int* return_size);
 
 /**
  * 1582. Special Positions in a Binary Matrix
@@ -500,10 +508,10 @@ int min_operations(char **logs, int logsSize);
 /**
  * 1608. Special Array With X Elements Greater Than or Equal X
  * @param nums
- * @param numsSize
+ * @param nums_size
  * @return
  */
-int special_array(int *nums, int numsSize);
+int special_array(int *nums, int nums_size);
 
 /**
  * 1619. Mean of Array After Removing Some Elements
@@ -523,11 +531,11 @@ int max_length_between_equal_characters(char *s);
 /**
  * 1658. Minimum Operations to Reduce X to Zero
  * @param num
- * @param numsSize
+ * @param nums_size
  * @param x
  * @return
  */
-int min_operations_2(int *nums, int numsSize, int x);
+int min_operations_2(int *nums, int nums_size, int x);
 
 /**
  * 1672. Richest Customer Wealth
@@ -589,10 +597,10 @@ bool are_almost_equal(char *s1, char *s2);
 /**
  * 1800. Maximum Ascending Subarray Sum
  * @param nums
- * @param numsSize
+ * @param nums_size
  * @return
  */
-int max_ascending_sum(int *nums, int numsSize);
+int max_ascending_sum(int *nums, int nums_size);
 
 /**
  * 1823. Find the Winner of the Circular Game
@@ -605,10 +613,10 @@ int find_the_winner(int n, int k);
 /**
  * 1991. Find the Middle Index in Array
  * @param nums
- * @param numsSize
+ * @param nums_size
  * @return
  */
-int find_middle_index(int *nums, int numsSize);
+int find_middle_index(int *nums, int nums_size);
 
 /**
  * 2011. Final Value of Variable After Performing Operations
@@ -635,7 +643,7 @@ int minimum_moves(char *s);
  * @param nums3Size
  * @return
  */
-int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int *nums3, int nums3Size, int *returnSize);
+int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int *nums3, int nums3Size, int *return_size);
 
 /**
  * 2037. Minimum Number of Moves to Seat Everyone

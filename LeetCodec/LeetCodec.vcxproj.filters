@@ -15,13 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LeetCodec.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="solution.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="interviewsolution.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

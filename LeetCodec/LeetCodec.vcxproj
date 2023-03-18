@@ -130,7 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="interviewsolution.c" />
-    <ClCompile Include="LeetCodec.c" />
+    <ClCompile Include="main.c" />
     <ClCompile Include="solution.c" />
   </ItemGroup>
   <ItemGroup>
