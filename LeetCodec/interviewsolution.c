@@ -13,13 +13,14 @@ bool is_flipped_string(char *s1, char *s2) {
     if (m != n) {
         return false;
     }
-    char *str = (char *) malloc(sizeof(char) * (m + n + 1));
-    sprintf(str, "%s%s", s2, s2);
+    int size = sizeof(char) * (m + n + 1);
+    char *str = (char *) malloc(size);
+    sprintf_s(str, size, "%s%s", s2, s2);
     return strstr(str, s1) != NULL;
 }
 
 int get_kth_magic_number(int k) {
-    int* dp = (int*) malloc(sizeof(int)*(k+1));
+    int *dp = (int *) malloc(sizeof(int) * (k + 1));
     dp[1] = 1;
     int p3 = 1, p5 = 1, p7 = 1;
     for (int i = 2; i <= k; ++i) {

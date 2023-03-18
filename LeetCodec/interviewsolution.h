@@ -2,8 +2,8 @@
 // Created by wangj on 9/30/2022.
 //
 
-#ifndef LEETCODEC_INTERVIEWSOLUTION_H
-#define LEETCODEC_INTERVIEWSOLUTION_H
+#pragma once
+
 
 #include <stdbool.h>
 
@@ -21,4 +21,3 @@ bool is_flipped_string(char* s1, char* s2);
  * @return
  */
 int get_kth_magic_number(int k);
-#endif//LEETCODEC_INTERVIEWSOLUTION_H

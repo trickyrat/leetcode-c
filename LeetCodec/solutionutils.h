@@ -1,9 +1,7 @@
 //
 // Created by wangj on 2022/8/29.
 //
-
-#ifndef LEETCODEC_SOLUTIONUTILS_H
-#define LEETCODEC_SOLUTIONUTILS_H
+#pragma once
 
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #define MIN(a, b) ((a) > (b) ? (b) : (a))
@@ -98,5 +96,3 @@ char **split(const char *str, char separator, int *returnSize) {
     *returnSize = wordsSize;
     return words;
 }
-
-#endif//LEETCODEC_SOLUTIONUTILS_H

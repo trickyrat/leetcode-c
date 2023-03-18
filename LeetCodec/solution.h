@@ -2,8 +2,7 @@
 // Created by trcikyrat on 2022-01-08.
 //
 
-#ifndef LEETCODEC_SOLUTION_H
-#define LEETCODEC_SOLUTION_H
+#pragma once
 
 #include <stdbool.h>
 
@@ -677,5 +676,3 @@ int prefix_count(char **words, int wordsSize, char *pref);
  * @return
  */
 char repeated_character(char *s);
-
-#endif// LEETCODEC_SOLUTION_H

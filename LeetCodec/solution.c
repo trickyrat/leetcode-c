@@ -383,7 +383,7 @@ TreeNode *trim_bst(TreeNode *root, int low, int high) {
 
 int maximum_swap(int num) {
     char chars[32];
-    sprintf(chars, "%d", num);
+    sprintf_s(chars, sizeof(chars), "%d", num);
     int n = strlen(chars);
     char max_index = n - 1;
     int index1 = -1, index2 = -1;
@@ -568,12 +568,12 @@ int unique_morse_representations(char **words, int wordsSize) {
         int pos = 0;
         char code[MAX_STR_LEN];
         for (int j = 0; j < len; ++j) {
-            pos += sprintf(code + pos, "%s", MORSE[words[i][j] - 'a']);
+            pos += sprintf_s(code + pos, MAX_STR_LEN - pos, "%s", MORSE[words[i][j] - 'a']);
         }
         HASH_FIND_STR(seen, code, pEntry);
         if (NULL == pEntry) {
             pEntry = (HashItem *) malloc(sizeof(HashItem));
-            strcpy(pEntry->key, code);
+            strcpy_s(pEntry->key, _countof(pEntry->key), code);
             HASH_ADD_STR(seen, key, pEntry);
         }
     }
@@ -985,10 +985,11 @@ struct TreeNode *insert_into_max_tree(struct TreeNode *root, int val) {
 char *defang_ip_addr(char *address) {
     int len = strlen(address);
     int pos = 0;
-    char *res = (char *) malloc(sizeof(char) * (len + 7));// [] [] []
+    int size = sizeof(char) * (len + 7);
+    char *res = (char *) malloc(size);// [] [] []
     for (int i = 0; i < len; ++i) {
         if (address[i] == '.') {
-            pos += sprintf(res + pos, "%s", "[.]");
+            pos += sprintf_s(res + pos, size - pos, "%s", "[.]");
         } else {
             res[pos++] = address[i];
         }
@@ -1037,12 +1038,15 @@ char **build_array(int *target, int targetSize, int n, int *returnSize) {
     for (int j = 0; j < targetSize; ++j) {
         for (int i = 0; i < target[j] - prev - 1; ++i) {
             res[pos] = (char *) malloc(sizeof(char) * 8);
-            strcpy(res[pos++], "Push");
+            strcpy_s(res[pos], strlen(res[pos]), "Push");
+            pos++;
             res[pos] = (char *) malloc(sizeof(char) * 8);
-            strcpy(res[pos++], "Pop");
+            strcpy_s(res[pos], strlen(res[pos]), "Pop");
+            pos++;
         }
         res[pos] = (char *) malloc(sizeof(char) * 8);
-        strcpy(res[pos++], "Push");
+        strcpy_s(res[pos], strlen(res[pos]), "Push");
+        pos++;
         prev = target[j];
     }
     *returnSize = pos;
@@ -1178,10 +1182,11 @@ char *reorder_spaces(char *text) {
             wordCount++;
         }
     }
-    char *res = (char *) malloc(sizeof(char) * (length + 1));
+    int size = sizeof(char) * (length + 1);
+    char *res = (char *) malloc(size);
     int pos = 0;
     if (wordsSize == 1) {
-        pos += sprintf(res + pos, "%s", words[0]);
+        pos += sprintf_s(res + pos, size - pos, "%s", words[0]);
         for (int i = 0; i < spaceCount; ++i) {
             res[pos++] = ' ';
         }
@@ -1202,7 +1207,7 @@ char *reorder_spaces(char *text) {
                 res[pos++] = ' ';
             }
         }
-        pos += sprintf(res + pos, "%s", words[i]);
+        pos += sprintf_s(res + pos, size - pos, "%s", words[i]);
     }
     for (int i = 0; i < restSpace; i++) {
         res[pos++] = ' ';
@@ -1317,24 +1322,25 @@ char *reformat_number(char *number) {
 
     int n = pos;
     int pt = 0;
-    char *res = (char *) malloc(sizeof(char) * n * 2);
+    int size = sizeof(char) * n * 2;
+    char *res = (char *) malloc(size);
     pos = 0;
     while (n) {
         if (n > 4) {
-            strncpy(res + pos, digits + pt, 3);
+            strncpy_s(res + pos, size, digits + pt, 3);
             pos += 3;
             res[pos++] = '-';
             pt += 3;
             n -= 3;
         } else {
             if (n == 4) {
-                strncpy(res + pos, digits + pt, 2);
+                strncpy_s(res + pos, size, digits + pt, 2);
                 pos += 2;
                 res[pos++] = '-';
-                strncpy(res + pos, digits + pt + 2, 2);
+                strncpy_s(res + pos, size, digits + pt + 2, 2);
                 pos += 2;
             } else {
-                strncpy(res + pos, digits + pt, n);
+                strncpy_s(res + pos, size, digits + pt, n);
                 pos += n;
             }
             break;

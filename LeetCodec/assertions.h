@@ -2,8 +2,7 @@
 // Created by wangj on 8/24/2022.
 //
 
-#ifndef LEETCODEC_ASSERTIONS_H
-#define LEETCODEC_ASSERTIONS_H
+#pragma once
 
 #include <stdio.h>
 
@@ -91,6 +90,3 @@
         int col_size_ = (col_size);                                         \
         EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_));   \
     } while (0)
-
-
-#endif//LEETCODEC_ASSERTIONS_H

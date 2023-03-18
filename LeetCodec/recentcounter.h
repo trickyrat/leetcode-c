@@ -2,10 +2,10 @@
 // Created by wangj on 2022/5/6.
 //
 
-#ifndef LEETCODEC_RECENTCOUNTER_H
-#define LEETCODEC_RECENTCOUNTER_H
+#pragma once
 
 #include <malloc.h>
+
 typedef struct {
   int *queue;
   int capability;
@@ -38,5 +38,3 @@ void recentCounterFree(RecentCounter *obj) {
   free(obj);
 }
 
-
-#endif//LEETCODEC_RECENTCOUNTER_H
