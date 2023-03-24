@@ -6,6 +6,7 @@
 #include <malloc.h>
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 #include "hashtable.h"
 #include "solution.h"
