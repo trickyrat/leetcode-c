@@ -353,6 +353,23 @@ int width_of_binary_tree(struct TreeNode *root) {
     return res;
 }
 
+bool check_possibility(int *nums, int nums_size) {
+    int count = 0;
+    for (int i = 0; i < nums_size - 1; ++i) {
+        int x = nums[i], y = nums[i + 1];
+        if (x > y) {
+            count++;
+            if (count > 1) {
+                return false;
+            }
+            if (i > 0 && y < nums[i - 1]) {
+                nums[i + 1] = x;
+            }
+        }
+    }
+    return true;
+}
+
 int *construct_array(int n, int k, int *returnSize) {
     int *res = (int *) malloc(sizeof(int) * n);
     int index = 0;

@@ -137,7 +137,7 @@ int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *return_si
  * @param pairsColSize
  * @return
  */
-int find_longest_chain(int** pairs, int pairsSize, int *pairsColSize);
+int find_longest_chain(int **pairs, int pairsSize, int *pairsColSize);
 
 /**
  * 658. Find K Closest Elements
@@ -148,14 +148,21 @@ int find_longest_chain(int** pairs, int pairsSize, int *pairsColSize);
  * @param return_size
  * @return
  */
-int *find_closest_elements(int* arr, int arrSize, int k, int x, int *return_size);
+int *find_closest_elements(int *arr, int arrSize, int k, int x, int *return_size);
 
 /**
  * 662. Maximum Width of Binary Tree
  * @param root
  * @return
  */
-int width_of_binary_tree(struct TreeNode* root);
+int width_of_binary_tree(struct TreeNode *root);
+
+/// <summary>
+/// 665. Non-decreasing Array
+/// </summary>
+/// <param name="arr"></param>
+/// <returns></returns>
+bool check_possibility(int *arr, int nums_size);
 
 /**
  * 667. Beautiful Arrangement II
@@ -220,7 +227,7 @@ int max_chunks_to_sorted(int *arr, int arrSize);
  * @param end
  * @return
  */
-bool can_transform(char* start, char* end);
+bool can_transform(char *start, char *end);
 
 /**
  * 793. Preimage Size of Factorial Zeroes Function
@@ -237,7 +244,7 @@ int preimage_size_fzf(int k);
  * @param nums2Size
  * @return
  */
-int min_swap(int* nums1, int nums1Size, int* nums2, int nums2Size);
+int min_swap(int *nums1, int nums1Size, int *nums2, int nums2Size);
 
 /**
  * 804. Unique Morse Code Words
@@ -322,7 +329,7 @@ int min_add_to_make_valid(char *s);
  * @param return_size
  * @return
  */
-int* three_equal_parts(int *arr, int arrSize, int *return_size);
+int *three_equal_parts(int *arr, int arrSize, int *return_size);
 
 /**
  * 934. Shortest Bridge
@@ -331,7 +338,7 @@ int* three_equal_parts(int *arr, int arrSize, int *return_size);
  * @param gridColSize
  * @return
  */
-int shortest_bridge(int** grid, int gridSize, int* gridColSize);
+int shortest_bridge(int **grid, int gridSize, int *gridColSize);
 
 /**
  * 940. Distinct Subsequences II
@@ -389,7 +396,7 @@ bool is_unival_tree(TreeNode *root);
  * @param val
  * @return
  */
-struct TreeNode* insert_into_max_tree(struct TreeNode* root, int val);
+struct TreeNode *insert_into_max_tree(struct TreeNode *root, int val);
 
 /**
  * 1108. Defanging an IP Address
@@ -453,7 +460,7 @@ int is_prefix_of_word(char *sentence, char *searchWord);
  * @param arrSize
  * @return
  */
-bool can_be_equal(int* target, int targetSize, int* arr, int arrSize);
+bool can_be_equal(int *target, int targetSize, int *arr, int arrSize);
 
 /**
  * 1464. Maximum Product of Two Elements in an Array
@@ -461,7 +468,7 @@ bool can_be_equal(int* target, int targetSize, int* arr, int arrSize);
  * @param nums_size
  * @return
  */
-int max_product(int* nums, int nums_size);
+int max_product(int *nums, int nums_size);
 
 /**
  * 1470. Shuffle the Array
@@ -470,7 +477,7 @@ int max_product(int* nums, int nums_size);
  * @param n
  * @return
  */
-int* shuffle(int* nums, int nums_size, int n, int* return_size);
+int *shuffle(int *nums, int nums_size, int n, int *return_size);
 
 /**
  * 1475. Final Prices With a Special Discount in a Shop
@@ -479,7 +486,7 @@ int* shuffle(int* nums, int nums_size, int n, int* return_size);
  * @param return_size
  * @return
  */
-int* final_prices(int* prices, int pricesSize, int* return_size);
+int *final_prices(int *prices, int pricesSize, int *return_size);
 
 /**
  * 1582. Special Positions in a Binary Matrix
@@ -488,7 +495,7 @@ int* final_prices(int* prices, int pricesSize, int* return_size);
  * @param matColSize
  * @return
  */
-int num_special(int** mat, int matSize, int* matColSize);
+int num_special(int **mat, int matSize, int *matColSize);
 
 /**
  * 1592. Rearrange Spaces Between Words
@@ -551,7 +558,7 @@ int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize);
  * @param number
  * @return
  */
-char *reformat_number(char* number);
+char *reformat_number(char *number);
 
 /**
  * 1750. Minimum Length of String After Deleting Similar Ends
@@ -577,14 +584,14 @@ char *merge_alternately(char *word1, char *word2);
  * @param pointsColSize
  * @return
  */
-int nearest_valid_point(int x, int y, int** points, int pointsSize, int* pointsColSize);
+int nearest_valid_point(int x, int y, int **points, int pointsSize, int *pointsColSize);
 
 /**
  * 1784. Check if Binary String Has at Most One Segment of Ones
  * @param s
  * @return
  */
-bool check_ones_segment(char* s);
+bool check_ones_segment(char *s);
 
 /**
  * 1790. Check if One String Swap Can Make Strings Equal
