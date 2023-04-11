@@ -162,7 +162,7 @@ int width_of_binary_tree(struct TreeNode *root);
 /// </summary>
 /// <param name="arr"></param>
 /// <returns></returns>
-bool check_possibility(int *arr, int nums_size);
+bool check_possibility(int *nums, int nums_size);
 
 /**
  * 667. Beautiful Arrangement II
