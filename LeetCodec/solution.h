@@ -91,6 +91,14 @@ bool is_same_tree(TreeNode *p, TreeNode *q);
  */
 bool has_cycle(ListNode *head);
 
+/// <summary>
+/// 
+/// </summary>
+/// <param name="nums"></param>
+/// <param name="nums_size"></param>
+/// <param name="k"></param>
+void rotate(int *nums, int nums_size, int k);
+
 /**
  * 206. Reverse Linked List
  * @param head

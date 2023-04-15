@@ -196,6 +196,13 @@ bool has_cycle(ListNode *head) {
     return false;
 }
 
+void rotate(int *nums, int nums_size, int k) {
+    k %= nums_size;
+    reverse(nums, 0, nums_size - 1);
+    reverse(nums, 0, k - 1);
+    reverse(nums, k, nums_size - 1);
+}
+
 struct ListNode *reverse_list(struct ListNode *head) {
     struct ListNode *prev = NULL;
     struct ListNode *curr = head;

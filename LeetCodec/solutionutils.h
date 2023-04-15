@@ -66,6 +66,14 @@ int binary_search(const int *arr, int arrSize, int x) {
     return low;
 }
 
+void reverse(int *nums, int start, int end) {
+    while (start < end) {
+        swap_int(&nums[start], &nums[end]);
+        start++;
+        end--;
+    }
+}
+
 TreeNode *create_tree_node(int val, TreeNode *left, TreeNode *right) {
     TreeNode *node = (TreeNode *) malloc(sizeof(TreeNode));
     node->val = val;
