@@ -1,8 +1,8 @@
-# Welcome to Leetcodec
+# Welcome to leetcode-c
 
 ## Introduction
 
-The solutions of Leetcode problems with C.
+The LeetCode solution implemented in C.
 
 ## Getting Started
 
