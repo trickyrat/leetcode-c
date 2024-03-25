@@ -2,8 +2,8 @@
 // Created by wangj on 8/24/2022.
 //
 
-#ifndef LEETCODEC_TESTUTILS_H
-#define LEETCODEC_TESTUTILS_H
+#ifndef LEETCODE_TESTUTILS_H
+#define LEETCODE_TESTUTILS_H
 
 #include <string.h>
 
@@ -87,4 +87,4 @@ int **initialize_matrix(int *nums, int row, int column) {
     return matrix;
 }
 
-#endif//LEETCODEC_TESTUTILS_H
+#endif//LEETCODE_TESTUTILS_H
