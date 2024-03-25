@@ -298,6 +298,19 @@ int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *returnSiz
     return ans;
 }
 
+int change(int amount, int *coins, int coinsSize) {
+    int *dp = (int*)calloc(amount + 1, sizeof(int));
+    dp[0] = 1;
+    for (int i = 0; i < coinsSize; i++) {
+        for (int j = coins[i]; j <= amount; j++) {
+            dp[j] += dp[j - coins[i]];
+        }
+    }
+    int res = dp[amount];
+    free(dp);
+    return res;
+}
+
 int find_longest_chain(int **pairs, int pairsSize, int *pairsColSize) {
     int curr = INT_MIN, res = 0;
     qsort(pairs, pairsSize, sizeof(int *), cmp_array_of_array);
