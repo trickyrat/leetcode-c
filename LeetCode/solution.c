@@ -1633,3 +1633,24 @@ char repeated_character(char *s) {
     }
     return ' ';
 }
+
+int cmp(const void *a, const void *b) {
+    return (*(int **) a)[0] - (*(int **) b)[0];
+}
+
+const int MOD = 1000000007;
+int count_ways(int **ranges, int rangesSize, int *rangesColSize) {
+    qsort_s(ranges, ranges, sizeof(int *), cmp, NULL);
+    long long res = 1;
+    for (int i = 0; i < rangesSize;) {
+        int r = ranges[i][1];
+        int j = i + 1;
+        while (j < rangesSize && ranges[j][0] <= r) {
+            r = fmax(r, ranges[j][1]);
+            j++;
+        }
+        res = res * 2 % MOD;
+        i = j;
+    }
+    return res;
+}
