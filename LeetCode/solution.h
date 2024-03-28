@@ -643,6 +643,12 @@ int find_the_winner(int n, int k);
 int find_middle_index(int *nums, int nums_size);
 
 /**
+ * 1997. First Day Where You Have Been in All the Rooms
+ * @param next_visit
+ */
+int first_day_been_in_all_rooms(int *next_visit, int next_visit_size);
+
+/**
  * 2011. Final Value of Variable After Performing Operations
  * @param operations
  * @param operationsSize

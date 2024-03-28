@@ -1517,6 +1517,26 @@ int find_middle_index(int *nums, int numsSize) {
     return -1;
 }
 
+int first_day_been_in_all_rooms(int *next_visit, int next_visit_size) {
+    int MOD = 1000000007;
+    int *dp = (int *) malloc(next_visit_size * sizeof(int));
+    memset(dp, 0, sizeof(dp));
+
+    dp[0] = 2;
+    for (int i = 1; i < next_visit_size; i++) {
+        int to = next_visit[i];
+        dp[i] = 2 + dp[i - 1];
+        if (to) {
+            dp[i] = (dp[i] - dp[to - 1] + MOD) % MOD;
+        }
+        dp[i] = (dp[i] + dp[i - 1]) % MOD;
+    }
+    int res = dp[next_visit_size - 2];
+    free(dp);
+    dp = NULL;
+    return res;
+}
+
 int final_value_after_operations(char **operations, int operationsSize) {
     int res = 0;
     for (int i = 0; i < operationsSize; ++i) {
