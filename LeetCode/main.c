@@ -568,6 +568,15 @@ static void test_find_middle_index() {
     EXPECT_EQ_INT(-1, find_middle_index(nums3, 2));
 }
 
+static void test_first_day_been_in_all_rooms() {
+    int nums1[2] = {0, 0};
+    int nums2[3] = {0, 0, 2};
+    int nums3[4] = {0, 0, 1, 2};
+    EXPECT_EQ_INT(2, first_day_been_in_all_rooms(nums1, 2));
+    EXPECT_EQ_INT(6, first_day_been_in_all_rooms(nums2, 6));
+    EXPECT_EQ_INT(6, first_day_been_in_all_rooms(nums3, 6));
+}
+
 static void test_recent_counter() {
     RecentCounter *obj = recentCounterCreate();
     EXPECT_EQ_INT(1, recentCounterPing(obj, 1));
