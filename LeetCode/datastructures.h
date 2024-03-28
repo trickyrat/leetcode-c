@@ -2,8 +2,7 @@
 // Created by wangj on 2022/3/16.
 //
 
-#ifndef DATA_STRUCTURES_H__
-#define DATA_STRUCTURES_H__
+#pragma once
 
 #define MAX_NODE_SIZE 3000
 
@@ -23,4 +22,3 @@ typedef struct {
     unsigned long long index;
 } Pair;
 
-#endif //DATA_STRUCTURES_H__

@@ -2,10 +2,10 @@
 // Created by wangj on 2022/5/6.
 //
 
-#ifndef LEETCODEC_RECENTCOUNTER_H
-#define LEETCODEC_RECENTCOUNTER_H
+#pragma once
 
 #include <malloc.h>
+
 typedef struct {
   int *queue;
   int capability;
@@ -15,10 +15,13 @@ typedef struct {
 
 RecentCounter *recentCounterCreate() {
   RecentCounter *obj = (RecentCounter*)malloc(sizeof(RecentCounter));
-  obj->capability = 10001;
-  obj->queue = (int*) malloc(sizeof (int) * obj->capability);
-  obj->head = 0;
-  obj->tail = 0;
+  if (obj) {
+      obj->capability = 10001;
+      obj->queue = (int *) malloc(sizeof(int) * obj->capability);
+      obj->head = 0;
+      obj->tail = 0;
+    }
+ 
   return obj;
 }
 
@@ -35,5 +38,3 @@ void recentCounterFree(RecentCounter *obj) {
   free(obj);
 }
 
-
-#endif//LEETCODEC_RECENTCOUNTER_H

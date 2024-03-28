@@ -2,8 +2,9 @@
 // Created by wangj on 8/24/2022.
 //
 
-#ifndef LEETCODEC_ASSERTIONS_H
-#define LEETCODEC_ASSERTIONS_H
+#pragma once
+
+#include <stdio.h>
 
 #define EXPECT_EQ_BASE(equality, expect, actual, format)                      \
     do {                                                                      \
@@ -36,15 +37,15 @@
     EXPECT_EQ_BASE((expect) == (actual), (size_t) expect, (size_t) actual, "%Iu")
 #endif
 
-#define EXPECT_EQ_STRING(expect, actual, length)                \
-    EXPECT_EQ_BASE(strlen(expect) == length &&                  \
-                           memcmp(expect, actual, length) == 0, \
+#define EXPECT_EQ_STRING(expect, actual)                                \
+    EXPECT_EQ_BASE(strlen(expect) == strlen(actual) &&                  \
+                           memcmp(expect, actual, strlen(actual)) == 0, \
                    expect, actual, "%s")
 
 #define EXPECT_EQ_STRING_ARRAY(expect, expect_size, actual, actual_size) \
     EXPECT_EQ_SIZE_T(expect_size, actual_size);                          \
     for (int i = 0; i < (expect_size); ++i) {                            \
-        EXPECT_EQ_STRING((expect)[i], (actual)[i], strlen((actual)[i])); \
+        EXPECT_EQ_STRING((expect)[i], (actual)[i]);                      \
     }
 
 #define EXPECT_EQ_INT_ARRAY(expect, expected_size, actual, actual_size) \
@@ -70,16 +71,16 @@
         TEST_MATRIX_BASE(input_data, row_size);                                           \
         int return_size = 0;                                                              \
         int col = col_size;                                                               \
-        int *actual = findDiagonalOrder(mat, (row_size), &col, &return_size);             \
+        int *actual = find_diagonal_order(mat, (row_size), &col, &return_size);           \
         EXPECT_EQ_INT_ARRAY(expected, expected_size, actual, return_size);                \
     } while (0)
 
 
-#define TEST_NUMBER_OF_LINES(widths, widths_size, s, expected, expected_size)   \
-    do {                                                                        \
-        int return_size = 0;                                                    \
-        int *ans = numberOfLines((widths), (widths_size), (s), &(return_size)); \
-        EXPECT_EQ_INT_ARRAY(expected, (expected_size), ans, (return_size));     \
+#define TEST_NUMBER_OF_LINES(widths, widths_size, s, expected, expected_size)     \
+    do {                                                                          \
+        int return_size = 0;                                                      \
+        int *ans = number_of_lines((widths), (widths_size), (s), &(return_size)); \
+        EXPECT_EQ_INT_ARRAY(expected, (expected_size), ans, (return_size));       \
     } while (0)
 
 
@@ -89,9 +90,3 @@
         int col_size_ = (col_size);                                         \
         EXPECT_EQ_INT((expected), function(mat, (row_size), &col_size_));   \
     } while (0)
-
-#define TEST_EQ_MATRIX(expected, expectedColSize, actual, actualColSize) \
-
-
-
-#endif//LEETCODEC_ASSERTIONS_H
