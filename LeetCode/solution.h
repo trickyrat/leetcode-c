@@ -708,3 +708,10 @@ int prefix_count(char **words, int wordsSize, char *pref);
  * @return
  */
 char repeated_character(char *s);
+
+/**
+ * 2580. Count Ways to Group Overlapping Ranges
+ * @param ranges
+ * @return
+ */
+int count_ways(int **ranges, int rangesSize, int* rangesColSize);
