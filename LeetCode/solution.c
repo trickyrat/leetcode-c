@@ -138,7 +138,7 @@ int search(const int *nums, int numSize, int target) {
     return -1;
 }
 
-void rotate(int **matrix, int matrixSize, int *matrixColSize) {
+void rotate_image(int **matrix, int matrixSize, int *matrixColSize) {
     for (int i = 0; i < matrixSize / 2; ++i) {
         for (int j = 0; j < matrixSize; ++j) {
             swap_int(&matrix[i][j], &matrix[matrixSize - i - 1][j]);
@@ -1673,4 +1673,22 @@ int count_ways(int **ranges, int rangesSize, int *rangesColSize) {
         i = j;
     }
     return res;
+}
+
+int minimum_sum(int *nums, int numsSize) {
+    int res = 1000, mini = 1000;
+    int *left = (int *) malloc(numsSize * sizeof(int));
+    int right = nums[numsSize - 1];
+    for (int i = 1; i < numsSize; i++) {
+        mini = nums[i - 1] < mini ? nums[i - 1] : mini;
+        left[i] = mini;
+    }
+    for (int i = numsSize - 2; i > 0; i--) {
+        if (left[i] < nums[i] && nums[i] > right) {
+            res = res < left[i] + nums[i] + right ? res : left[i] + nums[i] + right;
+        }
+        right = right - nums[i] < 0 ? right : nums[i];
+    }
+
+    return res < 1000 ? res : -1;
 }

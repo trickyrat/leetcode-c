@@ -40,15 +40,15 @@ static void test_search() {
     EXPECT_EQ_INT(4, search(ARRAY(int, 4, 5, 6, 7, 0, 1, 2), 7, 0));
 }
 
-#define TEST_ROTATE(input_data, row_size, col_size, expected, expected_row_size) \
+#define TEST_ROTATE_IMAGE(input_data, row_size, col_size, expected, expected_row_size) \
     do {                                                                         \
         TEST_MATRIX_BASE(input_data, row_size);                                  \
         int col = col_size;                                                      \
-        rotate(mat, (row_size), &col);                                           \
+        rotate_image(mat, (row_size), &col);                                           \
         EXPECT_EQ_MATRIX((expected), (expected_row_size), (mat), (row_size));    \
     } while (0)
 
-static void test_rotate() {
+static void test_rotate_image() {
     int matrix1[3][3] = {{1, 2, 3},
                          {4, 5, 6},
                          {7, 8, 9}};
@@ -63,8 +63,8 @@ static void test_rotate() {
                            {14, 3, 4, 1},
                            {12, 6, 8, 9},
                            {16, 7, 10, 11}};
-    TEST_ROTATE(matrix1, 3, 3, expected1, 3);
-    TEST_ROTATE(matrix2, 4, 4, expected2, 4);
+    TEST_ROTATE_IMAGE(matrix1, 3, 3, expected1, 3);
+    TEST_ROTATE_IMAGE(matrix2, 4, 4, expected2, 4);
 }
 
 static void test_merge() {
@@ -616,13 +616,19 @@ static void test_repeated_character() {
     EXPECT_EQ_CHAR('z', repeated_character("zz"));
 }
 
+static void test_minimum_sum() {
+    EXPECT_EQ_INT(9, minimum_sum(ARRAY(int, 8, 6, 1, 5, 3), 5));
+    EXPECT_EQ_INT(13, minimum_sum(ARRAY(int, 5, 4, 8, 7, 10, 2), 6));
+    EXPECT_EQ_INT(-1, minimum_sum(ARRAY(int, 6, 5, 4, 3, 4, 5), 6));
+}
+
 static void test_solution() {
     test_two_sum();
     test_add_two_numbers();
     test_remove_element();
     test_remove_duplicates();
     test_search();
-    test_rotate();
+    test_rotate_image();
     test_merge();
     test_is_same_tree();
     test_reverse_list();
@@ -687,6 +693,7 @@ static void test_solution() {
     test_are_number_ascending();
     test_count_even();
     test_repeated_character();
+    test_minimum_sum();
 }
 
 static void test_is_flipped_string() {
