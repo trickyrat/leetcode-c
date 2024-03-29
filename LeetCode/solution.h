@@ -63,7 +63,7 @@ int search(const int *nums, int numSize, int target);
  * 48. Rotate Image
  * @param nums
  */
-void rotate(int **matrix, int matrixSize, int *matrixColSize);
+void rotate_image(int **matrix, int matrixSize, int *matrixColSize);
 
 /**
  * 88. Merge Sorted Array
@@ -718,6 +718,15 @@ char repeated_character(char *s);
 /**
  * 2580. Count Ways to Group Overlapping Ranges
  * @param ranges
+ * @param rangesSize
+ * @param rangesColSize
  * @return
  */
 int count_ways(int **ranges, int rangesSize, int* rangesColSize);
+
+/**
+ * 2908. Minimum Sum of Mountain Triplets I
+ * @param nums
+ * @return
+ */
+int minimum_sum(int *nums, int numsSize);
