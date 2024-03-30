@@ -1692,3 +1692,20 @@ int minimum_sum(int *nums, int numsSize) {
 
     return res < 1000 ? res : -1;
 }
+
+int minimum_added_coins(int *coins, int coins_size, int target) {
+    qsort_s(coins, coins_size, sizeof(int), cmp_asc_s, NULL);
+    int res = 0;
+    int x = 1;
+    int index = 0;
+    while (x <= target) {
+        if (index < coins_size && coins[index] <= x) {
+            x += coins[index];
+            index++;
+        } else {
+            x <<= 1;
+            res++;
+        }
+    }
+    return res;
+}
