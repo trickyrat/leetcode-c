@@ -28,7 +28,11 @@ inline int cmp_desc_s(void *context, const void *pa, const void *pb) {
     return  *(int *) pb - *(int *) pa;
 }
 
-inline int cmp_array_of_array(const void *pa, const void *pb) {
+inline int cmp_array_of_array_at_first_element(const void *a, const void *b) {
+    return (*(int **) a)[0] - (*(int **) b)[0];
+}
+
+inline int cmp_array_of_array_at_second_element(const void *pa, const void *pb) {
     return (*(int **) pa)[1] - (*(int **) pb)[1];
 }
 
