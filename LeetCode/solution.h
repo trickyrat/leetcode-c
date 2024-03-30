@@ -63,7 +63,7 @@ int search(const int *nums, int numSize, int target);
  * 48. Rotate Image
  * @param nums
  */
-void rotate_image(int **matrix, int matrixSize, int *matrixColSize);
+void rotate_image(int **matrix, int matrix_size, int *matrix_col_size);
 
 /**
  * 88. Merge Sorted Array
@@ -74,7 +74,7 @@ void rotate_image(int **matrix, int matrixSize, int *matrixColSize);
  * @param nums2Size
  * @param n
  */
-void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n);
+void merge(int *nums1, int nums1_size, int m, int *nums2, int nums2_size, int n);
 
 /**
  * 100. Same Tree
@@ -136,7 +136,7 @@ int find_substring_in_wraparound_string(char *p);
  * @param return_size
  * @return
  */
-int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *return_size);
+int *find_diagonal_order(int **mat, int mat_size, int *mat_col_size, int *return_size);
 
 /**
  * 518. Coin Change 2
@@ -154,7 +154,7 @@ int change(int amount, int *coins);
  * @param pairsColSize
  * @return
  */
-int find_longest_chain(int **pairs, int pairsSize, int *pairsColSize);
+int find_longest_chain(int **pairs, int pairs_size, int *pairs_col_size);
 
 /**
  * 658. Find K Closest Elements
@@ -165,7 +165,7 @@ int find_longest_chain(int **pairs, int pairsSize, int *pairsColSize);
  * @param return_size
  * @return
  */
-int *find_closest_elements(int *arr, int arrSize, int k, int x, int *return_size);
+int *find_closest_elements(int *arr, int arr_size, int k, int x, int *return_size);
 
 /**
  * 662. Maximum Width of Binary Tree
@@ -228,7 +228,7 @@ int *self_dividing_numbers(int left, int right, int *return_size);
  * @param target
  * @return
  */
-char next_greatest_letter(char *letters, int letterSize, char target);
+char next_greatest_letter(char *letters, int letter_size, char target);
 
 /**
  * 769. Max Chunks To Make Sorted
@@ -261,7 +261,7 @@ int preimage_size_fzf(int k);
  * @param nums2Size
  * @return
  */
-int min_swap(int *nums1, int nums1Size, int *nums2, int nums2Size);
+int min_swap(int *nums1, int nums1_size, int *nums2, int nums2_size);
 
 /**
  * 804. Unique Morse Code Words
@@ -269,7 +269,7 @@ int min_swap(int *nums1, int nums1Size, int *nums2, int nums2Size);
  * @param wordsSize
  * @return
  */
-int unique_morse_representations(char **words, int wordsSize);
+int unique_morse_representations(char **words, int words_size);
 
 /**
  * 806. Number of Lines To Write String
@@ -279,7 +279,7 @@ int unique_morse_representations(char **words, int wordsSize);
  * @param return_size
  * @return
  */
-int *number_of_lines(int *widths, int widthsSize, char *s, int *return_size);
+int *number_of_lines(int *widths, int widths_size, char *s, int *return_size);
 
 /**
  * 828. Count Unique Characters of All Substrings of a Given String
@@ -304,7 +304,7 @@ int score_of_parentheses(char *s);
  * @param return_size
  * @return
  */
-int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *return_size);
+int *advantage_count(int *nums1, int nums1_size, int *nums2, int nums2_size, int *return_size);
 
 /**
  * 883. Projection Area of 3D Shapes
@@ -313,7 +313,7 @@ int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *
  * @param gridColSize
  * @return
  */
-int projection_area(int **grid, int gridSize, int *gridColSize);
+int projection_area(int **grid, int grid_size, int *grid_col_size);
 
 /**
  * 905. Sort Array By Parity
@@ -346,7 +346,7 @@ int min_add_to_make_valid(char *s);
  * @param return_size
  * @return
  */
-int *three_equal_parts(int *arr, int arrSize, int *return_size);
+int *three_equal_parts(int *arr, int arr_size, int *return_size);
 
 /**
  * 934. Shortest Bridge
@@ -355,7 +355,7 @@ int *three_equal_parts(int *arr, int arrSize, int *return_size);
  * @param gridColSize
  * @return
  */
-int shortest_bridge(int **grid, int gridSize, int *gridColSize);
+int shortest_bridge(int **grid, int grid_size, int *grid_col_size);
 
 /**
  * 940. Distinct Subsequences II
@@ -379,7 +379,7 @@ int *di_string_match(char *s, int *return_size);
  * @param strsSize
  * @return
  */
-int min_deletion_size(char **strs, int strsSize);
+int min_deletion_size(char **strs, int strs_size);
 
 /**
  * 946. Validate Stack Sequences
@@ -389,7 +389,7 @@ int min_deletion_size(char **strs, int strsSize);
  * @param poppedSize
  * @return
  */
-bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int poppedSize);
+bool validate_stack_sequences(int *pushed, int pushed_size, int *popped, int popped_size);
 
 /**
  * 953. Verifying an Alien Dictionary
@@ -398,7 +398,7 @@ bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int popp
  * @param order
  * @return
  */
-bool is_alien_sorted(char **words, int wordsSize, char *order);
+bool is_alien_sorted(char **words, int words_size, char *order);
 
 /**
  * 965. Univalued Binary Tree
@@ -459,7 +459,7 @@ char **build_array(int *target, int targetSize, int n, int *return_size);
  * @param queryTime
  * @return
  */
-int busy_student(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime);
+int busy_student(int *start_time, int start_time_size, int *end_time, int end_time_size, int query_time);
 
 /**
  * 1455. Check If a Word Occurs As a Prefix of Any Word in a Sentence
@@ -467,7 +467,7 @@ int busy_student(int *startTime, int startTimeSize, int *endTime, int endTimeSiz
  * @param searchWord
  * @return
  */
-int is_prefix_of_word(char *sentence, char *searchWord);
+int is_prefix_of_word(char *sentence, char *search_word);
 
 /**
  * 1460. Make Two Arrays Equal by Reversing Sub-arrays
@@ -477,7 +477,7 @@ int is_prefix_of_word(char *sentence, char *searchWord);
  * @param arrSize
  * @return
  */
-bool can_be_equal(int *target, int targetSize, int *arr, int arrSize);
+bool can_be_equal(int *target, int target_size, int *arr, int arr_size);
 
 /**
  * 1464. Maximum Product of Two Elements in an Array
@@ -503,7 +503,7 @@ int *shuffle(int *nums, int nums_size, int n, int *return_size);
  * @param return_size
  * @return
  */
-int *final_prices(int *prices, int pricesSize, int *return_size);
+int *final_prices(int *prices, int prices_size, int *return_size);
 
 /**
  * 1582. Special Positions in a Binary Matrix
@@ -512,7 +512,7 @@ int *final_prices(int *prices, int pricesSize, int *return_size);
  * @param matColSize
  * @return
  */
-int num_special(int **mat, int matSize, int *matColSize);
+int num_special(int **mat, int mat_size, int *mat_col_size);
 
 /**
  * 1592. Rearrange Spaces Between Words
@@ -527,7 +527,7 @@ char *reorder_spaces(char *text);
  * @param logsSize
  * @return
  */
-int min_operations(char **logs, int logsSize);
+int min_operations(char **logs, int logs_size);
 
 /**
  * 1608. Special Array With X Elements Greater Than or Equal X
@@ -543,7 +543,7 @@ int special_array(int *nums, int nums_size);
  * @param arrSize
  * @return
  */
-double trim_mean(int *arr, int arrSize);
+double trim_mean(int *arr, int arr_size);
 
 /**
  * 1624. Largest Substring Between Two Equal Characters
@@ -568,7 +568,7 @@ int min_operations_2(int *nums, int nums_size, int x);
  * @param accountsColSize
  * @return
  */
-int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize);
+int maximum_wealth(int **accounts, int accounts_size, int *accounts_col_size);
 
 /**
  * 1694. Reformat Phone Number
@@ -601,7 +601,7 @@ char *merge_alternately(char *word1, char *word2);
  * @param pointsColSize
  * @return
  */
-int nearest_valid_point(int x, int y, int **points, int pointsSize, int *pointsColSize);
+int nearest_valid_point(int x, int y, int **points, int points_size, int *points_col_size);
 
 /**
  * 1784. Check if Binary String Has at Most One Segment of Ones
@@ -654,7 +654,7 @@ int first_day_been_in_all_rooms(int *next_visit, int next_visit_size);
  * @param operationsSize
  * @return
  */
-int final_value_after_operations(char **operations, int operationsSize);
+int final_value_after_operations(char **operations, int operations_size);
 
 /**
  * 2027. Minimum Moves to Convert String
@@ -673,7 +673,7 @@ int minimum_moves(char *s);
  * @param nums3Size
  * @return
  */
-int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int *nums3, int nums3Size, int *return_size);
+int *two_out_of_three(int *nums1, int nums1_size, int *nums2, int nums2_size, int *nums3, int nums3_size, int *return_size);
 
 /**
  * 2037. Minimum Number of Moves to Seat Everyone
@@ -683,7 +683,7 @@ int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int 
  * @param studentsSize
  * @return
  */
-int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize);
+int min_moves_to_seat(int *seats, int seats_size, int *students, int students_size);
 
 /**
  * 2042. Check if Numbers Are Ascending in a Sentence
@@ -702,11 +702,11 @@ int count_even(int num);
 /**
  * 2185. Counting Words With a Given Prefix
  * @param words
- * @param wordsSize
+ * @param words_size
  * @param pref
  * @return
  */
-int prefix_count(char **words, int wordsSize, char *pref);
+int prefix_count(char **words, int words_size, char *pref);
 
 /**
  * 2351. First Letter to Appear Twice
@@ -718,18 +718,18 @@ char repeated_character(char *s);
 /**
  * 2580. Count Ways to Group Overlapping Ranges
  * @param ranges
- * @param rangesSize
- * @param rangesColSize
+ * @param ranges_size
+ * @param ranges_col_size
  * @return
  */
-int count_ways(int **ranges, int rangesSize, int* rangesColSize);
+int count_ways(int **ranges, int ranges_size, int* ranges_col_size);
 
 /**
  * 2908. Minimum Sum of Mountain Triplets I
  * @param nums
  * @return
  */
-int minimum_sum(int *nums, int numsSize);
+int minimum_sum(int *nums, int nums_size);
 
 /**
  * 2952. Minimum Number of Coins to be Added

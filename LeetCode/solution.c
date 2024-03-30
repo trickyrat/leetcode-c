@@ -12,21 +12,25 @@
 #include "solution.h"
 #include "solutionutils.h"
 
-int *two_sum(int *nums, int numsSize, int target, int *returnSize) {
+#define MAX_NUM 100
+
+const int MOD = 1000000007;
+
+int *two_sum(int *nums, int nums_size, int target, int *return_size) {
     hashTable = NULL;
-    for (int i = 0; i < numsSize; i++) {
+    for (int i = 0; i < nums_size; i++) {
         struct HashTable *it = find(target - nums[i]);
         if (it != NULL) {
             int *ret = malloc(sizeof(int) * 2);
             if (ret) {
                 ret[0] = it->val, ret[1] = i;
-                *returnSize = 2;
+                *return_size = 2;
                 return ret;
             }
         }
         insert(nums[i], i);
     }
-    *returnSize = 0;
+    *return_size = 0;
     return NULL;
 }
 
@@ -97,9 +101,9 @@ int remove_duplicates(int *nums, int nums_size) {
     return slow;
 }
 
-int remove_element(int *nums, int numsSize, int val) {
+int remove_element(int *nums, int nums_size, int val) {
     int left = 0;
-    for (int right = 0; right < numsSize; ++right) {
+    for (int right = 0; right < nums_size; ++right) {
         if (nums[right] != val) {
             nums[left] = nums[right];
             left++;
@@ -108,14 +112,14 @@ int remove_element(int *nums, int numsSize, int val) {
     return left;
 }
 
-int search(const int *nums, int numSize, int target) {
-    if (numSize < 1) {
+int search(const int *nums, int num_size, int target) {
+    if (num_size < 1) {
         return -1;
     }
-    if (numSize == 1) {
+    if (num_size == 1) {
         return nums[0] == target ? 0 : -1;
     }
-    int l = 0, r = numSize - 1;
+    int l = 0, r = num_size - 1;
     while (l <= r) {
         int mid = l + (r - l) / 2;
         if (nums[mid] == target) {
@@ -128,7 +132,7 @@ int search(const int *nums, int numSize, int target) {
                 l = mid + 1;
             }
         } else {
-            if (nums[mid] < target && target <= nums[numSize - 1]) {
+            if (nums[mid] < target && target <= nums[num_size - 1]) {
                 l = mid + 1;
             } else {
                 r = mid - 1;
@@ -138,20 +142,20 @@ int search(const int *nums, int numSize, int target) {
     return -1;
 }
 
-void rotate_image(int **matrix, int matrixSize, int *matrixColSize) {
-    for (int i = 0; i < matrixSize / 2; ++i) {
-        for (int j = 0; j < matrixSize; ++j) {
-            swap_int(&matrix[i][j], &matrix[matrixSize - i - 1][j]);
+void rotate_image(int **matrix, int matrix_size, int *matrix_col_size) {
+    for (int i = 0; i < matrix_size / 2; ++i) {
+        for (int j = 0; j < matrix_size; ++j) {
+            swap_int(&matrix[i][j], &matrix[matrix_size - i - 1][j]);
         }
     }
-    for (int i = 0; i < matrixSize; ++i) {
+    for (int i = 0; i < matrix_size; ++i) {
         for (int j = 0; j < i; ++j) {
             swap_int(&matrix[i][j], &matrix[j][i]);
         }
     }
 }
 
-void merge(int *nums1, int nums1Size, int m, int *nums2, int nums2Size, int n) {
+void merge(int *nums1, int nums1_size, int m, int *nums2, int nums2_size, int n) {
     int p1 = m - 1, p2 = n - 1, tail = m + n - 1;
     int cur = 0;
     while (p1 >= 0 || p2 >= 0) {
@@ -230,7 +234,7 @@ int count_numbers_with_unique_digits(int n) {
     return ans;
 }
 
-int *lexical_order(int n, int *returnSize) {
+int *lexical_order(int n, int *return_size) {
     int *ret = (int *) malloc(sizeof(int) * n);
     int num = 1;
     for (int i = 0; i < n; ++i) {
@@ -244,7 +248,7 @@ int *lexical_order(int n, int *returnSize) {
             num++;
         }
     }
-    *returnSize = n;
+    *return_size = n;
     return ret;
 }
 
@@ -268,25 +272,25 @@ int find_substring_in_wraparound_string(char *p) {
     return res;
 }
 
-int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *returnSize) {
-    if (matSize == 0) {
+int *find_diagonal_order(int **mat, int mat_size, int *mat_col_size, int *return_size) {
+    if (mat_size == 0) {
         return NULL;
     }
     int row = 0, col = 0;
     int direction = 1;
     int r = 0;
-    int *ans = (int *) calloc(matSize * (*matColSize), sizeof(int));
-    while (row < matSize && col < (*matColSize)) {
+    int *ans = (int *) calloc(mat_size * (*mat_col_size), sizeof(int));
+    while (row < mat_size && col < (*mat_col_size)) {
         ans[r++] = mat[row][col];
         int new_row = row + (direction == 1 ? -1 : 1);
         int new_col = col + (direction == 1 ? 1 : -1);
-        if (new_row < 0 || new_row == matSize || new_col < 0 || new_col == (*matColSize)) {
+        if (new_row < 0 || new_row == mat_size || new_col < 0 || new_col == (*mat_col_size)) {
             if (direction == 1) {
-                row += (col == (*matColSize) - 1 ? 1 : 0);
-                col += (col < (*matColSize) - 1 ? 1 : 0);
+                row += (col == (*mat_col_size) - 1 ? 1 : 0);
+                col += (col < (*mat_col_size) - 1 ? 1 : 0);
             } else {
-                col += (row == matSize - 1 ? 1 : 0);
-                row += (row < matSize - 1 ? 1 : 0);
+                col += (row == mat_size - 1 ? 1 : 0);
+                row += (row < mat_size - 1 ? 1 : 0);
             }
             direction = 1 - direction;
         } else {
@@ -294,14 +298,14 @@ int *find_diagonal_order(int **mat, int matSize, int *matColSize, int *returnSiz
             col = new_col;
         }
     }
-    *returnSize = matSize * (*matColSize);
+    *return_size = mat_size * (*mat_col_size);
     return ans;
 }
 
-int change(int amount, int *coins, int coinsSize) {
+int change(int amount, int *coins, int coins_size) {
     int *dp = (int*)calloc(amount + 1, sizeof(int));
     dp[0] = 1;
-    for (int i = 0; i < coinsSize; i++) {
+    for (int i = 0; i < coins_size; i++) {
         for (int j = coins[i]; j <= amount; j++) {
             dp[j] += dp[j - coins[i]];
         }
@@ -311,10 +315,10 @@ int change(int amount, int *coins, int coinsSize) {
     return res;
 }
 
-int find_longest_chain(int **pairs, int pairsSize, int *pairsColSize) {
+int find_longest_chain(int **pairs, int pairs_size, int *pairs_col_size) {
     int curr = INT_MIN, res = 0;
-    qsort(pairs, pairsSize, sizeof(int *), cmp_array_of_array);
-    for (int i = 0; i < pairsSize; ++i) {
+    qsort(pairs, pairs_size, sizeof(int *), cmp_array_of_array_at_second_element);
+    for (int i = 0; i < pairs_size; ++i) {
         if (curr < pairs[i][0]) {
             curr = pairs[i][1];
             res += 1;
@@ -323,13 +327,13 @@ int find_longest_chain(int **pairs, int pairsSize, int *pairsColSize) {
     return res;
 }
 
-int *find_closest_elements(int *arr, int arrSize, int k, int x, int *returnSize) {
-    int right = binary_search(arr, arrSize, x);
+int *find_closest_elements(int *arr, int arr_size, int k, int x, int *return_size) {
+    int right = binary_search(arr, arr_size, x);
     int left = right - 1;
     while (k--) {
         if (left < 0) {
             right++;
-        } else if (right >= arrSize || x - arr[left] <= arr[right] - x) {
+        } else if (right >= arr_size || x - arr[left] <= arr[right] - x) {
             left--;
         } else {
             right++;
@@ -338,7 +342,7 @@ int *find_closest_elements(int *arr, int arrSize, int k, int x, int *returnSize)
     int size = right - left - 1;
     int *res = (int *) malloc(sizeof(int) * size);
     memcpy(res, arr + left + 1, sizeof(int) * size);
-    *returnSize = size;
+    *return_size = size;
     return res;
 }
 
@@ -390,7 +394,7 @@ bool check_possibility(int *nums, int nums_size) {
     return true;
 }
 
-int *construct_array(int n, int k, int *returnSize) {
+int *construct_array(int n, int k, int *return_size) {
     int *res = (int *) malloc(sizeof(int) * n);
     int index = 0;
     for (int i = 1; i < n - k; ++i) {
@@ -402,7 +406,7 @@ int *construct_array(int n, int k, int *returnSize) {
             res[index++] = j;
         }
     }
-    *returnSize = n;
+    *return_size = n;
     return res;
 }
 
@@ -489,7 +493,7 @@ static bool isSelfDividing(int num) {
     return true;
 }
 
-int *self_dividing_numbers(int left, int right, int *returnSize) {
+int *self_dividing_numbers(int left, int right, int *return_size) {
     int *ans = (int *) malloc(sizeof(int) * (right - left + 1));
     int pos = 0;
     for (int i = left; i <= right; ++i) {
@@ -497,15 +501,15 @@ int *self_dividing_numbers(int left, int right, int *returnSize) {
             ans[pos++] = i;
         }
     }
-    *returnSize = pos;
+    *return_size = pos;
     return ans;
 }
 
-char next_greatest_letter(char *letters, int lettersSize, char target) {
-    if (target >= letters[lettersSize - 1]) {
+char next_greatest_letter(char *letters, int letters_size, char target) {
+    if (target >= letters[letters_size - 1]) {
         return letters[0];
     }
-    int low = 0, high = lettersSize - 1;
+    int low = 0, high = letters_size - 1;
     while (low < high) {
         int mid = (high - low) / 2 + low;
         if (letters[mid] > target) {
@@ -517,9 +521,9 @@ char next_greatest_letter(char *letters, int lettersSize, char target) {
     return letters[low];
 }
 
-int max_chunks_to_sorted(int *arr, int arrSize) {
+int max_chunks_to_sorted(int *arr, int arr_size) {
     int m = 0, res = 0;
-    for (int i = 0; i < arrSize; ++i) {
+    for (int i = 0; i < arr_size; ++i) {
         m = MAX(m, arr[i]);
         if (m == i) {
             res++;
@@ -591,8 +595,8 @@ int preimage_size_fzf(int k) {
     return nx(k + 1) - nx(k);
 }
 
-int min_swap(int *nums1, int nums1Size, int *nums2, int nums2Size) {
-    int n = nums1Size;
+int min_swap(int *nums1, int nums1_size, int *nums2, int nums2_size) {
+    int n = nums1_size;
     int a = 0, b = 1;
     for (int i = 1; i < n; ++i) {
         int at = a, bt = b;
@@ -609,13 +613,13 @@ int min_swap(int *nums1, int nums1Size, int *nums2, int nums2Size) {
     return MIN(a, b);
 }
 
-int unique_morse_representations(char **words, int wordsSize) {
+int unique_morse_representations(char **words, int words_size) {
     const char *MORSE[26] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.",
                              "....", "..", ".---", "-.-", ".-..", "--", "-.",
                              "---", ".--.", "--.-", ".-.", "...", "-", "..-",
                              "...-", ".--", "-..-", "-.--", "--.."};
     HashItem *seen = NULL;
-    for (int i = 0; i < wordsSize; ++i) {
+    for (int i = 0; i < words_size; ++i) {
         HashItem *pEntry = NULL;
         int len = strlen(words[i]);
         int pos = 0;
@@ -639,7 +643,7 @@ int unique_morse_representations(char **words, int wordsSize) {
     return ans;
 }
 
-int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize) {
+int *number_of_lines(int *widths, int widths_size, char *s, int *return_size) {
     const int MAX_WIDTH = 100;
     int lines = 1, width = 0, len = strlen(s);
     for (int i = 0; i < len; ++i) {
@@ -651,7 +655,7 @@ int *number_of_lines(int *widths, int widthsSize, char *s, int *returnSize) {
         }
     }
     int *ans = (int *) malloc(sizeof(int) * 2);
-    *returnSize = 2;
+    *return_size = 2;
     ans[0] = lines;
     ans[1] = width;
     return ans;
@@ -717,8 +721,8 @@ int score_of_parentheses(char *s) {
     return res;
 }
 
-int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *returnSize) {
-    int n = nums1Size;
+int *advantage_count(int *nums1, int nums1_size, int *nums2, int nums2_size, int *return_size) {
+    int n = nums1_size;
     int **index1 = (int **) malloc(sizeof(int *) * n);
     int **index2 = (int **) malloc(sizeof(int *) * n);
     for (int i = 0; i < n; ++i) {
@@ -743,15 +747,15 @@ int *advantage_count(int *nums1, int nums1Size, int *nums2, int nums2Size, int *
             right--;
         }
     }
-    *returnSize = n;
+    *return_size = n;
     return res;
 }
 
-int projection_area(int **grid, int gridSize, int *gridColSize) {
+int projection_area(int **grid, int grid_size, int *grid_col_size) {
     int xyArea = 0, yzArea = 0, zxArea = 0;
-    for (int i = 0; i < gridSize; ++i) {
+    for (int i = 0; i < grid_size; ++i) {
         int yzHeight = 0, zxHeight = 0;
-        for (int j = 0; j < gridSize; ++j) {
+        for (int j = 0; j < grid_size; ++j) {
             xyArea += grid[i][j] > 0 ? 1 : 0;
             yzHeight = MAX(yzHeight, grid[j][i]);
             zxHeight = MAX(zxHeight, grid[i][j]);
@@ -762,8 +766,8 @@ int projection_area(int **grid, int gridSize, int *gridColSize) {
     return xyArea + yzArea + zxArea;
 }
 
-int *sort_array_by_parity(int *nums, int numsSize, int *returnSize) {
-    int left = 0, right = numsSize - 1;
+int *sort_array_by_parity(int *nums, int nums_size, int *return_size) {
+    int left = 0, right = nums_size - 1;
     while (left < right) {
         while (left < right && nums[left] % 2 == 0) {
             left++;
@@ -779,14 +783,14 @@ int *sort_array_by_parity(int *nums, int numsSize, int *returnSize) {
             right--;
         }
     }
-    *returnSize = numsSize;
+    *return_size = nums_size;
     return nums;
 }
 
-int partition_disjoint(int *nums, int numsSize) {
+int partition_disjoint(int *nums, int nums_size) {
     int curr_max = nums[0], left_max = nums[0];
     int index = 0;
-    for (int i = 0; i < numsSize - 1; i++) {
+    for (int i = 0; i < nums_size - 1; i++) {
         curr_max = MAX(curr_max, nums[i]);
         if (nums[i] < left_max) {
             left_max = curr_max;
@@ -816,11 +820,11 @@ int min_add_to_make_valid(char *s) {
     return res;
 }
 
-int *three_equal_parts(int *arr, int arrSize, int *returnSize) {
+int *three_equal_parts(int *arr, int arr_size, int *return_size) {
     int sum = 0;
     int *res = (int *) malloc(sizeof(int) * 2);
-    *returnSize = 2;
-    for (int i = 0; i < arrSize; ++i) {
+    *return_size = 2;
+    for (int i = 0; i < arr_size; ++i) {
         sum += arr[i];
     }
     if (sum % 3 != 0) {
@@ -835,7 +839,7 @@ int *three_equal_parts(int *arr, int arrSize, int *returnSize) {
 
     int partial = sum / 3;
     int first = 0, second = 0, third = 0, curr = 0;
-    for (int i = 0; i < arrSize; ++i) {
+    for (int i = 0; i < arr_size; ++i) {
         if (arr[i] == 1) {
             if (curr == 0) {
                 first = i;
@@ -847,10 +851,10 @@ int *three_equal_parts(int *arr, int arrSize, int *returnSize) {
             curr++;
         }
     }
-    int len = arrSize - third;
+    int len = arr_size - third;
     if (first + len <= second && second + len <= third) {
         int i = 0;
-        while (third + i < arrSize) {
+        while (third + i < arr_size) {
             if (arr[first + i] != arr[second + i] || arr[first + i] != arr[third + i]) {
                 res[0] = -1, res[1] = -1;
                 return res;
@@ -875,8 +879,8 @@ void shortest_bridge_dfs(int x, int y, int **grid, int n, int *queue, int *tail)
     shortest_bridge_dfs(x, y - 1, grid, n, queue, tail);
     shortest_bridge_dfs(x, y + 1, grid, n, queue, tail);
 }
-int shortest_bridge(int** grid, int gridSize, int* gridColSize) {
- int n = gridSize;
+int shortest_bridge(int** grid, int grid_size, int* grid_col_size) {
+ int n = grid_size;
     int dirs[4][2] = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
 
     for (int i = 0; i < n; i++) {
@@ -915,32 +919,31 @@ int shortest_bridge(int** grid, int gridSize, int* gridColSize) {
 }
 
 int distinct_subseq_ii(char *s) {
-    const int mod = 1e9 + 7;
     int group[26];
     memset(group, 0, sizeof(group));
     int n = strlen(s), res = 0;
     for (int i = 0; i < n; ++i) {
         int index = s[i] - 'a';
         int prev = group[index];
-        group[index] = (res + 1) % mod;
-        res = ((res + group[index] - prev) % mod + mod) % mod;
+        group[index] = (res + 1) % MOD;
+        res = ((res + group[index] - prev) % MOD + MOD) % MOD;
     }
     return res;
 }
 
-int *di_string_match(char *s, int *returnSize) {
+int *di_string_match(char *s, int *return_size) {
     int n = strlen(s), lo = 0, hi = n;
     int *perm = (int *) malloc(sizeof(int) * (n + 1));
     for (int i = 0; i < n; ++i) {
         perm[i] = s[i] == 'I' ? lo++ : hi--;
     }
     perm[n] = lo;
-    *returnSize = n + 1;
+    *return_size = n + 1;
     return perm;
 }
 
-int min_deletion_size(char **strs, int strsSize) {
-    int row = strsSize;
+int min_deletion_size(char **strs, int strs_size) {
+    int row = strs_size;
     int col = strlen(strs[0]);
     int ans = 0;
     for (int j = 0; j < col; ++j) {
@@ -954,10 +957,10 @@ int min_deletion_size(char **strs, int strsSize) {
     return ans;
 }
 
-bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int poppedSize) {
-    int *stack = (int *) malloc(sizeof(int) * pushedSize);
+bool validate_stack_sequences(int *pushed, int pushed_size, int *popped, int popped_size) {
+    int *stack = (int *) malloc(sizeof(int) * pushed_size);
     int top = 0;
-    for (int i = 0, j = 0; i < pushedSize; ++i) {
+    for (int i = 0, j = 0; i < pushed_size; ++i) {
         stack[top++] = pushed[i];
         while (top > 0 && stack[top - 1] == popped[j]) {
             top--;
@@ -968,12 +971,12 @@ bool validate_stack_sequences(int *pushed, int pushedSize, int *popped, int popp
     return top == 0;
 }
 
-bool is_alien_sorted(char **words, int wordsSize, char *order) {
+bool is_alien_sorted(char **words, int words_size, char *order) {
     int index[26];
     for (int i = 0; i < strlen(order); ++i) {
         index[order[i] - 'a'] = i;
     }
-    for (int i = 1; i < wordsSize; ++i) {
+    for (int i = 1; i < words_size; ++i) {
         bool valid = false;
         int len1 = strlen(words[i - 1]);
         int len2 = strlen(words[i]);
@@ -1051,44 +1054,44 @@ char *defang_ip_addr(char *address) {
     return res;
 }
 
-int *min_subsequence(int *nums, int numsSize, int *returnSize) {
+int *min_subsequence(int *nums, int nums_size, int *return_size) {
     int total = 0;
-    for (int i = 0; i < numsSize; ++i) {
+    for (int i = 0; i < nums_size; ++i) {
         total += nums[i];
     }
-    qsort_s(nums, numsSize, sizeof(int), cmp_asc_s, NULL);
-    int *ans = (int *) malloc(sizeof(int) * numsSize);
+    qsort_s(nums, nums_size, sizeof(int), cmp_asc_s, NULL);
+    int *ans = (int *) malloc(sizeof(int) * nums_size);
     int curr = 0, pos = 0;
-    for (int i = numsSize - 1; i >= 0; --i) {
+    for (int i = nums_size - 1; i >= 0; --i) {
         curr += nums[i];
         ans[pos++] = nums[i];
         if (total - curr < curr) {
             break;
         }
     }
-    *returnSize = pos;
+    *return_size = pos;
     return ans;
 }
 
-char **string_matching(char **words, int wordsSize, int *returnSize) {
-    char **res = (char **) malloc(sizeof(char *) * wordsSize);
+char **string_matching(char **words, int words_size, int *return_size) {
+    char **res = (char **) malloc(sizeof(char *) * words_size);
     int pos = 0;
-    for (int i = 0; i < wordsSize; ++i) {
-        for (int j = 0; j < wordsSize; ++j) {
+    for (int i = 0; i < words_size; ++i) {
+        for (int j = 0; j < words_size; ++j) {
             if (i != j && strstr(words[j], words[i])) {
                 res[pos++] = words[i];
                 break;
             }
         }
     }
-    *returnSize = pos;
+    *return_size = pos;
     return res;
 }
 
-char **build_array(int *target, int targetSize, int n, int *returnSize) {
+char **build_array(int *target, int target_size, int n, int *return_size) {
     char **res = (char **) malloc(sizeof(char *) * n * 2);
     int prev = 0, pos = 0;
-    for (int j = 0; j < targetSize; ++j) {
+    for (int j = 0; j < target_size; ++j) {
         for (int i = 0; i < target[j] - prev - 1; ++i) {
             res[pos] = (char *) malloc(sizeof(char) * 8);
             strcpy_s(res[pos], strlen(res[pos]), "Push");
@@ -1102,37 +1105,37 @@ char **build_array(int *target, int targetSize, int n, int *returnSize) {
         pos++;
         prev = target[j];
     }
-    *returnSize = pos;
+    *return_size = pos;
     return res;
 }
 
-int busy_student(int *startTime, int startTimeSize, int *endTime, int endTimeSize, int queryTime) {
+int busy_student(int *start_time, int start_time_size, int *end_time, int end_time_size, int query_time) {
     int res = 0;
-    for (int i = 0; i < startTimeSize; ++i) {
-        if (startTime[i] <= queryTime && queryTime <= endTime[i]) {
+    for (int i = 0; i < start_time_size; ++i) {
+        if (start_time[i] <= query_time && query_time <= end_time[i]) {
             res++;
         }
     }
     return res;
 }
 
-static bool is_prefix(const char *sentence, int start, int end, const char *searchWord) {
-    int len = strlen(searchWord);
+static bool is_prefix(const char *sentence, int start, int end, const char *search_word) {
+    int len = strlen(search_word);
     for (int i = 0; i < len; ++i) {
-        if (start + i >= end || sentence[start + i] != searchWord[i]) {
+        if (start + i >= end || sentence[start + i] != search_word[i]) {
             return false;
         }
     }
     return true;
 }
 
-int is_prefix_of_word(char *sentence, char *searchWord) {
+int is_prefix_of_word(char *sentence, char *search_word) {
     int n = strlen(sentence), index = 1, start = 0, end = 0;
     while (start < n) {
         while (end < n && sentence[end] != ' ') {
             end++;
         }
-        if (is_prefix(sentence, start, end, searchWord)) {
+        if (is_prefix(sentence, start, end, search_word)) {
             return index;
         }
         index++;
@@ -1142,21 +1145,21 @@ int is_prefix_of_word(char *sentence, char *searchWord) {
     return -1;
 }
 
-bool can_be_equal(int *target, int targetSize, int *arr, int arrSize) {
+bool can_be_equal(int *target, int target_size, int *arr, int arr_size) {
     int descending = 0;
-    qsort_s(target, targetSize, sizeof(int), cmp_asc_s, NULL);
-    qsort_s(arr, arrSize, sizeof(int), cmp_asc_s, NULL);
-    return memcmp(target, arr, sizeof(int) * arrSize) == 0;
+    qsort_s(target, target_size, sizeof(int), cmp_asc_s, NULL);
+    qsort_s(arr, arr_size, sizeof(int), cmp_asc_s, NULL);
+    return memcmp(target, arr, sizeof(int) * arr_size) == 0;
 }
 
-int max_product(int *nums, int numsSize) {
+int max_product(int *nums, int nums_size) {
     int a = nums[0], b = nums[1];
     if (a < b) {
         int temp = a;
         a = b;
         b = temp;
     }
-    for (int i = 2; i < numsSize; i++) {
+    for (int i = 2; i < nums_size; i++) {
         if (nums[i] > a) {
             b = a;
             a = nums[i];
@@ -1167,34 +1170,34 @@ int max_product(int *nums, int numsSize) {
     return (a - 1) * (b - 1);
 }
 
-int *shuffle(int *nums, int numsSize, int n, int *returnSize) {
+int *shuffle(int *nums, int nums_size, int n, int *return_size) {
     int *res = (int *) malloc(sizeof(int) * n * 2);
     for (int i = 0; i < n; ++i) {
         res[2 * i] = nums[i];
         res[2 * i + 1] = nums[n + i];
     }
-    *returnSize = n * 2;
+    *return_size = n * 2;
     return res;
 }
 
-int *final_prices(int *prices, int pricesSize, int *returnSize) {
-    int *res = (int *) malloc(sizeof(int) * pricesSize);
-    int *stack = (int *) malloc(sizeof(int) * pricesSize);
+int *final_prices(int *prices, int prices_size, int *return_size) {
+    int *res = (int *) malloc(sizeof(int) * prices_size);
+    int *stack = (int *) malloc(sizeof(int) * prices_size);
     int top = 0;
-    for (int i = pricesSize - 1; i >= 0; --i) {
+    for (int i = prices_size - 1; i >= 0; --i) {
         while (top > 0 && stack[top - 1] > prices[i]) {
             top--;
         }
         res[i] = top == 0 ? prices[i] : prices[i] - stack[top - 1];
         stack[top++] = prices[i];
     }
-    *returnSize = pricesSize;
+    *return_size = prices_size;
     free(stack);
     return res;
 }
 
-int num_special(int **mat, int matSize, int *matColSize) {
-    int m = matSize, n = matColSize[0];
+int num_special(int **mat, int mat_size, int *mat_col_size) {
+    int m = mat_size, n = mat_col_size[0];
     for (int i = 0; i < m; ++i) {
         int count = 0;
         for (int j = 0; j < n; ++j) {
@@ -1273,9 +1276,9 @@ char *reorder_spaces(char *text) {
     return res;
 }
 
-int min_operations(char **logs, int logsSize) {
+int min_operations(char **logs, int logs_size) {
     int depth = 0;
-    for (int i = 0; i < logsSize; ++i) {
+    for (int i = 0; i < logs_size; ++i) {
         if (!strcmp(logs[i], "./")) {
             continue;
         } else if (!strcmp(logs[i], "../")) {
@@ -1289,23 +1292,23 @@ int min_operations(char **logs, int logsSize) {
     return depth;
 }
 
-int special_array(int *nums, int numsSize) {
-    qsort_s(nums, numsSize, sizeof(int), cmp_desc_s, NULL);
-    for (int i = 1; i <= numsSize; ++i) {
-        if (nums[i - 1] >= i && (i == numsSize || nums[i] < i)) {
+int special_array(int *nums, int nums_size) {
+    qsort_s(nums, nums_size, sizeof(int), cmp_desc_s, NULL);
+    for (int i = 1; i <= nums_size; ++i) {
+        if (nums[i - 1] >= i && (i == nums_size || nums[i] < i)) {
             return i;
         }
     }
     return -1;
 }
 
-double trim_mean(int *arr, int arrSize) {
-    qsort(arr, arrSize, sizeof(int), cmp_asc);
+double trim_mean(int *arr, int arr_size) {
+    qsort(arr, arr_size, sizeof(int), cmp_asc);
     int sum = 0;
-    for (int i = arrSize / 20; i < (19 * arrSize / 20); i++) {
+    for (int i = arr_size / 20; i < (19 * arr_size / 20); i++) {
         sum += arr[i];
     }
-    return sum / (arrSize * 0.9);
+    return sum / (arr_size * 0.9);
 }
 
 int max_length_between_equal_characters(char *s) {
@@ -1323,9 +1326,9 @@ int max_length_between_equal_characters(char *s) {
     return res;
 }
 
-int min_operations_2(int *nums, int numsSize, int x) {
+int min_operations_2(int *nums, int nums_size, int x) {
     int sum = 0;
-    for (int i = 0; i < numsSize; i++) {
+    for (int i = 0; i < nums_size; i++) {
         sum += nums[i];
     }
     if (sum < x) {
@@ -1333,28 +1336,28 @@ int min_operations_2(int *nums, int numsSize, int x) {
     }
     int right = 0;
     int left_sum =0, right_sum = sum;
-    int res = numsSize + 1;
+    int res = nums_size + 1;
 
-    for (int left = -1; left < numsSize; left++) {
+    for (int left = -1; left < nums_size; left++) {
         if (left != -1) {
             left_sum += nums[left];
         }
-        while (right < numsSize && left_sum + right_sum > x) {
+        while (right < nums_size && left_sum + right_sum > x) {
             right_sum -= nums[right];
             right++;
         }
         if (left_sum + right_sum == x) {
-            res = MIN(res, (left + 1) + (numsSize - right));
+            res = MIN(res, (left + 1) + (nums_size - right));
         }
     }
-    return res > numsSize ? - 1 : res;
+    return res > nums_size ? - 1 : res;
 }
 
-int maximum_wealth(int **accounts, int accountsSize, int *accountsColSize) {
+int maximum_wealth(int **accounts, int accounts_size, int *accounts_col_size) {
     int maxWealth = 0;
-    for (int i = 0; i < accountsSize; ++i) {
+    for (int i = 0; i < accounts_size; ++i) {
         int sum = 0;
-        for (int j = 0; j < accountsColSize[0]; ++j) {
+        for (int j = 0; j < accounts_col_size[0]; ++j) {
             sum += accounts[i][j];
         }
         maxWealth = MAX(maxWealth, sum);
@@ -1435,9 +1438,9 @@ char *merge_alternately(char *word1, char *word2) {
     return res;
 }
 
-int nearest_valid_point(int x, int y, int** points, int pointsSize, int* pointsColSize) {
+int nearest_valid_point(int x, int y, int** points, int points_size, int* points_col_size) {
     int min = INT_MAX, res = -1;
-    for (int i = 0; i < pointsSize; ++i) {
+    for (int i = 0; i < points_size; ++i) {
         int px = points[i][0], py = points[i][1];
         if (x == px) {
             int dist = abs(y - py);
@@ -1481,12 +1484,12 @@ bool are_almost_equal(char *s1, char *s2) {
     return s1[diff[0]] == s2[diff[1]] && s1[diff[1]] == s2[diff[0]];
 }
 
-int max_ascending_sum(int *nums, int numsSize) {
+int max_ascending_sum(int *nums, int nums_size) {
     int res = 0;
     int i = 0;
-    while (i < numsSize) {
+    while (i < nums_size) {
         int currSum = nums[i++];
-        while (i < numsSize && nums[i] > nums[i - 1]) {
+        while (i < nums_size && nums[i] > nums[i - 1]) {
             currSum += nums[i++];
         }
         res = MAX(res, currSum);
@@ -1502,13 +1505,13 @@ int find_the_winner(int n, int k) {
     return winner;
 }
 
-int find_middle_index(int *nums, int numsSize) {
+int find_middle_index(int *nums, int nums_size) {
     int total = 0;
-    for (int i = 0; i < numsSize; i++) {
+    for (int i = 0; i < nums_size; i++) {
         total += nums[i];
     }
     int sum = 0;
-    for (int i = 0; i < numsSize; i++) {
+    for (int i = 0; i < nums_size; i++) {
         if (2 * sum + nums[i] == total) {
             return i;
         }
@@ -1518,7 +1521,6 @@ int find_middle_index(int *nums, int numsSize) {
 }
 
 int first_day_been_in_all_rooms(int *next_visit, int next_visit_size) {
-    int MOD = 1000000007;
     int *dp = (int *) malloc(next_visit_size * sizeof(int));
     memset(dp, 0, sizeof(dp));
 
@@ -1537,9 +1539,9 @@ int first_day_been_in_all_rooms(int *next_visit, int next_visit_size) {
     return res;
 }
 
-int final_value_after_operations(char **operations, int operationsSize) {
+int final_value_after_operations(char **operations, int operations_size) {
     int res = 0;
-    for (int i = 0; i < operationsSize; ++i) {
+    for (int i = 0; i < operations_size; ++i) {
         char *op = operations[i];
         if (op[1] == '+') {
             res++;
@@ -1561,18 +1563,16 @@ int minimum_moves(char *s) {
     return res;
 }
 
-#define MAX_NUM 100
-
-int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int *nums3, int nums3Size, int *returnSize) {
+int *two_out_of_three(int *nums1, int nums1_size, int *nums2, int nums2_size, int *nums3, int nums3_size, int *return_size) {
     int map[MAX_NUM + 1];
     memset(map, 0, sizeof(map));
-    for (int i = 0; i < nums1Size; i++) {
+    for (int i = 0; i < nums1_size; i++) {
         map[nums1[i]] = 1;
     }
-    for (int i = 0; i < nums2Size; i++) {
+    for (int i = 0; i < nums2_size; i++) {
         map[nums2[i]] |= 2;
     }
-    for (int i = 0; i < nums3Size; i++) {
+    for (int i = 0; i < nums3_size; i++) {
         map[nums3[i]] |= 4;
     }
     int *res = (int*) malloc(sizeof(int) * MAX_NUM);
@@ -1582,15 +1582,15 @@ int *two_out_of_three(int *nums1, int nums1Size, int *nums2, int nums2Size, int 
            res[pos++] = i;
         }
     }
-    *returnSize = pos;
+    *return_size = pos;
     return res;
 }
 
-int min_moves_to_seat(int *seats, int seatsSize, int *students, int studentsSize) {
-    qsort(seats, seatsSize, sizeof(int), cmp_asc);
-    qsort(students, studentsSize, sizeof(int), cmp_asc);
+int min_moves_to_seat(int *seats, int seats_size, int *students, int students_size) {
+    qsort(seats, seats_size, sizeof(int), cmp_asc);
+    qsort(students, students_size, sizeof(int), cmp_asc);
     int res = 0;
-    for (int i = 0; i < seatsSize; i ++) {
+    for (int i = 0; i < seats_size; i ++) {
         res += abs(seats[i] - students[i]);
     }
     return res;
@@ -1631,10 +1631,10 @@ int count_even(int num) {
     return res - 1;
 }
 
-int prefix_count(char **words, int wordsSize, char *pref) {
+int prefix_count(char **words, int words_size, char *pref) {
     int res = 0;
     int len = strlen(pref);
-    for (int i = 0; i < wordsSize; ++i) {
+    for (int i = 0; i < words_size; ++i) {
         if (strncmp(words[i], pref, len) == 0) {
            res++;
         }
@@ -1654,18 +1654,13 @@ char repeated_character(char *s) {
     return ' ';
 }
 
-int cmp(const void *a, const void *b) {
-    return (*(int **) a)[0] - (*(int **) b)[0];
-}
-
-const int MOD = 1000000007;
-int count_ways(int **ranges, int rangesSize, int *rangesColSize) {
-    qsort_s(ranges, ranges, sizeof(int *), cmp, NULL);
+int count_ways(int **ranges, int ranges_size, int *ranges_col_size) {
+    qsort_s(ranges, ranges_size, sizeof(int *), cmp_array_of_array_at_first_element, NULL);
     long long res = 1;
-    for (int i = 0; i < rangesSize;) {
+    for (int i = 0; i < ranges_size;) {
         int r = ranges[i][1];
         int j = i + 1;
-        while (j < rangesSize && ranges[j][0] <= r) {
+        while (j < ranges_size && ranges[j][0] <= r) {
             r = fmax(r, ranges[j][1]);
             j++;
         }
@@ -1675,15 +1670,15 @@ int count_ways(int **ranges, int rangesSize, int *rangesColSize) {
     return res;
 }
 
-int minimum_sum(int *nums, int numsSize) {
+int minimum_sum(int *nums, int nums_size) {
     int res = 1000, mini = 1000;
-    int *left = (int *) malloc(numsSize * sizeof(int));
-    int right = nums[numsSize - 1];
-    for (int i = 1; i < numsSize; i++) {
+    int *left = (int *) malloc(nums_size * sizeof(int));
+    int right = nums[nums_size - 1];
+    for (int i = 1; i < nums_size; i++) {
         mini = nums[i - 1] < mini ? nums[i - 1] : mini;
         left[i] = mini;
     }
-    for (int i = numsSize - 2; i > 0; i--) {
+    for (int i = nums_size - 2; i > 0; i--) {
         if (left[i] < nums[i] && nums[i] > right) {
             res = res < left[i] + nums[i] + right ? res : left[i] + nums[i] + right;
         }
