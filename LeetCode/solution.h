@@ -730,3 +730,12 @@ int count_ways(int **ranges, int rangesSize, int* rangesColSize);
  * @return
  */
 int minimum_sum(int *nums, int numsSize);
+
+/**
+ * 2952. Minimum Number of Coins to be Added
+ * @param coins
+ * @param coins_size
+ * @param target
+ * @return
+ */
+int minimum_added_coins(int *coins, int coins_size, int target);

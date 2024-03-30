@@ -622,6 +622,12 @@ static void test_minimum_sum() {
     EXPECT_EQ_INT(-1, minimum_sum(ARRAY(int, 6, 5, 4, 3, 4, 5), 6));
 }
 
+static void test_minimum_added_coins() {
+    EXPECT_EQ_INT(2, minimum_added_coins(ARRAY(int, 1, 4, 10), 3, 19));
+    EXPECT_EQ_INT(1, minimum_added_coins(ARRAY(int, 1, 4, 10, 5, 7, 19), 6, 19));
+    EXPECT_EQ_INT(3, minimum_added_coins(ARRAY(int, 1, 1, 1), 3, 20));
+}
+
 static void test_solution() {
     test_two_sum();
     test_add_two_numbers();
@@ -694,6 +700,7 @@ static void test_solution() {
     test_count_even();
     test_repeated_character();
     test_minimum_sum();
+    test_minimum_added_coins();
 }
 
 static void test_is_flipped_string() {
