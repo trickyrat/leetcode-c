@@ -219,6 +219,29 @@ struct ListNode *reverse_list(struct ListNode *head) {
     return prev;
 }
 
+bool is_valid_serialization(const char *preorder) {
+    int n = strlen(preorder);
+    int i = 0, slots = 1;
+    while (i < n) {
+        if (!slots) {
+            return false;
+        }
+        if (preorder[i] == ',') {
+            i++;
+        } else if (preorder[i] == '#') {
+            slots--;
+            i++;
+        } else {
+            while (i < n && preorder[i] != ',') {
+                i++;
+            }
+            slots++;
+        }
+    }
+
+    return !slots;
+}
+
 int count_numbers_with_unique_digits(int n) {
     if (n == 0) {
         return 1;
