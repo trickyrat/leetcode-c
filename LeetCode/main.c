@@ -107,6 +107,12 @@ static void test_reverse_list() {
     EXPECT_EQ_TRUE(is_same_listnode(actual1, expected1));
 }
 
+static void test_is_valid_serialization() {
+    EXPECT_EQ_TRUE(is_valid_serialization("9,3,4,#,#,1,#,#,2,#,6,#,#"));
+    EXPECT_EQ_FALSE(is_valid_serialization("1,#"));
+    EXPECT_EQ_FALSE(is_valid_serialization("9,#,#,1"));
+}
+
 static void test_count_numbers_with_unique_digits() {
     EXPECT_EQ_INT(91, count_numbers_with_unique_digits(2));
     EXPECT_EQ_INT(1, count_numbers_with_unique_digits(0));
@@ -638,6 +644,7 @@ static void test_solution() {
     test_merge();
     test_is_same_tree();
     test_reverse_list();
+    test_is_valid_serialization();
     test_count_numbers_with_unique_digits();
     test_lexical_order();
     test_find_substring_in_wraparoundString();

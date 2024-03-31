@@ -106,6 +106,14 @@ void rotate(int *nums, int nums_size, int k);
  */
 struct ListNode *reverse_list(ListNode *head);
 
+
+/*
+ * 331. Verify Preorder Serialization of a Binary Tree
+ * @param preorder
+ * @return
+ */
+bool is_valid_serialization(const char *preorder);
+
 /**
  * 357. Count Numbers with Unique Digits
  * @param n
