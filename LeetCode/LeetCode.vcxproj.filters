@@ -50,23 +50,5 @@
     <ClInclude Include="testutils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utarray.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="uthash.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utlist.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utringbuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utstack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utstring.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
