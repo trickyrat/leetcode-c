@@ -18,7 +18,7 @@
     <ClCompile Include="solution.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="interviewsolution.c">
+    <ClCompile Include="interview_solution.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
@@ -26,28 +26,22 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="assertions.h">
+    <ClInclude Include="data_structures.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="datastructures.h">
+    <ClInclude Include="hash_table.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hashtable.h">
+    <ClInclude Include="interview_solution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="interviewsolution.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="recentcounter.h">
+    <ClInclude Include="recent_counter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="solution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="solutionutils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="testutils.h">
+    <ClInclude Include="utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

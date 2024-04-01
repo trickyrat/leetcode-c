@@ -2,11 +2,13 @@
 // Created by wangj on 9/30/2022.
 //
 
-#include "interviewsolution.h"
-#include <malloc.h>
+#include <stdlib.h>
 #include <math.h>
 #include <stdio.h>
 #include <string.h>
+
+#include "interview_solution.h"
+
 
 bool is_flipped_string(char *s1, char *s2) {
     int m = strlen(s1), n = strlen(s2);

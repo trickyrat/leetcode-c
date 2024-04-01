@@ -138,19 +138,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="interviewsolution.c" />
+    <ClCompile Include="interview_solution.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="solution.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="assertions.h" />
-    <ClInclude Include="datastructures.h" />
-    <ClInclude Include="hashtable.h" />
-    <ClInclude Include="interviewsolution.h" />
-    <ClInclude Include="recentcounter.h" />
+    <ClInclude Include="data_structures.h" />
+    <ClInclude Include="hash_table.h" />
+    <ClInclude Include="interview_solution.h" />
+    <ClInclude Include="recent_counter.h" />
     <ClInclude Include="solution.h" />
-    <ClInclude Include="solutionutils.h" />
-    <ClInclude Include="testutils.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
