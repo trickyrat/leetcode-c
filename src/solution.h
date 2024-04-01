@@ -1,7 +1,3 @@
-//
-// Created by trcikyrat on 2022-01-08.
-//
-
 #pragma once
 
 #include <stdbool.h>

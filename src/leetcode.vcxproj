@@ -141,6 +141,7 @@
     <ClCompile Include="interview_solution.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="solution.c" />
+    <ClCompile Include="utils.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data_structures.h" />
