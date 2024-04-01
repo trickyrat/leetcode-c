@@ -370,7 +370,7 @@ int shortest_bridge(int **grid, int grid_size, int *grid_col_size);
  * @param s
  * @return
  */
-int distinct_subseq_ii(char *s);
+int distinct_sub_seq_ii(char *s);
 
 /**
  * 942. DI String Match
