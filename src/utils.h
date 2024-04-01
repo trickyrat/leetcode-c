@@ -17,6 +17,50 @@
 
 #define MATRIX_POINTER(T, VARIABLE) (T **) VARIABLE
 
+int **generate_matrix(int *nums, int row_size, int column_size) {
+    int **matrix = (int **) malloc(row_size * sizeof(int *));
+
+    for (int row = 0; row < row_size; row++) {
+        matrix[row] = (int *) malloc(column_size * sizeof(int));
+    }
+
+    for (int row = 0; row < row_size; row++) {
+        for (int column = 0; column < column_size; column++) {
+            matrix[row][column] = nums[row * column_size + column];
+        }
+    }
+
+    return matrix;
+}
+
+void free_matrix(int** matrix, int row_size) {
+    for (int i = 0; i < row_size; i++) {
+        free(matrix[i]);
+    }
+    free(matrix);
+}
+
+bool compare_array(int *array1, int *array2, int size) {
+    for (int i = 0; i < size; i++) {
+        if (array1[i] != array2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool compare_2d_array(int** array1, int** array2, int row_size, int column_size) {
+    for (int row = 0; row < row_size; row++) {
+        for (int column = 0; column < column_size; column++) {
+            if (array1[row][column] != array2[row][column]) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+
 int binary_search(const int *arr, int arrSize, int x) {
     int low = 0, high = arrSize - 1;
     while (low < high) {

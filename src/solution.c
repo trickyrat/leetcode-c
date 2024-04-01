@@ -352,33 +352,33 @@ int find_substring_in_wraparound_string(char *p) {
 }
 
 int *find_diagonal_order(int **mat, int mat_size, int *mat_col_size, int *return_size) {
-    if (mat_size == 0) {
-        return NULL;
-    }
-    int row = 0, col = 0;
-    int direction = 1;
-    int r = 0;
-    int *ans = (int *) calloc(mat_size * (*mat_col_size), sizeof(int));
-    while (row < mat_size && col < (*mat_col_size)) {
-        ans[r++] = mat[row][col];
-        int new_row = row + (direction == 1 ? -1 : 1);
-        int new_col = col + (direction == 1 ? 1 : -1);
-        if (new_row < 0 || new_row == mat_size || new_col < 0 || new_col == (*mat_col_size)) {
-            if (direction == 1) {
-                row += (col == (*mat_col_size) - 1 ? 1 : 0);
-                col += (col < (*mat_col_size) - 1 ? 1 : 0);
-            } else {
-                col += (row == mat_size - 1 ? 1 : 0);
-                row += (row < mat_size - 1 ? 1 : 0);
+    int m = mat_size;
+    int n = mat_col_size[0];
+    int *res = (int *) malloc(sizeof(int) * m * n);
+    int pos = 0;
+    for (int i = 0; i < m + n - 1; i++) {
+        if (i % 2) {
+            int x = i < n ? 0 : i - n + 1;
+            int y = i < n ? i : n - 1;
+            while (x < m && y >= 0) {
+                res[pos] = mat[x][y];
+                pos++;
+                x++;
+                y--;
             }
-            direction = 1 - direction;
         } else {
-            row = new_row;
-            col = new_col;
+            int x = i < m ? i : m - 1;
+            int y = i < m ? 0 : i - m + 1;
+            while (x >= 0 && y < n) {
+                res[pos] = mat[x][y];
+                pos++;
+                x--;
+                y++;
+            }
         }
     }
-    *return_size = mat_size * (*mat_col_size);
-    return ans;
+    *return_size = m * n;
+    return res;
 }
 
 int change(int amount, int *coins, int coins_size) {
@@ -997,7 +997,7 @@ int shortest_bridge(int** grid, int grid_size, int* grid_col_size) {
     return 0;
 }
 
-int distinct_subseq_ii(char *s) {
+int distinct_sub_seq_ii(char *s) {
     int group[26];
     memset(group, 0, sizeof(group));
     int n = strlen(s), res = 0;
