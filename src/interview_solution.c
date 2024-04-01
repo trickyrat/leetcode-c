@@ -1,7 +1,3 @@
-//
-// Created by wangj on 9/30/2022.
-//
-
 #include <stdlib.h>
 #include <math.h>
 #include <stdio.h>

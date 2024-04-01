@@ -1,9 +1,4 @@
-//
-// Created by wangj on 9/30/2022.
-//
-
 #pragma once
-
 
 #include <stdbool.h>
 
@@ -13,7 +8,7 @@
  * @param s2
  * @return
  */
-bool is_flipped_string(char* s1, char* s2);
+bool is_flipped_string(char *s1, char *s2);
 
 /**
  * 17.09. Get Kth Magic Number LCCI

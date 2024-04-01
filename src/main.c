@@ -450,8 +450,11 @@ static void test_num_special() {
 }
 
 static void test_reorder_spaces() {
-    assert_string_equal("this   is   a   sentence", reorder_spaces("  this   is  a sentence "));
-    assert_string_equal("practice   makes   perfect ", reorder_spaces(" practice   makes   perfect"));
+    const char *actual1 = reorder_spaces("  this   is  a sentence ");
+    const char *actual2 = reorder_spaces(" practice   makes   perfect");
+
+    assert_string_equal("this   is   a   sentence", actual1);
+    assert_string_equal("practice   makes   perfect ", actual2);
 }
 
 static void test_min_operations() {
@@ -488,11 +491,16 @@ static void test_min_operations_2() {
 }
 
 static void test_maximum_wealth() {
-    int accounts_array1[2][3] = {{1, 2, 3}, {3, 2, 1}};
-    int accounts_array2[3][3] = {{1, 5}, {7, 3}, {3, 5}};
-    int accounts_array3[3][3] = {{2, 8, 7}, {7, 1, 3}, {1, 9, 5}};
+    int nums1[6] = {1, 2, 3, 3, 2, 1};
+    int nums2[6] = {1, 5, 7, 3, 3, 5};
+    int nums3[9] = {2, 8, 7, 7, 1, 3, 1, 9, 5};
+
+    int **accounts_array1 = generate_matrix(nums1, 2, 3);
+    int **accounts_array2 = generate_matrix(nums2, 3, 2);
+    int **accounts_array3 = generate_matrix(nums3, 3, 3);
+
     int accounts_array1_col_size = 3;
-    int accounts_array2_col_size = 3;
+    int accounts_array2_col_size = 2;
     int accounts_array3_col_size = 3;
 
     assert_int_equal(maximum_wealth(accounts_array1, 2, &accounts_array1_col_size), 6);
@@ -563,9 +571,13 @@ static void test_final_prices() {
 }
 
 static void test_projection_area() {
-    int grid1[2][2] = {{1, 2}, {3, 4}};
-    int grid2[1][1] = {{2}};
-    int grid3[2][2] = {{1, 0}, {0, 2}};
+    int nums1[4] = {1, 2, 3, 4}; // 2*2
+    int nums2[1] = {2}; // 1*1
+    int nums3[4] = {1, 0, 0, 2}; // 2*2
+
+    int **grid1 = generate_matrix(nums1, 2, 2);
+    int **grid2 = generate_matrix(nums2, 1, 1);
+    int **grid3 = generate_matrix(nums3, 2, 2);
 
     int grid1_col_size = 2;
     int grid2_col_size = 1;
@@ -651,21 +663,18 @@ static void test_find_middle_index() {
 }
 
 static void test_first_day_been_in_all_rooms() {
-    int nums1[2] = {0, 0};
-    int nums2[3] = {0, 0, 2};
-    int nums3[4] = {0, 0, 1, 2};
-    assert_int_equal(2, first_day_been_in_all_rooms(nums1, 2));
-    assert_int_equal(6, first_day_been_in_all_rooms(nums2, 6));
-    assert_int_equal(6, first_day_been_in_all_rooms(nums3, 6));
+    assert_int_equal(2, first_day_been_in_all_rooms(ARRAY(int, 0, 0), 2));
+    assert_int_equal(6, first_day_been_in_all_rooms(ARRAY(int, 0, 0, 2), 3));
+    assert_int_equal(6, first_day_been_in_all_rooms(ARRAY(int, 0, 1, 2, 0), 4));
 }
 
 static void test_recent_counter() {
-    RecentCounter *obj = recent_counter_create();
-    assert_int_equal(1, recent_counter_ping(obj, 1));
-    assert_int_equal(2, recent_counter_ping(obj, 100));
-    assert_int_equal(3, recent_counter_ping(obj, 3001));
-    assert_int_equal(3, recent_counter_ping(obj, 3002));
-    recent_counter_free(obj);
+    RecentCounter *counter = recent_counter_create();
+    assert_int_equal(1, recent_counter_ping(counter, 1));
+    assert_int_equal(2, recent_counter_ping(counter, 100));
+    assert_int_equal(3, recent_counter_ping(counter, 3001));
+    assert_int_equal(3, recent_counter_ping(counter, 3002));
+    recent_counter_free(counter);
 }
 
 static void test_minimum_moves() {
@@ -749,13 +758,13 @@ int test_solution() {
             cmocka_unit_test(test_can_be_equal),
             cmocka_unit_test(test_max_product),
             cmocka_unit_test(test_num_special),
-            //cmocka_unit_test(test_reorder_spaces),
+            cmocka_unit_test(test_reorder_spaces),
             cmocka_unit_test(test_min_operations),
             cmocka_unit_test(test_special_array),
             cmocka_unit_test(test_trim_mean),
             cmocka_unit_test(test_max_length_between_equal_characters),
             cmocka_unit_test(test_min_operations_2),
-            //cmocka_unit_test(test_maximum_wealth),
+            cmocka_unit_test(test_maximum_wealth),
             cmocka_unit_test(test_reformat_number),
             cmocka_unit_test(test_minimum_length),
             cmocka_unit_test(test_merge_alternately),
@@ -765,7 +774,7 @@ int test_solution() {
             cmocka_unit_test(test_max_ascending_sum),
             cmocka_unit_test(test_shuffle),
             cmocka_unit_test(test_final_prices),
-            //cmocka_unit_test(test_projection_area),
+            cmocka_unit_test(test_projection_area),
             cmocka_unit_test(test_sort_array_by_parity),
             cmocka_unit_test(test_partition_disjoint),
             cmocka_unit_test(test_min_add_to_make_valid),
@@ -776,7 +785,7 @@ int test_solution() {
             cmocka_unit_test(test_validate_stack_sequences),
             cmocka_unit_test(test_find_the_winner),
             cmocka_unit_test(test_find_middle_index),
-            //cmocka_unit_test(test_first_day_been_in_all_rooms),
+            cmocka_unit_test(test_first_day_been_in_all_rooms),
             cmocka_unit_test(test_recent_counter),
             cmocka_unit_test(test_minimum_moves),
             cmocka_unit_test(test_min_moves_to_seat),
