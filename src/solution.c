@@ -1,6 +1,3 @@
-//
-// Created by wangj on 2022-01-08.
-//
 #include <assert.h>
 #include <ctype.h>
 #include <stdlib.h>
@@ -8,10 +5,9 @@
 #include <string.h>
 #include <limits.h>
 
-
-#include "solution.h"
-//#include "utils.h"
+#include "utils.h"
 #include "hash_table.h"
+#include "solution.h"
 
 #define MAX_NUM 100
 #define MAX_NODE_SIZE 3000
@@ -19,58 +15,6 @@
 #define MIN(a, b) ((a) > (b) ? (b) : (a))
 
 const int MOD = 1000000007;
-
-inline int cmp_asc(const void *pa, const void *pb) {
-    return *(int *) pa - *(int *) pb;
-}
-
-inline int cmp_desc(const void *pa, const void *pb) {
-    return *(int *) pb - *(int *) pa;
-}
-
-inline int cmp_array(const void *pa, const void *pb) {
-    int *a = *(int **) pa;
-    int *b = *(int **) pb;
-    return a[1] - b[1];
-}
-
-inline int cmp_asc_s(void *context, const void *pa, const void *pb) {
-    return *(int *) pa - *(int *) pb;
-}
-
-inline int cmp_desc_s(void *context, const void *pa, const void *pb) {
-    return *(int *) pb - *(int *) pa;
-}
-
-inline int cmp_array_of_array_at_first_element(const void *a, const void *b) {
-    return (*(int **) a)[0] - (*(int **) b)[0];
-}
-
-inline int cmp_array_of_array_at_second_element(void *context, const void *pa, const void *pb) {
-    return (*(int **) pa)[1] - (*(int **) pb)[1];
-}
-
-inline int cmp_with_order(const void *context, const void *pa, const void *pb) {
-    int order = *(int *) context;
-    int result = *(int *) pa - *(int *) pb;
-    if (order) {
-        result *= -1;
-    }
-    return result;
-}
-
-inline void swap_int(int *a, int *b) {
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
-}
-
-inline void swap_char(char *a, char *b) {
-    char tmp = *a;
-    *a = *b;
-    *b = tmp;
-}
-
 
 int *two_sum(int *nums, int nums_size, int target, int *return_size) {
     hashTable = NULL;
@@ -1433,7 +1377,7 @@ int min_operations_2(int *nums, int nums_size, int x) {
 }
 
 int maximum_wealth(int **accounts, int accounts_size, int *accounts_col_size) {
-    int maxWealth = 0;
+    int maxWealth = INT_MIN;
     for (int i = 0; i < accounts_size; ++i) {
         int sum = 0;
         for (int j = 0; j < accounts_col_size[0]; ++j) {
@@ -1614,7 +1558,6 @@ int first_day_been_in_all_rooms(int *next_visit, int next_visit_size) {
     }
     int res = dp[next_visit_size - 2];
     free(dp);
-    dp = NULL;
     return res;
 }
 
