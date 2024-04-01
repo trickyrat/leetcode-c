@@ -4,8 +4,6 @@
 
 #pragma once
 
-#define MAX_NODE_SIZE 3000
-
 typedef struct ListNode {
     int val;
     struct ListNode *next;
