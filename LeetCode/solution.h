@@ -6,7 +6,7 @@
 
 #include <stdbool.h>
 
-#include "datastructures.h"
+#include "data_structures.h"
 
 /**
  *  1.Two Sum

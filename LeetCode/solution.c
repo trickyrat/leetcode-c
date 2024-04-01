@@ -3,18 +3,74 @@
 //
 #include <assert.h>
 #include <ctype.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
 
-#include "hashtable.h"
+
 #include "solution.h"
-#include "solutionutils.h"
+//#include "utils.h"
+#include "hash_table.h"
 
 #define MAX_NUM 100
+#define MAX_NODE_SIZE 3000
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) > (b) ? (b) : (a))
 
 const int MOD = 1000000007;
+
+inline int cmp_asc(const void *pa, const void *pb) {
+    return *(int *) pa - *(int *) pb;
+}
+
+inline int cmp_desc(const void *pa, const void *pb) {
+    return *(int *) pb - *(int *) pa;
+}
+
+inline int cmp_array(const void *pa, const void *pb) {
+    int *a = *(int **) pa;
+    int *b = *(int **) pb;
+    return a[1] - b[1];
+}
+
+inline int cmp_asc_s(void *context, const void *pa, const void *pb) {
+    return *(int *) pa - *(int *) pb;
+}
+
+inline int cmp_desc_s(void *context, const void *pa, const void *pb) {
+    return *(int *) pb - *(int *) pa;
+}
+
+inline int cmp_array_of_array_at_first_element(const void *a, const void *b) {
+    return (*(int **) a)[0] - (*(int **) b)[0];
+}
+
+inline int cmp_array_of_array_at_second_element(void *context, const void *pa, const void *pb) {
+    return (*(int **) pa)[1] - (*(int **) pb)[1];
+}
+
+inline int cmp_with_order(const void *context, const void *pa, const void *pb) {
+    int order = *(int *) context;
+    int result = *(int *) pa - *(int *) pb;
+    if (order) {
+        result *= -1;
+    }
+    return result;
+}
+
+inline void swap_int(int *a, int *b) {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
+inline void swap_char(char *a, char *b) {
+    char tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
 
 int *two_sum(int *nums, int nums_size, int target, int *return_size) {
     hashTable = NULL;
@@ -340,7 +396,7 @@ int change(int amount, int *coins, int coins_size) {
 
 int find_longest_chain(int **pairs, int pairs_size, int *pairs_col_size) {
     int curr = INT_MIN, res = 0;
-    qsort(pairs, pairs_size, sizeof(int *), cmp_array_of_array_at_second_element);
+    qsort_s(pairs, pairs_size, sizeof(int *), cmp_array_of_array_at_second_element, NULL);
     for (int i = 0; i < pairs_size; ++i) {
         if (curr < pairs[i][0]) {
             curr = pairs[i][1];
@@ -1048,16 +1104,16 @@ struct TreeNode *insert_into_max_tree(struct TreeNode *root, int val) {
     while (curr) {
         if (val > curr->val) {
             if (!parent) {
-                return create_tree_node(val, root, NULL);
+                return generate_tree_node(val, root, NULL);
             }
-            parent->right = create_tree_node(val, curr, NULL);
+            parent->right = generate_tree_node(val, curr, NULL);
             return root;
         } else {
             parent = curr;
             curr = curr->right;
         }
     }
-    parent->right = create_tree_node(val, NULL, NULL);
+    parent->right = generate_tree_node(val, NULL, NULL);
     return root;
 }
 
