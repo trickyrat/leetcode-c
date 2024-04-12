@@ -149,7 +149,7 @@ int *find_diagonal_order(int **mat, int mat_size, int *mat_col_size, int *return
  * @param coinsSize
  * @return
  */
-int change(int amount, int *coins);
+int change(int amount, int *coins, int coins_size);
 
 /**
  * 646. Maximum Length of Pair Chain
@@ -718,6 +718,14 @@ int prefix_count(char **words, int words_size, char *pref);
  * @return
  */
 char repeated_character(char *s);
+
+/**
+ * 2529. Maximum Count of Positive Integer and Negative Integer
+ * @param nums
+ * @param nums_size
+ * @return
+ */
+int maximum_count(int *nums, int nums_size);
 
 /**
  * 2580. Count Ways to Group Overlapping Ranges
