@@ -707,6 +707,12 @@ static void test_repeated_character() {
     assert_int_equal('z', repeated_character("zz"));
 }
 
+static void test_maximum_count() {
+    assert_int_equal(3, maximum_count(ARRAY(int, -2, -1, -1, 1, 2, 3), 6));
+    assert_int_equal(3, maximum_count(ARRAY(int, -3, -2, -1, 0, 0, 1, 2), 7));
+    assert_int_equal(4, maximum_count(ARRAY(int, 5, 20, 66, 1314), 4));
+}
+
 static void test_minimum_sum() {
     assert_int_equal(9, minimum_sum(ARRAY(int, 8, 6, 1, 5, 3), 5));
     assert_int_equal(13, minimum_sum(ARRAY(int, 5, 4, 8, 7, 10, 2), 6));
@@ -792,6 +798,7 @@ int test_solution() {
             cmocka_unit_test(test_are_number_ascending),
             cmocka_unit_test(test_count_even),
             cmocka_unit_test(test_repeated_character),
+            cmocka_unit_test(test_maximum_count),
             cmocka_unit_test(test_minimum_sum),
             cmocka_unit_test(test_minimum_added_coins),
     };

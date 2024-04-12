@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
+#include <math.h>
 
 #include "utils.h"
 #include "hash_table.h"
@@ -1674,6 +1675,25 @@ char repeated_character(char *s) {
         seen |= (1 << index);
     }
     return ' ';
+}
+
+int lower_bound(const int* nums, int nums_size, int val) {
+    int l = 0, r = nums_size;
+    while (l < r) {
+        int mid = (r - l) / 2 + l;
+        if (nums[mid] >= val) {
+            r = mid;
+        } else {
+            l = mid + 1;
+        }
+    }
+    return l;
+}
+
+int maximum_count(int *nums, int nums_size) {
+    int pos1 = lower_bound(nums, nums_size, 0);
+    int pos2 = lower_bound(nums, nums_size, 1);
+    return fmax(pos1, nums_size - pos2);
 }
 
 int count_ways(int **ranges, int ranges_size, int *ranges_col_size) {
