@@ -13,7 +13,7 @@
 #define MAX_NUM 100
 #define MAX_NODE_SIZE 3000
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
-#define MIN(a, b) ((a) > (b) ? (b) : (a))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 const int MOD = 1000000007;
 
@@ -183,6 +183,15 @@ bool is_same_tree(TreeNode *p, TreeNode *q) {
     } else {
         return is_same_tree(p->left, q->left) && is_same_tree(p->right, q->right);
     }
+}
+
+int single_number_ii(int *nums, int nums_size) {
+    int a = 0, b = 0;
+    for (int i = 0; i < nums_size; i++) {
+        b = ~a & (b ^ nums[i]);
+        a = ~b & (a ^ nums[i]);
+    }
+    return b;
 }
 
 bool has_cycle(ListNode *head) {
@@ -526,6 +535,55 @@ int *self_dividing_numbers(int left, int right, int *return_size) {
         }
     }
     *return_size = pos;
+    return ans;
+}
+
+int cherry_pickup(int **grid, int grid_size, int *grid_col_size) {
+    int n = grid_size;
+    int **f = (int **) malloc(sizeof(int *) * n);
+    for (int i = 0; i < n; i++) {
+        f[i] = (int *) malloc(sizeof(int) * n);
+        for (int j = 0; j < n; j++) {
+            f[i][j] = INT_MIN;
+        }
+    }
+    f[0][0] = grid[0][0];
+    for (int k = 1; k < n * 2 - 1; k++) {
+        for (int x1 = MIN(k, n -1); x1 >= Max(k-n+1,0); x1--) {
+            for (int x2 = MIN(k, n-1); x2 >= x1; x2--) {
+                int y1 = k - x1, y2 = k - x2;
+                if (grid[x1][y1] == -1 || grid[x2][y2] == -1) {
+                    f[x1][x2] = INT_MIN;
+                    continue;
+                }
+                int res = f[x1][x2];
+                if (x1) {
+                    res = MAX(res, f[x1 - 1][x2]);
+                }
+
+                if (x2) {
+                    res = MAX(res, f[x1][x2 - 1]);
+                }
+
+                if (x1 && x2) {
+                    res = MAX(res, f[x1 - 1][x2 - 1]);
+                }
+
+                res += grid[x1][y1];
+                if (x2 != x1) {
+                    res += grid[x2][y2];
+                }
+
+                f[x1][x2] = res;
+            }
+        }
+    }
+
+    int ans = MAX(f[n - 1][n - 1], 0);
+    for (int i = 0; i < n; i++) {
+        free(f[i]);
+    }
+    free(f);
     return ans;
 }
 
@@ -892,7 +950,7 @@ int *three_equal_parts(int *arr, int arr_size, int *return_size) {
     return res;
 }
 
-void shortest_bridge_dfs(int x, int y, int **grid, int n, int *queue, int *tail) {
+static void shortest_bridge_dfs(int x, int y, int **grid, int n, int *queue, int *tail) {
     if (x < 0 || y < 0 || x >= n || y >= n || grid[x][y] != 1) {
         return;
     }
