@@ -725,7 +725,7 @@ static void test_minimum_added_coins() {
     assert_int_equal(3, minimum_added_coins(ARRAY(int, 1, 1, 1), 3, 20));
 }
 
-int test_solution() {
+static int test_solution() {
     const struct CMUnitTest solution_tests[] = {
             cmocka_unit_test(test_two_sum),
             cmocka_unit_test(test_add_two_numbers),
@@ -814,7 +814,7 @@ static void test_get_kth_magic_number() {
     assert_int_equal(get_kth_magic_number(5), 9);
 }
 
-int test_interview_solution() {
+static int test_interview_solution() {
     const struct CMUnitTest interview_solution_tests[] = {
             cmocka_unit_test(test_is_flipped_string),
             cmocka_unit_test(test_get_kth_magic_number),

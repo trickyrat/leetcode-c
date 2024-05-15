@@ -5,6 +5,8 @@
 
 #include "interview_solution.h"
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
 
 bool is_flipped_string(char *s1, char *s2) {
     int m = strlen(s1), n = strlen(s2);
@@ -23,7 +25,7 @@ int get_kth_magic_number(int k) {
     int p3 = 1, p5 = 1, p7 = 1;
     for (int i = 2; i <= k; ++i) {
         int num3 = dp[p3] * 3, num5 = dp[p5] * 5, num7 = dp[p7] * 7;
-        dp[i] = fmin(fmin(num3, num5), num7);
+        dp[i] = MIN(MIN(num3, num5), num7);
         if (dp[i] == num3) {
             p3++;
         }
