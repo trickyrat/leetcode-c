@@ -11,7 +11,7 @@
             "program": "${workspaceFolder}/out/build/x86-debug/test/leetcodec.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "console": "integratedTerminal",
             "preLaunchTask": "CMake: clean rebuild"
@@ -23,7 +23,7 @@
             "program": "${workspaceFolder}/out/build/x64-debug/test/leetcodec.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "console": "integratedTerminal",
             "preLaunchTask": "CMake: clean rebuild"
@@ -35,7 +35,7 @@
             "program": "${workspaceFolder}/out/build/x64-debug/test/leetcodec.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "console": "integratedTerminal"
         },
@@ -46,7 +46,7 @@
             "program": "${workspaceFolder}/out/build/x86-debug/test/leetcodec.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
             "console": "integratedTerminal"
         },
