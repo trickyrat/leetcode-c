@@ -6,6 +6,6 @@ typedef struct {
 } ATM;
 
 ATM *atm_create();
-void atm_deposit(ATM *obj, int *banknotesCount, int banknotesCountSize);
+void atm_deposit(ATM *obj, int *bank_notes_count, int bank_notes_count_size);
 int *atm_withdraw(ATM *obj, int amount, int *returnSize);
 void atm_free(ATM *obj);
