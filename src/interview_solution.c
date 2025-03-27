@@ -15,7 +15,7 @@ bool is_flipped_string(char *s1, char *s2) {
     }
     int size = sizeof(char) * (m + n + 1);
     char *str = (char *) malloc(size);
-    sprintf_s(str, size, "%s%s", s2, s2);
+    sprintf(str, "%s%s", s2, s2);
     return strstr(str, s1) != NULL;
 }
 

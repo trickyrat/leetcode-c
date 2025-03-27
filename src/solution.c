@@ -217,11 +217,11 @@ void rotate(int *nums, int nums_size, int k) {
     reverse(nums, k, nums_size - 1);
 }
 
-struct ListNode *reverse_list(struct ListNode *head) {
-    struct ListNode *prev = NULL;
-    struct ListNode *curr = head;
+ListNode *reverse_list(ListNode *head) {
+    ListNode *prev = NULL;
+    ListNode *curr = head;
     while (curr) {
-        struct ListNode *next = curr->next;
+        ListNode *next = curr->next;
         curr->next = prev;
         prev = curr;
         curr = next;
@@ -350,7 +350,7 @@ int change(int amount, int *coins, int coins_size) {
 
 int find_longest_chain(int **pairs, int pairs_size, int *pairs_col_size) {
     int curr = INT_MIN, res = 0;
-    qsort_s(pairs, pairs_size, sizeof(int *), cmp_array_of_array_at_second_element, NULL);
+    qsort(pairs, pairs_size, sizeof(int *), cmp_array_of_array_at_second_element);
     for (int i = 0; i < pairs_size; ++i) {
         if (curr < pairs[i][0]) {
             curr = pairs[i][1];
@@ -379,7 +379,7 @@ int *find_closest_elements(int *arr, int arr_size, int k, int x, int *return_siz
     return res;
 }
 
-int width_of_binary_tree(struct TreeNode *root) {
+int width_of_binary_tree(TreeNode *root) {
     unsigned long long res = 1;
     Pair *arr = (Pair *) malloc(sizeof(Pair) * MAX_NODE_SIZE);
     Pair *tmp = (Pair *) malloc(sizeof(Pair) * MAX_NODE_SIZE);
@@ -454,14 +454,14 @@ TreeNode *trim_bst(TreeNode *root, int low, int high) {
     if (root == NULL) {
         return NULL;
     }
-    for (struct TreeNode *node = root; node->left;) {
+    for (TreeNode *node = root; node->left;) {
         if (node->left->val < low) {
             node->left = node->left->right;
         } else {
             node = node->left;
         }
     }
-    for (struct TreeNode *node = root; node->right;) {
+    for (TreeNode *node = root; node->right;) {
         if (node->right->val > high) {
             node->right = node->right->left;
         } else {
@@ -473,7 +473,7 @@ TreeNode *trim_bst(TreeNode *root, int low, int high) {
 
 int maximum_swap(int num) {
     char chars[32];
-    sprintf_s(chars, sizeof(chars), "%d", num);
+    sprintf(chars, "%d", num);
     int n = strlen(chars);
     char max_index = n - 1;
     int index1 = -1, index2 = -1;
@@ -707,12 +707,12 @@ int unique_morse_representations(char **words, int words_size) {
         int pos = 0;
         char code[MAX_STR_LEN];
         for (int j = 0; j < len; ++j) {
-            pos += sprintf_s(code + pos, MAX_STR_LEN - pos, "%s", MORSE[words[i][j] - 'a']);
+            pos += sprintf(code + pos, "%s", MORSE[words[i][j] - 'a']);
         }
         HASH_FIND_STR(seen, code, pEntry);
         if (NULL == pEntry) {
             pEntry = (HashItem *) malloc(sizeof(HashItem));
-            strcpy_s(pEntry->key, _countof(pEntry->key), code);
+            strcpy(pEntry->key, code);
             HASH_ADD_STR(seen, key, pEntry);
         }
     }
@@ -961,6 +961,7 @@ static void shortest_bridge_dfs(int x, int y, int **grid, int n, int *queue, int
     shortest_bridge_dfs(x, y - 1, grid, n, queue, tail);
     shortest_bridge_dfs(x, y + 1, grid, n, queue, tail);
 }
+
 int shortest_bridge(int** grid, int grid_size, int* grid_col_size) {
  int n = grid_size;
     int dirs[4][2] = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
@@ -1100,10 +1101,10 @@ bool is_unival_tree(TreeNode *root) {
     return true;
 }
 
-struct TreeNode *insert_into_max_tree(struct TreeNode *root, int val) {
-    struct TreeNode *parent = NULL;
-    struct TreeNode *curr = root;
-    struct TreeNode *node = NULL;
+TreeNode *insert_into_max_tree(TreeNode *root, int val) {
+    TreeNode *parent = NULL;
+    TreeNode *curr = root;
+    TreeNode *node = NULL;
     while (curr) {
         if (val > curr->val) {
             if (!parent) {
@@ -1127,7 +1128,7 @@ char *defang_ip_addr(char *address) {
     char *res = (char *) malloc(size);// [] [] []
     for (int i = 0; i < len; ++i) {
         if (address[i] == '.') {
-            pos += sprintf_s(res + pos, size - pos, "%s", "[.]");
+            pos += sprintf(res + pos, "%s", "[.]");
         } else {
             res[pos++] = address[i];
         }
@@ -1141,7 +1142,7 @@ int *min_subsequence(int *nums, int nums_size, int *return_size) {
     for (int i = 0; i < nums_size; ++i) {
         total += nums[i];
     }
-    qsort_s(nums, nums_size, sizeof(int), cmp_asc_s, NULL);
+    qsort(nums, nums_size, sizeof(int), cmp_asc);
     int *ans = (int *) malloc(sizeof(int) * nums_size);
     int curr = 0, pos = 0;
     for (int i = nums_size - 1; i >= 0; --i) {
@@ -1176,14 +1177,14 @@ char **build_array(int *target, int target_size, int n, int *return_size) {
     for (int j = 0; j < target_size; ++j) {
         for (int i = 0; i < target[j] - prev - 1; ++i) {
             res[pos] = (char *) malloc(sizeof(char) * 8);
-            strcpy_s(res[pos], strlen(res[pos]), "Push");
+            strcpy(res[pos], "Push");
             pos++;
             res[pos] = (char *) malloc(sizeof(char) * 8);
-            strcpy_s(res[pos], strlen(res[pos]), "Pop");
+            strcpy(res[pos], "Pop");
             pos++;
         }
         res[pos] = (char *) malloc(sizeof(char) * 8);
-        strcpy_s(res[pos], strlen(res[pos]), "Push");
+        strcpy(res[pos], "Push");
         pos++;
         prev = target[j];
     }
@@ -1229,8 +1230,8 @@ int is_prefix_of_word(char *sentence, char *search_word) {
 
 bool can_be_equal(int *target, int target_size, int *arr, int arr_size) {
     int descending = 0;
-    qsort_s(target, target_size, sizeof(int), cmp_asc_s, NULL);
-    qsort_s(arr, arr_size, sizeof(int), cmp_asc_s, NULL);
+    qsort(target, target_size, sizeof(int), cmp_asc);
+    qsort(arr, arr_size, sizeof(int), cmp_asc);
     return memcmp(target, arr, sizeof(int) * arr_size) == 0;
 }
 
@@ -1324,7 +1325,7 @@ char *reorder_spaces(char *text) {
     char *res = (char *) malloc(size);
     int pos = 0;
     if (wordsSize == 1) {
-        pos += sprintf_s(res + pos, size - pos, "%s", words[0]);
+        pos += sprintf(res + pos,  "%s", words[0]);
         for (int i = 0; i < spaceCount; ++i) {
             res[pos++] = ' ';
         }
@@ -1345,7 +1346,7 @@ char *reorder_spaces(char *text) {
                 res[pos++] = ' ';
             }
         }
-        pos += sprintf_s(res + pos, size - pos, "%s", words[i]);
+        pos += sprintf(res + pos, "%s", words[i]);
     }
     for (int i = 0; i < restSpace; i++) {
         res[pos++] = ' ';
@@ -1375,7 +1376,7 @@ int min_operations(char **logs, int logs_size) {
 }
 
 int special_array(int *nums, int nums_size) {
-    qsort_s(nums, nums_size, sizeof(int), cmp_desc_s, NULL);
+    qsort(nums, nums_size, sizeof(int), cmp_desc);
     for (int i = 1; i <= nums_size; ++i) {
         if (nums[i - 1] >= i && (i == nums_size || nums[i] < i)) {
             return i;
@@ -1465,20 +1466,20 @@ char *reformat_number(char *number) {
     pos = 0;
     while (n) {
         if (n > 4) {
-            strncpy_s(res + pos, size, digits + pt, 3);
+            strncpy(res + pos, digits + pt, 3);
             pos += 3;
             res[pos++] = '-';
             pt += 3;
             n -= 3;
         } else {
             if (n == 4) {
-                strncpy_s(res + pos, size, digits + pt, 2);
+                strncpy(res + pos, digits + pt, 2);
                 pos += 2;
                 res[pos++] = '-';
-                strncpy_s(res + pos, size, digits + pt + 2, 2);
+                strncpy(res + pos, digits + pt + 2, 2);
                 pos += 2;
             } else {
-                strncpy_s(res + pos, size, digits + pt, n);
+                strncpy(res + pos, digits + pt, n);
                 pos += n;
             }
             break;
@@ -1755,7 +1756,7 @@ int maximum_count(int *nums, int nums_size) {
 }
 
 int count_ways(int **ranges, int ranges_size, int *ranges_col_size) {
-    qsort_s(ranges, ranges_size, sizeof(int *), cmp_array_of_array_at_first_element, NULL);
+    qsort(ranges, ranges_size, sizeof(int *), cmp_array_of_array_at_first_element);
     long long res = 1;
     for (int i = 0; i < ranges_size;) {
         int r = ranges[i][1];
@@ -1789,7 +1790,7 @@ int minimum_sum(int *nums, int nums_size) {
 }
 
 int minimum_added_coins(int *coins, int coins_size, int target) {
-    qsort_s(coins, coins_size, sizeof(int), cmp_asc_s, NULL);
+    qsort(coins, coins_size, sizeof(int), cmp_asc);
     int res = 0;
     int x = 1;
     int index = 0;

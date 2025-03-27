@@ -15,7 +15,7 @@ ATM *atm_create() {
     return atm;
 }
 
-void atm_deposit(ATM *obj, int *bank_notes_count, int bank_notes_count_size) {
+void atm_deposit(ATM *obj, const int *bank_notes_count, int bank_notes_count_size) {
     for (int i = 0; i < 5; ++i) {
         obj->count[i] += bank_notes_count[i];
     }

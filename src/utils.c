@@ -17,58 +17,14 @@ int cmp_array(const void *pa, const void *pb) {
     return a[1] - b[1];
 }
 
-#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
-int cmp_asc_s(void *context, const void *pa, const void *pb) {
-    return *(int *) pa - *(int *) pb;
-}
-#else
-int cmp_asc_s(const void *pa, const void *pb, void *context) {
-    return *(int *) pa - *(int *) pb;
-}
-#endif
-
-#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
-int cmp_desc_s(void *context, const void *pa, const void *pb) {
-    return *(int *) pb - *(int *) pa;
-}
-#else
-int cmp_desc_s(const void *pa, const void *pb, void *context) {
-    return *(int *) pb - *(int *) pa;
-}
-#endif
-
-
-#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
-int cmp_array_of_array_at_first_element(void *context, const void *a, const void *b) {
+int cmp_array_of_array_at_first_element(const void *a, const void *b) {
     return (*(int **) a)[0] - (*(int **) b)[0];
 }
-#else
-int cmp_array_of_array_at_first_element(const void *a, const void *b, void *context) {
-    return (*(int **) a)[0] - (*(int **) b)[0];
-}
-#endif
 
-#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
-int cmp_array_of_array_at_second_element(void *context, const void *pa, const void *pb) {
+int cmp_array_of_array_at_second_element(const void *pa, const void *pb) {
     return (*(int **) pa)[1] - (*(int **) pb)[1];
 }
-#else
-int cmp_array_of_array_at_second_element(const void *pa, const void *pb, void *context) {
-    return (*(int **) pa)[1] - (*(int **) pb)[1];
-}
-#endif
 
-
-#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
-int cmp_with_order(const void *context, const void *pa, const void *pb) {
-    int order = *(int *) context;
-    int result = *(int *) pa - *(int *) pb;
-    if (order) {
-        result *= -1;
-    }
-    return result;
-}
-#else
 int cmp_with_order(const void *pa, const void *pb, const void *context) {
     const int order = *(int *) context;
     int result = *(int *) pa - *(int *) pb;
@@ -77,8 +33,6 @@ int cmp_with_order(const void *pa, const void *pb, const void *context) {
     }
     return result;
 }
-#endif
-
 
 void swap_int(int *a, int *b) {
     int tmp = *a;
@@ -179,7 +133,11 @@ char **split(const char *str, char separator, int *returnSize) {
             }
             int alloc_size = sizeof(char) * (pos - curr + 1);
             words[wordsSize] = (char *) malloc(alloc_size);
+#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
             strncpy_s(words[wordsSize], alloc_size, str + curr, pos - curr);
+#else
+            strncpy(words[wordsSize], str + curr, pos - curr);
+#endif
             words[wordsSize++][pos - curr] = '\0';
         }
     }
