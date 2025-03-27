@@ -15,11 +15,40 @@
 int cmp_asc(const void *pa, const void *pb);
 int cmp_desc(const void *pa, const void *pb);
 int cmp_array(const void *pa, const void *pb);
+
+#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
 int cmp_asc_s(void *context, const void *pa, const void *pb);
+#else
+int cmp_asc_s(const void *pa, const void *pb, void *context);
+#endif
+
+#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
 int cmp_desc_s(void *context, const void *pa, const void *pb);
-int cmp_array_of_array_at_first_element(const void *a, const void *b);
+#else
+int cmp_desc_s(const void *pa, const void *pb, void *context);
+#endif
+
+
+#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
+int cmp_array_of_array_at_first_element(void *context, const void *a, const void *b);
+#else
+int cmp_array_of_array_at_first_element(const void *a, const void *b, void *context);
+#endif
+
+
+#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
 int cmp_array_of_array_at_second_element(void *context, const void *pa, const void *pb);
+#else
+int cmp_array_of_array_at_second_element(const void *pa, const void *pb, void *context);
+#endif
+
+
+#if defined(_MSC_VER) || defined(__MINGW32__) || defined(__MINGW64__)
 int cmp_with_order(const void *context, const void *pa, const void *pb);
+#else
+int cmp_with_order(const void *pa, const void *pb, const void *context);
+#endif
+
 void swap_int(int *a, int *b);
 void swap_char(char *a, char *b);
 int **generate_matrix(int *nums, int row_size, int column_size);
