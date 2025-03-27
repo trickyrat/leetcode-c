@@ -76,8 +76,8 @@ static void test_remove_element() {
     int *nums2 = ARRAY(int, 0, 1, 2, 2, 3, 0, 4, 2);
 
     // Action
-    int actual1 = remove_element(nums1, 4, 3);
-    int actual2 = remove_element(nums2, 8, 2);
+    const int actual1 = remove_element(nums1, 4, 3);
+    const int actual2 = remove_element(nums2, 8, 2);
 
     // Assertion
     assert_int_equal(actual1, 2);
@@ -121,19 +121,19 @@ static void test_merge() {
     int actual1[6] = {1, 2, 3, 0, 0, 0};
     int nums2[3] = {2, 5, 6};
     merge(actual1, 6, 3, nums2, 3, 3);
-    int expected1[6] = {1, 2, 2, 3, 5, 6};
+    const int expected1[6] = {1, 2, 2, 3, 5, 6};
     assert_memory_equal(expected1, actual1, 6);
 
     int actual2[1] = {1};
     int nums3[1];
     merge(actual2, 1, 1, nums3, 0, 0);
-    int expected2[1] = {1};
+    const int expected2[1] = {1};
     assert_memory_equal(expected2, actual2, 1);
 
     int actual3[1] = {0};
     int nums4[1] = {1};
     merge(actual3, 0, 0, nums4, 1, 1);
-    int expected3[1] = {1};
+    const int expected3[1] = {1};
     assert_memory_equal(expected3, actual3, 1);
 };
 
@@ -152,8 +152,8 @@ static void test_is_same_tree() {
 
 static void test_reverse_list() {
     ListNode *head1 = create_list_node(ARRAY(int, 1, 2, 3, 4, 5), 5);
-    ListNode *actual1 = reverse_list(head1);
-    ListNode *expected1 = create_list_node(ARRAY(int, 5, 4, 3, 2, 1), 5);
+    const ListNode *actual1 = reverse_list(head1);
+    const ListNode *expected1 = create_list_node(ARRAY(int, 5, 4, 3, 2, 1), 5);
     assert_true(is_same_list_node(actual1, expected1));
 }
 
@@ -169,14 +169,14 @@ static void test_count_numbers_with_unique_digits() {
 }
 
 static void test_lexical_order() {
-    int expect1[13] = {1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9};
+    const int expect1[13] = {1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9};
     int returnSize1 = 0;
-    int *actual1 = lexical_order(13, &returnSize1);
+    const int *actual1 = lexical_order(13, &returnSize1);
     assert_memory_equal(expect1, actual1, returnSize1);
 
-    int expect2[2] = {1, 2};
+    const int expect2[2] = {1, 2};
     int returnSize2 = 0;
-    int *actual2 = lexical_order(2, &returnSize2);
+    const int *actual2 = lexical_order(2, &returnSize2);
     assert_memory_equal(expect2, actual2, returnSize2);
 }
 
@@ -225,10 +225,10 @@ static void test_find_closest_elements() {
     int arr2[] = {1, 2, 3, 4, 5};
     int returnSize1 = 0;
     int returnSize2 = 0;
-    int expect1[] = {1, 2, 3, 4};
-    int expect2[] = {1, 2, 3, 4};
-    int *actual1 = find_closest_elements(arr1, 5, 4, 3, &returnSize1);
-    int *actual2 = find_closest_elements(arr2, 5, 4, -1, &returnSize2);
+    const int expect1[] = {1, 2, 3, 4};
+    const int expect2[] = {1, 2, 3, 4};
+    const int *actual1 = find_closest_elements(arr1, 5, 4, 3, &returnSize1);
+    const int *actual2 = find_closest_elements(arr2, 5, 4, -1, &returnSize2);
     assert_memory_equal(expect1, actual1, returnSize1);
     assert_memory_equal(expect2, actual2, returnSize2);
 }
@@ -240,8 +240,8 @@ static void test_find_closest_elements() {
 static void test_construct_array() {
     int returnSize1 = 0;
     int returnSize2 = 0;
-    int *actual1 = construct_array(3, 1, &returnSize1);
-    int *actual2 = construct_array(3, 2, &returnSize2);
+    const int *actual1 = construct_array(3, 1, &returnSize1);
+    const int *actual2 = construct_array(3, 2, &returnSize2);
     assert_memory_equal(ARRAY(int, 1, 2, 3), actual1, returnSize1);
     assert_memory_equal(ARRAY(int, 1, 3, 2), actual2, returnSize2);
 }
@@ -260,8 +260,8 @@ static void test_maximum_swap() {
 
 static void test_self_dividing_numbers() {
     int returnSize1 = 0;
-    int *actual1 = self_dividing_numbers(1, 22, &returnSize1);
-    int expect1[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};
+    const int *actual1 = self_dividing_numbers(1, 22, &returnSize1);
+    const int expect1[13] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};
     assert_memory_equal(expect1, actual1, returnSize1);
 }
 
@@ -311,12 +311,12 @@ static void test_number_of_lines() {
     char *s2 = "bbbcccdddaaa";
     int returnSize1 = 0;
     int returnSize2 = 0;
-    int widths_size = 26;
-    int expected1[2] = {3, 60};
-    int expected2[2] = {2, 4};
+    const int widths_size = 26;
+    const int expected1[2] = {3, 60};
+    const int expected2[2] = {2, 4};
 
-    int *actual1 = number_of_lines(widths1, widths_size, s1, &returnSize1);
-    int *actual2 = number_of_lines(widths2, widths_size, s2, &returnSize2);
+    const int *actual1 = number_of_lines(widths1, widths_size, s1, &returnSize1);
+    const int *actual2 = number_of_lines(widths2, widths_size, s2, &returnSize2);
 
     assert_memory_equal(expected1, actual1, returnSize1);
     assert_memory_equal(expected2, actual2, returnSize2);
@@ -340,8 +340,8 @@ static void test_score_of_parentheses() {
 static void test_advantage_count() {
     int returnSize1 = 0;
     int returnSize2 = 0;
-    int *actual1 = advantage_count(ARRAY(int, 2, 7, 11, 15), 4, ARRAY(int, 1, 10, 4, 11), 4, &returnSize1);
-    int *actual2 = advantage_count(ARRAY(int, 12, 24, 8, 32), 4, ARRAY(int, 13, 25, 32, 11), 4, &returnSize2);
+    const int *actual1 = advantage_count(ARRAY(int, 2, 7, 11, 15), 4, ARRAY(int, 1, 10, 4, 11), 4, &returnSize1);
+    const int *actual2 = advantage_count(ARRAY(int, 12, 24, 8, 32), 4, ARRAY(int, 13, 25, 32, 11), 4, &returnSize2);
     assert_memory_equal(ARRAY(int, 2, 11, 7, 15), actual1, returnSize1);
     assert_memory_equal(ARRAY(int, 24, 32, 8, 12), actual2, returnSize2);
 }
@@ -367,15 +367,15 @@ static void test_min_subsequence() {
     int input1[5] = {4, 3, 10, 9, 8};
     int input2[5] = {4, 4, 7, 6, 7};
     int input3[1] = {6};
-    int expected1[2] = {10, 9};
-    int expected2[3] = {7, 7, 6};
-    int expected3[1] = {6};
+    const int expected1[2] = {10, 9};
+    const int expected2[3] = {7, 7, 6};
+    const int expected3[1] = {6};
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    int *actual1 = min_subsequence(input1, 5, &returnSize1);
-    int *actual2 = min_subsequence(input2, 5, &returnSize2);
-    int *actual3 = min_subsequence(input3, 1, &returnSize3);
+    const int *actual1 = min_subsequence(input1, 5, &returnSize1);
+    const int *actual2 = min_subsequence(input2, 5, &returnSize2);
+    const int *actual3 = min_subsequence(input3, 1, &returnSize3);
     assert_memory_equal(expected1, actual1, returnSize1);
     assert_memory_equal(expected2, actual2, returnSize2);
     assert_memory_equal(expected3, actual3, returnSize3);
@@ -551,9 +551,9 @@ static void test_shuffle() {
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    int *actual1 = shuffle(ARRAY(int, 2, 5, 1, 3, 4, 7), 6, 3, &returnSize1);
-    int *actual2 = shuffle(ARRAY(int, 1, 2, 3, 4, 4, 3, 2, 1), 8, 4, &returnSize2);
-    int *actual3 = shuffle(ARRAY(int, 1, 1, 2, 2), 4, 2, &returnSize3);
+    const int *actual1 = shuffle(ARRAY(int, 2, 5, 1, 3, 4, 7), 6, 3, &returnSize1);
+    const int *actual2 = shuffle(ARRAY(int, 1, 2, 3, 4, 4, 3, 2, 1), 8, 4, &returnSize2);
+    const int *actual3 = shuffle(ARRAY(int, 1, 1, 2, 2), 4, 2, &returnSize3);
     assert_memory_equal(ARRAY(int, 2, 3, 5, 4, 1, 7), actual1, returnSize1);
     assert_memory_equal(ARRAY(int, 1, 4, 2, 3, 3, 2, 4, 1), actual2, returnSize2);
     assert_memory_equal(ARRAY(int, 1, 2, 1, 2), actual3, returnSize3);
@@ -563,9 +563,9 @@ static void test_final_prices() {
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    int *actual1 = final_prices(ARRAY(int, 8, 4, 6, 2, 3), 5, &returnSize1);
-    int *actual2 = final_prices(ARRAY(int, 1, 2, 3, 4, 5), 5, &returnSize2);
-    int *actual3 = final_prices(ARRAY(int, 10, 1, 1, 6), 4, &returnSize3);
+    const int *actual1 = final_prices(ARRAY(int, 8, 4, 6, 2, 3), 5, &returnSize1);
+    const int *actual2 = final_prices(ARRAY(int, 1, 2, 3, 4, 5), 5, &returnSize2);
+    const int *actual3 = final_prices(ARRAY(int, 10, 1, 1, 6), 4, &returnSize3);
     assert_memory_equal(ARRAY(int, 4, 2, 4, 2, 3), actual1, returnSize1);
     assert_memory_equal(ARRAY(int, 1, 2, 3, 4, 5), actual2, returnSize2);
     assert_memory_equal(ARRAY(int, 9, 0, 1, 6), actual3, returnSize3);
@@ -592,8 +592,8 @@ static void test_projection_area() {
 static void test_sort_array_by_parity() {
     int returnSize1 = 0;
     int returnSize2 = 0;
-    int *actual1 = sort_array_by_parity(ARRAY(int, 3, 1, 2, 4), 4, &returnSize1);
-    int *actual2 = sort_array_by_parity(ARRAY(int, 0), 1, &returnSize2);
+    const int *actual1 = sort_array_by_parity(ARRAY(int, 3, 1, 2, 4), 4, &returnSize1);
+    const int *actual2 = sort_array_by_parity(ARRAY(int, 0), 1, &returnSize2);
     assert_memory_equal(ARRAY(int, 4, 2, 1, 3), actual1, returnSize1);
     assert_memory_equal(ARRAY(int, 0), actual2, returnSize2);
 }
@@ -612,9 +612,9 @@ static void test_three_equal_parts() {
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    int *actual1 = three_equal_parts(ARRAY(int, 1, 0, 1, 0, 1), 5, &returnSize1);
-    int *actual2 = three_equal_parts(ARRAY(int, 1, 1, 0, 1, 1), 5, &returnSize2);
-    int *actual3 = three_equal_parts(ARRAY(int, 1, 1, 0, 0, 1), 5, &returnSize3);
+    const int *actual1 = three_equal_parts(ARRAY(int, 1, 0, 1, 0, 1), 5, &returnSize1);
+    const int *actual2 = three_equal_parts(ARRAY(int, 1, 1, 0, 1, 1), 5, &returnSize2);
+    const int *actual3 = three_equal_parts(ARRAY(int, 1, 1, 0, 0, 1), 5, &returnSize3);
     assert_memory_equal(ARRAY(int, 0, 3), actual1, returnSize1);
     assert_memory_equal(ARRAY(int, -1, -1), actual2, returnSize2);
     assert_memory_equal(ARRAY(int, 0, 2), actual3, returnSize3);
@@ -630,9 +630,9 @@ static void test_di_string_match() {
     int returnSize1 = 0;
     int returnSize2 = 0;
     int returnSize3 = 0;
-    int *actual1 = di_string_match("IDID", &returnSize1);
-    int *actual2 = di_string_match("III", &returnSize2);
-    int *actual3 = di_string_match("DDI", &returnSize3);
+    const int *actual1 = di_string_match("IDID", &returnSize1);
+    const int *actual2 = di_string_match("III", &returnSize2);
+    const int *actual3 = di_string_match("DDI", &returnSize3);
     assert_memory_equal(ARRAY(int, 0, 4, 1, 3, 2), actual1, returnSize1);
     assert_memory_equal(ARRAY(int, 0, 1, 2, 3), actual2, returnSize2);
     assert_memory_equal(ARRAY(int, 3, 2, 0, 1), actual3, returnSize3);
@@ -740,6 +740,7 @@ static int test_solution() {
             cmocka_unit_test(test_is_valid_serialization),
             cmocka_unit_test(test_count_numbers_with_unique_digits),
             cmocka_unit_test(test_lexical_order),
+            cmocka_unit_test(test_find_substring_in_wraparound_string),
             cmocka_unit_test(test_find_diagonal_order),
             cmocka_unit_test(test_find_longest_chain),
             cmocka_unit_test(test_find_closest_elements),
@@ -829,12 +830,12 @@ static void test_atm_functionality() {
     ATM *atm = atm_create();
     atm_deposit(atm, ARRAY(int, 0, 0, 1, 2, 1), 5);
     int return_size = 0;
-    int *actual1 = atm_withdraw(atm, 600, &return_size);
+    const int *actual1 = atm_withdraw(atm, 600, &return_size);
     assert_memory_equal(ARRAY(int, 0, 0, 1, 0, 1), actual1, 5);
     atm_deposit(atm, ARRAY(int, 0, 1, 0, 1, 1), 5);
-    int *actual2 = atm_withdraw(atm, 600, &return_size);
+    const int *actual2 = atm_withdraw(atm, 600, &return_size);
     assert_memory_equal(ARRAY(int, -1), actual2, 1);
-    int *actual3 = atm_withdraw(atm, 550, &return_size);
+    const int *actual3 = atm_withdraw(atm, 550, &return_size);
     assert_memory_equal(ARRAY(int, 0, 1, 0, 0, 1), actual3, 5);
 
     atm_free(atm);
