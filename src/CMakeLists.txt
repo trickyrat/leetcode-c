@@ -22,4 +22,8 @@ add_library(libleetcodec STATIC
     "utils.c"
 )
 
+if(UNIX)
+    target_link_libraries(libleetcodec PUBLIC m)
+endif()
+
 target_include_directories(libleetcodec PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
